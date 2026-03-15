@@ -5,7 +5,7 @@
 
 This repository organizes and stores sample Java code written for university lectures and assignments.
 
-*Author: Cheolwon Park (Korea University Sejong, CSE) – Year 2 as of 2025*
+*Author: Cheolwon Park (Korea University Sejong, CSE) – Year 2 (Sophomore) as of 2025*
 <br><br>
 
 ## 📑 Table of Contents
