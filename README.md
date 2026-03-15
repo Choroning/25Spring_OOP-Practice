@@ -36,7 +36,7 @@ This repository contains code examples developed for a university-level Object-O
 
 | Course&nbsp;Code| Course            | Type          | Instructor      | Department                              |
 |:----------:|:------------------|:-------------:|:---------------:|:----------------------------------------|
-|`DCCS213-01`|OBJECT-ORIENTED PROGRAMMING AND PRACTICE|Major Elective|Prof. Minseok&nbsp;Seo|Computer Science and Software Engineering|
+|`DCCS213-01`|OBJECT-ORIENTED PROGRAMMING AND PRACTICE|Major Elective|Prof. Minseok&nbsp;Seo|Department of Computer Convergence Software|
 
 - **📖 References**
 
