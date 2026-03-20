@@ -74,81 +74,81 @@ This repository contains code examples developed for a university-level Object-O
 │   │   ├── Assignment1_NameGreeter.java
 │   │   └── Assignment1_SentenceReverser.java
 │   ├── Concepts.md
-│   ├── DisplayWindow.java
-│   └── MonogramDateDisplay.java
+│   ├── Lab_DisplayWindow.java
+│   └── Lab_MonogramDateDisplay.java
 ├── Chapter03_Java-Basic-Grammar
-│   ├── CircleCalculator.java
 │   ├── Concepts.md
-│   ├── OperatorDemo.java
-│   └── TimeUnitConverter.java
+│   ├── Lab_CircleCalculator.java
+│   ├── Lab_OperatorDemo.java
+│   └── Lab_TimeUnitConverter.java
 ├── Chapter04_Control-Structures
 │   ├── Assignment
 │   │   ├── Assignment1_CurrencyConverter.java
 │   │   ├── Assignment1_RealTimeAgeCalculator.java
 │   │   └── Assignment1_ScheduleReminder.java
 │   ├── Concepts.md
-│   ├── ConditionalOperatorDemo.java
-│   ├── ExecutionTimeMeasurement.java
-│   ├── SwitchGradingSystem.java
-│   └── WhileLoopValidation.java
+│   ├── Lab_ConditionalOperatorDemo.java
+│   ├── Lab_ExecutionTimeMeasurement.java
+│   ├── Lab_SwitchGradingSystem.java
+│   └── Lab_WhileLoopValidation.java
 ├── Chapter05_Arrays
 │   ├── Assignment
 │   │   ├── Assignment1_MatrixSumCalculator.java
 │   │   ├── Assignment1_NumberExtractorSum.java
 │   │   ├── Assignment1_OptimalBillCounter.java
 │   │   └── Assignment1_SeasonIdentifier.java
-│   ├── ArrayMaxFinder.java
-│   ├── ArrayStatistics.java
-│   └── Concepts.md
+│   ├── Concepts.md
+│   ├── Lab_ArrayMaxFinder.java
+│   └── Lab_ArrayStatistics.java
 ├── Chapter06_2D-Arrays-Functions-and-Exception-Handling
-│   ├── AverageGradeCalculator.java
 │   ├── Concepts.md
-│   ├── GridDrawer.java
-│   └── InputValidationWithException.java
+│   ├── Lab_AverageGradeCalculator.java
+│   ├── Lab_GridDrawer.java
+│   └── Lab_InputValidationWithException.java
 ├── Chapter07_Advanced-Classes-I
-│   ├── Account.java
-│   ├── Bicycle.java
 │   ├── Concepts.md
-│   └── MultipleClassesDemo.java
+│   ├── Lab_Account.java
+│   ├── Lab_Bicycle.java
+│   └── Lab_MultipleClassesDemo.java
 ├── Chapter08_Advanced-Classes-II
 │   ├── Concepts.md
-│   └── Dice.java
+│   └── Lab_Dice.java
 ├── Chapter09_Assertions-Generics-and-Collections
 │   ├── Assignment
 │   │   ├── Assignment2_GreetingDialog.java
 │   │   └── Assignment2_SortingComparison.java
-│   ├── AssertionDemo.java
-│   └── Concepts.md
+│   ├── Concepts.md
+│   └── Lab_AssertionDemo.java
 ├── Chapter10_File-IO
 │   ├── Assignment
 │   │   └── Assignment2_BinaryFileDecryptor.java
 │   └── Concepts.md
 ├── Chapter11_Inheritance-and-Polymorphism
 │   ├── Concepts.md
-│   ├── InheritanceDemo.java
-│   └── PersonStudentDemo.java
+│   ├── Lab_InheritanceDemo.java
+│   └── Lab_PersonStudentDemo.java
 ├── Chapter12_Advanced-GUI
-│   ├── BasicSwingFrame.java
 │   ├── Concepts.md
-│   └── FlowLayoutDemo.java
+│   ├── Lab_BasicSwingFrame.java
+│   └── Lab_FlowLayoutDemo.java
 ├── Chapter13_Threading
 │   ├── Assignment
 │   │   └── Assignment3_DnaFiveMerCounter.java
 │   ├── Concepts.md
-│   ├── MultiThreadedSum.java
-│   ├── TimerRunnableDemo.java
-│   └── TimerThreadDemo.java
+│   ├── Lab_MultiThreadedSum.java
+│   ├── Lab_TimerRunnableDemo.java
+│   └── Lab_TimerThreadDemo.java
 ├── Chapter14_Network-Programming
 │   ├── Assignment
 │   │   ├── Assignment3_CalculatorClient.java
 │   │   └── Assignment3_CalculatorServer.java
 │   ├── Concepts.md
-│   ├── SimpleChatClient.java
-│   └── SimpleChatServer.java
+│   ├── Lab_SimpleChatClient.java
+│   └── Lab_SimpleChatServer.java
 ├── Chapter15_Advanced-Threading
 │   ├── Concepts.md
-│   ├── MainThreadInfoDemo.java
-│   └── SynchronizationDemo.java
+│   ├── Lab_MainThreadInfoDemo.java
+│   └── Lab_SynchronizationDemo.java
 ├── Project_Multiplayer-Chat-Application
 │   ├── ChatClient.java
 │   ├── ChatGUI.java
