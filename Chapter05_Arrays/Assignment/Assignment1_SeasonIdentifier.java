@@ -1,6 +1,6 @@
 /**
- * @file HW1_SeasonIdentifier.java
- * @brief Homework 1, Q9: Determines the season for a user-specified date
+ * @file Assignment1_SeasonIdentifier.java
+ * @brief Assignment 1, Q9: Determines the season for a user-specified date
  *        using switch-case on the month value.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class HW1_SeasonIdentifier {
+public class Assignment1_SeasonIdentifier {
 
     /**
      * Prompts the user for a date and displays the corresponding season.

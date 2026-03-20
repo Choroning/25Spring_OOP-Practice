@@ -1,6 +1,6 @@
 /**
- * @file HW2_SortingComparison.java
- * @brief Homework 2, Q7: Compares the performance of Bubble Sort and
+ * @file Assignment2_SortingComparison.java
+ * @brief Assignment 2, Q7: Compares the performance of Bubble Sort and
  *        Quick Sort on a randomly generated integer array.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -9,7 +9,7 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class HW2_SortingComparison {
+public class Assignment2_SortingComparison {
 
     /**
      * Generates a random array, sorts it with both algorithms,

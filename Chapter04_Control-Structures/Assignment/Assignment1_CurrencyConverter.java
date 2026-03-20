@@ -1,6 +1,6 @@
 /**
- * @file HW1_CurrencyConverter.java
- * @brief Homework 1, Q5: Converts Korean Won (KRW) to US Dollar (USD)
+ * @file Assignment1_CurrencyConverter.java
+ * @brief Assignment 1, Q5: Converts Korean Won (KRW) to US Dollar (USD)
  *        using a fixed exchange rate with GUI input/output.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -9,7 +9,7 @@
 import javax.swing.*;
 import java.text.DecimalFormat;
 
-public class HW1_CurrencyConverter {
+public class Assignment1_CurrencyConverter {
 
     /** Fixed exchange rate: 1 USD = 1348.81 KRW */
     private static final double EXCHANGE_RATE = 1348.81;

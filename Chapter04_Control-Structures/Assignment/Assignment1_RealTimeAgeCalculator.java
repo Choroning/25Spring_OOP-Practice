@@ -1,6 +1,6 @@
 /**
- * @file HW1_RealTimeAgeCalculator.java
- * @brief Homework 1, Q4: Calculates the user's real-time age with precision
+ * @file Assignment1_RealTimeAgeCalculator.java
+ * @brief Assignment 1, Q4: Calculates the user's real-time age with precision
  *        down to seconds given a birth date.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.text.*;
 import java.util.*;
 
-public class HW1_RealTimeAgeCalculator {
+public class Assignment1_RealTimeAgeCalculator {
 
     /**
      * Prompts the user for their name and birth date, then computes

@@ -1,6 +1,6 @@
 /**
- * @file HW1_NameGreeter.java
- * @brief Homework 1 Q2: Reads name and student ID, prints greeting and digit sum.
+ * @file Assignment1_NameGreeter.java
+ * @brief Assignment 1 Q2: Reads name and student ID, prints greeting and digit sum.
  * @author Cheolwon Park
  * @date 2025-03-28
  */
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * Prompts user for name and student ID via dialog, computes the sum
  * of all digits in the student ID, and prints a greeting message.
  */
-public class HW1_NameGreeter {
+public class Assignment1_NameGreeter {
 
     /**
      * Main entry point.

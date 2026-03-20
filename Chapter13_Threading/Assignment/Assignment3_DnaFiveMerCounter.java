@@ -1,6 +1,6 @@
 /**
- * @file HW3_DnaFiveMerCounter.java
- * @brief Homework 3, Q1: Counts all 5-mer frequencies in a DNA sequence file
+ * @file Assignment3_DnaFiveMerCounter.java
+ * @brief Assignment 3, Q1: Counts all 5-mer frequencies in a DNA sequence file
  *        using a rolling-hash approach. Skips windows containing 'N'.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -8,7 +8,7 @@
 
 import java.io.*;
 
-public class HW3_DnaFiveMerCounter {
+public class Assignment3_DnaFiveMerCounter {
 
     private static final int WINDOW_SIZE = 5;
     private static final int TOTAL_MERS = 1 << (2 * WINDOW_SIZE); // 4^5 = 1024

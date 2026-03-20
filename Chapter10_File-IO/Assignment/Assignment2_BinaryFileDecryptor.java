@@ -1,6 +1,6 @@
 /**
- * @file HW2_BinaryFileDecryptor.java
- * @brief Homework 2, Q1: Reads a binary data file according to a codebook
+ * @file Assignment2_BinaryFileDecryptor.java
+ * @brief Assignment 2, Q1: Reads a binary data file according to a codebook
  *        that specifies the data type of each entry, then writes the
  *        decoded values to separate output files by type.
  * @author Cheolwon Park
@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HW2_BinaryFileDecryptor {
+public class Assignment2_BinaryFileDecryptor {
 
     /**
      * Main entry point. Reads a codebook and binary data file,

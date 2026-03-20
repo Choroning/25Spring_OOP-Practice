@@ -1,6 +1,6 @@
 /**
- * @file HW1_MatrixSumCalculator.java
- * @brief Homework 1, Q6: Reads a 3x3 integer matrix from user input,
+ * @file Assignment1_MatrixSumCalculator.java
+ * @brief Assignment 1, Q6: Reads a 3x3 integer matrix from user input,
  *        computes row sums, column sums, and the total sum,
  *        then displays the results in an HTML table via JOptionPane.
  * @author Cheolwon Park
@@ -9,7 +9,7 @@
 
 import javax.swing.*;
 
-public class HW1_MatrixSumCalculator {
+public class Assignment1_MatrixSumCalculator {
 
     /**
      * Prompts the user for a 3x3 matrix, computes sums, and displays results.
