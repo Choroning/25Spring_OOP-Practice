@@ -34,7 +34,7 @@ Each thread is managed by a Thread Control Block (TCB) containing:
 | Program Counter | Address of the next instruction |
 | Registers | Saved CPU register values |
 | Stack Pointer | Points to the thread's stack |
-| Priority | Scheduling priority (1--10) |
+| Priority | Scheduling priority (1–10) |
 
 ---
 

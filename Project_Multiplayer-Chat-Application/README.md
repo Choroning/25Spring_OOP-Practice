@@ -95,5 +95,5 @@ This project integrates concepts from multiple course chapters:
 
 ## References
 
-- MIT 6.005: Software Construction -- Concurrency and Thread Safety
-- Stanford CS108: Object-Oriented Systems Design -- Network Programming in Java
+- MIT 6.005: Software Construction — Concurrency and Thread Safety
+- Stanford CS108: Object-Oriented Systems Design — Network Programming in Java
