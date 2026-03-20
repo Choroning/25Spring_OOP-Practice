@@ -48,7 +48,7 @@ thread.setPriority(Thread.MIN_PRIORITY);  // 1
 thread.setPriority(Thread.NORM_PRIORITY); // 5 (default)
 ```
 
-- The JVM uses a strictly priority-based scheduling policy.
+- Thread priorities are hints to the JVM and OS scheduler. Priority behavior is platform-dependent; higher-priority threads are generally preferred but strict preemption is not guaranteed.
 - Threads with equal priority are scheduled in round-robin fashion.
 - The main thread starts with priority 5.
 

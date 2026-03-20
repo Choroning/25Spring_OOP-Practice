@@ -16,7 +16,7 @@ public class MainThreadInfoDemo {
         Thread current = Thread.currentThread();
 
         System.out.println("Thread name:     " + current.getName());
-        System.out.println("Thread ID:       " + current.getId());
+        System.out.println("Thread ID:       " + current.threadId()); // getId() deprecated since Java 19
         System.out.println("Thread priority: " + current.getPriority());
         System.out.println("Thread state:    " + current.getState());
         System.out.println("Thread group:    " + current.getThreadGroup().getName());

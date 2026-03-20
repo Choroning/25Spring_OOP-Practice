@@ -108,21 +108,29 @@ public class HW3_CalculatorServer {
                 out.println("[Declined] Cannot divide by zero.");
                 return;
             }
-            int oldVal = currentValue.get();
-            long result = switch (op) {
-                case '+' -> (long) oldVal + operand;
-                case '-' -> (long) oldVal - operand;
-                case '*' -> (long) oldVal * operand;
-                case '/' -> (long) oldVal / operand;
-                default -> Long.MIN_VALUE;
-            };
-            if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
+            final int operandVal = operand;
+            final char operator = op;
+            int[] resultHolder = new int[1];
+            int newVal = currentValue.accumulateAndGet(operandVal, (oldVal, x) -> {
+                long r = switch (operator) {
+                    case '+' -> (long) oldVal + x;
+                    case '-' -> (long) oldVal - x;
+                    case '*' -> (long) oldVal * x;
+                    case '/' -> (long) oldVal / x;
+                    default -> Long.MIN_VALUE;
+                };
+                if (r > Integer.MAX_VALUE || r < Integer.MIN_VALUE) {
+                    resultHolder[0] = 1; // overflow flag
+                    return oldVal; // keep old value on overflow
+                }
+                return (int) r;
+            });
+            if (resultHolder[0] == 1) {
                 broadcast("**" + userName + "** caused an overflow.");
                 return;
             }
-            currentValue.set((int) result);
             System.out.println("[" + now() + "] [" + userName + "] " + op + operand
-                    + " -> value=" + currentValue.get());
+                    + " -> value=" + newVal);
             out.println("SUCCESS");
         }
 

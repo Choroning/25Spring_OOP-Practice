@@ -17,9 +17,9 @@ public class ExecutionTimeMeasurement {
         long startTime = System.nanoTime();
 
         // Triple nested loop to simulate a computationally intensive task
-        for (int i = 0; i <= 100000; i++) {
-            for (int j = 0; j <= 10000; j++) {
-                for (int k = 0; k <= 10000; k++) {
+        for (int i = 0; i <= 1000; i++) {
+            for (int j = 0; j <= 1000; j++) {
+                for (int k = 0; k <= 1000; k++) {
                     // Empty body: loop overhead itself is measured
                 }
             }
