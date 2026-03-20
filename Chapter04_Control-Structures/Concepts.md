@@ -1,4 +1,4 @@
-# Chapter 04 -- Control Structures
+# Chapter 04 — Control Structures
 
 > **Last Updated:** 2026-03-21
 

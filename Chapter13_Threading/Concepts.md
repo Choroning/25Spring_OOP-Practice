@@ -1,4 +1,4 @@
-# Chapter 13 -- Threading
+# Chapter 13 — Threading
 
 > **Last Updated:** 2026-03-21
 

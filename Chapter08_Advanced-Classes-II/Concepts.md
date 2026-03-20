@@ -1,4 +1,4 @@
-# Chapter 08 -- Advanced Classes II
+# Chapter 08 — Advanced Classes II
 
 > **Last Updated:** 2026-03-21
 

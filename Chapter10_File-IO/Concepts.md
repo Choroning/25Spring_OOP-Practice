@@ -1,4 +1,4 @@
-# Chapter 10 -- File I/O
+# Chapter 10 — File I/O
 
 > **Last Updated:** 2026-03-21
 

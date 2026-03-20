@@ -1,4 +1,4 @@
-# Chapter 15 -- Advanced Threading
+# Chapter 15 — Advanced Threading
 
 > **Last Updated:** 2026-03-21
 

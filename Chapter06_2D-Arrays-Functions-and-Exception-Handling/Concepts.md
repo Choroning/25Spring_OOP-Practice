@@ -1,4 +1,4 @@
-# Chapter 06 -- 2D Arrays, Functions, and Exception Handling
+# Chapter 06 — 2D Arrays, Functions, and Exception Handling
 
 > **Last Updated:** 2026-03-21
 

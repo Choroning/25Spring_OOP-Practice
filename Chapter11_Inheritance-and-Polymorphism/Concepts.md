@@ -1,4 +1,4 @@
-# Chapter 11 -- Inheritance and Polymorphism
+# Chapter 11 — Inheritance and Polymorphism
 
 > **Last Updated:** 2026-03-21
 
