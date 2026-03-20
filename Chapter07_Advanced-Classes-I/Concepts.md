@@ -1,4 +1,4 @@
-# Chapter 07 -- Advanced Classes I
+# Chapter 07 — Advanced Classes I
 
 > **Last Updated:** 2026-03-21
 

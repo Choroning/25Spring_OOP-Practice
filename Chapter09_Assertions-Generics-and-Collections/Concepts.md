@@ -1,4 +1,4 @@
-# Chapter 09 -- Assertions, Generics, and Collections
+# Chapter 09 — Assertions, Generics, and Collections
 
 > **Last Updated:** 2026-03-21
 

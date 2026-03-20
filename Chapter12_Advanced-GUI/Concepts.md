@@ -1,4 +1,4 @@
-# Chapter 12 -- Advanced GUI
+# Chapter 12 — Advanced GUI
 
 > **Last Updated:** 2026-03-21
 

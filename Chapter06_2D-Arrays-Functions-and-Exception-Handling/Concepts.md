@@ -1,4 +1,4 @@
-# Chapter 06 -- 2D Arrays, Functions, and Exception Handling
+# Chapter 06 — 2D Arrays, Functions, and Exception Handling
 
 > **Last Updated:** 2026-03-21
 
@@ -116,8 +116,8 @@ public static double max(double a, double b) { return a > b ? a : b; }
 
 ### 2.3 Pass-by-Value vs. Pass-by-Reference Semantics
 
-- **Primitives** are passed by value -- a copy is made.
-- **Objects and arrays** pass the reference by value -- the method can modify the object's contents but cannot reassign the caller's variable.
+- **Primitives** are passed by value — a copy is made.
+- **Objects and arrays** pass the reference by value — the method can modify the object's contents but cannot reassign the caller's variable.
 
 ---
 

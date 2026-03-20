@@ -1,4 +1,4 @@
-# Chapter 05 -- Arrays
+# Chapter 05 — Arrays
 
 > **Last Updated:** 2026-03-21
 

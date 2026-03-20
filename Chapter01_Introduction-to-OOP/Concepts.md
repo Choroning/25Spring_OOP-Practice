@@ -50,10 +50,10 @@ graph TD
     OOP --> A["Abstraction"]
 ```
 
-1. **Encapsulation** -- Bundling data and methods together; restricting direct access with access modifiers (`private`, `protected`, `public`).
-2. **Inheritance** -- Creating new classes from existing ones, promoting code reuse.
-3. **Polymorphism** -- A single interface with multiple implementations (method overloading and overriding).
-4. **Abstraction** -- Hiding implementation details and exposing only essential features.
+1. **Encapsulation** — Bundling data and methods together; restricting direct access with access modifiers (`private`, `protected`, `public`).
+2. **Inheritance** — Creating new classes from existing ones, promoting code reuse.
+3. **Polymorphism** — A single interface with multiple implementations (method overloading and overriding).
+4. **Abstraction** — Hiding implementation details and exposing only essential features.
 
 ---
 
@@ -65,12 +65,12 @@ graph TD
 
 Java was created by James Gosling at Sun Microsystems in 1995. Its core design goals are:
 
-- **Simple** -- Eliminated complex features like pointers and multiple inheritance of classes.
-- **Object-Oriented** -- Everything (except primitives) is an object.
-- **Platform-Independent** -- Compiled to bytecode that runs on any JVM.
-- **Secure** -- Built-in security manager and bytecode verifier.
-- **Robust** -- Strong type checking, exception handling, garbage collection.
-- **Multithreaded** -- Native support for concurrent programming.
+- **Simple** — Eliminated complex features like pointers and multiple inheritance of classes.
+- **Object-Oriented** — Everything (except primitives) is an object.
+- **Platform-Independent** — Compiled to bytecode that runs on any JVM.
+- **Secure** — Built-in security manager and bytecode verifier.
+- **Robust** — Strong type checking, exception handling, garbage collection.
+- **Multithreaded** — Native support for concurrent programming.
 
 ### 2.2 Java Platform Architecture
 
@@ -106,7 +106,7 @@ $$
 
 ### 3.1 Compilation and Interpretation
 
-Java is a **hybrid** language -- it is both compiled and interpreted:
+Java is a **hybrid** language — it is both compiled and interpreted:
 
 1. **Compile**: `javac MyProgram.java` produces `MyProgram.class` (bytecode).
 2. **Execute**: `java MyProgram` launches the JVM, which interprets/JIT-compiles the bytecode.
@@ -130,9 +130,9 @@ Because bytecode is platform-independent, the same `.class` file runs on Windows
 
 Typical setup for Java development:
 
-1. **Install JDK** -- Download from Oracle or use OpenJDK.
-2. **Set environment variables** -- `JAVA_HOME`, add `bin` to `PATH`.
-3. **Choose an IDE** -- IntelliJ IDEA, Eclipse, VS Code, or even a simple text editor.
+1. **Install JDK** — Download from Oracle or use OpenJDK.
+2. **Set environment variables** — `JAVA_HOME`, add `bin` to `PATH`.
+3. **Choose an IDE** — IntelliJ IDEA, Eclipse, VS Code, or even a simple text editor.
 4. **Verify installation**:
    ```bash
    java -version
