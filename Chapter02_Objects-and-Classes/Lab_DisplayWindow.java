@@ -1,5 +1,5 @@
 /**
- * @file DisplayWindow.java
+ * @file    Lab_DisplayWindow.java
  * @brief Demonstrates creating and displaying a simple JFrame window.
  * @author Cheolwon Park
  * @date 2025-03-10

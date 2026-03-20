@@ -1,5 +1,5 @@
 /**
- * @file OperatorDemo.java
+ * @file    Lab_OperatorDemo.java
  * @brief Demonstrates assignment, increment, and decrement operators in Java.
  * @author Cheolwon Park
  * @date 2025-03-12

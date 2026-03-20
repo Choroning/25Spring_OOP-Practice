@@ -1,5 +1,5 @@
 /**
- * @file Account.java
+ * @file    Lab_Account.java
  * @brief A bank account class demonstrating encapsulation with private fields,
  *        constructor overloading, and input validation in mutator methods.
  * @author Cheolwon Park

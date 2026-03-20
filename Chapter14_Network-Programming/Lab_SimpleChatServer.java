@@ -1,5 +1,5 @@
 /**
- * @file SimpleChatServer.java
+ * @file    Lab_SimpleChatServer.java
  * @brief A simple TCP chat server that exchanges messages with a single client.
  *        Demonstrates ServerSocket, accept(), and BufferedReader/Writer usage.
  * @author Cheolwon Park

@@ -1,7 +1,7 @@
 /**
- * @file TimerThreadDemo.java
- * @brief Demonstrates creating a thread by extending Thread.
- *        Displays a timer that increments every second using a Swing JLabel.
+ * @file    Lab_TimerRunnableDemo.java
+ * @brief Demonstrates creating a thread by implementing the Runnable interface.
+ *        Functionally equivalent to TimerThreadDemo but uses Runnable instead.
  * @author Cheolwon Park
  * @date 2026-03-21
  */
@@ -9,13 +9,13 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class TimerThreadDemo extends JFrame {
+public class TimerRunnableDemo extends JFrame {
 
     /**
-     * Sets up a Swing frame with a JLabel and starts a timer thread.
+     * Sets up a Swing frame with a JLabel and starts a timer via Runnable.
      */
-    public TimerThreadDemo() {
-        setTitle("Timer Example (Thread)");
+    public TimerRunnableDemo() {
+        setTitle("Timer Example (Runnable)");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
@@ -27,16 +27,16 @@ public class TimerThreadDemo extends JFrame {
         setSize(300, 170);
         setVisible(true);
 
-        // Start the timer thread
-        TimerThread timer = new TimerThread(timerLabel);
-        timer.start();
+        TimerRunnable runnable = new TimerRunnable(timerLabel);
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
-    /** Thread that updates a JLabel every second. */
-    static class TimerThread extends Thread {
+    /** Runnable implementation that updates a JLabel every second. */
+    static class TimerRunnable implements Runnable {
         private final JLabel label;
 
-        public TimerThread(JLabel label) {
+        public TimerRunnable(JLabel label) {
             this.label = label;
         }
 
@@ -60,6 +60,6 @@ public class TimerThreadDemo extends JFrame {
      * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(TimerThreadDemo::new);
+        SwingUtilities.invokeLater(TimerRunnableDemo::new);
     }
 }

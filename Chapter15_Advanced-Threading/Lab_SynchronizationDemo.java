@@ -1,5 +1,5 @@
 /**
- * @file SynchronizationDemo.java
+ * @file    Lab_SynchronizationDemo.java
  * @brief Demonstrates the difference between unsynchronized and synchronized
  *        shared counter access by two threads.
  * @author Cheolwon Park

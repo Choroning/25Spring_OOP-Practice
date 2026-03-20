@@ -1,5 +1,5 @@
 /**
- * @file AverageGradeCalculator.java
+ * @file    Lab_AverageGradeCalculator.java
  * @brief Computes the average GPA across all semesters using a 2D array.
  * @author Cheolwon Park
  * @date 2026-03-21

@@ -1,5 +1,5 @@
 /**
- * @file ExecutionTimeMeasurement.java
+ * @file    Lab_ExecutionTimeMeasurement.java
  * @brief Measures the execution time of nested loops using System.nanoTime().
  *        Demonstrates performance benchmarking techniques in Java.
  * @author Cheolwon Park

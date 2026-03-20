@@ -1,5 +1,5 @@
 /**
- * @file InheritanceDemo.java
+ * @file    Lab_InheritanceDemo.java
  * @brief Demonstrates inheritance, polymorphism, and method overriding
  *        with a Shape hierarchy (Shape -> Circle, Rectangle).
  * @author Cheolwon Park

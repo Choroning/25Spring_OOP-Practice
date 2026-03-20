@@ -1,5 +1,5 @@
 /**
- * @file CircleCalculator.java
+ * @file    Lab_CircleCalculator.java
  * @brief Computes the area and circumference of a circle from user-provided radius.
  * @author Cheolwon Park
  * @date 2025-03-12

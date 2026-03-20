@@ -1,5 +1,5 @@
 /**
- * @file MultiThreadedSum.java
+ * @file    Lab_MultiThreadedSum.java
  * @brief Compares single-threaded vs. multi-threaded summation of 2 billion
  *        integers, demonstrating the performance benefit of parallelism.
  * @author Cheolwon Park

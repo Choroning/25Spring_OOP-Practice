@@ -1,5 +1,5 @@
 /**
- * @file SimpleChatClient.java
+ * @file    Lab_SimpleChatClient.java
  * @brief A simple TCP chat client that connects to SimpleChatServer
  *        and exchanges messages in alternating fashion.
  * @author Cheolwon Park
