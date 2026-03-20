@@ -1,4 +1,6 @@
 # Multiplayer Chat Application
+> **Author:** Cheolwon Park  
+> **Date:** 2025-06-04
 
 A multi-threaded TCP-based chat system implemented in Java, featuring room management, concurrent client handling, and both console and GUI clients.
 
