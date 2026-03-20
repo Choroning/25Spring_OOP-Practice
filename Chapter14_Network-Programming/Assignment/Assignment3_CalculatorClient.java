@@ -1,6 +1,6 @@
 /**
- * @file HW3_CalculatorClient.java
- * @brief Homework 3, Q3 Client: Connects to the real-time calculator server,
+ * @file Assignment3_CalculatorClient.java
+ * @brief Assignment 3, Q3 Client: Connects to the real-time calculator server,
  *        sends arithmetic commands, and displays results.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -11,7 +11,7 @@ import java.net.*;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class HW3_CalculatorClient {
+public class Assignment3_CalculatorClient {
 
     private static final String HOST = "localhost";
     private static final int PORT = 6000;

@@ -1,6 +1,6 @@
 /**
- * @file HW1_SentenceReverser.java
- * @brief Homework 1 Q1: Reverses each word in an English sentence while capitalizing the first letter.
+ * @file Assignment1_SentenceReverser.java
+ * @brief Assignment 1 Q1: Reverses each word in an English sentence while capitalizing the first letter.
  * @author Cheolwon Park
  * @date 2025-03-28
  */
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * Reads an English sentence from a dialog, reverses each word individually,
  * capitalizes the first letter of each reversed word, and prints the result.
  */
-public class HW1_SentenceReverser {
+public class Assignment1_SentenceReverser {
 
     /**
      * Main entry point.

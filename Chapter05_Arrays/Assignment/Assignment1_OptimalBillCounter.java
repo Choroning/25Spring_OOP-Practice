@@ -1,6 +1,6 @@
 /**
- * @file HW1_OptimalBillCounter.java
- * @brief Homework 1, Q7: Determines the optimal combination of Korean
+ * @file Assignment1_OptimalBillCounter.java
+ * @brief Assignment 1, Q7: Determines the optimal combination of Korean
  *        banknotes and coins for a given amount using a greedy algorithm.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -9,7 +9,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class HW1_OptimalBillCounter {
+public class Assignment1_OptimalBillCounter {
 
     /** Available denominations in descending order (KRW) */
     private static final int[] DENOMINATIONS = {50000, 10000, 5000, 1000, 500, 100, 50, 10};

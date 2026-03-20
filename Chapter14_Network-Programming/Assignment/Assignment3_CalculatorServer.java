@@ -1,6 +1,6 @@
 /**
- * @file HW3_CalculatorServer.java
- * @brief Homework 3, Q3 Server: Real-time calculator server that maintains
+ * @file Assignment3_CalculatorServer.java
+ * @brief Assignment 3, Q3 Server: Real-time calculator server that maintains
  *        a shared value updated by multiple clients via arithmetic commands.
  *        Supports concurrent clients with overflow detection.
  * @author Cheolwon Park
@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class HW3_CalculatorServer {
+public class Assignment3_CalculatorServer {
 
     private static final int PORT = 6000;
     private static final AtomicInteger currentValue = new AtomicInteger(0);

@@ -1,6 +1,6 @@
 /**
- * @file HW1_ScheduleReminder.java
- * @brief Homework 1, Q3: Schedule reminder program that calculates
+ * @file Assignment1_ScheduleReminder.java
+ * @brief Assignment 1, Q3: Schedule reminder program that calculates
  *        the number of days between today and a user-specified date.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HW1_ScheduleReminder {
+public class Assignment1_ScheduleReminder {
 
     /**
      * Prompts the user for a date (yyyy-MM-dd) via a GUI dialog,

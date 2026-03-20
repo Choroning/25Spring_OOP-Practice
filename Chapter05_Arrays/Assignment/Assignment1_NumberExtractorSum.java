@@ -1,6 +1,6 @@
 /**
- * @file HW1_NumberExtractorSum.java
- * @brief Homework 1, Q8: Extracts all real numbers from a mixed-content
+ * @file Assignment1_NumberExtractorSum.java
+ * @brief Assignment 1, Q8: Extracts all real numbers from a mixed-content
  *        string using regex and computes their sum.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -9,7 +9,7 @@
 import javax.swing.*;
 import java.util.regex.*;
 
-public class HW1_NumberExtractorSum {
+public class Assignment1_NumberExtractorSum {
 
     /**
      * Prompts the user for a string containing mixed text, extracts

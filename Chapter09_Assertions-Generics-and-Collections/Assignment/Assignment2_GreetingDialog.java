@@ -1,6 +1,6 @@
 /**
- * @file HW2_GreetingDialog.java
- * @brief Homework 2, Q4: Greeting dialog program that validates
+ * @file Assignment2_GreetingDialog.java
+ * @brief Assignment 2, Q4: Greeting dialog program that validates
  *        the user's first name (letters only) and prints a farewell message.
  * @author Cheolwon Park
  * @date 2026-03-21
@@ -8,7 +8,7 @@
 
 import javax.swing.JOptionPane;
 
-public class HW2_GreetingDialog {
+public class Assignment2_GreetingDialog {
 
     /**
      * Prompts the user for a valid alphabetic first name via GUI dialog,
