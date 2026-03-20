@@ -1,5 +1,5 @@
 /**
- * @file MonogramDateDisplay.java
+ * @file    Lab_MonogramDateDisplay.java
  * @brief Reads a full name via dialog, computes initials monogram, and displays today's date.
  * @author Cheolwon Park
  * @date 2025-03-10

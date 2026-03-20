@@ -1,5 +1,5 @@
 /**
- * @file AssertionDemo.java
+ * @file    Lab_AssertionDemo.java
  * @brief Demonstrates Java assertions for verifying bank account invariants.
  *        Run with: java -ea AssertionDemo
  * @author Cheolwon Park

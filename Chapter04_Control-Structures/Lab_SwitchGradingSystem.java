@@ -1,5 +1,5 @@
 /**
- * @file SwitchGradingSystem.java
+ * @file    Lab_SwitchGradingSystem.java
  * @brief Demonstrates the switch statement by converting a numeric score
  *        (0--100) into a letter grade (A--F).
  * @author Cheolwon Park

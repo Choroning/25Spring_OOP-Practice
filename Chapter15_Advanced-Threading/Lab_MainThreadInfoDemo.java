@@ -1,5 +1,5 @@
 /**
- * @file MainThreadInfoDemo.java
+ * @file    Lab_MainThreadInfoDemo.java
  * @brief Prints information about the currently running main thread,
  *        including ID, name, priority, and state.
  * @author Cheolwon Park

@@ -1,5 +1,5 @@
 /**
- * @file MultipleClassesDemo.java
+ * @file    Lab_MultipleClassesDemo.java
  * @brief Demonstrates using the Bicycle and Account classes together,
  *        showing how multiple classes collaborate in an OOP program.
  * @author Cheolwon Park

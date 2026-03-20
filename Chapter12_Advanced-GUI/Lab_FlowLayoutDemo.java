@@ -1,5 +1,5 @@
 /**
- * @file FlowLayoutDemo.java
+ * @file    Lab_FlowLayoutDemo.java
  * @brief Demonstrates FlowLayout by placing calculator operation buttons
  *        in a JFrame with configurable alignment and gaps.
  * @author Cheolwon Park

@@ -1,5 +1,5 @@
 /**
- * @file InputValidationWithException.java
+ * @file    Lab_InputValidationWithException.java
  * @brief Demonstrates exception-based input validation with a Scanner.
  *        Retries on invalid input using InputMismatchException handling.
  * @author Cheolwon Park

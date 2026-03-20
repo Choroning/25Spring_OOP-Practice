@@ -1,5 +1,5 @@
 /**
- * @file ConditionalOperatorDemo.java
+ * @file    Lab_ConditionalOperatorDemo.java
  * @brief Demonstrates usage of the ternary (conditional) operator
  *        to compute the absolute difference between two integers.
  * @author Cheolwon Park

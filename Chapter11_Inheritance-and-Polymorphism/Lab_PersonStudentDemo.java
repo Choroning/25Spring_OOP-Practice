@@ -1,5 +1,5 @@
 /**
- * @file PersonStudentDemo.java
+ * @file    Lab_PersonStudentDemo.java
  * @brief Demonstrates inheritance between Person and Student classes,
  *        showing how subclasses access protected and public members
  *        while private members require accessor methods.

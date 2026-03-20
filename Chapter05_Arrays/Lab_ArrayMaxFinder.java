@@ -1,5 +1,5 @@
 /**
- * @file ArrayMaxFinder.java
+ * @file    Lab_ArrayMaxFinder.java
  * @brief Reads five integers from the user and finds the maximum value
  *        using an array and a linear scan.
  * @author Cheolwon Park

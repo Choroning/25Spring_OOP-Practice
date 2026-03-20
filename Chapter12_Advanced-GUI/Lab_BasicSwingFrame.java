@@ -1,5 +1,5 @@
 /**
- * @file BasicSwingFrame.java
+ * @file    Lab_BasicSwingFrame.java
  * @brief Creates a 300x300 Swing frame with a blue background,
  *        demonstrating JFrame subclassing, content pane, and layout.
  * @author Cheolwon Park

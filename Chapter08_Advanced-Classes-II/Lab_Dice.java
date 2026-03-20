@@ -1,5 +1,5 @@
 /**
- * @file Dice.java
+ * @file    Lab_Dice.java
  * @brief A configurable dice class that encapsulates random number generation.
  *        Supports any number of faces (default 6).
  * @author Cheolwon Park

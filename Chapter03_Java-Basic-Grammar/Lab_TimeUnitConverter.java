@@ -1,5 +1,5 @@
 /**
- * @file TimeUnitConverter.java
+ * @file    Lab_TimeUnitConverter.java
  * @brief Converts seconds to hours, minutes, and seconds format.
  * @author Cheolwon Park
  * @date 2025-03-12

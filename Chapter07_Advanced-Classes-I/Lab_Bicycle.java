@@ -1,5 +1,5 @@
 /**
- * @file Bicycle.java
+ * @file    Lab_Bicycle.java
  * @brief A simple Bicycle class demonstrating encapsulation, constructors,
  *        and getter/setter methods.
  * @author Cheolwon Park

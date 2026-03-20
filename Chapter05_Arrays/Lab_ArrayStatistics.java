@@ -1,5 +1,5 @@
 /**
- * @file ArrayStatistics.java
+ * @file    Lab_ArrayStatistics.java
  * @brief Computes maximum, minimum, count, and mean of user-supplied integers.
  *        Demonstrates extracting array operations into reusable static methods.
  * @author Cheolwon Park

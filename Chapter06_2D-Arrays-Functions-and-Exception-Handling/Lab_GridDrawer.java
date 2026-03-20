@@ -1,5 +1,5 @@
 /**
- * @file GridDrawer.java
+ * @file    Lab_GridDrawer.java
  * @brief Draws a grid of lines using a 2D array of Point objects,
  *        demonstrating 2D array usage in graphical applications.
  * @author Cheolwon Park
