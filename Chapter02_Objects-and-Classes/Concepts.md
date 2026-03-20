@@ -30,9 +30,9 @@
 ### 1.1 What is an Object?
 
 An **object** is a runtime entity that has:
-- **State** (fields/attributes) -- the data it holds
-- **Behavior** (methods) -- the operations it can perform
-- **Identity** -- a unique reference distinguishing it from other objects
+- **State** (fields/attributes) — the data it holds
+- **Behavior** (methods) — the operations it can perform
+- **Identity** — a unique reference distinguishing it from other objects
 
 Real-world analogy: A `Car` object might have state (color, speed), behavior (accelerate, brake), and identity (license plate).
 
@@ -103,7 +103,7 @@ JFrame window1 = new JFrame();
 JFrame window2 = window1;  // Both point to the same object
 ```
 
-> **Key Point:** Assigning one reference to another does not copy the object -- both variables refer to the same instance in memory.
+> **Key Point:** Assigning one reference to another does not copy the object — both variables refer to the same instance in memory.
 
 ---
 
@@ -188,9 +188,9 @@ public class MyProgram {
 ```
 
 Comment styles:
-- `//` -- single-line comment
-- `/* ... */` -- multi-line comment
-- `/** ... */` -- Javadoc comment (for API documentation)
+- `//` — single-line comment
+- `/* ... */` — multi-line comment
+- `/** ... */` — Javadoc comment (for API documentation)
 
 ---
 

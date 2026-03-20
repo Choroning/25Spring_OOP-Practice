@@ -10,7 +10,7 @@
   - [1.1 The extends Keyword](#11-the-extends-keyword)
   - [1.2 Superclass and Subclass Relationship](#12-superclass-and-subclass-relationship)
 - [2. Constructor Chaining with super()](#2-constructor-chaining-with-super)
-- [3. The Dice Class -- A Practical Example](#3-the-dice-class----a-practical-example)
+- [3. The Dice Class — A Practical Example](#3-the-dice-class----a-practical-example)
 - [4. Class Design Best Practices](#4-class-design-best-practices)
 - [Summary](#summary)
 
@@ -44,7 +44,7 @@ public class Bicycle {
 - The subclass can add new fields and methods.
 - The subclass can override inherited methods.
 
-> **Key Point:** Java supports single inheritance only -- a class can extend at most one superclass. Use interfaces for multiple-type relationships.
+> **Key Point:** Java supports single inheritance only — a class can extend at most one superclass. Use interfaces for multiple-type relationships.
 
 ---
 
@@ -71,7 +71,7 @@ public class ElectricBicycle extends Bicycle {
 
 <br>
 
-## 3. The Dice Class -- A Practical Example
+## 3. The Dice Class — A Practical Example
 
 A `Dice` class encapsulates randomness and demonstrates clean class design:
 

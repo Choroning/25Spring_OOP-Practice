@@ -78,7 +78,7 @@ if (score >= 90) {
 
 ### 2.2 Nested if-else
 
-Multiple conditions can be chained with `else if`. However, deeply nested structures reduce readability -- consider using `switch` or polymorphism instead.
+Multiple conditions can be chained with `else if`. However, deeply nested structures reduce readability — consider using `switch` or polymorphism instead.
 
 ### 2.3 switch Statement
 
@@ -220,7 +220,7 @@ JOptionPane.showMessageDialog(null, "Hello, World!");
 int choice = JOptionPane.showConfirmDialog(null, "Continue?");
 ```
 
-> **Key Point:** `JOptionPane.showInputDialog()` returns `null` when the user clicks Cancel -- always check for `null` before processing.
+> **Key Point:** `JOptionPane.showInputDialog()` returns `null` when the user clicks Cancel — always check for `null` before processing.
 
 ---
 
