@@ -24,9 +24,10 @@ This repository organizes and stores sample Java code written for university lec
 
 This repository contains code examples developed for a university-level Object-Oriented Programming course in Java, including:
 
-- Lecture demonstration codes
-- Assignment solutions
-- Additional practice exercises
+- **Concepts.md** files for each chapter with comprehensive explanations of key topics
+- Improved Java code files with **Doxygen-style headers** documenting purpose, usage, and structure
+- Lecture demonstration codes and assignment solutions
+- A **term project** (Multiplayer Chat Application) designed with references to CS curricula at top universities
 
 <br><a name="course-information"></a>
 ## 📚 Course Information
