@@ -70,10 +70,11 @@
 ├── Chapter01_Introduction-to-OOP
 │   └── Concepts.md
 ├── Chapter02_Objects-and-Classes
+│   ├── Assignment
+│   │   ├── Assignment1_NameGreeter.java
+│   │   └── Assignment1_SentenceReverser.java
 │   ├── Concepts.md
 │   ├── DisplayWindow.java
-│   ├── Assignment 1_NameGreeter.java
-│   ├── Assignment 1_SentenceReverser.java
 │   └── MonogramDateDisplay.java
 ├── Chapter03_Java-Basic-Grammar
 │   ├── CircleCalculator.java
@@ -81,22 +82,24 @@
 │   ├── OperatorDemo.java
 │   └── TimeUnitConverter.java
 ├── Chapter04_Control-Structures
+│   ├── Assignment
+│   │   ├── Assignment1_CurrencyConverter.java
+│   │   ├── Assignment1_RealTimeAgeCalculator.java
+│   │   └── Assignment1_ScheduleReminder.java
 │   ├── Concepts.md
 │   ├── ConditionalOperatorDemo.java
 │   ├── ExecutionTimeMeasurement.java
-│   ├── Assignment 1_CurrencyConverter.java
-│   ├── Assignment 1_RealTimeAgeCalculator.java
-│   ├── Assignment 1_ScheduleReminder.java
 │   ├── SwitchGradingSystem.java
 │   └── WhileLoopValidation.java
 ├── Chapter05_Arrays
+│   ├── Assignment
+│   │   ├── Assignment1_MatrixSumCalculator.java
+│   │   ├── Assignment1_NumberExtractorSum.java
+│   │   ├── Assignment1_OptimalBillCounter.java
+│   │   └── Assignment1_SeasonIdentifier.java
 │   ├── ArrayMaxFinder.java
 │   ├── ArrayStatistics.java
-│   ├── Concepts.md
-│   ├── Assignment 1_MatrixSumCalculator.java
-│   ├── Assignment 1_NumberExtractorSum.java
-│   ├── Assignment 1_OptimalBillCounter.java
-│   └── Assignment 1_SeasonIdentifier.java
+│   └── Concepts.md
 ├── Chapter06_2D-Arrays-Functions-and-Exception-Handling
 │   ├── AverageGradeCalculator.java
 │   ├── Concepts.md
@@ -111,13 +114,15 @@
 │   ├── Concepts.md
 │   └── Dice.java
 ├── Chapter09_Assertions-Generics-and-Collections
+│   ├── Assignment
+│   │   ├── Assignment2_GreetingDialog.java
+│   │   └── Assignment2_SortingComparison.java
 │   ├── AssertionDemo.java
-│   ├── Concepts.md
-│   ├── Assignment 2_GreetingDialog.java
-│   └── Assignment 2_SortingComparison.java
+│   └── Concepts.md
 ├── Chapter10_File-IO
-│   ├── Concepts.md
-│   └── Assignment 2_BinaryFileDecryptor.java
+│   ├── Assignment
+│   │   └── Assignment2_BinaryFileDecryptor.java
+│   └── Concepts.md
 ├── Chapter11_Inheritance-and-Polymorphism
 │   ├── Concepts.md
 │   ├── InheritanceDemo.java
@@ -127,15 +132,17 @@
 │   ├── Concepts.md
 │   └── FlowLayoutDemo.java
 ├── Chapter13_Threading
+│   ├── Assignment
+│   │   └── Assignment3_DnaFiveMerCounter.java
 │   ├── Concepts.md
-│   ├── Assignment 3_DnaFiveMerCounter.java
 │   ├── MultiThreadedSum.java
 │   ├── TimerRunnableDemo.java
 │   └── TimerThreadDemo.java
 ├── Chapter14_Network-Programming
+│   ├── Assignment
+│   │   ├── Assignment3_CalculatorClient.java
+│   │   └── Assignment3_CalculatorServer.java
 │   ├── Concepts.md
-│   ├── Assignment 3_CalculatorClient.java
-│   ├── Assignment 3_CalculatorServer.java
 │   ├── SimpleChatClient.java
 │   └── SimpleChatServer.java
 ├── Chapter15_Advanced-Threading
@@ -156,7 +163,7 @@
 ├── README.ko.md
 └── README.md
 
-17개의 디렉토리, 63개의 파일
+25개의 디렉토리, 72개의 파일
 ```
 
 <br><a name="license"></a>
