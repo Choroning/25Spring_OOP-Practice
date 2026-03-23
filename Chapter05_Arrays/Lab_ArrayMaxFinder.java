@@ -3,7 +3,7 @@
  * @brief Reads five integers from the user and finds the maximum value
  *        using an array and a linear scan.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-27
  */
 
 import java.util.Scanner;

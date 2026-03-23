@@ -3,7 +3,7 @@
  * @brief Assignment 3, Q3 Client: Connects to the real-time calculator server,
  *        sends arithmetic commands, and displays results.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-05
  */
 
 import java.io.*;

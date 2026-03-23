@@ -3,7 +3,7 @@
  * @brief Computes maximum, minimum, count, and mean of user-supplied integers.
  *        Demonstrates extracting array operations into reusable static methods.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-27
  */
 
 import java.util.Scanner;

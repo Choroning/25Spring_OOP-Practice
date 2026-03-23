@@ -3,7 +3,7 @@
  * @brief Manages connected users in the chat system.
  *        Provides thread-safe user registration, removal, and lookup.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-11
  */
 
 import java.io.PrintWriter;

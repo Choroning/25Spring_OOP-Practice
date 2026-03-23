@@ -3,7 +3,7 @@
  * @brief Draws a grid of lines using a 2D array of Point objects,
  *        demonstrating 2D array usage in graphical applications.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-02
  */
 
 import javax.swing.*;

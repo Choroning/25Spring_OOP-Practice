@@ -3,7 +3,7 @@
  * @brief A simple TCP chat client that connects to SimpleChatServer
  *        and exchanges messages in alternating fashion.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-28
  */
 
 import java.io.*;

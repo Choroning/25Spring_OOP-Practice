@@ -3,7 +3,7 @@
  * @brief Assignment 3, Q1: Counts all 5-mer frequencies in a DNA sequence file
  *        using a rolling-hash approach. Skips windows containing 'N'.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-04
  */
 
 import java.io.*;

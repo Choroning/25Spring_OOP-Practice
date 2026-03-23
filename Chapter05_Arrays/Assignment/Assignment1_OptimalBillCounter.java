@@ -3,7 +3,7 @@
  * @brief Assignment 1, Q7: Determines the optimal combination of Korean
  *        banknotes and coins for a given amount using a greedy algorithm.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-29
  */
 
 import java.util.InputMismatchException;

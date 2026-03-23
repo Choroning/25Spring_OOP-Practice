@@ -3,7 +3,7 @@
  * @brief Demonstrates the switch statement by converting a numeric score
  *        (0--100) into a letter grade (A--F).
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-12
  */
 
 import java.util.Scanner;

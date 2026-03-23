@@ -3,7 +3,7 @@
  * @brief Assignment 1, Q5: Converts Korean Won (KRW) to US Dollar (USD)
  *        using a fixed exchange rate with GUI input/output.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-29
  */
 
 import javax.swing.*;

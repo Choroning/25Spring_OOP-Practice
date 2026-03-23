@@ -3,7 +3,7 @@
  * @brief Multi-threaded TCP chat server that manages rooms and routes messages.
  *        Each client connection is handled by a dedicated thread.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-11
  */
 
 import java.io.*;

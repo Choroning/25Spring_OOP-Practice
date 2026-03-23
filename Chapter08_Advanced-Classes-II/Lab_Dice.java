@@ -3,7 +3,7 @@
  * @brief A configurable dice class that encapsulates random number generation.
  *        Supports any number of faces (default 6).
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-14
  */
 
 import java.util.Random;
