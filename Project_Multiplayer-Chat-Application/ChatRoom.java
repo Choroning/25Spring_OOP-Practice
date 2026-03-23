@@ -3,7 +3,7 @@
  * @brief Represents a single chat room that manages its member list
  *        and handles message broadcasting within the room.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-11
  */
 
 import java.io.PrintWriter;

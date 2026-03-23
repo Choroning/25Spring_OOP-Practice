@@ -3,7 +3,7 @@
  * @brief A simple Bicycle class demonstrating encapsulation, constructors,
  *        and getter/setter methods.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-07
  */
 public class Bicycle {
 

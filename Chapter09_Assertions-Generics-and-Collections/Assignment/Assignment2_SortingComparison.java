@@ -3,7 +3,7 @@
  * @brief Assignment 2, Q7: Compares the performance of Bubble Sort and
  *        Quick Sort on a randomly generated integer array.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-12
  */
 
 import java.util.Arrays;

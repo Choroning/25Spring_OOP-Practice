@@ -3,7 +3,7 @@
  * @brief Prints information about the currently running main thread,
  *        including ID, name, priority, and state.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-28
  */
 public class MainThreadInfoDemo {
 

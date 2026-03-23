@@ -3,7 +3,7 @@
  * @brief Creates a 300x300 Swing frame with a blue background,
  *        demonstrating JFrame subclassing, content pane, and layout.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-14
  */
 
 import javax.swing.*;

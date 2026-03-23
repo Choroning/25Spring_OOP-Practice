@@ -3,7 +3,7 @@
  * @brief Assignment 1, Q3: Schedule reminder program that calculates
  *        the number of days between today and a user-specified date.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-31
  */
 
 import javax.swing.JOptionPane;

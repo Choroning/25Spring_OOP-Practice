@@ -3,7 +3,7 @@
  * @brief Assignment 2, Q4: Greeting dialog program that validates
  *        the user's first name (letters only) and prints a farewell message.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-11
  */
 
 import javax.swing.JOptionPane;

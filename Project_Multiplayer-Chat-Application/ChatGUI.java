@@ -3,7 +3,7 @@
  * @brief Swing-based graphical client for the multiplayer chat system.
  *        Provides a text area for messages, input field, and room controls.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-11
  */
 
 import javax.swing.*;

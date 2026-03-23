@@ -3,7 +3,7 @@
  * @brief Measures the execution time of nested loops using System.nanoTime().
  *        Demonstrates performance benchmarking techniques in Java.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-12
  */
 public class ExecutionTimeMeasurement {
 

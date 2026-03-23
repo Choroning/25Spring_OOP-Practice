@@ -3,7 +3,7 @@
  * @brief TCP chat client that connects to the ChatServer and allows
  *        the user to send/receive messages via the console.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-11
  */
 
 import java.io.*;

@@ -3,7 +3,7 @@
  * @brief Demonstrates creating a thread by extending Thread.
  *        Displays a timer that increments every second using a Swing JLabel.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-21
  */
 
 import java.awt.*;

@@ -3,7 +3,7 @@
  * @brief Demonstrates a while loop for input validation using JOptionPane.
  *        Repeatedly prompts the user until a valid age (0--130) is entered.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-12
  */
 
 import javax.swing.JOptionPane;

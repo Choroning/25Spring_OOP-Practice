@@ -3,7 +3,7 @@
  * @brief Demonstrates the difference between unsynchronized and synchronized
  *        shared counter access by two threads.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-28
  */
 public class SynchronizationDemo {
 

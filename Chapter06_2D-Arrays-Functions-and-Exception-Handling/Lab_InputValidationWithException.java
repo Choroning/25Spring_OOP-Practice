@@ -3,7 +3,7 @@
  * @brief Demonstrates exception-based input validation with a Scanner.
  *        Retries on invalid input using InputMismatchException handling.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-02
  */
 
 import java.util.Scanner;

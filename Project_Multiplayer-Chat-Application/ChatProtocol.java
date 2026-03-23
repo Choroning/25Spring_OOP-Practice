@@ -3,7 +3,7 @@
  * @brief Defines the message protocol for the multiplayer chat system.
  *        All messages between client and server follow these command formats.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-06-11
  */
 public final class ChatProtocol {
 

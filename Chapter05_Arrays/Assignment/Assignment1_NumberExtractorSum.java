@@ -3,7 +3,7 @@
  * @brief Assignment 1, Q8: Extracts all real numbers from a mixed-content
  *        string using regex and computes their sum.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-29
  */
 
 import javax.swing.*;

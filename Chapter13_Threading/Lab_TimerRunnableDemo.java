@@ -3,7 +3,7 @@
  * @brief Demonstrates creating a thread by implementing the Runnable interface.
  *        Functionally equivalent to TimerThreadDemo but uses Runnable instead.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-21
  */
 
 import java.awt.*;

@@ -3,7 +3,7 @@
  * @brief Compares single-threaded vs. multi-threaded summation of 2 billion
  *        integers, demonstrating the performance benefit of parallelism.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-05-21
  */
 public class MultiThreadedSum {
 

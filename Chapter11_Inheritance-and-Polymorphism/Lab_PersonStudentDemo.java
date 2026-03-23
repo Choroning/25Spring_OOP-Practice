@@ -4,7 +4,7 @@
  *        showing how subclasses access protected and public members
  *        while private members require accessor methods.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-04-30
  */
 public class PersonStudentDemo {
 

@@ -3,7 +3,7 @@
  * @brief Demonstrates usage of the ternary (conditional) operator
  *        to compute the absolute difference between two integers.
  * @author Cheolwon Park
- * @date 2026-03-21
+ * @date 2025-03-12
  */
 public class ConditionalOperatorDemo {
 
