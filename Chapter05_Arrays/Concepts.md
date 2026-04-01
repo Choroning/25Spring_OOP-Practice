@@ -1,6 +1,13 @@
 # Chapter 05 — Arrays
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java control structures (Ch 1-4).
+>
+> **Learning Objectives**:
+> 1. Declare and manipulate one-dimensional arrays
+> 2. Apply array algorithms (search, sort, copy)
+> 3. Use the Arrays utility class and enhanced for loop
 
 ---
 

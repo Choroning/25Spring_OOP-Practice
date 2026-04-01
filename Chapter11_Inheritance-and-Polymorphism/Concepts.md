@@ -1,6 +1,13 @@
 # Chapter 11 — Inheritance and Polymorphism
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-10). [Object-Oriented Programming] Interfaces and abstract classes (Ch 8).
+>
+> **Learning Objectives**:
+> 1. Implement class hierarchies using inheritance
+> 2. Apply method overriding and dynamic dispatch
+> 3. Use polymorphism for flexible and extensible design
 
 ---
 

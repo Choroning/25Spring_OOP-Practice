@@ -1,6 +1,13 @@
 # Chapter 10 — File I/O
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-9). [Operating Systems] File system basics.
+>
+> **Learning Objectives**:
+> 1. Read and write files using FileReader/FileWriter and BufferedReader
+> 2. Apply try-with-resources for automatic resource management
+> 3. Parse structured data from text files
 
 ---
 

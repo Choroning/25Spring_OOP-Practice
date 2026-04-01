@@ -1,6 +1,13 @@
 # Chapter 09 — Assertions, Generics, and Collections
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-8). [Data Structures] Basic data structure concepts.
+>
+> **Learning Objectives**:
+> 1. Use assertions for debugging and design-by-contract
+> 2. Apply generic types and bounded type parameters
+> 3. Utilize Java Collections Framework (List, Set, Map)
 
 ---
 

@@ -1,6 +1,13 @@
 # Chapter 15 — Advanced Threading
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-14). [Operating Systems] Thread synchronization (Ch 13).
+>
+> **Learning Objectives**:
+> 1. Apply java.util.concurrent utilities (ExecutorService, Future)
+> 2. Use concurrent collections for thread-safe data structures
+> 3. Implement producer-consumer pattern with BlockingQueue
 
 ---
 
