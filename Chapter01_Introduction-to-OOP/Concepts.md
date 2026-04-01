@@ -1,6 +1,13 @@
 # Chapter 01 — Introduction to OOP
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Basic programming concepts.
+>
+> **Learning Objectives**:
+> 1. Define object-oriented programming concepts (class, object, encapsulation)
+> 2. Set up a Java development environment
+> 3. Write and compile basic Java programs
 
 ---
 

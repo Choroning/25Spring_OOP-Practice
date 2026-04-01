@@ -1,6 +1,13 @@
 # Chapter 02 — Objects and Classes
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java basics (Ch 1). [Object-Oriented Programming] OOP concepts.
+>
+> **Learning Objectives**:
+> 1. Design classes with fields, methods, and constructors
+> 2. Instantiate objects and invoke methods
+> 3. Apply access modifiers for encapsulation
 
 ---
 

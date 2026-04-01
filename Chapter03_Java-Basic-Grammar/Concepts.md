@@ -1,6 +1,13 @@
 # Chapter 03 — Java Basic Grammar
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java classes and objects (Ch 1-2).
+>
+> **Learning Objectives**:
+> 1. Use Java data types, operators, and type casting
+> 2. Apply String methods and formatting
+> 3. Handle console input with Scanner class
 
 ---
 

@@ -1,6 +1,13 @@
 # Chapter 14 — Network Programming
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-13). [Computer Networks] TCP/IP basics.
+>
+> **Learning Objectives**:
+> 1. Implement client-server communication using sockets
+> 2. Build multi-threaded network servers
+> 3. Apply HTTP-based communication with URLConnection
 
 ---
 

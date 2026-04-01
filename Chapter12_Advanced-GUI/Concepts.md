@@ -1,6 +1,13 @@
 # Chapter 12 — Advanced GUI
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-11). [Object-Oriented Programming] Event-driven programming.
+>
+> **Learning Objectives**:
+> 1. Build GUI applications using Swing components
+> 2. Handle events with listeners and inner classes
+> 3. Apply layout managers for responsive UI design
 
 ---
 

@@ -1,6 +1,13 @@
 # Chapter 04 — Control Structures
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java grammar basics (Ch 1-3).
+>
+> **Learning Objectives**:
+> 1. Apply conditional statements (if/else, switch)
+> 2. Use loops (for, while, do-while) effectively
+> 3. Implement nested control structures and break/continue
 
 ---
 

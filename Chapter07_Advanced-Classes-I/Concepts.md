@@ -1,6 +1,13 @@
 # Chapter 07 — Advanced Classes I
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java methods and arrays (Ch 1-6). [Object-Oriented Programming] Basic OOP (Ch 2).
+>
+> **Learning Objectives**:
+> 1. Implement static fields/methods and class-level behavior
+> 2. Apply the this keyword and constructor chaining
+> 3. Design immutable classes and use final keyword
 
 ---
 

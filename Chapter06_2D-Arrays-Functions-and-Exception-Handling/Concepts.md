@@ -1,6 +1,13 @@
 # Chapter 06 — 2D Arrays, Functions, and Exception Handling
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java arrays (Ch 1-5).
+>
+> **Learning Objectives**:
+> 1. Create and process two-dimensional arrays
+> 2. Define methods with parameters and return values
+> 3. Apply try-catch for exception handling
 
 ---
 

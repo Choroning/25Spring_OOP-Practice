@@ -1,6 +1,13 @@
 # Chapter 08 — Advanced Classes II
 
-> **Last Updated:** 2026-03-21
+> **Last Updated:** 2026-04-01
+
+> **Prerequisites**: [Programming Language] Java (Ch 1-7). [Object-Oriented Programming] Advanced class design.
+>
+> **Learning Objectives**:
+> 1. Implement abstract classes and interfaces
+> 2. Apply the Comparable and Cloneable interfaces
+> 3. Design classes using composition and aggregation
 
 ---
 
