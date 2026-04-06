@@ -8,10 +8,10 @@ A multi-threaded TCP-based chat system implemented in Java, featuring room manag
 
 ```
 ChatServer (main server loop)
-  |-- UserManager (tracks connected users)
-  |-- MessageHandler (routes protocol messages)
-  |     |-- ChatRoom (manages room membership and broadcasting)
-  |-- ClientSession (per-client thread)
+  ├── UserManager (tracks connected users)
+  ├── MessageHandler (routes protocol messages)
+  │     └── ChatRoom (manages room membership and broadcasting)
+  └── ClientSession (per-client thread)
 
 ChatProtocol (shared message format)
 
