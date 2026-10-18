@@ -3,9 +3,9 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Choroning/25Spring_OOP-Practice)
 ![Languages](https://img.shields.io/github/languages/top/Choroning/25Spring_OOP-Practice)
 
-This repository organizes and stores sample Java code written for university lectures and assignments.
+This repository archives bilingual lecture notes and coursework for the Object-Oriented Programming and Practice course.
 
-*Author: Cheolwon Park (Korea University Sejong, CSE) – Year 2 (Sophomore) as of 2025*
+*Author: Cheolwon Park (Korea University Sejong, CSE) - Year 2 (Sophomore) as of 2025*
 <br><br>
 
 ## 📑 Table of Contents
@@ -22,12 +22,17 @@ This repository organizes and stores sample Java code written for university lec
 <br><a name="about-this-repository"></a>
 ## 📝 About This Repository
 
-This repository contains code examples developed for a university-level Object-Oriented Programming course in Java, including:
+This repository contains the lecture notes and Java code written for a university-level Object-Oriented Programming course in Java.
 
-- **Concepts.md** files for each chapter with comprehensive explanations of key topics
-- Improved Java code files with **Doxygen-style headers** documenting purpose, usage, and structure
-- Lecture demonstration codes and assignment solutions
-- A **term project** (Multiplayer Chat Application) designed with references to CS curricula at top universities
+- `Lecture-Notes/` holds, for each unit, lecture notes with comprehensive explanations of the key concepts (`Concepts_Lecture`). The units follow the numbers of the instructor's slides (Chap1-Chap15) and are numbered `Lec01`-`Lec15`.
+- Every lecture note comes as an English file (`.md`) and a Korean file (`.ko.md`) with the same structure.
+- `Coursework/` holds Java lab code that organizes the lecture demonstration code by unit for every lecture except Lectures 1 and 10 (`Lab02`-`Lab15`), solutions to some problems of the three homework assignments (`HW01`-`HW03`), and the term project.
+- The improved Java code files carry **Doxygen-style headers** that document their purpose, usage, and structure.
+- The **term project** (Multiplayer Chat Application) was designed with reference to the curricula of leading overseas CS universities. Its architecture, protocol, and instructions for running it are described in the `README.md` of the project folder.
+- All lab code, homework solutions, and project code were compiled with the JDK.
+
+> **🤖 AI Agent Usage**
+> The homework instructions of this course allow the use of ChatGPT (Homework 1 encourages its active use) and leave the pattern recognition for the issues to the developer in most problems to prevent its abuse. [Claude Code](https://claude.ai/download) was used to organize and translate the lecture notes and to restructure the repository.
 
 <br><a name="course-information"></a>
 ## 📚 Course Information
@@ -37,29 +42,24 @@ This repository contains code examples developed for a university-level Object-O
 
 | Course&nbsp;Code| Course            | Type          | Instructor      | Department                              |
 |:----------:|:------------------|:-------------:|:---------------:|:----------------------------------------|
-|`DCCS213-01`|OBJECT-ORIENTED PROGRAMMING AND PRACTICE|Major Elective|Prof. Minseok&nbsp;Seo|Department of Computer Convergence Software|
+|`DCCS213-01`|OBJECT-ORIENTED PROGRAMMING AND PRACTICE|Major Elective|Prof. Minseok&nbsp;Seo|Department of Computer Science and Software Engineering|
 
-- **📖 References**
+### Course Overview
 
-| Type | Contents |
-|:----:|:---------|
-|Lecture Slides|Slides provided by instructor|
-|Online|[MIT OCW – Introduction to Programming in Java](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-092-introduction-to-programming-in-java-january-iap-2010/lecture-notes/)|
-|Online|[MOOC.fi – Programming Part 1](https://moocfi.github.io/courses/2013/programming-part-1/)|
-|Online|[Chortle – Introduction to Computer Science using Java](https://chortle.ccsu.edu/CS151/cs151java.html)|
+A major elective course, taught in English, on the core concepts of object-oriented programming and the fundamentals of Java programming in the Java language. It focuses on developing high-quality, working software that solves real problems, and alongside the lectures, students practice programming themselves through quizzes and homework. Following the instructor's slides (Chap1-Chap15), it covers the Java development environment, the concepts of objects and classes, basic grammar and control structures, arrays and two-dimensional arrays, methods and exception handling, advanced class design, assertions, generics, collections, file I/O, inheritance and polymorphism, Swing GUI, threads and synchronization, and socket network programming. The instructor and teaching assistant, schedule and class format, assessment, course policies, weekly plan and progress, and references are in the [course information document](Course-Information.md).
 
 <br><a name="prerequisites"></a>
 ## ✅ Prerequisites
 
-- Basic understanding of programming concepts
-- Java Development Kit (JDK) installed
-- Familiarity with command-line tools or an IDE
+- A basic understanding of programming concepts is required, along with the ability to use a programming language such as C, C++, Java, or Python.
+- The Java Development Kit (JDK) must be installed. Compiling the code in this repository requires JDK 19 or later.
+- Familiarity with command-line tools or an IDE is required.
 
 - **💻 Development Environment**
 
 | Tool | Company |  OS  | Notes |
 |:-----|:-------:|:----:|:------|
-|IntelliJ IDEA|JetBrains s.r.o.|macOS|most used IDE|
+|IntelliJ IDEA|JetBrains s.r.o.|macOS|Most used IDE|
 |Eclipse|Eclipse Foundation|macOS|    |
 
 <br><a name="repository-structure"></a>
@@ -67,108 +67,21 @@ This repository contains code examples developed for a university-level Object-O
 
 ```plaintext
 25Spring_OOP-Practice
-├── Chapter01_Introduction-to-OOP
-│   └── Concepts.md
-├── Chapter02_Objects-and-Classes
-│   ├── Assignment
-│   │   ├── Assignment1_NameGreeter.java
-│   │   └── Assignment1_SentenceReverser.java
-│   ├── Concepts.md
-│   ├── Lab_DisplayWindow.java
-│   └── Lab_MonogramDateDisplay.java
-├── Chapter03_Java-Basic-Grammar
-│   ├── Concepts.md
-│   ├── Lab_CircleCalculator.java
-│   ├── Lab_OperatorDemo.java
-│   └── Lab_TimeUnitConverter.java
-├── Chapter04_Control-Structures
-│   ├── Assignment
-│   │   ├── Assignment1_CurrencyConverter.java
-│   │   ├── Assignment1_RealTimeAgeCalculator.java
-│   │   └── Assignment1_ScheduleReminder.java
-│   ├── Concepts.md
-│   ├── Lab_ConditionalOperatorDemo.java
-│   ├── Lab_ExecutionTimeMeasurement.java
-│   ├── Lab_SwitchGradingSystem.java
-│   └── Lab_WhileLoopValidation.java
-├── Chapter05_Arrays
-│   ├── Assignment
-│   │   ├── Assignment1_MatrixSumCalculator.java
-│   │   ├── Assignment1_NumberExtractorSum.java
-│   │   ├── Assignment1_OptimalBillCounter.java
-│   │   └── Assignment1_SeasonIdentifier.java
-│   ├── Concepts.md
-│   ├── Lab_ArrayMaxFinder.java
-│   └── Lab_ArrayStatistics.java
-├── Chapter06_2D-Arrays-Functions-and-Exception-Handling
-│   ├── Concepts.md
-│   ├── Lab_AverageGradeCalculator.java
-│   ├── Lab_GridDrawer.java
-│   └── Lab_InputValidationWithException.java
-├── Chapter07_Advanced-Classes-I
-│   ├── Concepts.md
-│   ├── Lab_Account.java
-│   ├── Lab_Bicycle.java
-│   └── Lab_MultipleClassesDemo.java
-├── Chapter08_Advanced-Classes-II
-│   ├── Concepts.md
-│   └── Lab_Dice.java
-├── Chapter09_Assertions-Generics-and-Collections
-│   ├── Assignment
-│   │   ├── Assignment2_GreetingDialog.java
-│   │   └── Assignment2_SortingComparison.java
-│   ├── Concepts.md
-│   └── Lab_AssertionDemo.java
-├── Chapter10_File-IO
-│   ├── Assignment
-│   │   └── Assignment2_BinaryFileDecryptor.java
-│   └── Concepts.md
-├── Chapter11_Inheritance-and-Polymorphism
-│   ├── Concepts.md
-│   ├── Lab_InheritanceDemo.java
-│   └── Lab_PersonStudentDemo.java
-├── Chapter12_Advanced-GUI
-│   ├── Concepts.md
-│   ├── Lab_BasicSwingFrame.java
-│   └── Lab_FlowLayoutDemo.java
-├── Chapter13_Threading
-│   ├── Assignment
-│   │   └── Assignment3_DnaFiveMerCounter.java
-│   ├── Concepts.md
-│   ├── Lab_MultiThreadedSum.java
-│   ├── Lab_TimerRunnableDemo.java
-│   └── Lab_TimerThreadDemo.java
-├── Chapter14_Network-Programming
-│   ├── Assignment
-│   │   ├── Assignment3_CalculatorClient.java
-│   │   └── Assignment3_CalculatorServer.java
-│   ├── Concepts.md
-│   ├── Lab_SimpleChatClient.java
-│   └── Lab_SimpleChatServer.java
-├── Chapter15_Advanced-Threading
-│   ├── Concepts.md
-│   ├── Lab_MainThreadInfoDemo.java
-│   └── Lab_SynchronizationDemo.java
-├── Project_Multiplayer-Chat-Application
-│   ├── ChatClient.java
-│   ├── ChatGUI.java
-│   ├── ChatProtocol.java
-│   ├── ChatRoom.java
-│   ├── ChatServer.java
-│   ├── MessageHandler.java
-│   ├── README.md
-│   └── UserManager.java
-├── images
-├── LICENSE
+├── Lecture-Notes               Lecture notes by lecture
+├── Coursework                  Java lab code by lecture, homework solutions, and term project
+├── Course-Information.ko.md    Course operations
+├── Course-Information.md
+├── LICENSE                     Documentation license (CC BY-NC-SA 4.0)
+├── LICENSE-CODE                Code license (PolyForm Noncommercial 1.0.0)
 ├── README.ko.md
 └── README.md
-
-25 directories, 72 files
 ```
+
+The units are listed in the [`Lecture-Notes` index](Lecture-Notes/README.md), and the lab code, homework solutions, and term project in the [`Coursework` index](Coursework/README.md).
 
 <br><a name="license"></a>
 ## 🤝 License
 
-This repository is released under the [MIT License](LICENSE).
+The documents in this repository (lecture notes, explanations, and summary sheets) are licensed under [CC BY-NC-SA 4.0](LICENSE), and the code under [PolyForm Noncommercial 1.0.0](LICENSE-CODE). Figures and example code taken from lecture slides and textbooks, as well as assignment handouts and template code distributed by the course, belong to their original authors and are not covered by these licenses.
 
 ---
