@@ -22,17 +22,14 @@ This repository archives bilingual lecture notes and coursework for the Object-O
 <br><a name="about-this-repository"></a>
 ## 📝 About This Repository
 
-This repository contains the lecture notes and Java code written for a university-level Object-Oriented Programming course in Java.
-
-- `Lecture-Notes/` holds, for each unit, lecture notes with comprehensive explanations of the key concepts (`Concepts_Lecture`). The units follow the numbers of the instructor's slides (Chap1-Chap15) and are numbered `Lec01`-`Lec15`.
-- Every lecture note comes as an English file (`.md`) and a Korean file (`.ko.md`) with the same structure.
-- `Coursework/` holds Java lab code that organizes the lecture demonstration code by unit for every lecture except Lectures 1 and 10 (`Lab02`-`Lab15`), solutions to some problems of the three homework assignments (`HW01`-`HW03`), and the term project.
-- The improved Java code files carry **Doxygen-style headers** that document their purpose, usage, and structure.
-- The **term project** (Multiplayer Chat Application) was designed with reference to the curricula of leading overseas CS universities. Its architecture, protocol, and instructions for running it are described in the `README.md` of the project folder.
-- All lab code, homework solutions, and project code were compiled with the JDK.
+- `Lecture-Notes/` holds lecture notes that follow the slide numbers (`Lec01`-`Lec15`).
+- `Coursework/` holds the Java lab code for each unit (`Lab##`), the assignment solutions (`HW01`-`HW03`), and the term project.
+- Every lecture note comes as an English (`.md`) and Korean (`.ko.md`) pair.
+- All code was compiled and checked with the JDK.
 
 > **🤖 AI Agent Usage**
-> The homework instructions of this course allow the use of ChatGPT (Homework 1 encourages its active use) and leave the pattern recognition for the issues to the developer in most problems to prevent its abuse. [Claude Code](https://claude.ai/download) was used to organize and translate the lecture notes and to restructure the repository.
+> This course allowed the use of ChatGPT for assignments.
+> [Claude Code](https://claude.ai/download) was used to organize and translate the notes and to restructure the repository.
 
 <br><a name="course-information"></a>
 ## 📚 Course Information
@@ -46,14 +43,14 @@ This repository contains the lecture notes and Java code written for a universit
 
 ### Course Overview
 
-A major elective course, taught in English, on the core concepts of object-oriented programming and the fundamentals of Java programming in the Java language. It focuses on developing high-quality, working software that solves real problems, and alongside the lectures, students practice programming themselves through quizzes and homework. Following the instructor's slides (Chap1-Chap15), it covers the Java development environment, the concepts of objects and classes, basic grammar and control structures, arrays and two-dimensional arrays, methods and exception handling, advanced class design, assertions, generics, collections, file I/O, inheritance and polymorphism, Swing GUI, threads and synchronization, and socket network programming. The instructor and teaching assistant, schedule and class format, assessment, course policies, weekly plan and progress, and references are in the [course information document](Course-Information.md).
+A major elective course on the core concepts of object-oriented programming and the fundamentals of Java, taught in English. The instructor and TA, schedule, assessment, course policies, and progress are in the [course information document](Course-Information.md).
 
 <br><a name="prerequisites"></a>
 ## ✅ Prerequisites
 
-- A basic understanding of programming concepts is required, along with the ability to use a programming language such as C, C++, Java, or Python.
-- The Java Development Kit (JDK) must be installed. Compiling the code in this repository requires JDK 19 or later.
-- Familiarity with command-line tools or an IDE is required.
+- Basic understanding of programming concepts
+- Java Development Kit (JDK) installed
+- Familiarity with command-line tools or an IDE
 
 - **💻 Development Environment**
 
