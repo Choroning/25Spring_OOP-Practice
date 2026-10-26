@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Name variables, constants, and classes according to the identifier rules and naming conventions
@@ -131,6 +131,8 @@ Java has 8 primitive data types.
 A `boolean` carries one bit of information, but the memory it actually occupies is not fixed by the Java specification and depends on the JVM implementation. The six numerical data types (`byte`, `short`, `int`, `long`, `float`, `double`) differ in the range and precision of values they can store; the four integer types store integers, and `float` and `double` store real numbers.
 
 > **Key Point:** Except for `char` (a 16-bit unsigned Unicode code unit), all Java integer types are signed, and there is no separate unsigned integer type. Use `long` or `BigInteger` for values exceeding `int` range.
+
+> **[Digital Logic Design]** Java integer types represent negative numbers in **two's complement**. This signed binary representation, taught in digital logic design, covers $-2^{n-1}$ through $2^{n-1}-1$ with n bits, so the range of `byte` (8 bits) is -128 to 127, one wider on the negative side, and the overflow of Lecture 4, Section 3.2, in which adding 1 to the maximum wraps around to the minimum, also comes from this representation.
 
 ### 2.2 Primitive and Reference Types
 
@@ -276,7 +278,7 @@ c %= 2;   // c = c % 2
 
 Starting from `int a = 3, b = 3, c = 3;`, after the three statements above `a` is 6, `b` is 9, and `c` is 1.
 
-> **Note:** A compound assignment operator converts the result to the type of the left-hand variable automatically. Precisely, `a += 3` equals `a = (int) (a + 3)`, so `int a = 5; a += 2.7;` compiles and `a` becomes 7. In contrast, `a = a + 2.7;` assigns a `double` to an `int` and is a compile error (Section 5).
+> **Note:** A compound assignment operator converts the result to the type of the left-hand variable automatically. Precisely, for an `int` variable `a`, `a += x` equals `a = (int) (a + x)`, so `int a = 5; a += 2.7;` compiles and `a` becomes 7. In contrast, `a = a + 2.7;` assigns a `double` to an `int` and is a compile error (Section 5).
 
 ### 4.4 Increment and Decrement
 
@@ -311,7 +313,7 @@ String output1 = "test" + 1 + 2;   // "test12"
 String output2 = 1 + 2 + "test";   // "3test"
 ```
 
-For `output1`, `"test" + 1` first becomes "test1", and then 2 is concatenated. For `output2`, `1 + 2` is first added to 3, which is then concatenated with "test".
+For `output1`, `"test" + 1` first becomes `"test1"`, and then 2 is concatenated. For `output2`, `1 + 2` is first added to 3, which is then concatenated with `"test"`.
 
 ---
 
@@ -566,7 +568,7 @@ public class Chap3Program3 {
    <details>
    <summary>Answer</summary>
 
-   The first is "test12" and the second is "3test". `+` is evaluated from left to right. The first expression has a `String` from the start, so 1 and 2 are concatenated to the string in turn; in the second, `1 + 2` is first an integer addition giving 3, which is then concatenated with "test".
+   The first is `"test12"` and the second is `"3test"`. `+` is evaluated from left to right. The first expression has a `String` from the start, so 1 and 2 are concatenated to the string in turn; in the second, `1 + 2` is first an integer addition giving 3, which is then concatenated with `"test"`.
 
    </details>
 
@@ -593,6 +595,6 @@ public class Chap3Program3 {
    <details>
    <summary>Answer</summary>
 
-   `nextInt()` reads only 25 and leaves the newline, so `nextLine()` returns the rest of that line, the empty string "". To read the second line, call `nextLine()` once more to consume the remaining newline and then call `nextLine()` again.
+   `nextInt()` reads only 25 and leaves the newline, so `nextLine()` returns the rest of that line, the empty string `""`. To read the second line, call `nextLine()` once more to consume the remaining newline and then call `nextLine()` again.
 
    </details>

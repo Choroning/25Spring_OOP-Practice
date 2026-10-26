@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../README.ko.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 | 항목 | 내용 | 문서 |
 |:-----|:-----|:-----|
@@ -18,7 +18,7 @@
 | [Lab08_Advanced-Classes-II](Lab08_Advanced-Classes-II/) | 7강 시연 코드의 주사위 클래스를 면의 수(기본 6면)를 정할 수 있게 바꾸고, `this()`로 연결한 오버로딩 생성자와 Javadoc 주석을 갖춘 `Dice` 클래스로 정리한 실습 코드. 8강과 이어진다 | [Dice.java](Lab08_Advanced-Classes-II/Dice.java) |
 | [Lab09_Assertions-Generics-and-Collections](Lab09_Assertions-Generics-and-Collections/) | 입금과 출금 뒤 잔고의 증감을 `assert`로 확인하는 단언문 예제(`java -ea`로 실행). 9강과 이어진다 | [AssertionDemo.java](Lab09_Assertions-Generics-and-Collections/AssertionDemo.java) |
 | [Lab11_Inheritance-and-Polymorphism](Lab11_Inheritance-and-Polymorphism/) | 추상 클래스 `Shape`와 이를 상속해 `area()`를 재정의하는 `Circle`, `Rectangle`로 보는 상속, 다형성, 메서드 오버라이딩, `Person`과 `Student` 사이의 상속에서 public, protected, default, private 멤버의 접근 차이를 다루는 실습 코드. 11강과 이어진다 | [InheritanceDemo.java](Lab11_Inheritance-and-Polymorphism/InheritanceDemo.java), [PersonStudentDemo.java](Lab11_Inheritance-and-Polymorphism/PersonStudentDemo.java) |
-| [Lab12_Advanced-GUI](Lab12_Advanced-GUI/) | `JFrame`을 상속해 content pane의 배경색을 파랗게 바꾼 300x300 창, 계산기 연산 버튼 다섯 개를 왼쪽 정렬과 간격을 지정한 `FlowLayout`으로 배치하는 프로그램을 다루는 실습 코드. 12강과 이어진다 | [BasicSwingFrame.java](Lab12_Advanced-GUI/BasicSwingFrame.java), [FlowLayoutDemo.java](Lab12_Advanced-GUI/FlowLayoutDemo.java) |
+| [Lab12_Advanced-GUI](Lab12_Advanced-GUI/) | `JFrame`을 상속해 컨텐트팬의 배경색을 파랗게 바꾼 300x300 창, 계산기 연산 버튼 다섯 개를 왼쪽 정렬과 간격을 지정한 `FlowLayout`으로 배치하는 프로그램을 다루는 실습 코드. 12강과 이어진다 | [BasicSwingFrame.java](Lab12_Advanced-GUI/BasicSwingFrame.java), [FlowLayoutDemo.java](Lab12_Advanced-GUI/FlowLayoutDemo.java) |
 | [Lab13_Threading](Lab13_Threading/) | 20억 개 정수의 합을 단일 스레드와 8개 스레드로 계산해 실행 시간을 비교하는 프로그램, `Thread` 상속과 `Runnable` 구현으로 각각 만든, 1초마다 `JLabel`의 숫자를 늘리는 타이머를 다루는 실습 코드. 13강과 이어진다 | [MultiThreadedSum.java](Lab13_Threading/MultiThreadedSum.java), [TimerRunnableDemo.java](Lab13_Threading/TimerRunnableDemo.java), [TimerThreadDemo.java](Lab13_Threading/TimerThreadDemo.java) |
 | [Lab14_Network-Programming](Lab14_Network-Programming/) | 포트 9999에서 `ServerSocket`으로 클라이언트 하나를 받아 `BufferedReader`, `BufferedWriter`로 메시지를 번갈아 주고받는 TCP 채팅 서버와 클라이언트("bye"를 보내면 종료)를 다루는 실습 코드. 14강과 이어진다 | [SimpleChatClient.java](Lab14_Network-Programming/SimpleChatClient.java), [SimpleChatServer.java](Lab14_Network-Programming/SimpleChatServer.java) |
 | [Lab15_Advanced-Threading](Lab15_Advanced-Threading/) | 실행 중인 main 스레드의 이름, ID, 우선순위, 상태, 스레드 그룹 출력, 두 스레드가 공유 카운터를 동기화 없이 갱신할 때와 `synchronized` 블록으로 갱신할 때의 비교를 다루는 실습 코드. 15강과 이어진다 | [MainThreadInfoDemo.java](Lab15_Advanced-Threading/MainThreadInfoDemo.java), [SynchronizationDemo.java](Lab15_Advanced-Threading/SynchronizationDemo.java) |

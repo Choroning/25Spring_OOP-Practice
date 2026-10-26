@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. Swing 컴포넌트를 사용하여 GUI 애플리케이션을 구축할 수 있다
@@ -17,7 +17,7 @@
 - [1. Swing 개요](#1-swing-개요)
   - [1.1 AWT vs. Swing](#11-awt-vs-swing)
   - [1.2 GUI 클래스 계층 구조](#12-gui-클래스-계층-구조)
-- [2. JFrame과 Content Pane](#2-jframe과-content-pane)
+- [2. JFrame과 컨텐트팬](#2-jframe과-컨텐트팬)
   - [2.1 JFrame 생성](#21-jframe-생성)
   - [2.2 JFrame 상속](#22-jframe-상속)
 - [3. 배치 관리자](#3-배치-관리자)
@@ -73,7 +73,7 @@ Object -> Component -> Container -> Window -> Frame -> JFrame
 
 <br>
 
-## 2. JFrame과 Content Pane
+## 2. JFrame과 컨텐트팬
 
 ### 2.1 JFrame 생성
 
@@ -466,7 +466,7 @@ class MyKeyListener extends KeyAdapter {
 |:--------|:----------|
 | Swing | 전부 Java로 구현되어 운영체제와 관계없이 똑같이 동작하는 경량 GUI 툴킷이다. |
 | JFrame | 최상위 창이며, 맞춤형 프레임을 만들 때는 상속하여 생성자에서 설정한다. |
-| Content Pane | GUI 객체가 배치되는 프레임 안의 컨테이너이며 `getContentPane()`으로 얻는다. |
+| 컨텐트팬 | GUI 객체가 배치되는 프레임 안의 컨테이너이며 `getContentPane()`으로 얻는다. |
 | 배치 관리자 | FlowLayout(JPanel 기본), BorderLayout(JFrame 기본), GridLayout이 컴포넌트를 자동 배치하고, `null`이면 위치를 직접 정한다. |
 | 위임 기반 이벤트 모델 | 이벤트 소스에 등록된 이벤트 리스너가 이벤트 객체를 받아 이벤트를 처리한다. |
 | 이벤트 처리 | 리스너 인터페이스를 구현하며, 함수형 인터페이스는 람다로 간결하게 구현할 수 있다. |

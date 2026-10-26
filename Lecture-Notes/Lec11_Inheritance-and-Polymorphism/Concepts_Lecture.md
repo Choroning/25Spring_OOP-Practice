@@ -2,11 +2,11 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Implement class hierarchies using inheritance
-> 2. Apply method overriding and dynamic dispatch
+> 2. Apply method overriding and dynamic binding
 > 3. Use polymorphism for flexible and extensible design
 > 4. Explain the differences between abstract classes and interfaces and choose the right one for a situation
 
@@ -144,7 +144,7 @@ Java has four access modifiers, private, no modifier (default, package-private),
 
 ### 1.4 Constructor Chaining with super()
 
-Unlike the members of a superclass, **constructors are not inherited.** Each class either defines its own constructors or uses the default constructor that the compiler adds when no constructor is defined. Calling `super(...)` in a subclass constructor runs a constructor of the superclass.
+Unlike the members of a superclass, **constructors are not inherited.** Each class either defines its own constructors or uses the default constructor that the compiler adds when no constructor is defined. Calling `super(...)` in a subclass constructor runs a constructor of the superclass. This call is placed as the first statement of the constructor (for the relaxation from Java 25, see the note in Lecture 8, Section 2.2).
 
 ```java
 public class Point {
@@ -190,7 +190,7 @@ myPet = new Cat();
 
 ### 2.2 Dynamic Binding
 
-A superclass variable can reference subclass objects. The JVM determines which method to call at runtime:
+A superclass variable can refer to a subclass object, and when a method is called through that variable, the JVM chooses the method to call at runtime from the actual class of the object the variable refers to. This is called **dynamic binding**.
 
 ```java
 Student[] roster = new Student[40];
@@ -519,6 +519,8 @@ If every class that implements `Talkable` is a human, we can introduce an abstra
 <br>
 
 ## 5. Design Patterns Using Inheritance
+
+A **design pattern** is a proven solution to a recurring design problem, recorded under a name. Table 4 lists typical patterns that make use of inheritance and polymorphism.
 
 | Pattern | Description | Example |
 |:--------|:------------|:--------|

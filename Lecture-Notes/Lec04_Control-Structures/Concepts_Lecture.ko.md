@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. 조건문(if/else, switch)을 적용할 수 있다
@@ -223,7 +223,7 @@ switch (ranking) {
 }
 ```
 
-`ranking`이 8\~10이면 "Master", 6\~7이면 "Journeyman", 4\~5이면 "Apprentice"를 출력하고, 그 밖의 값이면 "Input error: Invalid Data"를 출력한다.
+`ranking`이 8\~10이면 `Master`, 6\~7이면 `Journeyman`, 4\~5이면 `Apprentice`를 출력하고, 그 밖의 값이면 `Input error: Invalid Data`를 출력한다.
 
 **case 레이블에 쓸 수 있는 것:** case 레이블은 컴파일할 때 값이 정해지는 상수 식이어야 한다. 정수 리터럴, 문자 리터럴, 문자열 리터럴(그리고 `final` 상수)은 쓸 수 있지만, 변수나 조건식은 쓸 수 없다.
 

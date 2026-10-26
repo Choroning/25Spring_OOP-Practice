@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Use assertions for debugging and design-by-contract
@@ -106,7 +106,7 @@ Assertions are disabled by default. Enable them with the `-ea` JVM flag:
 java -ea MyProgram
 ```
 
-Without the `-ea` (enable assertions) option, the program runs without checking assertions. In that case the expression of an `assert` statement is not even evaluated, so an assertion must not contain side effects that the program depends on (changing variables, calling methods).
+Without the `-ea` (enable assertions) option, the program runs without checking assertions. In that case the expression of an `assert` statement is not even evaluated, so an assertion must not contain side effects that the program depends on (changing variables, calling methods that change state).
 
 `assert` was introduced in JDK 1.4. Before that, `assert` was an ordinary identifier, so for compatibility JDK 1.4 treated `assert` as an identifier by default, and a program with assertions had to be compiled with `javac -source 1.4 <source file>`. From Java 5, `assert` is a reserved word, so the program is compiled with plain `javac` and only `-ea` is needed at run time.
 
@@ -318,9 +318,11 @@ names.remove(0);    // removes "Alice"
 
 When the internal array is full, a larger array is created and the elements are moved, so the size need not be fixed in advance. Accessing an element by index takes O(1) time. Inserting or removing an element in the middle requires shifting the following elements by one position, which takes O(n) time.
 
+> **[Data Structures]** `ArrayList` and the `Vector` of Section 3.4 are dynamic arrays, studied in data structures: each time the capacity runs out, they create an array larger by a constant factor and move the elements, so appending an element takes amortized O(1) time. The `LinkedList` of Section 3.2 is a doubly linked list: reaching the element at position i requires following the nodes one by one, so index access takes O(n) time, but insertion and deletion do not shift the following elements.
+
 ### 3.4 Vector
 
-`Vector<E>` is also a resizable array that implements `List<E>`. Its usage is almost the same as that of `ArrayList`, but its methods are synchronized, so it is safe when several threads use it together (Lecture 13). In exchange, it is slightly slower than `ArrayList` in a single thread.
+`Vector<E>` is also a resizable array that implements `List<E>`. Its usage is almost the same as that of `ArrayList`, but its methods are synchronized, so it is safe when several threads use it together (Lecture 15, Section 4). In exchange, it is slightly slower than `ArrayList` in a single thread.
 
 ```java
 Vector<Integer> v = new Vector<Integer>();
@@ -351,7 +353,7 @@ v ──▶ ┌─────┬─────┬─────┬───�
         [5]   [4]  [100]  [-1]
 ```
 
-*Figure 2. Internal array of a Vector<Integer> holding four elements*
+*Figure 2. Internal array of a `Vector<Integer>` holding four elements*
 
 Each slot stores a reference to an `Integer` object. The output is as follows.
 
@@ -441,7 +443,7 @@ while (it.hasNext()) {
 }
 ```
 
-The advantage of `Iterator` is that the same code traverses a `Set` or a linked list, which have no indices.
+The advantage of `Iterator` is that the same code visits the elements in turn both in a `Set`, which has no indices, and in a `LinkedList`, whose index access is slow.
 
 > **Caution:** Calling the collection's `remove` while traversing it with a for-each loop can throw `ConcurrentModificationException`. To remove elements during traversal, use the `Iterator`'s `remove()`.
 

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. File 클래스와 JFileChooser로 파일을 지정하고 정보를 얻을 수 있다
@@ -51,7 +51,7 @@
 
 ### 1.2 File 클래스
 
-`File` 클래스는 파일 또는 디렉터리 경로를 나타낸다 (실제로 파일을 열지는 않는다):
+`File` 클래스는 파일 또는 디렉터리의 경로를 나타내며, 실제로 파일을 열지는 않는다.
 
 ```java
 File file = new File("data.txt");

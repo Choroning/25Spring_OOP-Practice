@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Define object-oriented programming concepts (class, object, encapsulation)
@@ -150,9 +150,9 @@ graph TB
 
 | Component | Description |
 |:----------|:-----------|
-| **JDK** (Java Development Kit) | Full development environment: compiler, debugger, tools + JRE |
-| **JRE** (Java Runtime Environment) | Runtime libraries + JVM for executing Java programs |
-| **JVM** (Java Virtual Machine) | Abstract machine that executes bytecode; platform-specific |
+| **JDK** (Java Development Kit) | Full development environment that contains development tools such as the compiler and debugger, together with the JRE |
+| **JRE** (Java Runtime Environment) | Runtime libraries and the JVM for executing Java programs |
+| **JVM** (Java Virtual Machine) | Abstract machine that executes bytecode, implemented for each platform |
 
 *Table 2. Roles of the JDK, JRE, and JVM*
 
@@ -173,7 +173,7 @@ $$
 Java is a **hybrid** language: it is both compiled and interpreted.
 
 1. **Compile:** `javac MyProgram.java` produces `MyProgram.class` (bytecode).
-2. **Execute:** `java MyProgram` launches the JVM, which interprets/JIT-compiles the bytecode.
+2. **Execute:** `java MyProgram` launches the JVM, which interprets or JIT-compiles the bytecode.
 
 ```text
 Source Code (.java)  -->  Bytecode (.class)  -->  JVM  -->  Output
@@ -201,11 +201,13 @@ graph LR
 - **Java:** The compiler translates source code into platform-independent bytecode (`Test.class`), and the JVM on each operating system executes the bytecode.
 - **C/C++:** The compiler and linker turn source code into a machine-code executable (`Test.exe`) for a specific operating system and hardware. A different operating system requires recompilation.
 
+> **[Systems Programming]** A C/C++ linker gathers separately compiled object files (`.o`, `.obj`) and libraries and resolves the references to symbols such as functions and global variables to actual addresses, producing a single executable. Java has no such link step: as in Section 3.1, the JVM loads the needed class files at run time and links the references between classes as it does so.
+
 ### 3.3 Write Once, Run Anywhere
 
-Because bytecode is platform-independent, the same `.class` file runs on Windows, macOS, Linux, or any OS with a compatible JVM.
+Because bytecode is platform-independent, the same `.class` file runs on Windows, macOS, Linux, or any operating system with a compatible JVM.
 
-> **Key Point:** The JVM provides an abstraction layer between the compiled bytecode and the underlying hardware/OS, enabling true platform independence.
+> **Key Point:** The JVM provides an abstraction layer between the compiled bytecode and the underlying hardware and operating system, enabling true platform independence.
 
 ### 3.4 Source Files and Class Files
 

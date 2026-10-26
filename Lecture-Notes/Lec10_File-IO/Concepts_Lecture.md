@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Specify files and obtain information about them with the File class and JFileChooser
@@ -51,7 +51,7 @@ To read data from or write data to a file, we must create one of the Java stream
 
 ### 1.2 The File Class
 
-The `File` class represents a file or directory path (does not actually open files):
+The `File` class represents the path of a file or directory and does not actually open the file.
 
 ```java
 File file = new File("data.txt");

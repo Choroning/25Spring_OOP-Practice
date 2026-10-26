@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Query thread information and state and set thread priorities
@@ -35,7 +35,7 @@
 
 ## 1. Thread Control Block and States
 
-Each thread is managed by a Thread Control Block (TCB) containing:
+Each thread is managed by a **thread control block (TCB)** containing the following information.
 
 | Field | Description |
 |:------|:------------|
@@ -50,7 +50,7 @@ Each thread is managed by a Thread Control Block (TCB) containing:
 
 *Table 1. Fields of the thread control block*
 
-> **[Operating Systems]** A TCB is the data structure the operating system keeps to manage a thread, and when it switches from one thread to another (a context switch), it saves and restores the registers and program counter here. Threads of the same process share process resources such as the code and the heap, while each thread has its own stack and register values.
+> **[Operating Systems]** A TCB is the data structure the operating system keeps to manage a thread, and when it switches from one thread to another (a context switch), it saves and restores the register and program counter values of Table 1 here. Threads of the same process share process resources such as the code and the heap, while each thread has its own stack and register values.
 
 A Java program queries part of this information through the methods of a `Thread` object. The following code prints information about the thread that runs `main()`.
 
@@ -72,11 +72,11 @@ public class Chap15Program1 {
 
 `Thread.currentThread()` returns the `Thread` object of the thread executing the statement. Running it prints the name `main`, the priority 5, and the state `RUNNABLE`, while the ID is a value chosen by the JVM and differs by version (for example, 3 on Java 24). `getId()` has been deprecated since Java 19 in favor of `threadId()`. The lab code [MainThreadInfoDemo.java](../../Coursework/Lab15_Advanced-Threading/MainThreadInfoDemo.java) prints the same information.
 
-The state of a thread changes as follows (Lecture 13, Section 1.2).
+Divided simply into four states, the states of a thread are as follows. Compared with the states of Lecture 13, Section 1.2, New Thread corresponds to New, Runnable to Runnable and Running, Not Runnable to Blocked, Waiting, and Timed Waiting, and Dead to Terminated.
 
 - **New Thread:** A thread object has been created, as in `Thread myThread = new MyThreadClass();`, but not started.
 - **Runnable:** Calling `myThread.start()` makes the thread able to run.
-- **Not Runnable:** The thread cannot run when `sleep()` is called, when it waits on a condition with `wait()`, or when it is blocking on I/O.
+- **Not Runnable:** The thread cannot run when `sleep()` is called, when it waits on a condition with `wait()`, or when it is blocking on I/O (a thread blocked on I/O is reported as RUNNABLE by `getState()`).
 - **Dead:** When the `run()` method exits normally, the thread dies naturally. For example, a `run()` with a finite loop of 100 iterations dies after the loop ends and the method completes.
 
 > **Caution:** Early Java had `suspend()` to pause a thread and `stop()` to kill it, but they were deprecated long ago because they can stop a thread while it holds a lock or leave shared data in an inconsistent state. Since Java 20, calling `stop()` throws `UnsupportedOperationException`, and `suspend()` and `resume()` were removed in Java 23. Use the methods of Section 3 to end a thread.
@@ -95,7 +95,7 @@ thread.setPriority(Thread.MIN_PRIORITY);  // 1
 thread.setPriority(Thread.NORM_PRIORITY); // 5 (default)
 ```
 
-- Thread priorities are hints to the JVM and OS scheduler. Priority behavior is platform-dependent; higher-priority threads are generally preferred but strict preemption is not guaranteed.
+- Thread priorities are hints to the JVM and the operating system scheduler. Priority behavior is platform-dependent; higher-priority threads are generally preferred but strict preemption is not guaranteed.
 - In the conceptual JVM scheduling policy, the highest-priority thread is scheduled first, and threads with equal priority are scheduled in round-robin fashion. The actual order is decided by the operating system scheduler, as in the previous item, so it is not guaranteed.
 - The main thread starts with priority 5.
 - A newly created thread has the same priority as the parent thread that created it.
@@ -108,7 +108,7 @@ thread.setPriority(Thread.NORM_PRIORITY); // 5 (default)
 
 ## 3. Thread Termination
 
-A thread terminates itself by returning from its `run()` method, and another thread forces it to terminate with the `interrupt()` method.
+A thread terminates itself by returning from its `run()` method, and another thread forces it to terminate with the `interrupt()` method. In either case a thread ends when it returns from `run()`, so `interrupt()` and the flag of Section 3.3 are means of telling the target thread to return from `run()`.
 
 ### 3.1 Natural Termination
 
@@ -157,7 +157,7 @@ class WorkerThread extends Thread {
 }
 ```
 
-> **Key Point:** Use `volatile` for the flag variable to ensure visibility across threads.
+> **Key Point:** Use `volatile` for the flag variable so that a value one thread writes to it is immediately visible to other threads (visibility across threads).
 
 For example, a program can start, as soon as it runs, a thread that creates the string `java` at a random location every 0.3 seconds, and a listener can call that thread's `finish()` when the mouse is pressed on the content pane. Each time the thread wakes from `sleep(300)`, it checks the flag, and if the flag is `true`, it clears the content pane, shows `finish` at the location (100, 100), and returns from `run()`.
 
@@ -175,7 +175,7 @@ There are two ways to synchronize threads in Java: specifying a synchronized blo
 
 ### 4.1 The synchronized Keyword
 
-Ensures only one thread at a time can execute a critical section:
+`synchronized` ensures that only one thread at a time can execute a **critical section**, that is, the part of the code that accesses shared data.
 
 ```java
 synchronized void add() {
@@ -299,7 +299,7 @@ class SharedData {
 
 ## 5. Race Conditions and Prevention
 
-A race condition occurs when multiple threads access shared data concurrently and the result depends on the scheduling order.
+A race condition occurs when multiple threads access shared data concurrently and the result depends on the execution order of the threads (Lecture 13, Section 4).
 
 **Prevention strategies:**
 1. Use `synchronized` blocks/methods
@@ -309,7 +309,7 @@ A race condition occurs when multiple threads access shared data concurrently an
 
 > **Caution:** `volatile` only makes a value written by one thread immediately visible to other threads; it does not make a compound operation that reads, modifies, and writes, such as `count++`, atomic. If two threads each increment a `volatile int count` 100,000 times, the result can be less than 200,000. Protect compound operations with `synchronized` or `AtomicInteger.incrementAndGet()`.
 
-> **[Operating Systems]** Locks can lead to **deadlock**. If thread A holds lock X while waiting for lock Y, and thread B holds lock Y while waiting for lock X, neither thread can ever proceed. Making every thread acquire locks in the same order prevents this circular wait.
+> **[Operating Systems]** **Deadlock**, as taught in operating systems, is a state in which threads cannot proceed because each waits for a resource that another holds, and it can occur in a program that nests `synchronized` to hold two or more monitor locks. If thread A holds lock X while waiting for lock Y, and thread B holds lock Y while waiting for lock X, neither thread can ever proceed. Making every thread acquire locks in the same order prevents this circular wait.
 
 ---
 

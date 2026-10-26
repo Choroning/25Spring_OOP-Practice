@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Implement client-server communication using sockets
@@ -82,8 +82,10 @@ Client-server applications fall into two types.
 
 ### 1.4 Socket Pair (4-tuple)
 
-A **socket pair** is the pair of end points that uniquely identifies each TCP connection on the Internet. A TCP connection is uniquely identified by:
+A **socket pair** is the pair of endpoints that uniquely identifies each TCP connection on the Internet. A TCP connection is uniquely identified by:
 `(client IP, client port, server IP, server port)`
+
+> **[Computer Networks]** In computer networks, TCP and UDP are transport-layer protocols that run on top of IP and deliver data between processes on hosts, where the IP address identifies a host and the port number identifies a process on that host. The TCP of the operating system uses this 4-tuple to decide which socket receives an arriving segment (demultiplexing), so even when many clients connect to one server port, each connection is kept apart by its own connection socket (Section 2).
 
 ### 1.5 The Socket API
 
@@ -177,7 +179,7 @@ out.flush();
 
 > **Key Point:** Always call `flush()` after writing to ensure data is sent immediately rather than buffered.
 
-> **Caution:** When the other side closes the connection, `readLine()` returns `null`. Calling a method such as `equalsIgnoreCase()` directly on the received string then throws a `NullPointerException`, so it is safer to check for `null` first.
+> **Caution:** When the other side closes the connection, `readLine()` returns `null`. Calling a method such as `equalsIgnoreCase()` directly on the received string, as the server loop of Section 3.2 does, then throws a `NullPointerException`, so it is safer to check for `null` first.
 
 ### 3.2 A Chat Program
 
@@ -230,7 +232,7 @@ public static String calc(String exp) {
 
 ## 4. Multi-client Server Architecture
 
-Use a separate thread for each client connection:
+A server that handles multiple clients at the same time uses a separate thread for each client connection.
 
 ```java
 while (true) {
@@ -241,7 +243,7 @@ while (true) {
 
 Each `ClientHandler` manages its own I/O streams independently, allowing the server to handle multiple clients concurrently.
 
-`accept()` and `readLine()` are both blocking calls, so a server built with a single thread cannot accept other clients while it communicates with one client. The GUI calculation server solves this with two kinds of threads.
+`accept()` and `readLine()` are both blocking calls, so a server built with a single thread cannot accept other clients while it communicates with one client. The GUI calculation server of Section 5 solves this with two kinds of threads.
 
 - **ServerThread:** Creates the welcoming socket and repeats `accept()`. For each incoming connection, it writes a record to the log window and creates and starts a ServiceThread with that connection socket.
 - **ServiceThread:** Serves one client. When the client sends the first operand, the operator, and the second operand as three separate lines, it computes the result and replies with one line, sending `Cannot divide by zero!` for division by zero and `Wrong input` for an unknown operator. When the client disconnects and an `IOException` occurs, it writes a record to the log and returns from `run()` to end the thread.

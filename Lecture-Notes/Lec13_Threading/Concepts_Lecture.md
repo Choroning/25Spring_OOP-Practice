@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Create and manage threads using Thread class and Runnable interface
@@ -53,7 +53,7 @@ flowchart TB
 
 A thread is the smallest unit of execution scheduled by the JVM. A thread is a unit of the code written by the programmer that is scheduled and executed as one flow of execution, and each thread has its own call stack. A Java application always starts with a main thread, and can spawn additional threads for concurrent work.
 
-> **[Operating Systems]** A hardware thread of a CPU (a flow that a core can execute at once) and a Java thread are not the same concept. A program can create far more Java threads than there are cores. Current JVMs such as HotSpot map each Java thread to one operating system thread, and the operating system scheduler decides which thread runs on which core and when (virtual threads, introduced in Java 21, are the exception to this mapping).
+> **[Operating Systems]** In an operating system, a thread is the basic unit that is assigned the CPU, and the operating system scheduler decides which thread runs on which core and when. Current JVMs such as HotSpot map each Java thread to one operating system thread, so even for Java threads scheduled by the JVM, the actual assignment of the CPU is left to the operating system (virtual threads, introduced in Java 21, are the exception to this mapping). A hardware thread of a CPU (a flow that a core can execute at once) and a Java thread are not the same concept, and a program can create far more Java threads than there are cores.
 
 ### 1.2 Thread Life Cycle
 
@@ -79,11 +79,11 @@ stateDiagram-v2
 | State | Description |
 |:------|:------------|
 | **New** | Created but not started |
-| **Runnable** | Ready to run; waiting for CPU time |
+| **Runnable** | Ready to run and waiting for CPU time |
 | **Running** | Actively executing (included in RUNNABLE in `Thread.State`) |
 | **Blocked** | Waiting for a monitor lock |
 | **Waiting** | Waiting indefinitely for another thread (`wait()`, `join()`) |
-| **Timed Waiting** | Waiting for a specified time (`sleep`, `wait(timeout)`) |
+| **Timed Waiting** | Waiting for a specified time (`sleep(ms)`, `wait(timeout)`, `join(timeout)`) |
 | **Terminated** | Execution completed |
 
 *Table 1. Thread states*
@@ -208,7 +208,7 @@ Creating it as `new FlickeringLabel("Flickering", 500)` switches the background 
 
 ### 3.1 sleep()
 
-Pauses the current thread for the specified number of milliseconds:
+`Thread.sleep()` pauses the current thread for the specified number of milliseconds.
 
 ```java
 try {
@@ -222,7 +222,7 @@ try {
 
 ### 3.2 join()
 
-Waits for another thread to finish before continuing:
+`join()` makes the calling thread wait for another thread to finish before continuing.
 
 ```java
 Thread worker = new Thread(task);
@@ -244,8 +244,8 @@ Splitting a large computation across multiple threads can significantly reduce e
 ```java
 // Single-threaded: sum 0 to 2 billion
 // Multi-threaded: split the range into N sub-ranges, one per thread
-SumThread[] threads = new SumThread[NUM_THREADS];
-for (int i = 0; i < NUM_THREADS; i++) {
+SumThread[] threads = new SumThread[NUM_THREAD];
+for (int i = 0; i < NUM_THREAD; i++) {
     threads[i] = new SumThread(start, end);
     threads[i].start();
 }
@@ -277,7 +277,7 @@ public class SumThread extends Thread {
 }
 ```
 
-In one run on a 12-core computer, the single-threaded version took about 1.2 seconds and the multi-threaded version about 0.2 seconds, and both printed the same sum. The execution time depends on the number of cores and the load of the computer, and creating more threads than there are cores gives no further speedup. The lab code [MultiThreadedSum.java](../../Coursework/Lab13_Threading/MultiThreadedSum.java) compares the two approaches in one program.
+In one run on a 12-core computer, the single-threaded version took about 1.2 seconds and the multi-threaded version about 0.2 seconds, and both printed the same sum. The execution time depends on the number of cores and the load of the computer, and for a computation-only task like this one, creating more threads than there are cores gives no further speedup. The lab code [MultiThreadedSum.java](../../Coursework/Lab13_Threading/MultiThreadedSum.java) compares the two approaches in one program.
 
 > **Caution:** `sum += temp` consists of three steps: read `sum`, add, and write it back. If two threads execute this statement at nearly the same time, one thread can overwrite the value written by the other, and one addition can be lost. A situation in which the result depends on the execution order of threads is called a **race condition**. In this example each thread adds only once at the end, so the problem appears rarely, but correctness is not guaranteed. The addition must be protected with `synchronized` (Lecture 15, Section 4), or each thread must store its partial sum separately for the main thread to add after `join()`.
 

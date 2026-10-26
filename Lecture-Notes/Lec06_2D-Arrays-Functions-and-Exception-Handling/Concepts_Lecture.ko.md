@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. 2차원 배열을 생성하고 처리할 수 있다
@@ -185,7 +185,7 @@ public static double computeAverage(double[][] scores) {
 }
 ```
 
-`computeAverage`는 원소를 더하면서 개수도 세므로 가변 길이 배열에서도 올바른 평균을 반환한다.
+`computeAverage`는 원소를 더하면서 개수도 세므로 가변 길이 배열에서도 올바른 평균을 반환한다. 원소가 하나도 없으면 `0.0 / 0`을 계산하게 되어 `NaN`을 반환한다.
 
 ### 2.2 메서드 오버로딩
 

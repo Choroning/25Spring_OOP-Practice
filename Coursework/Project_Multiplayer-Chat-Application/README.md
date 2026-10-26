@@ -6,7 +6,7 @@ A multi-threaded TCP-based chat system implemented in Java, featuring room manag
 
 ## Architecture
 
-```
+```text
 ChatServer (main server loop)
   ├── UserManager (tracks connected users)
   ├── MessageHandler (routes protocol messages)
@@ -71,7 +71,7 @@ java ChatGUI
 
 ## Client Commands (Console)
 
-```
+```text
 <text>            -- Send message to General room
 /msg <room> <msg> -- Send message to a specific room
 /rooms            -- List all rooms
@@ -85,17 +85,17 @@ java ChatGUI
 
 ## Design Concepts
 
-This project integrates concepts from multiple course chapters:
+This project integrates concepts from several lectures of the course:
 
-- **Chapter 07-08**: Object-oriented class design with encapsulation and inheritance
-- **Chapter 09**: Collections framework (ConcurrentHashMap, CopyOnWriteArrayList)
-- **Chapter 10**: Stream-based I/O over sockets
-- **Chapter 12**: Swing GUI components (JFrame, JTextArea, JButton, layout managers)
-- **Chapter 13**: Multi-threading (one thread per client)
-- **Chapter 14**: TCP socket programming (ServerSocket, Socket)
-- **Chapter 15**: Thread synchronization (concurrent collections, thread-safe operations)
+- **Lectures 7-8**: Object-oriented class design with encapsulation and inheritance
+- **Lecture 9**: Collections framework (ConcurrentHashMap, CopyOnWriteArrayList)
+- **Lecture 10**: Stream-based I/O over sockets
+- **Lecture 12**: Swing GUI components (JFrame, JTextArea, JButton, layout managers)
+- **Lecture 13**: Multi-threading (one thread per client)
+- **Lecture 14**: TCP socket programming (ServerSocket, Socket)
+- **Lecture 15**: Thread synchronization (concurrent collections, thread-safe operations)
 
 ## References
 
-- MIT 6.005: Software Construction — Concurrency and Thread Safety
-- Stanford CS108: Object-Oriented Systems Design — Network Programming in Java
+- MIT 6.005: Software Construction, Concurrency and Thread Safety
+- Stanford CS108: Object-Oriented Systems Design, Network Programming in Java

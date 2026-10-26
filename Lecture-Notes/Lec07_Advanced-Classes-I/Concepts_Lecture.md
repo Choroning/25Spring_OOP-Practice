@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Define a class with data members, methods, and constructors, and organize a program into multiple classes
@@ -162,11 +162,11 @@ public Bicycle() {
 }
 ```
 
-> **Caution:** Writing a return type such as `void` before a constructor turns it into an ordinary method that merely has the same name as the class. For example, `public void Bicycle() { ownerName = "Unknown"; }` is not called by `new Bicycle()`, so `ownerName` stays `null`.
+> **Caution:** Writing a return type such as `void` before a constructor turns it into an ordinary method that merely has the same name as the class. For example, `public void Bicycle() { ownerName = "Unknown"; }` is not called by `new Bicycle()`, so if the class has no other constructor, `ownerName` stays at its default value `null`.
 
 ### 2.1 Default Constructor
 
-If a class defines no constructor at all, the Java compiler provides a default no-argument constructor, and the fields are initialized to their default values (0 for numbers, `false` for `boolean`, `null` for references). Once any constructor is defined, the default constructor is no longer provided, so `new Account()` is a compile error in a class that has only a parameterized constructor.
+If a class defines no constructor at all, the Java compiler provides a default no-argument constructor, and fields without an initial value are initialized to their default values (0 for numbers, `false` for `boolean`, `null` for references). Once any constructor is defined, the default constructor is no longer provided, so `new Account()` is a compile error in a class that has only a parameterized constructor.
 
 ### 2.2 Parameterized Constructor
 
@@ -539,7 +539,7 @@ diceTwo.roll();
 System.out.println(diceTwo.getNumber());
 ```
 
-An instance variable marked `final` must be assigned exactly once, either in its declaration or in the constructor. A class whose fields are all `private final` and that provides no setters is an **immutable class**, whose state never changes after construction. `String` is a typical immutable class.
+An instance variable marked `final` must be assigned exactly once, either in its declaration or in the constructor. A class whose fields are all `private final` and that provides no setters is an **immutable class**, whose state never changes after construction. `String` is a typical immutable class. However, if a field refers to an object whose contents can change, such as an array, the contents of that object can still change even though the reference does not, so the fields of an immutable class must hold primitive values or immutable objects.
 
 ```java
 public final class Point2D {
@@ -647,11 +647,11 @@ class Bicycle {
 | Arguments and parameters | Their numbers must match, they are paired from left to right, and each pair must be assignment-compatible. |
 | Passing objects | The reference is passed, so no copy is made and several objects can share the same object. |
 | Identifier resolution | Local variables and parameters take precedence over data members. |
-| Access Modifiers | They control visibility, from narrowest to widest: `private` < default < `protected` < `public`. |
+| Access modifiers | They control visibility, from narrowest to widest: `private` < default < `protected` < `public`. |
 | Encapsulation | Fields are hidden with `private` and exposed via getters/setters. |
 | this | It is a reference to the current object instance. |
 | static | Class variables and class methods belong to the class rather than to objects and are shared by all objects. |
-| final and immutable classes | A `final` variable can be assigned only once, and a class whose fields are all `private final` with no setters is immutable. |
+| final and immutable classes | A `final` variable can be assigned only once, and a class whose fields are all `private final` fields holding primitive values or immutable objects, with no setters, is immutable. |
 
 ---
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Apply conditional statements (if/else, switch)
@@ -223,7 +223,7 @@ switch (ranking) {
 }
 ```
 
-It prints "Master" when `ranking` is 8-10, "Journeyman" when it is 6-7, "Apprentice" when it is 4-5, and "Input error: Invalid Data" for any other value.
+It prints `Master` when `ranking` is 8-10, `Journeyman` when it is 6-7, `Apprentice` when it is 4-5, and `Input error: Invalid Data` for any other value.
 
 **What a case label can be:** A case label must be a constant expression whose value is fixed at compile time. Integer literals, character literals, and string literals (and `final` constants) are allowed, but variables and conditions are not.
 
