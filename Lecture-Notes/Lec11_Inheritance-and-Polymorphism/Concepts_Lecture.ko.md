@@ -2,11 +2,11 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. 상속을 사용하여 클래스 계층을 구현할 수 있다
-> 2. 메서드 오버라이딩과 동적 디스패치를 적용할 수 있다
+> 2. 메서드 오버라이딩과 동적 바인딩을 적용할 수 있다
 > 3. 유연하고 확장 가능한 설계를 위해 다형성을 사용할 수 있다
 > 4. 추상 클래스와 인터페이스의 차이를 설명하고 상황에 맞게 고를 수 있다
 
@@ -17,7 +17,7 @@
 - [1. 상속 계층 구조](#1-상속-계층-구조)
   - [1.1 사례: 학부생과 대학원생 명부](#11-사례-학부생과-대학원생-명부)
   - [1.2 상속을 이용한 클래스 정의](#12-상속을-이용한-클래스-정의)
-  - [1.3 protected 접근 제한자](#13-protected-접근-제한자)
+  - [1.3 protected 접근 제어자](#13-protected-접근-제어자)
   - [1.4 super()를 이용한 생성자 체이닝](#14-super를-이용한-생성자-체이닝)
 - [2. 다형성](#2-다형성)
   - [2.1 다형성의 의미](#21-다형성의-의미)
@@ -112,7 +112,7 @@ public class Student extends Person {
 }
 ```
 
-`Student`는 `extends Person`으로 `Person`을 상속하므로 `Person`의 필드와 메서드를 물려받는다. `age`(접근 제한자 생략, 같은 패키지), `height`(protected), `name`(public)은 `Student`의 메서드에서 이름으로 바로 쓸 수 있다. `weight`는 private이므로 `Student` 객체 안에 존재하기는 하지만 `Student`의 코드에서 이름으로 접근할 수 없고, 상속받은 public 메서드 `setWeight()`를 거쳐야 한다. `main()`에서 `Student` 객체를 만들고 `set()`과 `display()`를 차례로 호출하면 다음이 출력된다.
+`Student`는 `extends Person`으로 `Person`을 상속하므로 `Person`의 필드와 메서드를 물려받는다. `age`(접근 제어자 생략, 같은 패키지), `height`(protected), `name`(public)은 `Student`의 메서드에서 이름으로 바로 쓸 수 있다. `weight`는 private이므로 `Student` 객체 안에 존재하기는 하지만 `Student`의 코드에서 이름으로 접근할 수 없고, 상속받은 public 메서드 `setWeight()`를 거쳐야 한다. `main()`에서 `Student` 객체를 만들고 `set()`과 `display()`를 차례로 호출하면 다음이 출력된다.
 
 ```text
 Age: 39
@@ -122,18 +122,18 @@ Height: 182
 
 같은 구조를 하나의 파일로 만든 실습 코드는 [PersonStudentDemo.java](../../Coursework/Lab11_Inheritance-and-Polymorphism/PersonStudentDemo.java)에 있다.
 
-### 1.3 protected 접근 제한자
+### 1.3 protected 접근 제어자
 
-Java의 접근 제한자는 private, 생략(default, package-private), protected, public의 네 가지이며, 이 순서대로 접근할 수 있는 범위가 넓어진다.
+Java의 접근 제어자는 private, 생략(default, package-private), protected, public의 네 가지이며, 이 순서대로 접근할 수 있는 범위가 넓어진다.
 
-| 접근 제한자 | 같은 클래스 | 같은 패키지 | 다른 패키지의 하위 클래스 | 그 밖의 모든 클래스 |
+| 접근 제어자 | 같은 클래스 | 같은 패키지 | 다른 패키지의 하위 클래스 | 그 밖의 모든 클래스 |
 |:-----|:-----|:-----|:-----|:-----|
 | `private` | O | X | X | X |
 | 생략 (default) | O | O | X | X |
 | `protected` | O | O | O | X |
 | `public` | O | O | O | O |
 
-*표 1. 접근 제한자별 접근 가능 범위*
+*표 1. 접근 제어자별 접근 가능 범위*
 
 `protected` 멤버는 다음에서 접근 가능하다:
 - 해당 클래스 자체
@@ -144,7 +144,7 @@ Java의 접근 제한자는 private, 생략(default, package-private), protected
 
 ### 1.4 super()를 이용한 생성자 체이닝
 
-상위 클래스의 멤버와 달리 **생성자는 상속되지 않는다.** 클래스마다 생성자를 직접 정의하거나, 생성자를 하나도 정의하지 않았을 때 컴파일러가 추가하는 기본 생성자를 쓴다. 하위 클래스의 생성자에서 `super(...)`를 호출하면 상위 클래스의 생성자가 실행된다.
+상위 클래스의 멤버와 달리 **생성자는 상속되지 않는다.** 클래스마다 생성자를 직접 정의하거나, 생성자를 하나도 정의하지 않았을 때 컴파일러가 추가하는 기본 생성자를 쓴다. 하위 클래스의 생성자에서 `super(...)`를 호출하면 상위 클래스의 생성자가 실행된다. 이 호출은 생성자의 첫 문장에 둔다(Java 25부터의 완화는 8강 2.2절의 참고).
 
 ```java
 public class Point {
@@ -168,7 +168,7 @@ public class ColorPoint extends Point {
 
 `ColorPoint`의 생성자는 `super(x, y)`로 `Point`의 생성자에 좌표 초기화를 맡기고, 자신의 필드 `color`만 직접 초기화한다. `Point`의 `x`, `y`는 private이므로 `ColorPoint`가 직접 대입할 수 없다는 점에서도 `super(x, y)`가 필요하다. `Point`에 좌표를 `(x,y)` 형식으로 출력하는 `showPoint()`를 두고 `ColorPoint`에 `color`를 출력한 뒤 `showPoint()`를 호출하는 `showColorPoint()`를 두면, `new ColorPoint(5, 6, "blue").showColorPoint()`는 `blue(5,6)`을 출력한다.
 
-> **주의:** 생성자에 `super(...)` 호출을 쓰지 않으면 컴파일러가 첫 문장으로 인자 없는 `super()`를 넣는다. 위의 `Point`처럼 상위 클래스에 인자 없는 생성자가 없으면 이 호출이 컴파일 오류가 된다. 또 `extends` 절이 없는 클래스의 상위 클래스는 `Object`이다.
+> **주의:** 생성자에 `super(...)` 호출을 쓰지 않으면 컴파일러가 첫 문장으로 인자 없는 `super()`를 넣는다. 위의 `Point`처럼 상위 클래스에 매개변수 없는 생성자가 없으면 이 호출이 컴파일 오류가 된다. 또 `extends` 절이 없는 클래스의 상위 클래스는 `Object`이다.
 
 ---
 
@@ -190,7 +190,7 @@ myPet = new Cat();
 
 ### 2.2 동적 바인딩
 
-상위 클래스 변수가 하위 클래스 객체를 참조할 수 있다. JVM은 런타임에 호출할 메서드를 결정한다:
+상위 클래스 변수는 하위 클래스 객체를 참조할 수 있으며, 이 변수로 메서드를 호출하면 JVM이 변수가 가리키는 객체의 실제 클래스를 보고 런타임에 호출할 메서드를 정한다. 이를 **동적 바인딩(dynamic binding)** 이라고 한다.
 
 ```java
 Student[] roster = new Student[40];
@@ -377,7 +377,7 @@ class Dog {
 
 상위 클래스를 정의할 때 그 상위 클래스의 인스턴스는 만들 필요가 없는 경우가 많다. 예를 들어 학생은 반드시 학부생이거나 대학원생이어야 한다면 `UndergraduateStudent`와 `GraduateStudent`의 인스턴스만 있으면 되므로, `Student`는 인스턴스를 만들 수 없게 정의해야 한다.
 
-> **용어 정의:** **추상 클래스(abstract class)** 는 (1) `abstract` 제한자로 정의했거나, (2) 추상 메서드를 포함하거나, (3) 상속받은 추상 메서드를 구현하지 않은 클래스이다. 뒤의 두 경우에도 클래스 선언에 `abstract`를 붙여야 하며, 붙이지 않으면 컴파일 오류가 난다. **추상 메서드(abstract method)** 는 `abstract` 키워드를 붙이고 메서드 본문 대신 세미콜론으로 끝나는 메서드이다. private 메서드와 static 메서드는 abstract로 선언할 수 없다.
+> **용어 정의:** **추상 클래스(abstract class)** 는 (1) `abstract` 제어자로 정의했거나, (2) 추상 메서드를 포함하거나, (3) 상속받은 추상 메서드를 구현하지 않은 클래스이다. 뒤의 두 경우에도 클래스 선언에 `abstract`를 붙여야 하며, 붙이지 않으면 컴파일 오류가 난다. **추상 메서드(abstract method)** 는 `abstract` 키워드를 붙이고 메서드 본문 대신 세미콜론으로 끝나는 메서드이다. private 메서드와 static 메서드는 abstract로 선언할 수 없다.
 
 추상 클래스는 인스턴스화할 수 없으며 추상 메서드를 포함할 수 있다:
 
@@ -437,7 +437,7 @@ class Circle extends Shape implements Drawable {
 |:-----|:-----|:-----|
 | 생성자 | 가질 수 없다 | 가질 수 있다 |
 | 필드 | 암묵적으로 `public static final`인 상수만 가질 수 있다 | 인스턴스 필드와 static 필드를 모두 가질 수 있고, final이 아니어도 된다 |
-| 멤버의 접근 제한자 | 기본이 public이며, Java 9부터 private 메서드를 둘 수 있다. protected 멤버는 둘 수 없다 | private, 생략, protected, public을 모두 쓸 수 있다 |
+| 멤버의 접근 제어자 | 기본이 public이며, Java 9부터 private 메서드를 둘 수 있다. protected 멤버는 둘 수 없다 | private, 생략, protected, public을 모두 쓸 수 있다 |
 | 추상 메서드 | 본문 없는 메서드는 암묵적으로 `public abstract`이다 | `abstract` 키워드로 선언한다 |
 | 구현이 있는 메서드 | Java 8부터 default 메서드와 static 메서드를 가질 수 있다 | 일반 메서드, static 메서드, final 메서드를 가질 수 있다 |
 | final 메서드 | 가질 수 없다 | 가질 수 있다 |
@@ -520,6 +520,8 @@ classDiagram
 
 ## 5. 상속을 활용한 디자인 패턴
 
+**디자인 패턴**(design pattern)은 자주 반복되는 설계 문제에 대한 검증된 해법에 이름을 붙여 정리한 것이다. 표 4는 상속과 다형성을 활용하는 대표적인 패턴이다.
+
 | 패턴 | 설명 | 예시 |
 |:--------|:------------|:--------|
 | Template Method | 상위 클래스가 알고리즘 골격을 정의하고, 하위 클래스가 각 단계를 구현한다 | `Shape.printArea()`가 추상 `area()`를 호출 |
@@ -552,12 +554,12 @@ classDiagram
 
 ## 점검 문제
 
-1. **접근 제한자:** 1.2절의 `Person`은 패키지 `p1`에, `Student`는 다른 패키지 `p2`에 있다. `Student`의 메서드에서 이름으로 직접 접근할 수 있는 `Person`의 필드를 모두 쓰라.
+1. **접근 제어자:** 1.2절의 `Person`은 패키지 `p1`에, `Student`는 다른 패키지 `p2`에 있다. `Student`의 메서드에서 이름으로 직접 접근할 수 있는 `Person`의 필드를 모두 쓰라.
 
    <details>
    <summary>정답</summary>
 
-   `height`(protected)와 `name`(public)이다. `weight`는 private이므로 하위 클래스에서 직접 접근할 수 없고, `age`는 접근 제한자를 생략한 package-private 필드이므로 다른 패키지의 하위 클래스에서는 접근할 수 없다. `age`에 접근하면 컴파일러가 "age is not public in Person; cannot be accessed from outside package" 오류를 낸다.
+   `height`(protected)와 `name`(public)이다. `weight`는 private이므로 하위 클래스에서 직접 접근할 수 없고, `age`는 접근 제어자를 생략한 package-private 필드이므로 다른 패키지의 하위 클래스에서는 접근할 수 없다. `age`에 접근하면 컴파일러가 "age is not public in Person; cannot be accessed from outside package" 오류를 낸다.
 
    </details>
 
@@ -584,7 +586,7 @@ classDiagram
    <details>
    <summary>정답</summary>
 
-   컴파일 오류가 난다. `super(...)` 호출이 없으면 컴파일러가 생성자 첫 문장에 인자 없는 `super()`를 넣는데, `Point`에는 인자 없는 생성자가 없기 때문이다. `Point`에 인자 없는 생성자를 추가하면 컴파일되지만, 그때는 좌표가 인자 없는 생성자가 정한 값으로 초기화된다.
+   컴파일 오류가 난다. `super(...)` 호출이 없으면 컴파일러가 생성자 첫 문장에 인자 없는 `super()`를 넣는데, `Point`에는 매개변수 없는 생성자가 없기 때문이다. `Point`에 매개변수 없는 생성자를 추가하면 컴파일되지만, 그때는 좌표가 매개변수 없는 생성자가 정한 값으로 초기화된다.
 
    </details>
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 ## Table of Contents
 
@@ -133,22 +133,22 @@
 
 | Week | Class Dates (Mon, Wed) | Planned Topic | Lecture Decks Covered |
 |:-----|:-----|:-----|:-----|
-| 1 | 3/3, 3/5 | Orientation (Hello World!) & Installation of Eclipse | - |
-| 2 | 3/10, 3/12 | Basic Java Grammar: Identifier, Data type, Operator, and Conditional Statement | Chap1.Introduction_OOP<br>Chap2.Introduction_Object_Class |
-| 3 | 3/17, 3/19 | Loop, Array, and exception handling | Chap3.JavaBasicGrammar |
-| 4 | 3/24, 3/26 | Class and object | Chap4.JavaBasicGrammar_PartII<br>Homework 1 |
-| 5 | 3/31, 4/2 | Inheritance | Chap5.JavaBasicGrammar_Array<br>Chap6.2DArray_CustomFunction_ExceptionHandling |
-| 6 | 4/7, 4/9 | Java package | Chap7.Advanced_Class<br>Homework 2 |
-| 7 | 4/14, 4/16 | Generics and Collections | Chap8.Advanced_Class_Vol2<br>Chap10.FileIO |
-| 8 | 4/21, 4/23 | Mid-term Exam | Midterm exam |
-| 9 | 4/28, 4/30 | I/O Streams and File I/O | Chap9.Assertion_Generic_Collection<br>Chap11.Advanced_OOP |
-| 10 | 5/5, 5/7 | Java GUI basics, AWT and Swing | - |
-| 11 | 5/12, 5/14 | Java event handling | Chap12.Advanced_GUI |
-| 12 | 5/19, 5/21 | Swing components and applications | Chap13.Thread |
-| 13 | 5/26, 5/28 | Graphic & Advanced Swing components | Chap14.NetworkProgramming<br>Chap15.Thread_v2 |
-| 14 | 6/2, 6/4 | Threads and Multitasking | Homework 3 |
-| 15 | 6/9, 6/11 | Network & JDBC programming | Final exam<br>End of term |
-| 16 | 6/16, 6/18 | Final Exam | - |
+| W01 | 3/3, 3/5 | Orientation (Hello World!) & Installation of Eclipse | - |
+| W02 | 3/10, 3/12 | Basic Java Grammar: Identifier, Data type, Operator, and Conditional Statement | Chap1.Introduction_OOP<br>Chap2.Introduction_Object_Class |
+| W03 | 3/17, 3/19 | Loop, Array, and exception handling | Chap3.JavaBasicGrammar |
+| W04 | 3/24, 3/26 | Class and object | Chap4.JavaBasicGrammar_PartII<br>Homework 1 |
+| W05 | 3/31, 4/2 | Inheritance | Chap5.JavaBasicGrammar_Array<br>Chap6.2DArray_CustomFunction_ExceptionHandling |
+| W06 | 4/7, 4/9 | Java package | Chap7.Advanced_Class<br>Homework 2 |
+| W07 | 4/14, 4/16 | Generics and Collections | Chap8.Advanced_Class_Vol2<br>Chap10.FileIO |
+| W08 | 4/21, 4/23 | Mid-term Exam | Midterm exam |
+| W09 | 4/28, 4/30 | I/O Streams and File I/O | Chap9.Assertion_Generic_Collection<br>Chap11.Advanced_OOP |
+| W10 | 5/5, 5/7 | Java GUI basics, AWT and Swing | - |
+| W11 | 5/12, 5/14 | Java event handling | Chap12.Advanced_GUI |
+| W12 | 5/19, 5/21 | Swing components and applications | Chap13.Thread |
+| W13 | 5/26, 5/28 | Graphic & Advanced Swing components | Chap14.NetworkProgramming<br>Chap15.Thread_v2 |
+| W14 | 6/2, 6/4 | Threads and Multitasking | Homework 3 |
+| W15 | 6/9, 6/11 | Network & JDBC programming | Final exam<br>End of term |
+| W16 | 6/16, 6/18 | Final Exam | - |
 
 - The planned topics follow the weekly schedule of the syllabus. The syllabus planned Problem Solving as the core competency and PPT slides as the material for every week except the exam weeks, and states that the plan for the second half of the semester could be modified depending on the students' learning achievement.
 - Chap6.2DArray_CustomFunction_ExceptionHandling was covered over weeks 5 and 6, and Chap7.Advanced_Class over weeks 6 and 7.

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Create and process two-dimensional arrays
@@ -185,7 +185,7 @@ public static double computeAverage(double[][] scores) {
 }
 ```
 
-`computeAverage` counts the elements while adding them, so it returns the correct average for ragged arrays as well.
+`computeAverage` counts the elements while adding them, so it returns the correct average for ragged arrays as well. If there are no elements at all, it computes `0.0 / 0` and returns `NaN`.
 
 ### 2.2 Method Overloading
 

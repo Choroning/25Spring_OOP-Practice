@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Declare and manipulate one-dimensional arrays
@@ -262,6 +262,8 @@ for (int i = 0; i < 4; i++) {
 ```
 
 ### 2.2 Finding Maximum and Minimum
+
+The following two methods take the first element as the maximum (minimum) so far, compare it with the remaining elements in turn, and replace it whenever a larger (smaller) element appears. They assume an array with at least one element; passing an empty array throws `ArrayIndexOutOfBoundsException` at `array[0]`.
 
 ```java
 public static int findMax(int[] array) {

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. 1차원 배열을 선언하고 조작할 수 있다
@@ -262,6 +262,8 @@ for (int i = 0; i < 4; i++) {
 ```
 
 ### 2.2 최댓값과 최솟값 탐색
+
+다음 두 메서드는 첫 번째 원소를 지금까지의 최댓값(최솟값)으로 두고, 나머지 원소와 차례로 비교하여 더 큰(작은) 원소가 나오면 그 값으로 바꾼다. 원소가 하나 이상인 배열을 가정하며, 빈 배열을 넘기면 `array[0]`에서 `ArrayIndexOutOfBoundsException`이 발생한다.
 
 ```java
 public static int findMax(int[] array) {

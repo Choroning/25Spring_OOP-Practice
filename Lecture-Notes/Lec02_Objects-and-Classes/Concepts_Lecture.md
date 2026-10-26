@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Distinguish classes and objects, messages and methods, and class data values and instance data values
@@ -172,7 +172,7 @@ An object is comprised of data values and methods.
 
 *Figure 4. One class data value and a per-object instance data value*
 
-All three `BankAccount` objects possess the same instance data value current balance, but the actual amounts differ. In contrast, there is only one copy of minimum balance for the whole class, shared by all instances. The dotted lines show the instance-of relationship: each object is an instance of the `BankAccount` class.
+All three `BankAccount` objects possess the instance data value current balance, but the actual amounts differ. In contrast, there is only one copy of minimum balance for the whole class, shared by all instances. The dotted lines show the instance-of relationship: each object is an instance of the `BankAccount` class.
 
 ### 1.7 Inheritance
 
@@ -209,7 +209,7 @@ In this hierarchy, each class has only one superclass. This differs from multipl
 
 ### 1.8 Software Engineering and the Software Life Cycle
 
-Much like building a skyscraper, developing complex software needs a disciplined approach. **Software engineering** is the application of a systematic and disciplined approach to the development, testing, and maintenance of a program, and the sample programs of this course are also developed by its principles (Section 5).
+Much like building a skyscraper, developing complex software needs a disciplined approach. **Software engineering** is the application of a systematic and disciplined approach to the development, testing, and maintenance of a program, and the sample program of Section 5 is also developed by its principles.
 
 The sequence of stages from conception to operation of a program is called the **software life cycle**, and it consists of the following five stages.
 
@@ -218,6 +218,8 @@ The sequence of stages from conception to operation of a program is called the *
 3. Coding
 4. Testing
 5. Operation and Maintenance
+
+> **[Software Engineering]** Software engineering studies software processes, which decide in what order the stages of the life cycle are carried out, such as the waterfall model that goes through the stages once in sequence, iterative models that repeat them in short cycles, and agile methods. The incremental development of Section 5 divides a program into small steps and repeats design, coding, and testing in each step, so it is close to an iterative model.
 
 ---
 
@@ -242,7 +244,7 @@ JFrame myWindow = new JFrame();
 
 The `new` keyword allocates memory on the heap and calls the constructor.
 
-An object declaration has the form `<class name> <object name>;`, and the class must be defined before the declaration. An object creation has the form `<object name> = new <class name>(<arguments>);`, and the parentheses stay empty when there are no arguments.
+An object declaration has the form `<class name> <object name>;`, and the class must be defined before the declaration. An object creation has the form `<object name> = new <class name>(<arguments>);`, and the parentheses stay empty when there are no arguments. In the following code, the first three lines are examples of declarations and the last three are examples of creations; they illustrate each form separately rather than forming one program.
 
 ```java
 Account customer;
@@ -316,7 +318,7 @@ customer
 
 *Figure 8. The first object losing its reference after the second new*
 
-No reference to the first `Customer` object remains, so the program can no longer access it, and the object becomes eligible for garbage collection (Lecture 1).
+No reference to the first `Customer` object remains, so the program can no longer access it, and the object becomes eligible for garbage collection (Lecture 1; Lecture 8, Section 5).
 
 ### 2.4 Sending Messages to Objects
 
@@ -594,7 +596,7 @@ We develop this program incrementally in two steps: (1) start with the program t
 
 ### 5.2 Step 1: Input the Name
 
-The specification states "get the user's name" but does not say how, so the input method is decided in the Step 1 design. We use `JOptionPane` for input. Of the two input styles, entering the first, middle, and last names separately or entering the full name at once, we choose the second because it is easier and quicker for the user.
+The specification only says to get the user's name and does not say how, so the input method is decided in the Step 1 design. We use `JOptionPane` for input. Of the two input styles, entering the first, middle, and last names separately or entering the full name at once, we choose the second because it is easier and quicker for the user.
 
 ```java
 import javax.swing.*;
@@ -692,7 +694,7 @@ Even after a working program is developed, we review it critically to see if the
 |:--------|:----------|
 | Object | An object is an instance of a class with state, behavior, and identity. |
 | Class | A class is a blueprint defining fields and methods. |
-| UML notation | A class is drawn as a name in a rectangle, and an object as an underlined name (`SV198 : BankAccount`). |
+| UML notation | A class is drawn as a name in a rectangle, and an object as an underlined name (`SV198`, `SV198 : BankAccount`). |
 | Messages and methods | A message sent to an object or a class is handled by a matching instance method or class method. |
 | Class and instance data | Each object has its own instance data values, whereas a class data value is shared by all instances. |
 | Inheritance | A subclass inherits the common features defined in its superclass. |

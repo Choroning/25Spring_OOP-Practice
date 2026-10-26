@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-10-26
 
 > **Learning Objectives:**
 > 1. Describe how objects are returned from methods and how the reserved word this is used
@@ -426,7 +426,7 @@ public class Bicycle {
 
 ## 9. Constructor Chaining with super()
 
-Constructors are **not** inherited. Use `super()` to call the parent constructor:
+Constructors are **not** inherited. Use `super()` to call the superclass constructor.
 
 ```java
 public class ElectricBicycle extends Bicycle {
@@ -441,7 +441,7 @@ public class ElectricBicycle extends Bicycle {
 
 `ownerName` is `private` in the superclass, so `ElectricBicycle` cannot assign it directly. It therefore delegates the initialization to the superclass constructor with `super(ownerName)`.
 
-> **Key Point:** `super()` must be the first statement in the subclass constructor (see the note in Section 2.2 for the relaxation from Java 25). If omitted, Java implicitly calls `super()` (no-arg), which fails if the superclass lacks a no-arg constructor.
+> **Key Point:** `super()` must be the first statement in the subclass constructor (see the note in Section 2.2 for the relaxation from Java 25). If omitted, Java implicitly calls `super()` with no arguments, which fails to compile if the superclass has no no-argument constructor.
 
 ---
 
@@ -476,7 +476,7 @@ public class ElectricBicycle extends Bicycle {
 | Packages | A package is a class library grouping reusable classes, specified with a `package` statement and brought in with `import`. |
 | Javadoc | Classes are documented with `/** */` comments and `@` tags, and the `javadoc` command generates HTML. |
 | Inheritance | `extends` creates an is-a relationship, and only single inheritance is supported. |
-| super() | It calls the parent constructor and must be the first statement. |
+| super() | It calls the superclass constructor and must be the first statement of the subclass constructor. |
 | Constructor chaining | A subclass constructor can delegate initialization to a superclass constructor, and a constructor can delegate it to another constructor of the same class. |
 | Class design | Follow the single responsibility, encapsulation, immutability, and composition-first principles. |
 

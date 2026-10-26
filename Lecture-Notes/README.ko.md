@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../README.ko.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 | 단원 | 주제 | 문서 |
 |:-----|:-----|:-----|
@@ -16,8 +16,8 @@
 | [8강 고급 클래스 II](Lec08_Advanced-Classes-II/) | 메서드에서 객체 반환, 자기 참조 `this`와 `this()`를 이용한 생성자 호출, 메서드와 생성자 오버로딩의 규칙과 반환 타입, `Dice` 클래스 예제, 객체 소멸과 가비지 컬렉션, 접근 제어자와 패키지, javadoc 주석, `extends` 키워드와 상위 클래스와 하위 클래스의 관계, `super()`를 이용한 생성자 체이닝, 클래스 설계 모범 사례 | [강의 노트](Lec08_Advanced-Classes-II/Concepts_Lecture.ko.md) |
 | [9강 단언문, 제네릭, 컬렉션](Lec09_Assertions-Generics-and-Collections/) | 단언문의 문법, 사용법, 활성화, 제네릭 클래스와 제네릭 메서드, 한정적 타입 매개변수, 컬렉션 프레임워크, `ArrayList`, `HashMap`, 컬렉션 순회 | [강의 노트](Lec09_Assertions-Generics-and-Collections/Concepts_Lecture.ko.md) |
 | [10강 파일 입출력](Lec10_File-IO/) | 바이트 스트림과 문자 스트림, `File` 클래스, 텍스트 파일 읽기와 쓰기, `DataInputStream`과 `DataOutputStream`, `ObjectInputStream`과 `ObjectOutputStream`, try-with-resources, `Serializable` 인터페이스 | [강의 노트](Lec10_File-IO/Concepts_Lecture.ko.md) |
-| [11강 상속과 다형성](Lec11_Inheritance-and-Polymorphism/) | 상속 계층 구조, `protected` 접근 제한자, `super()`를 이용한 생성자 체이닝, 동적 바인딩, `instanceof` 연산자, 메서드 오버라이딩 규칙과 `@Override` 애너테이션, 추상 클래스와 인터페이스, 상속을 활용한 디자인 패턴 | [강의 노트](Lec11_Inheritance-and-Polymorphism/Concepts_Lecture.ko.md) |
-| [12강 고급 GUI](Lec12_Advanced-GUI/) | AWT와 Swing, GUI 클래스 계층 구조, `JFrame`의 생성과 상속, Content Pane, `FlowLayout`, `BorderLayout`, `GridLayout` 배치 관리자, 주요 Swing 컴포넌트, `ActionListener`와 익명 클래스, 람다를 이용한 이벤트 처리 | [강의 노트](Lec12_Advanced-GUI/Concepts_Lecture.ko.md) |
+| [11강 상속과 다형성](Lec11_Inheritance-and-Polymorphism/) | 상속 계층 구조, `protected` 접근 제어자, `super()`를 이용한 생성자 체이닝, 동적 바인딩, `instanceof` 연산자, 메서드 오버라이딩 규칙과 `@Override` 애너테이션, 추상 클래스와 인터페이스, 상속을 활용한 디자인 패턴 | [강의 노트](Lec11_Inheritance-and-Polymorphism/Concepts_Lecture.ko.md) |
+| [12강 고급 GUI](Lec12_Advanced-GUI/) | AWT와 Swing, GUI 클래스 계층 구조, `JFrame`의 생성과 상속, 컨텐트팬, `FlowLayout`, `BorderLayout`, `GridLayout` 배치 관리자, 주요 Swing 컴포넌트, `ActionListener`와 익명 클래스, 람다를 이용한 이벤트 처리 | [강의 노트](Lec12_Advanced-GUI/Concepts_Lecture.ko.md) |
 | [13강 스레딩](Lec13_Threading/) | 멀티태스킹과 스레드, 스레드 생명 주기, `Thread` 클래스 상속과 `Runnable` 인터페이스 구현의 비교, `sleep()`, `join()`, 멀티스레드 성능 | [강의 노트](Lec13_Threading/Concepts_Lecture.ko.md) |
 | [14강 네트워크 프로그래밍](Lec14_Network-Programming/) | 소켓, TCP와 UDP, 소켓 쌍(4-tuple), `ServerSocket`과 `Socket`, 클라이언트-서버 상호작용 흐름, 소켓을 통한 읽기와 쓰기, 다중 클라이언트 서버 아키텍처, GUI 기반 네트워크 애플리케이션 | [강의 노트](Lec14_Network-Programming/Concepts_Lecture.ko.md) |
 | [15강 고급 스레딩](Lec15_Advanced-Threading/) | 스레드 제어 블록과 스레드 상태, 스레드 우선순위와 스케줄링, 자연 종료, `interrupt()`, 플래그 기반 종료, `synchronized` 키워드, 동기화 블록과 동기화 메서드, `wait()`, `notify()`, `notifyAll()`, 경쟁 조건과 예방 | [강의 노트](Lec15_Advanced-Threading/Concepts_Lecture.ko.md) |

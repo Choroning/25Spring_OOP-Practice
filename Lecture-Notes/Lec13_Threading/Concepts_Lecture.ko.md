@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 > **학습 목표:**
 > 1. Thread 클래스와 Runnable 인터페이스로 스레드를 생성하고 관리할 수 있다
@@ -53,7 +53,7 @@ flowchart TB
 
 스레드는 JVM이 스케줄링하는 가장 작은 실행 단위이다. 프로그래머가 작성한 코드 가운데 하나의 실행 흐름으로 스케줄링되고 실행되는 단위가 스레드이며, 각 스레드는 자신의 호출 스택을 가진다. Java 애플리케이션은 항상 메인 스레드로 시작하며, 동시 작업을 위해 추가 스레드를 생성할 수 있다.
 
-> **[운영체제]** CPU의 하드웨어 스레드(코어가 동시에 실행할 수 있는 흐름)와 Java 스레드는 같은 개념이 아니다. 한 프로그램은 코어 수보다 훨씬 많은 Java 스레드를 만들 수 있다. HotSpot 같은 현재의 JVM은 Java 스레드 하나를 운영체제 스레드 하나에 대응시키고, 어느 스레드를 어느 코어에서 언제 실행할지는 운영체제의 스케줄러가 정한다(Java 21에 도입된 가상 스레드는 이 대응의 예외이다).
+> **[운영체제]** 운영체제에서 스레드는 CPU를 배정받는 기본 단위이며, 어느 스레드를 어느 코어에서 언제 실행할지는 운영체제의 스케줄러가 정한다. HotSpot 같은 현재의 JVM은 Java 스레드 하나를 운영체제 스레드 하나에 대응시키므로, JVM이 스케줄링하는 Java 스레드도 실제로 CPU를 배정하는 일은 운영체제가 맡는다(Java 21에 도입된 가상 스레드는 이 대응의 예외이다). CPU의 하드웨어 스레드(코어가 동시에 실행할 수 있는 흐름)와 Java 스레드는 같은 개념이 아니며, 한 프로그램은 코어 수보다 훨씬 많은 Java 스레드를 만들 수 있다.
 
 ### 1.2 스레드 생명 주기
 
@@ -79,11 +79,11 @@ stateDiagram-v2
 | 상태 | 설명 |
 |:------|:------------|
 | **New** | 생성되었으나 아직 시작되지 않은 상태 |
-| **Runnable** | 실행 준비 완료; CPU 시간을 기다리는 상태 |
+| **Runnable** | 실행 준비를 마치고 CPU 시간을 기다리는 상태 |
 | **Running** | 현재 실행 중인 상태 (`Thread.State`에서는 RUNNABLE에 포함) |
 | **Blocked** | 모니터 락을 기다리는 상태 |
 | **Waiting** | 다른 스레드를 무기한 기다리는 상태 (`wait()`, `join()`) |
-| **Timed Waiting** | 지정된 시간 동안 대기하는 상태 (`sleep`, `wait(timeout)`) |
+| **Timed Waiting** | 지정된 시간 동안 대기하는 상태 (`sleep(ms)`, `wait(timeout)`, `join(timeout)`) |
 | **Terminated** | 실행이 완료된 상태 |
 
 *표 1. 스레드의 상태*
@@ -208,7 +208,7 @@ public class FlickeringLabel extends JLabel implements Runnable {
 
 ### 3.1 sleep()
 
-현재 스레드를 지정된 밀리초 동안 일시 정지시킨다:
+`Thread.sleep()`은 현재 스레드를 지정한 밀리초 동안 일시 정지시킨다.
 
 ```java
 try {
@@ -222,7 +222,7 @@ try {
 
 ### 3.2 join()
 
-다른 스레드가 완료될 때까지 대기한 후 계속 진행한다:
+`join()`은 호출한 스레드가 다른 스레드의 완료를 기다린 뒤 계속 진행하게 한다.
 
 ```java
 Thread worker = new Thread(task);
@@ -244,8 +244,8 @@ System.out.println("Worker finished.");
 ```java
 // 싱글 스레드: 0부터 20억까지 합산
 // 멀티 스레드: 범위를 N개의 하위 범위로 나누어 스레드당 하나씩 할당
-SumThread[] threads = new SumThread[NUM_THREADS];
-for (int i = 0; i < NUM_THREADS; i++) {
+SumThread[] threads = new SumThread[NUM_THREAD];
+for (int i = 0; i < NUM_THREAD; i++) {
     threads[i] = new SumThread(start, end);
     threads[i].start();
 }
@@ -277,7 +277,7 @@ public class SumThread extends Thread {
 }
 ```
 
-12코어 컴퓨터에서 실행한 예로 싱글 스레드 버전은 약 1.2초, 멀티 스레드 버전은 약 0.2초가 걸렸고 두 버전 모두 같은 합을 출력했다. 실행 시간은 컴퓨터의 코어 수와 부하에 따라 달라지며, 코어 수보다 많은 스레드를 만들어도 그 이상 빨라지지 않는다. 실습 코드 [MultiThreadedSum.java](../../Coursework/Lab13_Threading/MultiThreadedSum.java)는 두 방식을 한 프로그램에서 비교한다.
+12코어 컴퓨터에서 실행한 예로 싱글 스레드 버전은 약 1.2초, 멀티 스레드 버전은 약 0.2초가 걸렸고 두 버전 모두 같은 합을 출력했다. 실행 시간은 컴퓨터의 코어 수와 부하에 따라 달라지며, 이 예제처럼 계산만 하는 작업은 코어 수보다 많은 스레드를 만들어도 그 이상 빨라지지 않는다. 실습 코드 [MultiThreadedSum.java](../../Coursework/Lab13_Threading/MultiThreadedSum.java)는 두 방식을 한 프로그램에서 비교한다.
 
 > **주의:** `sum += temp`는 `sum`을 읽고, 더하고, 다시 쓰는 세 단계로 이루어진다. 두 스레드가 거의 동시에 이 문장을 실행하면 한 스레드가 쓴 값을 다른 스레드가 덮어써 더한 값 하나가 사라질 수 있다. 이처럼 결과가 스레드의 실행 순서에 따라 달라지는 상황을 **경쟁 조건(race condition)** 이라 한다. 이 예제는 각 스레드가 마지막에 한 번만 더하므로 문제가 드물게 나타날 뿐 정확성이 보장되지는 않는다. `synchronized`로 덧셈을 보호하거나(15강 4절), 부분합을 스레드마다 따로 저장해 `join()` 뒤에 메인 스레드가 더해야 한다.
 

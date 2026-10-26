@@ -2,7 +2,7 @@
 
 [레포지토리 안내](README.ko.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **최종 수정일:** 2026-10-19
+> **최종 수정일:** 2026-10-26
 
 ## 목차
 
@@ -133,22 +133,22 @@
 
 | 주차 | 수업일 (월, 수) | 계획된 주제 | 진행한 강의자료 |
 |:-----|:-----|:-----|:-----|
-| 1 | 3/3, 3/5 | Orientation (Hello World!) & Installation of Eclipse | - |
-| 2 | 3/10, 3/12 | Basic Java Grammar: Identifier, Data type, Operator, and Conditional Statement | Chap1.Introduction_OOP<br>Chap2.Introduction_Object_Class |
-| 3 | 3/17, 3/19 | Loop, Array, and exception handling | Chap3.JavaBasicGrammar |
-| 4 | 3/24, 3/26 | Class and object | Chap4.JavaBasicGrammar_PartII<br>1차 과제 |
-| 5 | 3/31, 4/2 | Inheritance | Chap5.JavaBasicGrammar_Array<br>Chap6.2DArray_CustomFunction_ExceptionHandling |
-| 6 | 4/7, 4/9 | Java package | Chap7.Advanced_Class<br>2차 과제 |
-| 7 | 4/14, 4/16 | Generics and Collections | Chap8.Advanced_Class_Vol2<br>Chap10.FileIO |
-| 8 | 4/21, 4/23 | 중간고사 | 중간고사 |
-| 9 | 4/28, 4/30 | I/O Streams and File I/O | Chap9.Assertion_Generic_Collection<br>Chap11.Advanced_OOP |
-| 10 | 5/5, 5/7 | Java GUI basics, AWT and Swing | - |
-| 11 | 5/12, 5/14 | Java event handling | Chap12.Advanced_GUI |
-| 12 | 5/19, 5/21 | Swing components and applications | Chap13.Thread |
-| 13 | 5/26, 5/28 | Graphic & Advanced Swing components | Chap14.NetworkProgramming<br>Chap15.Thread_v2 |
-| 14 | 6/2, 6/4 | Threads and Multitasking | 3차 과제 |
-| 15 | 6/9, 6/11 | Network & JDBC programming | 기말고사<br>종강 |
-| 16 | 6/16, 6/18 | 기말고사 | - |
+| 1주차 | 3/3, 3/5 | Orientation (Hello World!) & Installation of Eclipse | - |
+| 2주차 | 3/10, 3/12 | Basic Java Grammar: Identifier, Data type, Operator, and Conditional Statement | Chap1.Introduction_OOP<br>Chap2.Introduction_Object_Class |
+| 3주차 | 3/17, 3/19 | Loop, Array, and exception handling | Chap3.JavaBasicGrammar |
+| 4주차 | 3/24, 3/26 | Class and object | Chap4.JavaBasicGrammar_PartII<br>1차 과제 |
+| 5주차 | 3/31, 4/2 | Inheritance | Chap5.JavaBasicGrammar_Array<br>Chap6.2DArray_CustomFunction_ExceptionHandling |
+| 6주차 | 4/7, 4/9 | Java package | Chap7.Advanced_Class<br>2차 과제 |
+| 7주차 | 4/14, 4/16 | Generics and Collections | Chap8.Advanced_Class_Vol2<br>Chap10.FileIO |
+| 8주차 | 4/21, 4/23 | 중간고사 | 중간고사 |
+| 9주차 | 4/28, 4/30 | I/O Streams and File I/O | Chap9.Assertion_Generic_Collection<br>Chap11.Advanced_OOP |
+| 10주차 | 5/5, 5/7 | Java GUI basics, AWT and Swing | - |
+| 11주차 | 5/12, 5/14 | Java event handling | Chap12.Advanced_GUI |
+| 12주차 | 5/19, 5/21 | Swing components and applications | Chap13.Thread |
+| 13주차 | 5/26, 5/28 | Graphic & Advanced Swing components | Chap14.NetworkProgramming<br>Chap15.Thread_v2 |
+| 14주차 | 6/2, 6/4 | Threads and Multitasking | 3차 과제 |
+| 15주차 | 6/9, 6/11 | Network & JDBC programming | 기말고사<br>종강 |
+| 16주차 | 6/16, 6/18 | 기말고사 | - |
 
 - 계획된 주제는 강의계획서의 주별 일정을 따른다. 강의계획서는 시험 주차를 뺀 모든 주차의 핵심역량을 Problem Solving으로, 자료를 PPT로 계획했으며, 학기 후반부의 계획은 학생의 학습 성취도에 따라 바뀔 수 있다고 밝혔다.
 - Chap6.2DArray_CustomFunction_ExceptionHandling은 5주차와 6주차에, Chap7.Advanced_Class는 6주차와 7주차에 걸쳐 다뤘다.
