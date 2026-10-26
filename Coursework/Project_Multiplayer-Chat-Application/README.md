@@ -1,6 +1,8 @@
 # Multiplayer Chat Application
-> **Author:** Cheolwon Park  
-> **Date:** 2025-06-04
+
+[Repository Guide](../../README.md) | [English](README.md) | [한국어](README.ko.md)
+
+> **Last Updated:** 2026-10-26
 
 A multi-threaded TCP-based chat system implemented in Java, featuring room management, concurrent client handling, and both console and GUI clients.
 
@@ -87,13 +89,13 @@ java ChatGUI
 
 This project integrates concepts from several lectures of the course:
 
-- **Lectures 7-8**: Object-oriented class design with encapsulation and inheritance
-- **Lecture 9**: Collections framework (ConcurrentHashMap, CopyOnWriteArrayList)
-- **Lecture 10**: Stream-based I/O over sockets
-- **Lecture 12**: Swing GUI components (JFrame, JTextArea, JButton, layout managers)
-- **Lecture 13**: Multi-threading (one thread per client)
-- **Lecture 14**: TCP socket programming (ServerSocket, Socket)
-- **Lecture 15**: Thread synchronization (concurrent collections, thread-safe operations)
+- **Lectures 7-8:** Object-oriented class design with encapsulation and inheritance
+- **Lecture 9:** Collections framework (`ConcurrentHashMap`, `CopyOnWriteArrayList`)
+- **Lecture 10:** Stream-based I/O over sockets
+- **Lecture 12:** Swing GUI components (`JFrame`, `JTextArea`, `JButton`, layout managers)
+- **Lecture 13:** Multi-threading (one thread per client)
+- **Lecture 14:** TCP socket programming (`ServerSocket`, `Socket`)
+- **Lecture 15:** Thread synchronization (concurrent collections, thread-safe operations)
 
 ## References
 
