@@ -25,7 +25,7 @@ This repository archives bilingual lecture notes and coursework for the Object-O
 - `Lecture-Notes/` holds lecture notes that follow the slide numbers (`Lec01`-`Lec15`).
 - `Coursework/` holds the Java lab code for each unit (`Lab##`), the assignment solutions (`HW01`-`HW03`), and the term project.
 - Every lecture note comes as an English (`.md`) and Korean (`.ko.md`) pair.
-- All code compiles with the JDK.
+- All code was compiled and checked with the JDK.
 
 > **🤖 AI Agent Usage**
 > This course allowed the use of ChatGPT for assignments.
