@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-04
 
 > **학습 목표:**
 > 1. 클래스와 객체, 메시지와 메서드, 클래스 데이터 값과 인스턴스 데이터 값을 구별하여 설명할 수 있다
@@ -157,17 +157,12 @@ sequenceDiagram
 - **인스턴스 데이터 값(instance data value):** 개별 인스턴스에 고유한 정보를 유지한다. 예를 들어 각 `BankAccount` 객체는 자신의 잔액(current balance)을 유지한다.
 - **클래스 데이터 값(class data value):** 모든 인스턴스가 공유하는 정보나 인스턴스 전체에 대한 집계 정보를 유지한다. 예를 들어 최소 잔액(minimum balance)은 모든 계좌가 공유하는 정보이고, 모든 `BankAccount` 객체의 평균 잔액은 집계 정보이다.
 
-```text
-                    ┌──────────────────────────┐
-                    │       BankAccount        │
-                    │ minimum balance: 100.00  │
-                    └──────────────────────────┘
-                     ┆            ┆           ┆
-┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
-│ SV129 : BankAccount │ │ SV098 : BankAccount │ │ SV211 : BankAccount │
-│ current balance:    │ │ current balance:    │ │ current balance:    │
-│   908.55            │ │   1304.98           │ │   354.00            │
-└─────────────────────┘ └─────────────────────┘ └─────────────────────┘
+```mermaid
+graph TD
+    BA["BankAccount<br>최소 잔액: 100.00"]
+    BA -.- O1["SV129 : BankAccount<br>현재 잔액: 908.55"]
+    BA -.- O2["SV098 : BankAccount<br>현재 잔액: 1304.98"]
+    BA -.- O3["SV211 : BankAccount<br>현재 잔액: 354.00"]
 ```
 
 *그림 4. 클래스 데이터 값 하나와 객체별 인스턴스 데이터 값*
