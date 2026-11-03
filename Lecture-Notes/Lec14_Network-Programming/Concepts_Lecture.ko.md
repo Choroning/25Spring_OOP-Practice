@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-04
 
 > **학습 목표:**
 > 1. 소켓을 사용하여 클라이언트-서버 통신을 구현할 수 있다
@@ -141,14 +141,20 @@ Socket socket = new Socket("localhost", 9999);
 
 ### 2.3 클라이언트-서버 상호작용 흐름
 
-```text
-Server                              Client
-------                              ------
-ServerSocket(port)
-  accept() <-------- 3-way --------> Socket(host, port)
-  read from connectionSocket  <---  write to socket
-  write to connectionSocket  --->   read from socket
-  close                             close
+```mermaid
+sequenceDiagram
+    participant S as 서버
+    participant C as 클라이언트
+    Note over S: ServerSocket(port)
+    Note over S: accept()
+    Note over C: Socket(host, port)
+    S<<->>C: 3-way handshake
+    C->>S: 소켓에 쓰기
+    Note over S: connectionSocket에서 읽기
+    S->>C: connectionSocket에 쓰기
+    Note over C: 소켓에서 읽기
+    Note over S: close
+    Note over C: close
 ```
 
 *그림 2. TCP 클라이언트와 서버의 소켓 상호작용*
