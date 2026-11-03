@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-04
 
 > **학습 목표:**
 > 1. 객체 지향 프로그래밍 개념(클래스, 객체, 캡슐화)을 정의할 수 있다
@@ -175,9 +175,11 @@ Java는 **하이브리드** 언어로, 컴파일과 인터프리팅을 모두 �
 1. **컴파일:** `javac MyProgram.java` 명령으로 `MyProgram.class`(바이트코드)를 생성한다.
 2. **실행:** `java MyProgram` 명령으로 JVM을 시작하고, 바이트코드를 인터프리팅하거나 JIT 컴파일한다.
 
-```text
-Source Code (.java)  -->  Bytecode (.class)  -->  JVM  -->  Output
-        [javac]                                  [java]
+```mermaid
+flowchart LR
+    SRC["소스 코드 (.java)"] -->|"javac"| BC["바이트코드 (.class)"]
+    BC -->|"java"| JVM["JVM"]
+    JVM --> OUT["출력"]
 ```
 
 *그림 3. javac와 java 명령에 따른 컴파일과 실행 단계*
@@ -216,18 +218,25 @@ graph LR
 - `public` 클래스가 있으면 소스 파일 이름은 그 클래스 이름과 같아야 한다(`public class A`는 `A.java`).
 - 컴파일하면 클래스마다 `.class` 파일이 하나씩 생긴다. 다른 클래스 안에 선언한 클래스(중첩 클래스)는 `바깥클래스$안쪽클래스.class` 이름의 파일이 된다.
 
-```text
-A.java                         컴파일 결과 (클래스 파일 4개)
-┌──────────────────────┐
-│ public class A {     │  ──>  A.class
-│ }                    │
-│ class B {            │  ──>  B.class
-│ }                    │
-│ class C {            │  ──>  C.class
-│     class D {        │  ──>  C$D.class
-│     }                │
-│ }                    │
-└──────────────────────┘
+```mermaid
+flowchart LR
+    subgraph SRC["A.java"]
+        A["public class A { }"]
+        B["class B { }"]
+        subgraph C["class C { ... }"]
+            D["class D { }"]
+        end
+    end
+    subgraph OUT["컴파일 결과 (클래스 파일 4개)"]
+        AC["A.class"]
+        BC["B.class"]
+        CC["C.class"]
+        DC["C$D.class"]
+    end
+    A --> AC
+    B --> BC
+    C --> CC
+    D --> DC
 ```
 
 *그림 5. 소스 파일 하나에서 클래스 파일 네 개가 생성되는 과정*
