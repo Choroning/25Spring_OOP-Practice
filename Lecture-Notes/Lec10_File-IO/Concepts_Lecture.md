@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-04
 
 > **Learning Objectives:**
 > 1. Specify files and obtain information about them with the File class and JFileChooser
@@ -307,20 +307,13 @@ outDataStream.writeDouble(7.2);
 outDataStream.close();
 ```
 
-```text
-writeInt(44)    writeBoolean(true)    writeDouble(7.2)
-      │                  │                    │
-      └──────────────────┼────────────────────┘
-                         ▼
-             ┌───────────────────────┐
-             │    DataOutputStream   │  converts primitive values to bytes
-             └───────────┬───────────┘
-                         ▼
-             ┌───────────────────────┐
-             │    FileOutputStream   │  writes the bytes to the file
-             └───────────┬───────────┘
-                         ▼
-                   example2.data
+```mermaid
+flowchart TD
+    W1["writeInt(44)"] --> DOS
+    W2["writeBoolean(true)"] --> DOS
+    W3["writeDouble(7.2)"] --> DOS
+    DOS["DataOutputStream<br>converts primitive values to bytes"] --> FOS["FileOutputStream<br>writes the bytes to the file"]
+    FOS --> F["example2.data"]
 ```
 
 *Figure 2. Output structure layering DataOutputStream on FileOutputStream*
