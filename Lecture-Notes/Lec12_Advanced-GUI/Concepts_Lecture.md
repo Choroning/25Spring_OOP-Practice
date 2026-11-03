@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-19
+> **Last Updated:** 2026-11-04
 
 > **Learning Objectives:**
 > 1. Build GUI applications using Swing components
@@ -58,11 +58,24 @@ GUI programs in Java are implemented with classes from the `javax.swing` and `ja
 
 ### 1.2 GUI Class Hierarchy
 
-```text
-Object -> Component -> Container -> Window -> Frame -> JFrame
-                                           -> Dialog -> JDialog
-                                 -> Panel -> Applet -> JApplet
-                                 -> JComponent -> JLabel, JButton, JTextField, ...
+```mermaid
+classDiagram
+    Object <|-- Component
+    Component <|-- Container
+    Container <|-- Window
+    Container <|-- Panel
+    Container <|-- JComponent
+    Window <|-- Frame
+    Window <|-- Dialog
+    Frame <|-- JFrame
+    Dialog <|-- JDialog
+    Panel <|-- Applet
+    Applet <|-- JApplet
+    JComponent <|-- JLabel
+    JComponent <|-- JButton
+    JComponent <|-- JTextField
+    JComponent <|-- Others
+    class Others["..."]
 ```
 
 *Figure 1. GUI class hierarchy of AWT and Swing*
