@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-04
 
 > **Learning Objectives:**
 > 1. Define a class with data members, methods, and constructors, and organize a program into multiple classes
@@ -256,22 +256,13 @@ card2.setOwner(student); // the same student is the owner of the second card, to
 
 `setOwner(Student student)` of `LibraryCard` stores the received reference in a data member with `owner = student;`. Because the same `Student` object is passed to `card1` and `card2`, the `owner` of both `LibraryCard` objects points to one and the same `Student` object.
 
-```text
-  card1                       card2
-    │                           │
-    ▼                           ▼
-┌───────────────┐           ┌───────────────┐
-│ :LibraryCard  │           │ :LibraryCard  │
-│ owner     ●   │           │ owner     ●   │
-│ borrowCnt 3   │           │ borrowCnt 0   │
-└───────────┼───┘           └───────────┼───┘
-            │                           │
-            ▼                           │
-student ─▶ ┌────────────────────────┐   │
-           │ :Student               │◀──┘
-           │ name  "Jon Java"       │
-           │ email "jj@javauniv.edu"│
-           └────────────────────────┘
+```mermaid
+graph TD
+    C1["card1"] --> L1[":LibraryCard<br>borrowCnt 3"]
+    C2["card2"] --> L2[":LibraryCard<br>borrowCnt 0"]
+    ST["student"] --> S[":Student<br>name #quot;Jon Java#quot;<br>email #quot;jj@javauniv.edu#quot;"]
+    L1 -->|"owner"| S
+    L2 -->|"owner"| S
 ```
 
 *Figure 2. Two LibraryCard objects sharing the same Student object*

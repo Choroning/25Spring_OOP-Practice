@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-04
 
 > **학습 목표:**
 > 1. 데이터 멤버, 메서드, 생성자를 가진 클래스를 정의하고 여러 클래스로 프로그램을 구성할 수 있다
@@ -256,22 +256,13 @@ card2.setOwner(student); // the same student is the owner of the second card, to
 
 `LibraryCard`의 `setOwner(Student student)`는 `owner = student;`로 받은 참조를 데이터 멤버에 저장한다. 같은 `Student` 객체를 `card1`과 `card2`에 넘겼으므로 두 `LibraryCard` 객체의 `owner`는 같은 `Student` 객체 하나를 가리킨다.
 
-```text
-  card1                       card2
-    │                           │
-    ▼                           ▼
-┌───────────────┐           ┌───────────────┐
-│ :LibraryCard  │           │ :LibraryCard  │
-│ owner     ●   │           │ owner     ●   │
-│ borrowCnt 3   │           │ borrowCnt 0   │
-└───────────┼───┘           └───────────┼───┘
-            │                           │
-            ▼                           │
-student ─▶ ┌────────────────────────┐   │
-           │ :Student               │◀──┘
-           │ name  "Jon Java"       │
-           │ email "jj@javauniv.edu"│
-           └────────────────────────┘
+```mermaid
+graph TD
+    C1["card1"] --> L1[":LibraryCard<br>borrowCnt 3"]
+    C2["card2"] --> L2[":LibraryCard<br>borrowCnt 0"]
+    ST["student"] --> S[":Student<br>name #quot;Jon Java#quot;<br>email #quot;jj@javauniv.edu#quot;"]
+    L1 -->|"owner"| S
+    L2 -->|"owner"| S
 ```
 
 *그림 2. 두 LibraryCard 객체가 같은 Student 객체를 공유하는 구조*

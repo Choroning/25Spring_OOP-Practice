@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-04
 
 > **학습 목표:**
 > 1. Swing 컴포넌트를 사용하여 GUI 애플리케이션을 구축할 수 있다
@@ -58,11 +58,24 @@ Java의 GUI 프로그램은 `javax.swing` 패키지와 `java.awt` 패키지의 �
 
 ### 1.2 GUI 클래스 계층 구조
 
-```text
-Object -> Component -> Container -> Window -> Frame -> JFrame
-                                           -> Dialog -> JDialog
-                                 -> Panel -> Applet -> JApplet
-                                 -> JComponent -> JLabel, JButton, JTextField, ...
+```mermaid
+classDiagram
+    Object <|-- Component
+    Component <|-- Container
+    Container <|-- Window
+    Container <|-- Panel
+    Container <|-- JComponent
+    Window <|-- Frame
+    Window <|-- Dialog
+    Frame <|-- JFrame
+    Dialog <|-- JDialog
+    Panel <|-- Applet
+    Applet <|-- JApplet
+    JComponent <|-- JLabel
+    JComponent <|-- JButton
+    JComponent <|-- JTextField
+    JComponent <|-- Others
+    class Others["..."]
 ```
 
 *그림 1. AWT와 Swing의 GUI 클래스 계층*

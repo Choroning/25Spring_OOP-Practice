@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-04
 
 > **학습 목표:**
 > 1. File 클래스와 JFileChooser로 파일을 지정하고 정보를 얻을 수 있다
@@ -307,20 +307,13 @@ outDataStream.writeDouble(7.2);
 outDataStream.close();
 ```
 
-```text
-writeInt(44)    writeBoolean(true)    writeDouble(7.2)
-      │                  │                    │
-      └──────────────────┼────────────────────┘
-                         ▼
-             ┌───────────────────────┐
-             │    DataOutputStream   │  기본형 값을 바이트열로 변환
-             └───────────┬───────────┘
-                         ▼
-             ┌───────────────────────┐
-             │    FileOutputStream   │  바이트를 파일에 씀
-             └───────────┬───────────┘
-                         ▼
-                   example2.data
+```mermaid
+flowchart TD
+    W1["writeInt(44)"] --> DOS
+    W2["writeBoolean(true)"] --> DOS
+    W3["writeDouble(7.2)"] --> DOS
+    DOS["DataOutputStream<br>기본형 값을 바이트열로 변환"] --> FOS["FileOutputStream<br>바이트를 파일에 씀"]
+    FOS --> F["example2.data"]
 ```
 
 *그림 2. DataOutputStream과 FileOutputStream을 겹친 출력 구조*

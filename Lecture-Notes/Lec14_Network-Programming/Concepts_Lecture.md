@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-04
 
 > **Learning Objectives:**
 > 1. Implement client-server communication using sockets
@@ -141,14 +141,20 @@ Socket socket = new Socket("localhost", 9999);
 
 ### 2.3 Client-Server Interaction Flow
 
-```text
-Server                              Client
-------                              ------
-ServerSocket(port)
-  accept() <-------- 3-way --------> Socket(host, port)
-  read from connectionSocket  <---  write to socket
-  write to connectionSocket  --->   read from socket
-  close                             close
+```mermaid
+sequenceDiagram
+    participant S as Server
+    participant C as Client
+    Note over S: ServerSocket(port)
+    Note over S: accept()
+    Note over C: Socket(host, port)
+    S<<->>C: 3-way handshake
+    C->>S: write to socket
+    Note over S: read from connectionSocket
+    S->>C: write to connectionSocket
+    Note over C: read from socket
+    Note over S: close
+    Note over C: close
 ```
 
 *Figure 2. Socket interaction between a TCP client and server*

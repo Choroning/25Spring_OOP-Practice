@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-04
 
 > **Learning Objectives:**
 > 1. Distinguish classes and objects, messages and methods, and class data values and instance data values
@@ -157,17 +157,12 @@ An object is comprised of data values and methods.
 - **Instance data value:** Maintains information specific to an individual instance. For example, each `BankAccount` object maintains its own current balance.
 - **Class data value:** Maintains information shared by all instances or aggregate information about the instances. For example, the minimum balance is information shared by all accounts, whereas the average balance of all `BankAccount` objects is aggregate information.
 
-```text
-                    ┌──────────────────────────┐
-                    │       BankAccount        │
-                    │ minimum balance: 100.00  │
-                    └──────────────────────────┘
-                     ┆            ┆           ┆
-┌─────────────────────┐ ┌─────────────────────┐ ┌─────────────────────┐
-│ SV129 : BankAccount │ │ SV098 : BankAccount │ │ SV211 : BankAccount │
-│ current balance:    │ │ current balance:    │ │ current balance:    │
-│   908.55            │ │   1304.98           │ │   354.00            │
-└─────────────────────┘ └─────────────────────┘ └─────────────────────┘
+```mermaid
+graph TD
+    BA["BankAccount<br>minimum balance: 100.00"]
+    BA -.- O1["SV129 : BankAccount<br>current balance: 908.55"]
+    BA -.- O2["SV098 : BankAccount<br>current balance: 1304.98"]
+    BA -.- O3["SV211 : BankAccount<br>current balance: 354.00"]
 ```
 
 *Figure 4. One class data value and a per-object instance data value*

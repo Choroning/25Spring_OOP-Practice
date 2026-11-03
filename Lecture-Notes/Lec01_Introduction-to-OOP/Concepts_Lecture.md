@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-04
 
 > **Learning Objectives:**
 > 1. Define object-oriented programming concepts (class, object, encapsulation)
@@ -175,9 +175,11 @@ Java is a **hybrid** language: it is both compiled and interpreted.
 1. **Compile:** `javac MyProgram.java` produces `MyProgram.class` (bytecode).
 2. **Execute:** `java MyProgram` launches the JVM, which interprets or JIT-compiles the bytecode.
 
-```text
-Source Code (.java)  -->  Bytecode (.class)  -->  JVM  -->  Output
-        [javac]                                  [java]
+```mermaid
+flowchart LR
+    SRC["Source Code (.java)"] -->|"javac"| BC["Bytecode (.class)"]
+    BC -->|"java"| JVM["JVM"]
+    JVM --> OUT["Output"]
 ```
 
 *Figure 3. Compilation and execution stages with the javac and java commands*
@@ -216,18 +218,25 @@ Because bytecode is platform-independent, the same `.class` file runs on Windows
 - If there is a `public` class, the source file name must match its name (`public class A` goes in `A.java`).
 - Compilation produces one `.class` file per class. A class declared inside another class (a nested class) becomes a file named `Outer$Inner.class`.
 
-```text
-A.java                         Compilation result (4 class files)
-┌──────────────────────┐
-│ public class A {     │  ──>  A.class
-│ }                    │
-│ class B {            │  ──>  B.class
-│ }                    │
-│ class C {            │  ──>  C.class
-│     class D {        │  ──>  C$D.class
-│     }                │
-│ }                    │
-└──────────────────────┘
+```mermaid
+flowchart LR
+    subgraph SRC["A.java"]
+        A["public class A { }"]
+        B["class B { }"]
+        subgraph C["class C { ... }"]
+            D["class D { }"]
+        end
+    end
+    subgraph OUT["Compilation result (4 class files)"]
+        AC["A.class"]
+        BC["B.class"]
+        CC["C.class"]
+        DC["C$D.class"]
+    end
+    A --> AC
+    B --> BC
+    C --> CC
+    D --> DC
 ```
 
 *Figure 5. Four class files generated from one source file*
