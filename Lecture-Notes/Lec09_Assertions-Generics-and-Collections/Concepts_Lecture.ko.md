@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-16
 
 > **학습 목표:**
 > 1. 디버깅과 계약에 의한 설계를 위해 단언문을 사용할 수 있다
@@ -96,7 +96,7 @@ public class Chap9Program1 {
 }
 ```
 
-정상적인 금액에서는 단언문이 모두 참이므로 `Balance:120.0`과 `Balance:100.0`을 출력한다. `withdraw(-20)`처럼 음수를 출금하면 잔액이 오히려 늘어나므로, 단언문을 활성화하고 실행했을 때 `AssertionError: Serious Error - balance did not decrease after withdrawal`이 발생한다.
+정상적인 금액에서는 단언문이 모두 참이므로 `Balance:120.0`과 `Balance:100.0`을 출력한다. `withdraw(-20)`처럼 음수를 출금하면 잔액이 오히려 늘어나므로, 단언문을 활성화하고 실행했을 때 `AssertionError: Serious Error - balance did not decrease after withdrawal`이 발생한다. 같은 예제의 실습 코드는 [AssertionDemo.java](../../Coursework/Lab09_Assertions-Generics-and-Collections/AssertionDemo.java)이며, `java -ea AssertionDemo`로 실행한다.
 
 ### 1.2 단언문 활성화
 

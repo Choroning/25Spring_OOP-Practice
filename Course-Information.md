@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-16
 
 ## Table of Contents
 
@@ -79,7 +79,7 @@
   - The Java code must run cleanly when the teaching assistant runs it.
   - Homeworks 2 and 3 give partial scores, so students are encouraged to try as far as they can even if they cannot solve a problem completely.
   - To prevent abuse of ChatGPT, the pattern recognition for the issues is left to the developer in most problems. The instructor states the wish that students feel directly in what areas developers can have an edge in the AI era, such as raising issues, recognizing patterns, and segmenting requirements, where ChatGPT still cannot beat a human developer. Homework 1 tells students to use ChatGPT actively.
-- **Homework 1 (HW#1):** Ten problems.
+- **Homework 1 (HW#1):** Ten problems. The original questions and example input and output are in the [assignment handout](Coursework/HW01_Java-Basics-and-Arrays/Original/Assignment.md).
   - Q1: Write `Q1.java`, which receives an English sentence and prints it in reverse order word by word. Students must find the case rules in the example and produce the same result.
   - Q2: Write `Q2.java`, which receives a name and student ID from a dialog and prints them as in the example. The entered name and student ID must be separated automatically, and the digits of the student ID must be summed cumulatively with a loop (for the ID "12345", the result of "1 + 2 + 3 + 4 + 5").
   - Q3: Freely design a program that includes the `JOptionPane`, `String`, `Date`, and `SimpleDateFormat` classes learned so far and conditional statements. Public problems on the Internet may be referenced, but the link must be quoted in the report.
@@ -90,7 +90,7 @@
   - Q8: Develop `Q8.java`, which finds and sums all the real numbers hidden in a sentence.
   - Q9: Write a GUI program that takes a date in the YYYY-MM-DD format and tells the season by the Korean standard (March-May spring, June-August summer, September-November fall, December-February winter).
   - Q10: Implement a runnable Java-based Notepad program using ChatGPT, and find and edit the relevant part so that the student's ID and name appear in the title bar. There are no restrictions on its design and operation.
-- **Homework 2 (HW#2):** Nine problems. The instructions state that as of April 10, when the homework was uploaded, some skills such as Javadoc comments had not been learned yet and would be learned the following week. The files `Q1.data`, `Q1_CodeBook.data`, and `Q9.Data` were distributed with the handout.
+- **Homework 2 (HW#2):** Nine problems. The instructions state that as of April 10, when the homework was uploaded, some skills such as Javadoc comments had not been learned yet and would be learned the following week. The files `Q1.data`, `Q1_CodeBook.data`, and `Q9.Data` were distributed with the handout. The original questions and the distributed files are in the folder of the [assignment handout](Coursework/HW02_Collections-and-File-IO/Original/Assignment.md).
   - Q1: Develop a program that decrypts the given binary file based on the format described in the codebook. The binary file can be restored only in the order of the codebook; students confirm the restoration by reproducing the result in the screenshot, separate each different form, and save and submit them as five human-readable files.
   - Q2: Write `Q2.java`, which receives eight integers, stores them in a one-dimensional array, and sorts them in ascending order. A non-integer input must be handled as an exception with a warning message and asked again, and quicksort or bubble sort may be used.
   - Q3: Implement a real-time calculator, `Q3.java`, that accepts an unlimited number of inputs in the form (operator [space] real number). The starting value is 0; dividing by 0 or entering a non-real value must be handled appropriately as an exception instead of ending in an error, and entering "exit" prints the process and results of all the operations entered so far and terminates the program.
@@ -100,7 +100,7 @@
   - Q7: Prove empirically through actual Java code the proposition "In general, the quick sort algorithm is faster than the bubblesort algorithm", using the runtime estimation method learned in class.
   - Q8: Develop a system program that calculates the difference in days from a given date. It must calculate any point in the past or future, print D+ for future points and D- for past points, and receiving the date through a separate UI is treated as incorrect.
   - Q9: Implement an `Automobile` class and a main class `Q9` for a used car management program. Load all the information in the tab-delimited `Q9.Data` file into individual objects, and provide at least three overloaded constructors that treat unknown values as "NA". Randomly generate 100 new cars (no duplicate model names) whose feature values lie within the range of the existing data with `genAutomobile()`, describe the ideal design direction of a CUI that searches cars by conditions such as "Miles > 20 and Number of cylinders == 4", and develop a prototype.
-- **Homework 3 (HW#3):** Five problems worth 20 points (Q1), 30 points (Q2), 30 points (Q3), 10 points (Q4), and 10 points (Q5). A DNA sequence file `Q1.txt` of about 200 MB was distributed with the handout.
+- **Homework 3 (HW#3):** Five problems worth 20 points (Q1), 30 points (Q2), 30 points (Q3), 10 points (Q4), and 10 points (Q5). A DNA sequence file `Q1.txt` of about 200 MB was distributed with the handout. The original questions and the format of `Q1.txt` are in the [assignment handout](Coursework/HW03_Threads-and-Networking/Original/Assignment.md).
   - Q1 and Q2 deal with vaccine development through computational methods, against the background that avian influenza, which can be transmitted to humans, is expected to become another infectious disease that causes a crisis after COVID-19 in 2020 (<https://www.who.int/emergencies/disease-outbreak-news/item/2024-DON524>).
   - Q1: Develop a program that finds the frequencies of the 1,024 five-letter combinations of A, C, G, and T (from AAAAA to TTTTT) in the DNA sequence of `Q1.txt` with a sliding window that moves one letter at a time. The result is saved in `Q1_output.txt` and submitted together, the elapsed time is displayed in the command window, and "N" in the file may be ignored.
   - Q2: Since `Q1.txt` is a toy example smaller than 1/100,000,000,000 of the scale of the actual problem, speed up the program of Q1 with parallel processing. Students develop the optimal program considering that the teaching assistant's grading computer has 16 cores, and the grades are ranked by computation speed from first place (30 points).

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-16
 
 > **Learning Objectives:**
 > 1. Define a class with data members, methods, and constructors, and organize a program into multiple classes
@@ -445,7 +445,7 @@ public class Account {
 }
 ```
 
-Because `balance` is `private`, clients can change the balance only through `deposit` and `withdraw`. The two methods reject negative amounts and withdrawals larger than the balance, which keeps the balance from becoming invalid.
+Because `balance` is `private`, clients can change the balance only through `deposit` and `withdraw`. The two methods reject negative amounts and withdrawals larger than the balance, which keeps the balance from becoming invalid. The lab code that adds overloaded constructors and a getter and setter for the owner name to this `Account` is [Account.java](../../Coursework/Lab07_Advanced-Classes-I/Account.java), and the lab code for a `Bicycle` encapsulated with private fields, getters, and setters is [Bicycle.java](../../Coursework/Lab07_Advanced-Classes-I/Bicycle.java).
 
 ---
 
@@ -599,6 +599,8 @@ The balance is 250 + 25 - 50 = 225, so the output is as follows.
 Minseok Seo owns a bicycle and
 has $ 225.0 left in the bank
 ```
+
+The lab code [MultipleClassesDemo.java](../../Coursework/Lab07_Advanced-Classes-I/MultipleClassesDemo.java) also uses the two classes together. It creates two `Bicycle` objects with owner names and prints the names, then creates an `Account` with a balance of 1000.0, deposits 500.0, withdraws 200.0, and prints the balances 1500.0 and 1300.0 in turn.
 
 Any class can become a main class by including a `main` method. For example, the `Bicycle` class can contain a `main` that shows a sample use of `Bicycle` and be run with `java Bicycle`.
 

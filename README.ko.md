@@ -23,8 +23,8 @@
 ## 📝 레포지토리 소개
 
 - `Lecture-Notes/`에는 슬라이드 번호(`Lec01`\~`Lec15`)를 따른 강의 노트가 있습니다.
-- `Coursework/`에는 단원별 Java 실습 코드(`Lab##`), 과제 풀이(`HW01`\~`HW03`), 텀 프로젝트가 있습니다.
-- 모든 강의 노트는 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
+- `Coursework/`에는 단원별 Java 실습 코드(`Lab##`), 과제 안내문과 풀이, 해설(`HW01`\~`HW03`), 텀 프로젝트가 있습니다.
+- 모든 강의 노트와 과제 문서는 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
 
 > **🤖 생성형 AI 도구 사용**
 > 이 과목은 생성형 AI 도구 사용을 허용하며, 이 레포지토리는 문서화에 [Claude Code](https://claude.ai/download)를 사용합니다.
@@ -63,7 +63,7 @@ Java로 객체 지향 프로그래밍의 핵심 개념과 기초를 배우는 �
 ```plaintext
 25Spring_OOP-Practice
 ├── Lecture-Notes               강의별 강의 노트
-├── Coursework                  강의별 Java 실습 코드, 과제 풀이, 텀 프로젝트
+├── Coursework                  강의별 Java 실습 코드, 과제 안내문과 풀이, 텀 프로젝트
 ├── Course-Information.ko.md    수업 운영 정보
 ├── Course-Information.md
 ├── LICENSE                     문서 라이선스 (CC BY-NC-SA 4.0)
@@ -72,7 +72,7 @@ Java로 객체 지향 프로그래밍의 핵심 개념과 기초를 배우는 �
 └── README.md
 ```
 
-단원 목록은 [`Lecture-Notes` 색인](Lecture-Notes/README.ko.md)에, 실습 코드, 과제 풀이, 텀 프로젝트는 [`Coursework` 색인](Coursework/README.ko.md)에 있습니다.
+단원 목록은 [`Lecture-Notes` 색인](Lecture-Notes/README.ko.md)에, 실습 코드, 과제, 텀 프로젝트는 [`Coursework` 색인](Coursework/README.ko.md)에 있습니다.
 
 <br><a name="license"></a>
 ## 🤝 라이선스

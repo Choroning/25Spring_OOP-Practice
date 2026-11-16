@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-16
 
 > **학습 목표:**
 > 1. 메서드에서 객체를 반환하는 과정과 예약어 this의 쓰임을 설명할 수 있다
@@ -261,7 +261,7 @@ public class Dice {
 }
 ```
 
-생성자가 오버로딩되어 있어 `new Dice()`는 6면체, `new Dice(20)`은 20면체 주사위를 만들며, 매개변수 없는 생성자는 `this(DEFAULT_FACES)`로 초기화를 위임한다. `random.nextInt(faces)`는 0 이상 `faces` 미만의 정수를 반환하므로 `roll()`은 1부터 `faces`까지의 값을 낸다. 필드가 모두 `final`이라 면의 수는 생성 뒤에 바뀌지 않는다. `faces`가 0 이하이면 `nextInt`가 `IllegalArgumentException`을 던지므로, 실제로는 생성자에서 값을 검사하는 편이 안전하다.
+생성자가 오버로딩되어 있어 `new Dice()`는 6면체, `new Dice(20)`은 20면체 주사위를 만들며, 매개변수 없는 생성자는 `this(DEFAULT_FACES)`로 초기화를 위임한다. `random.nextInt(faces)`는 0 이상 `faces` 미만의 정수를 반환하므로 `roll()`은 1부터 `faces`까지의 값을 낸다. 필드가 모두 `final`이라 면의 수는 생성 뒤에 바뀌지 않는다. `faces`가 0 이하이면 `nextInt`가 `IllegalArgumentException`을 던지므로, 실제로는 생성자에서 값을 검사하는 편이 안전하다. 생성자에서 면의 수가 1 이상인지 검사하고 Javadoc 주석을 단 실습 코드는 [Dice.java](../../Coursework/Lab08_Advanced-Classes-II/Dice.java)이며, `main`에서 6면체와 20면체 주사위를 한 번씩 굴린다.
 
 ---
 

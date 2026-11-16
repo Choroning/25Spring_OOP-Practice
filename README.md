@@ -23,8 +23,8 @@ This repository archives lecture notes and coursework for the Object-Oriented Pr
 ## 📝 About This Repository
 
 - `Lecture-Notes/` holds lecture notes that follow the slide numbers (`Lec01`-`Lec15`).
-- `Coursework/` holds the Java lab code for each unit (`Lab##`), the assignment solutions (`HW01`-`HW03`), and the term project.
-- Every lecture note comes as an English (`.md`) and Korean (`.ko.md`) pair.
+- `Coursework/` holds the Java lab code for each unit (`Lab##`), the assignment handouts, solutions, and explanations (`HW01`-`HW03`), and the term project.
+- Every lecture note and assignment document comes as an English (`.md`) and Korean (`.ko.md`) pair.
 
 > **🤖 Use of Generative AI Tools**
 > This course permits the use of generative AI tools; this repository uses [Claude Code](https://claude.ai/download) for documentation.
@@ -63,7 +63,7 @@ A major elective course on the core concepts of object-oriented programming and 
 ```plaintext
 25Spring_OOP-Practice
 ├── Lecture-Notes               Lecture notes by lecture
-├── Coursework                  Java lab code by lecture, homework solutions, and term project
+├── Coursework                  Java lab code by lecture, homework handouts and solutions, and term project
 ├── Course-Information.ko.md    Course operations
 ├── Course-Information.md
 ├── LICENSE                     Documentation license (CC BY-NC-SA 4.0)
@@ -72,7 +72,7 @@ A major elective course on the core concepts of object-oriented programming and 
 └── README.md
 ```
 
-The units are listed in the [`Lecture-Notes` index](Lecture-Notes/README.md), and the lab code, homework solutions, and term project in the [`Coursework` index](Coursework/README.md).
+The units are listed in the [`Lecture-Notes` index](Lecture-Notes/README.md), and the lab code, homework, and term project in the [`Coursework` index](Coursework/README.md).
 
 <br><a name="license"></a>
 ## 🤝 License

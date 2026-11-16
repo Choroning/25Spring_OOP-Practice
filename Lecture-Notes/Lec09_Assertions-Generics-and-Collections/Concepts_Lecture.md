@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-16
 
 > **Learning Objectives:**
 > 1. Use assertions for debugging and design-by-contract
@@ -96,7 +96,7 @@ public class Chap9Program1 {
 }
 ```
 
-With normal amounts, all assertions hold, so the program prints `Balance:120.0` and `Balance:100.0`. Withdrawing a negative amount, as in `withdraw(-20)`, increases the balance instead, so running with assertions enabled raises `AssertionError: Serious Error - balance did not decrease after withdrawal`.
+With normal amounts, all assertions hold, so the program prints `Balance:120.0` and `Balance:100.0`. Withdrawing a negative amount, as in `withdraw(-20)`, increases the balance instead, so running with assertions enabled raises `AssertionError: Serious Error - balance did not decrease after withdrawal`. The lab code for the same example is [AssertionDemo.java](../../Coursework/Lab09_Assertions-Generics-and-Collections/AssertionDemo.java), run with `java -ea AssertionDemo`.
 
 ### 1.2 Enabling Assertions
 

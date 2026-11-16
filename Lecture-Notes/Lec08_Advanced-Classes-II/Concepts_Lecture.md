@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-16
 
 > **Learning Objectives:**
 > 1. Describe how objects are returned from methods and how the reserved word this is used
@@ -261,7 +261,7 @@ public class Dice {
 }
 ```
 
-The constructors are overloaded, so `new Dice()` creates a six-sided die and `new Dice(20)` a twenty-sided one, and the no-argument constructor delegates initialization with `this(DEFAULT_FACES)`. `random.nextInt(faces)` returns an integer from 0 up to but not including `faces`, so `roll()` gives a value from 1 to `faces`. All fields are `final`, so the number of faces never changes after construction. If `faces` is 0 or less, `nextInt` throws `IllegalArgumentException`, so in practice it is safer to check the value in the constructor.
+The constructors are overloaded, so `new Dice()` creates a six-sided die and `new Dice(20)` a twenty-sided one, and the no-argument constructor delegates initialization with `this(DEFAULT_FACES)`. `random.nextInt(faces)` returns an integer from 0 up to but not including `faces`, so `roll()` gives a value from 1 to `faces`. All fields are `final`, so the number of faces never changes after construction. If `faces` is 0 or less, `nextInt` throws `IllegalArgumentException`, so in practice it is safer to check the value in the constructor. The lab code that checks in the constructor that the number of faces is at least 1 and adds Javadoc comments is [Dice.java](../../Coursework/Lab08_Advanced-Classes-II/Dice.java), and its `main` rolls a six-sided die and a twenty-sided die once each.
 
 ---
 

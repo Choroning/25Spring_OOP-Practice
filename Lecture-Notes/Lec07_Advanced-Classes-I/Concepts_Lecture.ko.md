@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-04
+> **최종 수정일:** 2026-11-16
 
 > **학습 목표:**
 > 1. 데이터 멤버, 메서드, 생성자를 가진 클래스를 정의하고 여러 클래스로 프로그램을 구성할 수 있다
@@ -445,7 +445,7 @@ public class Account {
 }
 ```
 
-`balance`가 `private`이므로 클라이언트는 `deposit`과 `withdraw`를 거쳐야만 잔액을 바꿀 수 있다. 두 메서드가 음수 금액과 잔액을 넘는 출금을 거부하므로 잔액이 잘못된 값이 되는 일을 막을 수 있다.
+`balance`가 `private`이므로 클라이언트는 `deposit`과 `withdraw`를 거쳐야만 잔액을 바꿀 수 있다. 두 메서드가 음수 금액과 잔액을 넘는 출금을 거부하므로 잔액이 잘못된 값이 되는 일을 막을 수 있다. 이 `Account`에 오버로딩된 생성자와 계좌주 이름의 getter, setter를 더한 실습 코드는 [Account.java](../../Coursework/Lab07_Advanced-Classes-I/Account.java), private 필드와 getter, setter로 캡슐화한 `Bicycle`의 실습 코드는 [Bicycle.java](../../Coursework/Lab07_Advanced-Classes-I/Bicycle.java)이다.
 
 ---
 
@@ -599,6 +599,8 @@ public class Chap7Program2 {
 Minseok Seo owns a bicycle and
 has $ 225.0 left in the bank
 ```
+
+실습 코드 [MultipleClassesDemo.java](../../Coursework/Lab07_Advanced-Classes-I/MultipleClassesDemo.java)도 두 클래스를 함께 쓴다. 계좌주 이름을 정한 `Bicycle` 두 개를 만들어 이름을 출력하고, 잔액 1000.0으로 만든 `Account`에 500.0을 입금하고 200.0을 출금한 뒤 잔액 1500.0과 1300.0을 차례로 출력한다.
 
 어떤 클래스든 `main` 메서드를 넣으면 메인 클래스가 될 수 있다. 예를 들어 `Bicycle` 클래스 안에 `Bicycle`의 사용 예를 보이는 `main`을 두고 `java Bicycle`로 실행할 수 있다.
 
