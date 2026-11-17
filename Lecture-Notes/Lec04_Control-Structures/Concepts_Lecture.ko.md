@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-17
 
 > **학습 목표:**
 > 1. 조건문(if/else, switch)을 적용할 수 있다
@@ -623,7 +623,7 @@ long endNano = System.nanoTime();
 double seconds = (endNano - startNano) / 1_000_000_000.0;
 ```
 
-`Date`의 `getTime()`은 1970-01-01 00:00:00 UTC부터 지난 시간을 밀리초로 반환하므로, 두 시점의 차가 경과 시간이다. 다음은 삼중 `for` 루프의 실행 시간을 `Date`로 측정하는 예이다(실습 코드: [ExecutionTimeMeasurement.java](../../Coursework/Lab04_Control-Structures/ExecutionTimeMeasurement.java)).
+`Date`의 `getTime()`은 1970-01-01 00:00:00 UTC부터 지난 시간을 밀리초로 반환하므로, 두 시점의 차가 경과 시간이다. 다음은 삼중 `for` 루프의 실행 시간을 `Date`로 측정하는 예이다(같은 루프를 `System.nanoTime()`으로 재는 실습 코드: [ExecutionTimeMeasurement.java](../../Coursework/Lab04_Control-Structures/ExecutionTimeMeasurement.java)).
 
 ```java
 import java.util.Date;

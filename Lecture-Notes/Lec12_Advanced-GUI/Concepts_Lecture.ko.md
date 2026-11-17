@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-04
+> **최종 수정일:** 2026-11-17
 
 > **학습 목표:**
 > 1. Swing 컴포넌트를 사용하여 GUI 애플리케이션을 구축할 수 있다
@@ -206,7 +206,7 @@ c.add(new JTextField(""));
 
 *표 2. 컨테이너별 기본 배치 관리자*
 
-Swing의 최상위 창(`JFrame`, `JDialog` 등)에서 BorderLayout을 쓰는 것은 정확히는 그 창의 컨텐트팬이다.
+Swing의 최상위 창(`JFrame`, `JDialog`, `JApplet` 등)에서 기본 배치 관리자가 적용되는 곳은 정확히는 그 창의 컨텐트팬이며, 컨텐트팬의 기본 배치 관리자는 BorderLayout이다. 따라서 `JApplet`의 컨텐트팬도 BorderLayout이고, 표의 FlowLayout은 AWT의 `Applet`에 해당한다.
 
 ### 3.4 절대 위치 지정
 
@@ -367,7 +367,7 @@ class MyActionListener implements ActionListener {
 }
 ```
 
-`ButtonHandler` 같은 별도의 리스너 클래스를 두는 대신, 이벤트 소스를 담고 있는 객체 자신을 리스너로 만드는 경우도 많다. 예를 들어 프레임 클래스가 `implements ActionListener`로 선언하고 `actionPerformed()`를 구현한 뒤, 자신이 담은 버튼마다 `button.addActionListener(this)`를 호출하면 프레임이 그 버튼들의 액션 이벤트를 처리한다. 이때 어느 버튼에서 이벤트가 왔는지는 `getSource()`나 `getActionCommand()`로 구분한다.
+`MyActionListener` 같은 별도의 리스너 클래스를 두는 대신, 이벤트 소스를 담고 있는 객체 자신을 리스너로 만드는 경우도 많다. 예를 들어 프레임 클래스가 `implements ActionListener`로 선언하고 `actionPerformed()`를 구현한 뒤, 자신이 담은 버튼마다 `button.addActionListener(this)`를 호출하면 프레임이 그 버튼들의 액션 이벤트를 처리한다. 이때 어느 버튼에서 이벤트가 왔는지는 `getSource()`나 `getActionCommand()`로 구분한다.
 
 ### 5.4 익명 클래스와 람다
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Use assertions for debugging and design-by-contract
@@ -120,7 +120,9 @@ Without the `-ea` (enable assertions) option, the program runs without checking 
 
 ### 2.1 The Concept of Generics
 
-> **Definition:** **Generics** is a technique that generalizes a class or method instead of tying it to a specific type, so that it can be turned into various types when used. A name written inside angle brackets, such as `<E>`, `<K>`, or `<V>`, is a **type parameter**. By convention, E stands for element, K for key, V for value, and T for type.
+> **Definition:** **Generics** is a technique that generalizes a class or method instead of tying it to a specific type, so that it can be turned into various types when used.
+
+> **Definition:** A name written inside angle brackets, such as `<E>`, `<K>`, or `<V>`, is a **type parameter**. By convention, E stands for element, K for key, V for value, and T for type.
 
 For example, once a generic stack `Stack<E>` is defined, specifying `E` as `Integer` gives a stack that holds only integers, and specifying it as `String` gives a stack that holds only strings.
 

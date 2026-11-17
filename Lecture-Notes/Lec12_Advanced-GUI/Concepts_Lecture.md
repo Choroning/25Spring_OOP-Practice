@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Build GUI applications using Swing components
@@ -206,7 +206,7 @@ Each container has a default layout manager, which `setLayout()` can change (for
 
 *Table 2. Default layout manager of each container*
 
-For Swing top-level windows (`JFrame`, `JDialog`, and so on), it is precisely the content pane of the window that uses BorderLayout.
+For Swing top-level windows (`JFrame`, `JDialog`, `JApplet`, and so on), the default layout manager applies precisely to the content pane of the window, and the default layout manager of a content pane is BorderLayout. The content pane of `JApplet` therefore also uses BorderLayout, and the FlowLayout in the table applies to the AWT `Applet`.
 
 ### 3.4 Absolute Positioning
 
@@ -367,7 +367,7 @@ class MyActionListener implements ActionListener {
 }
 ```
 
-Instead of defining a separate listener class such as `ButtonHandler`, it is also common to make the object that contains the event sources the listener itself. For example, a frame class declared with `implements ActionListener` implements `actionPerformed()` and calls `button.addActionListener(this)` for each button it contains, so that the frame handles the action events of those buttons. Which button the event came from is then distinguished with `getSource()` or `getActionCommand()`.
+Instead of defining a separate listener class such as `MyActionListener`, it is also common to make the object that contains the event sources the listener itself. For example, a frame class declared with `implements ActionListener` implements `actionPerformed()` and calls `button.addActionListener(this)` for each button it contains, so that the frame handles the action events of those buttons. Which button the event came from is then distinguished with `getSource()` or `getActionCommand()`.
 
 ### 5.4 Anonymous Classes and Lambdas
 

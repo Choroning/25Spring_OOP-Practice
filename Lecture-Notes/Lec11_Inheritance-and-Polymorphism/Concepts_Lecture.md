@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Implement class hierarchies using inheritance
@@ -377,7 +377,9 @@ class Dog {
 
 When we define a superclass, we often do not need to create any instances of it. For example, if a student must be either an undergraduate or a graduate student, only instances of `UndergraduateStudent` and `GraduateStudent` are needed, so `Student` should be defined so that no instances of it can be created.
 
-> **Definition:** An **abstract class** is a class that (1) is defined with the modifier `abstract`, (2) contains an abstract method, or (3) does not implement an inherited abstract method. In the last two cases the class declaration must also carry `abstract`, or the compiler reports an error. An **abstract method** is a method marked with the keyword `abstract` that ends with a semicolon instead of a method body. Private methods and static methods cannot be declared abstract.
+> **Definition:** An **abstract class** is a class that (1) is defined with the modifier `abstract`, (2) contains an abstract method, or (3) does not implement an inherited abstract method. In the last two cases the class declaration must also carry `abstract`, or the compiler reports an error.
+
+> **Definition:** An **abstract method** is a method marked with the keyword `abstract` that ends with a semicolon instead of a method body. Private methods and static methods cannot be declared abstract.
 
 Abstract classes cannot be instantiated and may contain abstract methods:
 

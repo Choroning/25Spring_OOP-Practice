@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Interpret the structure of a binary file with a codebook and verify the restored result
@@ -309,7 +309,7 @@ The results of three runs with Java 24 on an Apple M2 Pro are as follows. Runnin
 
 *Table 4. Running times measured on random arrays of size 10,000*
 
-Quicksort was more than 40 times faster every time. The number of comparisons explains the difference. With $n$ elements, bubble sort makes at most $n(n-1)/2$ comparisons, and on a random array swaps continue almost to the end, so early termination does not help much. For $n = 10{,}000$ that is about 50 million. Quicksort makes about $2n \ln n$ comparisons on average, about 180,000. In terms of time complexity, bubble sort is $O(n^2)$ and quicksort is $O(n \log n)$ on average; when $n$ doubles, the time of bubble sort grows about four times and that of quicksort slightly more than twice.
+Quicksort was more than 40 times faster in all three runs. The number of comparisons explains the difference. With $n$ elements, bubble sort makes at most $n(n-1)/2$ comparisons, and on a random array swaps continue almost to the end, so early termination does not help much. For $n = 10{,}000$ that is about 50 million. Quicksort makes about $2n \ln n$ comparisons on average, about 180,000. In terms of time complexity, bubble sort is $O(n^2)$ and quicksort is $O(n \log n)$ on average; when $n$ doubles, the time of bubble sort grows about four times and that of quicksort slightly more than twice.
 
 > **Caution:** The ratio of running times is not equal to the ratio of comparisons (about 270 times). Factors outside the algorithm, such as the cost of a single comparison and swap and the moment JIT compilation happens, also enter the time. The solution measures each sort only once, so repeating the measurement and averaging, swapping the order, and increasing the array size would make the evidence stronger. Also, as the qualifier "In general" suggests, quicksort with the last element as the pivot partitions lopsidedly on an already sorted array and becomes $O(n^2)$, and in that case bubble sort with early termination finishes after one pass ($n - 1$ comparisons) and is faster.
 
@@ -327,7 +327,7 @@ Quicksort was more than 40 times faster every time. The number of comparisons ex
 | Floating-point sums | The compensated summation of `DoubleStream.sum()` and a simple loop sum can differ in the last digits. |
 | Repeating input validation | Inside `while (true)`, the program breaks only when `matches("^[A-Za-z]+$")` is true, and Cancel (`null`) is handled as a normal exit. |
 | Fair measurement | Give copies of the same array to both algorithms, measure with `System.nanoTime()`, and check that the results are the same. |
-| Time complexity of the sorts | Bubble sort is $O(n^2)$ and quicksort is $O(n \log n)$ on average, and at size 10,000 quicksort was more than 40 times faster. |
+| Time complexity of the sorts | Bubble sort is $O(n^2)$ and quicksort is $O(n \log n)$ on average, and in the measurements at size 10,000 (Table 4) quicksort was more than 40 times faster. |
 
 ---
 
@@ -367,7 +367,7 @@ Quicksort was more than 40 times faster every time. The number of comparisons ex
    <details>
    <summary>Answer</summary>
 
-   Quicksort receives an already sorted array. Partitioning with the last element as the pivot leaves all elements except the pivot on one side of a sorted array, so the comparisons grow to about $n(n-1)/2$, and at size 10,000 quicksort becomes more than ten times slower than on a random array (measured example: from about 1 ms to about 15 ms). The recursion depth also approaches $n$, so at size 100,000 a `StackOverflowError` occurs. The two algorithms are no longer compared on the same input, so the result is not evidence for the proposition.
+   Quicksort receives an already sorted array. Partitioning with the last element as the pivot leaves all elements except the pivot on one side of a sorted array, so the comparisons grow to about $n(n-1)/2$, and at size 10,000 quicksort becomes more than ten times slower than on a random array (measured example: from about 1 ms to a little over 20 ms). The recursion depth also approaches $n$, so at size 100,000 a `StackOverflowError` occurs. The two algorithms are no longer compared on the same input, so the result is not evidence for the proposition.
 
    </details>
 

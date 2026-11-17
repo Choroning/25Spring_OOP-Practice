@@ -2,7 +2,7 @@
 
 [Repository Guide](../README.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **Last Updated:** 2026-11-10
+> **Last Updated:** 2026-11-17
 
 | Unit | Topics | Documents |
 |:-----|:-----|:-----|
@@ -17,7 +17,7 @@
 | [Lecture 9 Assertions, Generics, and Collections](Lec09_Assertions-Generics-and-Collections/) | Syntax, usage, and enabling of assertions, generic classes and generic methods, bounded type parameters, the collections framework, `ArrayList`, `HashMap`, iterating collections | [Lecture notes](Lec09_Assertions-Generics-and-Collections/Concepts_Lecture.md) |
 | [Lecture 10 File I/O](Lec10_File-IO/) | Byte streams and character streams, the `File` class, reading and writing text files, `DataInputStream` and `DataOutputStream`, `ObjectInputStream` and `ObjectOutputStream`, try-with-resources, the `Serializable` interface | [Lecture notes](Lec10_File-IO/Concepts_Lecture.md) |
 | [Lecture 11 Inheritance and Polymorphism](Lec11_Inheritance-and-Polymorphism/) | Inheritance hierarchies, the `protected` modifier, constructor chaining with `super()`, dynamic binding, the `instanceof` operator, rules for method overriding and the `@Override` annotation, abstract classes and interfaces, design patterns using inheritance | [Lecture notes](Lec11_Inheritance-and-Polymorphism/Concepts_Lecture.md) |
-| [Lecture 12 Advanced GUI](Lec12_Advanced-GUI/) | AWT and Swing, the GUI class hierarchy, creating and subclassing `JFrame`, the content pane, the `FlowLayout`, `BorderLayout`, and `GridLayout` layout managers, common Swing components, event handling with `ActionListener`, anonymous classes, and lambdas | [Lecture notes](Lec12_Advanced-GUI/Concepts_Lecture.md) |
+| [Lecture 12 Advanced GUI](Lec12_Advanced-GUI/) | AWT and Swing, the GUI class hierarchy, creating and subclassing `JFrame`, the content pane, the `FlowLayout`, `BorderLayout`, and `GridLayout` layout managers, common Swing components, the delegation-based event model and event objects, event handling with `ActionListener`, anonymous classes, and lambdas, mouse events and adapter classes, and key events | [Lecture notes](Lec12_Advanced-GUI/Concepts_Lecture.md) |
 | [Lecture 13 Threading](Lec13_Threading/) | Multitasking and threads, the thread life cycle, a comparison of extending the `Thread` class and implementing the `Runnable` interface, `sleep()`, `join()`, multi-threaded performance | [Lecture notes](Lec13_Threading/Concepts_Lecture.md) |
 | [Lecture 14 Network Programming](Lec14_Network-Programming/) | Sockets, TCP and UDP, socket pairs (4-tuple), `ServerSocket` and `Socket`, the client-server interaction flow, reading and writing over sockets, multi-client server architecture, GUI-based network applications | [Lecture notes](Lec14_Network-Programming/Concepts_Lecture.md) |
 | [Lecture 15 Advanced Threading](Lec15_Advanced-Threading/) | The thread control block and thread states, thread priority and scheduling, natural termination, `interrupt()`, flag-based termination, the `synchronized` keyword, synchronized blocks and synchronized methods, `wait()`, `notify()`, and `notifyAll()`, race conditions and their prevention | [Lecture notes](Lec15_Advanced-Threading/Concepts_Lecture.md) |

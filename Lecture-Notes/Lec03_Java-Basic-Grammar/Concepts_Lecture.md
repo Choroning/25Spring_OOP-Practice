@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Name variables, constants, and classes according to the identifier rules and naming conventions
@@ -364,7 +364,7 @@ Hello, Dr. Caffeine.
 
 ### 6.2 Formatting Numbers with DecimalFormat
 
-The format of numerical output is set with a `java.text.DecimalFormat` object. The pattern `"0.000"` rounds and displays three decimal places.
+The format of numerical output is set with a `java.text.DecimalFormat` object. The pattern `"0.000"` rounds and displays three decimal places. The default rounding mode, however, is `RoundingMode.HALF_EVEN`: when the discarded part is exactly one half, the value is rounded toward the even last digit (for example, 0.0625 becomes 0.062 and 0.1875 becomes 0.188).
 
 ```java
 double num = 123.45789345;

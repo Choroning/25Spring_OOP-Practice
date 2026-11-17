@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Validate input received through dialogs and `Scanner` and split it into the needed values
@@ -91,7 +91,7 @@ java Assignment1_SentenceReverser
 
 ## 2. Requirements
 
-Every program must have a header comment and follow the standard naming rules. Each solution file starts with a comment holding the file name, the question number and summary, the author, and the date, and its class and `main` have Javadoc-style comments. The requirements of each question are as follows.
+Every program must have a header comment and follow the standard naming rules. Each solution file starts with a comment holding the file name, the question number and summary, the author, and the date, and its `main` method has a Javadoc-style comment. The requirements of each question are as follows.
 
 | Question | Input | Output and Conditions |
 |:-----|:-----|:-----|
@@ -217,7 +217,7 @@ if (diffInDays == 0) {
 ```
 
 - **Setting today's date to midnight:** `new Date()` holds the current time as well. Converting it to a `yyyy-MM-dd` string with `sdf.format` and parsing it back gives today's date at 0:00:00, so it can be compared on the same basis as the entered date (also at 0:00).
-- **Counting days:** `getTime()` is the number of milliseconds since 1970-01-01 00:00:00 UTC (Lecture 4), so dividing the difference of two dates by the milliseconds in a day, $1000 \times 60 \times 60 \times 24 = 86{,}400{,}000$, gives the number of days. Korean time has no daylight saving time, so a day is always 24 hours and the division leaves no remainder.
+- **Counting days:** `getTime()` is the number of milliseconds since 1970-01-01 00:00:00 UTC (Lecture 4), so dividing the difference of two dates by the milliseconds in a day, $1000 \times 60 \times 60 \times 24 = 86{,}400{,}000$, gives the number of days. If the default time zone, like present-day Korean Standard Time, does not use daylight saving time, a day is always 24 hours and the division leaves no remainder. In a time zone that does use daylight saving time, the difference across a transition day can fall one hour short, and the integer division can then count one day fewer.
 - **Strict parsing:** Without `setLenient(false)`, `SimpleDateFormat` rolls `2025-02-30` over to March 2. In strict mode it throws `ParseException`, and the `catch` block shows a dialog asking for a valid date.
 - **A three-way conditional:** A difference of 0 means today, a positive difference gives the days remaining, and a negative one gives the days passed after `Math.abs`.
 
@@ -312,7 +312,7 @@ The `DecimalFormat` pattern `#,##0.00` inserts a comma every three digits and ro
 
 *Table 6. Results of the Q5 solution*
 
-50000 / 1348.81 is about 37.0697, which rounds to 37.07 at the second decimal place.
+50000 / 1348.81 is about 37.0697, which rounds to 37.07 at two decimal places.
 
 ---
 

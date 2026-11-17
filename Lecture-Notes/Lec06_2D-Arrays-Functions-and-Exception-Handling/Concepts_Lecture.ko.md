@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-17
 
 > **학습 목표:**
 > 1. 2차원 배열을 생성하고 처리할 수 있다
@@ -306,7 +306,7 @@ public class Chap6Program4 {
 
 ### 3.1 예외의 정의
 
-> **용어 정의:** **예외(exception)** 는 프로그램이 정상적으로 실행되는 도중에 발생할 수 있는 오류 상황을 나타낸다. 예외가 발생하면, 즉 **던져지면**(thrown) 정상적인 실행 흐름이 중단되고 예외 처리 루틴이 실행된다. 이때 던져진 예외가 **잡혔다**(caught)고 한다.
+> **용어 정의:** **예외(exception)** 는 프로그램이 정상적으로 실행되는 도중에 발생할 수 있는 오류 상황을 나타낸다. 예외가 발생하면, 즉 던져지면(thrown) 정상적인 실행 흐름이 중단되고 예외 처리 루틴이 실행된다. 이때 던져진 예외가 잡혔다(caught)고 한다.
 
 예외를 잡지 않으면 프로그램은 예외 메시지와 스택 추적(stack trace)을 출력하고 비정상 종료한다. 예를 들어 다음 코드에서 사용자가 나이로 `ten`을 입력하면 `Integer.parseInt`가 `NumberFormatException`을 던진다.
 
@@ -448,7 +448,9 @@ classDiagram
 - `Error`는 메모리 부족처럼 프로그램이 복구하기 어려운 심각한 오류를 나타낸다. 9강의 `AssertionError`도 여기에 속한다.
 - `Exception`은 프로그램이 잡아서 처리할 수 있는 예외 상황을 나타낸다.
 
-> **용어 정의:** **비검사 예외(unchecked exception)** 는 `RuntimeException`과 `Error`, 그리고 그 하위 클래스이다. 컴파일러가 처리 여부를 검사하지 않으므로 잡거나 선언하지 않아도 컴파일된다. **검사 예외(checked exception)** 는 그 밖의 `Exception` 하위 클래스(`IOException` 등)이며, 이를 던질 수 있는 코드는 `try-catch`로 잡거나 메서드 머리에 `throws`로 선언해야 한다. 그렇지 않으면 `unreported exception IOException; must be caught or declared to be thrown` 같은 컴파일 오류가 난다.
+> **용어 정의:** **비검사 예외(unchecked exception)** 는 `RuntimeException`과 `Error`, 그리고 그 하위 클래스이다. 컴파일러가 처리 여부를 검사하지 않으므로 잡거나 선언하지 않아도 컴파일된다.
+
+> **용어 정의:** **검사 예외(checked exception)** 는 그 밖의 `Exception` 하위 클래스(`IOException` 등)이며, 이를 던질 수 있는 코드는 `try-catch`로 잡거나 메서드 머리에 `throws`로 선언해야 한다. 그렇지 않으면 `unreported exception IOException; must be caught or declared to be thrown` 같은 컴파일 오류가 난다.
 
 `ArithmeticException`, `NumberFormatException`, `NullPointerException`은 모두 `RuntimeException`의 하위 클래스이므로 비검사 예외이다. 그래서 3.4절의 `throws NumberFormatException`은 생략해도 컴파일되며, 이 예외가 날 수 있음을 호출자에게 알리는 문서 역할을 한다. 파일 입출력의 `IOException`은 검사 예외이다(10강).
 

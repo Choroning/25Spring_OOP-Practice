@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **최종 수정일:** 2026-10-26
+> **최종 수정일:** 2026-11-18
 
 Java로 구현한 멀티스레드 TCP 기반 채팅 시스템으로, 채팅방 관리, 여러 클라이언트의 동시 처리, 콘솔 클라이언트와 GUI 클라이언트를 갖추었다.
 
@@ -89,8 +89,8 @@ java ChatGUI
 
 이 프로젝트는 과목의 여러 강의에서 다룬 개념을 통합한다.
 
-- **7~8강:** 캡슐화와 상속을 이용한 객체 지향 클래스 설계
-- **9강:** 컬렉션 프레임워크(`ConcurrentHashMap`, `CopyOnWriteArrayList`)
+- **7~8강, 11강:** 캡슐화와 상속을 이용한 객체 지향 클래스 설계
+- **9강:** 컬렉션 프레임워크(`Map`과 그 구현인 `ConcurrentHashMap`)
 - **10강:** 소켓을 통한 스트림 기반 입출력
 - **12강:** Swing GUI 컴포넌트(`JFrame`, `JTextArea`, `JButton`, 배치 관리자)
 - **13강:** 멀티스레딩(클라이언트마다 스레드 하나)
@@ -99,5 +99,5 @@ java ChatGUI
 
 ## 참고 문헌
 
-- MIT 6.005: Software Construction, Concurrency and Thread Safety
-- Stanford CS108: Object-Oriented Systems Design, Network Programming in Java
+- S. Amarasinghe et al., "Reading 19: Concurrency," *6.005: Software Construction*, Massachusetts Institute of Technology, Fall 2015. https://web.mit.edu/6.005/www/fa15/classes/19-concurrency/
+- S. Amarasinghe et al., "Reading 20: Thread Safety," *6.005: Software Construction*, Massachusetts Institute of Technology, Fall 2015. https://web.mit.edu/6.005/www/fa15/classes/20-thread-safety/

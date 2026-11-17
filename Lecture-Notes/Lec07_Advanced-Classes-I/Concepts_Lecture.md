@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Define a class with data members, methods, and constructors, and organize a program into multiple classes
@@ -207,7 +207,9 @@ public Account(String name, double balance) {
 
 ### 3.1 Matching Arguments and Parameters
 
-> **Definition:** An **argument** is a value we pass to a method when calling it. A **parameter** is a placeholder in the called method that holds the value of the passed argument.
+> **Definition:** An **argument** is a value we pass to a method when calling it.
+
+> **Definition:** A **parameter** is a placeholder in the called method that holds the value of the passed argument.
 
 ```java
 class Sample {

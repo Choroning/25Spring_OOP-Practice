@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Describe how objects are returned from methods and how the reserved word this is used
@@ -269,7 +269,11 @@ The constructors are overloaded, so `new Dice()` creates a six-sided die and `ne
 
 ## 5. Object Destruction and Garbage Collection
 
-> **Definition:** **Object destruction** is returning the memory of an object allocated with `new` to the available memory of the Java virtual machine (JVM), and only the JVM can do it. **Garbage** is an object with no reference to it. **Garbage collection** is the process in which the JVM's garbage collector automatically finds garbage and returns it to available memory.
+> **Definition:** **Object destruction** is returning the memory of an object allocated with `new` to the available memory of the Java virtual machine (JVM), and only the JVM can do it.
+
+> **Definition:** **Garbage** is an object with no reference to it.
+
+> **Definition:** **Garbage collection** is the process in which the JVM's garbage collector automatically finds garbage and returns it to available memory.
 
 The following code shows when memory becomes eligible for reclamation.
 

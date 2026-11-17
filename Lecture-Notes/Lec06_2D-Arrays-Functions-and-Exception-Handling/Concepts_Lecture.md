@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Create and process two-dimensional arrays
@@ -306,7 +306,7 @@ Running `java Chap6Program4 1 2 3` prints `Sum of all input values: 6`. If an ar
 
 ### 3.1 Definition of an Exception
 
-> **Definition:** An **exception** represents an error condition that can occur during the normal course of program execution. When an exception occurs, or is **thrown**, the normal sequence of flow is terminated and the exception-handling routine is executed. We then say the thrown exception is **caught**.
+> **Definition:** An **exception** represents an error condition that can occur during the normal course of program execution. When an exception occurs, or is thrown, the normal sequence of flow is terminated and the exception-handling routine is executed. We then say the thrown exception is caught.
 
 If an exception is not caught, the program prints the exception message and a stack trace and terminates abnormally. For example, if the user enters `ten` as the age in the following code, `Integer.parseInt` throws `NumberFormatException`.
 
@@ -448,7 +448,9 @@ classDiagram
 - `Error` represents a serious problem that a program can hardly recover from, such as running out of memory. The `AssertionError` of Lecture 9 also belongs here.
 - `Exception` represents an exceptional condition that a program can catch and handle.
 
-> **Definition:** **Unchecked exceptions** are `RuntimeException`, `Error`, and their subclasses. The compiler does not check whether they are handled, so code compiles without catching or declaring them. **Checked exceptions** are the other subclasses of `Exception` (such as `IOException`); code that can throw one must catch it with `try-catch` or declare it with `throws` in the method header. Otherwise the compiler reports an error such as `unreported exception IOException; must be caught or declared to be thrown`.
+> **Definition:** **Unchecked exceptions** are `RuntimeException`, `Error`, and their subclasses. The compiler does not check whether they are handled, so code compiles without catching or declaring them.
+
+> **Definition:** **Checked exceptions** are the other subclasses of `Exception` (such as `IOException`); code that can throw one must catch it with `try-catch` or declare it with `throws` in the method header. Otherwise the compiler reports an error such as `unreported exception IOException; must be caught or declared to be thrown`.
 
 `ArithmeticException`, `NumberFormatException`, and `NullPointerException` are all subclasses of `RuntimeException`, so they are unchecked. This is why `throws NumberFormatException` in Section 3.4 can be omitted and still compile; it serves as documentation telling the caller that the exception may occur. The `IOException` of file I/O is a checked exception (Lecture 10).
 

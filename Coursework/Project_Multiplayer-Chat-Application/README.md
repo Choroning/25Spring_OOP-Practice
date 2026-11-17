@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](README.md) | [한국어](README.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-18
 
 A multi-threaded TCP-based chat system implemented in Java, featuring room management, concurrent client handling, and both console and GUI clients.
 
@@ -89,8 +89,8 @@ java ChatGUI
 
 This project integrates concepts from several lectures of the course:
 
-- **Lectures 7-8:** Object-oriented class design with encapsulation and inheritance
-- **Lecture 9:** Collections framework (`ConcurrentHashMap`, `CopyOnWriteArrayList`)
+- **Lectures 7-8 and 11:** Object-oriented class design with encapsulation and inheritance
+- **Lecture 9:** Collections framework (`Map` and its implementation `ConcurrentHashMap`)
 - **Lecture 10:** Stream-based I/O over sockets
 - **Lecture 12:** Swing GUI components (`JFrame`, `JTextArea`, `JButton`, layout managers)
 - **Lecture 13:** Multi-threading (one thread per client)
@@ -99,5 +99,5 @@ This project integrates concepts from several lectures of the course:
 
 ## References
 
-- MIT 6.005: Software Construction, Concurrency and Thread Safety
-- Stanford CS108: Object-Oriented Systems Design, Network Programming in Java
+- S. Amarasinghe et al., "Reading 19: Concurrency," *6.005: Software Construction*, Massachusetts Institute of Technology, Fall 2015. https://web.mit.edu/6.005/www/fa15/classes/19-concurrency/
+- S. Amarasinghe et al., "Reading 20: Thread Safety," *6.005: Software Construction*, Massachusetts Institute of Technology, Fall 2015. https://web.mit.edu/6.005/www/fa15/classes/20-thread-safety/

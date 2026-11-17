@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-17
 
 > **Learning Objectives:**
 > 1. Apply conditional statements (if/else, switch)
@@ -623,7 +623,7 @@ long endNano = System.nanoTime();
 double seconds = (endNano - startNano) / 1_000_000_000.0;
 ```
 
-`getTime()` of `Date` returns the milliseconds elapsed since 1970-01-01 00:00:00 UTC, so the difference between two moments is the elapsed time. The following measures the execution time of a triple `for` loop with `Date` (lab code: [ExecutionTimeMeasurement.java](../../Coursework/Lab04_Control-Structures/ExecutionTimeMeasurement.java)).
+`getTime()` of `Date` returns the milliseconds elapsed since 1970-01-01 00:00:00 UTC, so the difference between two moments is the elapsed time. The following measures the execution time of a triple `for` loop with `Date` (lab code that times the same loop with `System.nanoTime()`: [ExecutionTimeMeasurement.java](../../Coursework/Lab04_Control-Structures/ExecutionTimeMeasurement.java)).
 
 ```java
 import java.util.Date;
