@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-17
+> **최종 수정일:** 2026-11-18
 
 > **학습 목표:**
 > 1. 디버깅과 계약에 의한 설계를 위해 단언문을 사용할 수 있다
@@ -110,7 +110,7 @@ java -ea MyProgram
 
 `assert`는 JDK 1.4에서 도입되었다. 그 전에는 `assert`가 일반 식별자였으므로, JDK 1.4는 호환성을 위해 기본적으로 `assert`를 식별자로 취급했고 단언문을 쓰려면 `javac -source 1.4 <소스 파일>`로 컴파일해야 했다. Java 5부터는 `assert`가 예약어이므로 별도의 컴파일 옵션 없이 `javac`로 컴파일하고, 실행할 때 `-ea`만 지정하면 된다.
 
-> **핵심:** 단언문은 프로그램 불변 조건을 검사하는 데 사용해야 하며, 사용자 입력 검증에는 사용하지 않아야 한다. 사용자 입력에는 예외 처리나 조건문을 사용한다.
+단언문은 프로그램 불변 조건을 검사하는 데 사용해야 하며, 사용자 입력 검증에는 사용하지 않아야 한다. 사용자 입력에는 예외 처리나 조건문을 사용한다.
 
 ---
 
@@ -137,7 +137,7 @@ class Stack<E> {
 
 `Stack<Integer>`에서는 `push(Integer element)`와 `Integer pop()`이, `Stack<String>`에서는 `push(String element)`와 `String pop()`이 된다. 3절의 컬렉션 클래스는 모두 이 제네릭 기법으로 구현되어 있다. C++의 템플릿과 같은 목적의 기능이다.
 
-> **주의:** 타입 인자에는 참조 타입만 쓸 수 있다. `Vector<int>`는 컴파일 오류(`unexpected type`)이며, 기본형 값을 담으려면 `Vector<Integer>`처럼 래퍼 클래스를 쓴다. 이때 `v.add(5)`의 `int` 값 5는 `Integer` 객체로 자동 변환(오토박싱)되고, `int n = v.get(i);`에서는 `int`로 자동 변환(언박싱)된다.
+타입 인자에는 참조 타입만 쓸 수 있다. `Vector<int>`는 컴파일 오류(`unexpected type`)이며, 기본형 값을 담으려면 `Vector<Integer>`처럼 래퍼 클래스를 쓴다. 이때 `v.add(5)`의 `int` 값 5는 `Integer` 객체로 자동 변환(오토박싱)되고, `int n = v.get(i);`에서는 `int`로 자동 변환(언박싱)된다.
 
 ### 2.2 제네릭 클래스
 
@@ -219,7 +219,7 @@ public static <T extends Comparable<T>> T findMax(T[] array) {
 }
 ```
 
-> **핵심:** `<T extends SomeType>`을 사용하여 특정 인터페이스를 구현하거나 특정 클래스를 확장하는 타입으로 제네릭을 제한할 수 있다.
+`<T extends SomeType>`을 사용하여 특정 인터페이스를 구현하거나 특정 클래스를 확장하는 타입으로 제네릭을 제한할 수 있다.
 
 `T`가 `Comparable<T>`를 구현한다고 보장되므로 메서드 안에서 `compareTo`를 호출할 수 있다. `Integer`와 `String`은 `Comparable`을 구현하므로 `findMax(new Integer[]{3, 9, 2})`는 9를 반환한다. `Comparable`을 구현하지 않는 `Object[]`를 넘기면 컴파일 오류가 난다. 이 메서드는 배열이 비어 있지 않다고 가정한다.
 
@@ -237,7 +237,7 @@ JCF는 Java 인터페이스로 각 컬렉션의 동작을 정의하고, 클래�
 
 > **용어 정의:** **Java 인터페이스**(interface)는 객체의 동작만 정의한다. 몸체가 없는 `public` 메서드만 포함하고, `public` 상수 외의 데이터 멤버를 갖지 않으며, 인터페이스 자체의 인스턴스는 만들 수 없다.
 
-> **참고:** **Java 8 이후의 인터페이스.** Java 8부터는 인터페이스에 몸체가 있는 `default` 메서드와 `static` 메서드를, Java 9부터는 `private` 메서드를 둘 수 있다. 위 정의는 이 기능을 제외한 전통적인 인터페이스의 정의이다.
+**Java 8 이후의 인터페이스:** Java 8부터는 인터페이스에 몸체가 있는 `default` 메서드와 `static` 메서드를, Java 9부터는 `private` 메서드를 둘 수 있다. 위 정의는 이 기능을 제외한 전통적인 인터페이스의 정의이다.
 
 ```mermaid
 classDiagram
@@ -303,7 +303,7 @@ public BookTracker() {
 }
 ```
 
-> **주의:** `List<Integer>`에서 `remove(1)`은 `remove(int idx)`로 해석되어 위치 1의 원소를 제거한다. 값이 1인 원소를 제거하려면 `remove(Integer.valueOf(1))`처럼 `remove(Object o)`를 호출해야 한다.
+`List<Integer>`에서 `remove(1)`은 `remove(int idx)`로 해석되어 위치 1의 원소를 제거한다. 값이 1인 원소를 제거하려면 `remove(Integer.valueOf(1))`처럼 `remove(Object o)`를 호출해야 한다.
 
 ### 3.3 ArrayList
 

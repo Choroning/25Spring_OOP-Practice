@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Use assertions for debugging and design-by-contract
@@ -110,7 +110,7 @@ Without the `-ea` (enable assertions) option, the program runs without checking 
 
 `assert` was introduced in JDK 1.4. Before that, `assert` was an ordinary identifier, so for compatibility JDK 1.4 treated `assert` as an identifier by default, and a program with assertions had to be compiled with `javac -source 1.4 <source file>`. From Java 5, `assert` is a reserved word, so the program is compiled with plain `javac` and only `-ea` is needed at run time.
 
-> **Key Point:** Assertions should check program invariants, not validate user input. For user input, use exceptions or conditional checks.
+Assertions should check program invariants, not validate user input. For user input, use exceptions or conditional checks.
 
 ---
 
@@ -137,7 +137,7 @@ class Stack<E> {
 
 In `Stack<Integer>` the methods become `push(Integer element)` and `Integer pop()`, and in `Stack<String>` they become `push(String element)` and `String pop()`. The collection classes of Section 3 are all implemented with this generic technique. The feature serves the same purpose as C++ templates.
 
-> **Caution:** Only reference types can be type arguments. `Vector<int>` is a compile error (`unexpected type`); to hold primitive values, use a wrapper class as in `Vector<Integer>`. The `int` value 5 in `v.add(5)` is then converted to an `Integer` object automatically (autoboxing), and `int n = v.get(i);` converts back to `int` automatically (unboxing).
+Only reference types can be type arguments. `Vector<int>` is a compile error (`unexpected type`); to hold primitive values, use a wrapper class as in `Vector<Integer>`. The `int` value 5 in `v.add(5)` is then converted to an `Integer` object automatically (autoboxing), and `int n = v.get(i);` converts back to `int` automatically (unboxing).
 
 ### 2.2 Generic Classes
 
@@ -219,7 +219,7 @@ public static <T extends Comparable<T>> T findMax(T[] array) {
 }
 ```
 
-> **Key Point:** Use `<T extends SomeType>` to restrict generics to types that implement a specific interface or extend a specific class.
+Use `<T extends SomeType>` to restrict generics to types that implement a specific interface or extend a specific class.
 
 Because `T` is guaranteed to implement `Comparable<T>`, the method can call `compareTo`. `Integer` and `String` implement `Comparable`, so `findMax(new Integer[]{3, 9, 2})` returns 9. Passing an `Object[]`, which does not implement `Comparable`, is a compile error. The method assumes that the array is not empty.
 
@@ -237,7 +237,7 @@ JCF defines the behavior of each collection with a Java interface, and classes i
 
 > **Definition:** A **Java interface** defines only the behavior of objects. It includes only `public` methods with no method bodies, has no data members except `public` constants, and no instance of the interface itself can be created.
 
-> **Note:** **Interfaces since Java 8.** From Java 8, an interface can contain `default` and `static` methods with bodies, and from Java 9 it can contain `private` methods. The definition above is the traditional one that excludes these features.
+**Interfaces since Java 8:** From Java 8, an interface can contain `default` and `static` methods with bodies, and from Java 9 it can contain `private` methods. The definition above is the traditional one that excludes these features.
 
 ```mermaid
 classDiagram
@@ -303,7 +303,7 @@ public BookTracker() {
 }
 ```
 
-> **Caution:** For a `List<Integer>`, `remove(1)` is resolved as `remove(int idx)` and removes the element at position 1. To remove the element whose value is 1, call `remove(Object o)`, as in `remove(Integer.valueOf(1))`.
+For a `List<Integer>`, `remove(1)` is resolved as `remove(int idx)` and removes the element at position 1. To remove the element whose value is 1, call `remove(Object o)`, as in `remove(Integer.valueOf(1))`.
 
 ### 3.3 ArrayList
 
