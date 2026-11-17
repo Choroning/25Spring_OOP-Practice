@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Distinguish classes and objects, messages and methods, and class data values and instance data values
@@ -17,8 +17,8 @@
 ## Table of Contents
 
 - [1. Objects and Classes in Java](#1-objects-and-classes-in-java)
-  - [1.1 What is an Object?](#11-what-is-an-object)
-  - [1.2 What is a Class?](#12-what-is-a-class)
+  - [1.1 The Concept of an Object](#11-the-concept-of-an-object)
+  - [1.2 The Concept of a Class](#12-the-concept-of-a-class)
   - [1.3 Relationship Between Objects and Classes](#13-relationship-between-objects-and-classes)
   - [1.4 UML Notation](#14-uml-notation)
   - [1.5 Messages and Methods](#15-messages-and-methods)
@@ -54,7 +54,7 @@
 
 ## 1. Objects and Classes in Java
 
-### 1.1 What is an Object?
+### 1.1 The Concept of an Object
 
 Object-oriented programs use objects. An object represents anything, tangible or intangible, such as an account, a vehicle, or an employee.
 
@@ -65,7 +65,7 @@ An **object** is a runtime entity that has the following.
 
 As a real-world example, a `Car` object might have state (color, speed), behavior (accelerate, brake), and identity (license plate).
 
-### 1.2 What is a Class?
+### 1.2 The Concept of a Class
 
 A **class** is a blueprint or template for creating objects. To create an object in a program, we must first define how the object behaves and what information it maintains, and this definition is a class. It defines the following.
 - What data members (fields) an object will have

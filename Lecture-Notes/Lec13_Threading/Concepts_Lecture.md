@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-10-26
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Create and manage threads using Thread class and Runnable interface
@@ -14,7 +14,7 @@
 ## Table of Contents
 
 - [1. Multi-tasking and Threads](#1-multi-tasking-and-threads)
-  - [1.1 What is a Thread?](#11-what-is-a-thread)
+  - [1.1 The Concept of a Thread](#11-the-concept-of-a-thread)
   - [1.2 Thread Life Cycle](#12-thread-life-cycle)
 - [2. Creating Threads](#2-creating-threads)
   - [2.1 Extending the Thread Class](#21-extending-the-thread-class)
@@ -33,7 +33,7 @@
 
 ## 1. Multi-tasking and Threads
 
-### 1.1 What is a Thread?
+### 1.1 The Concept of a Thread
 
 **Multi-tasking** means that one application processes multiple tasks at the same time. For example, a Tetris game must run the code that plays background music, the code that moves blocks down, and the code that handles key input at the same time, and a different thread runs each piece of code.
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Define object-oriented programming concepts (class, object, encapsulation)
@@ -14,7 +14,7 @@
 
 ## Table of Contents
 
-- [1. What is Object-Oriented Programming?](#1-what-is-object-oriented-programming)
+- [1. The Concept of Object-Oriented Programming](#1-the-concept-of-object-oriented-programming)
   - [1.1 Levels of Programming Languages](#11-levels-of-programming-languages)
   - [1.2 Programming Paradigms](#12-programming-paradigms)
   - [1.3 The Four Pillars of OOP](#13-the-four-pillars-of-oop)
@@ -44,7 +44,7 @@
 
 <br>
 
-## 1. What is Object-Oriented Programming?
+## 1. The Concept of Object-Oriented Programming
 
 ### 1.1 Levels of Programming Languages
 

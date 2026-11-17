@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-04
+> **Last Updated:** 2026-11-18
 
 > **Learning Objectives:**
 > 1. Implement client-server communication using sockets
@@ -14,7 +14,7 @@
 ## Table of Contents
 
 - [1. Socket Fundamentals](#1-socket-fundamentals)
-  - [1.1 What is a Socket?](#11-what-is-a-socket)
+  - [1.1 The Concept of a Socket](#11-the-concept-of-a-socket)
   - [1.2 Client-Server Applications](#12-client-server-applications)
   - [1.3 TCP vs. UDP](#13-tcp-vs-udp)
   - [1.4 Socket Pair (4-tuple)](#14-socket-pair-4-tuple)
@@ -38,7 +38,7 @@
 
 ## 1. Socket Fundamentals
 
-### 1.1 What is a Socket?
+### 1.1 The Concept of a Socket
 
 A socket is the combination of an IP address and a port number. It is the endpoint for communication between two machines over TCP/IP. The name socket comes from the **application programming interface (API)** created in Berkeley Unix so that applications can use the TCP/IP protocols. There are two types of sockets.
 
