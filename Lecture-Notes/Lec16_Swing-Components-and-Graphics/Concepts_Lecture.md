@@ -1809,16 +1809,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
 ## Self-Check Questions
 
-1. **Item events:** With kiwi selected in the combo box of Section 1.3, does calling `setSelectedIndex(2)` again raise events? Which events occur, and in what order, when the selection changes from kiwi to banana?
-
-   <details>
-   <summary>Answer</summary>
-
-   Selecting the same item again does not change the selection state, so no item events occur; only one action event occurs. Running it actually calls only the action listener, once. Changing from kiwi to banana raises two `ItemEvent`s in this order, `DESELECTED` for the previous item kiwi and `SELECTED` for the new item banana, followed by an `ActionEvent`. This is the same order as when changing from apple to kiwi in the output of Section 1.3.
-
-   </details>
-
-2. **ButtonGroup:** Three radio buttons were attached to the screen without being put in a `ButtonGroup`. What are the states of the two buttons after clicking Small and then Large?
+1. **ButtonGroup:** Three radio buttons were attached to the screen without being put in a `ButtonGroup`. What are the states of the two buttons after clicking Small and then Large?
 
    <details>
    <summary>Answer</summary>
@@ -1827,7 +1818,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-3. **TableModel:** If `fireTableRowsUpdated(r, r)` is deleted from `setValueAt()` of the `ScoreModel` in Section 3.2, how do the program's output and the screen each change?
+2. **TableModel:** If `fireTableRowsUpdated(r, r)` is deleted from `setValueAt()` of the `ScoreModel` in Section 3.2, how do the program's output and the screen each change?
 
    <details>
    <summary>Answer</summary>
@@ -1836,7 +1827,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-4. **Coordinates:** What arguments must be passed to `fillOval` to fill a circle of diameter 40 at the exact center of a panel 200 wide and 100 high?
+3. **Coordinates:** What arguments must be passed to `fillOval` to fill a circle of diameter 40 at the exact center of a panel 200 wide and 100 high?
 
    <details>
    <summary>Answer</summary>
@@ -1845,7 +1836,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-5. **Repainting:** A program that puts a dot wherever the mouse is clicked draws directly in the listener with `getGraphics().fillOval(...)`. The dots appear at first, but all of them disappear after the window is minimized and restored. Explain why and how to fix it.
+4. **Repainting:** A program that puts a dot wherever the mouse is clicked draws directly in the listener with `getGraphics().fillOval(...)`. The dots appear at first, but all of them disappear after the window is minimized and restored. Explain why and how to fix it.
 
    <details>
    <summary>Answer</summary>
@@ -1854,7 +1845,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-6. **Swing timers:** An animation is to move a ball 5 pixels to the right every 0.05 seconds. Explain the difference between building it with a `Thread` and `sleep(50)` and building it with `javax.swing.Timer`, in terms of the thread on which the code that changes the ball's position runs.
+5. **Swing timers:** An animation is to move a ball 5 pixels to the right every 0.05 seconds. Explain the difference between building it with a `Thread` and `sleep(50)` and building it with `javax.swing.Timer`, in terms of the thread on which the code that changes the ball's position runs.
 
    <details>
    <summary>Answer</summary>
@@ -1863,7 +1854,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-7. **Document:** When `setText("Lee")` is called on a text field containing Kim, which document-listener methods are called, with what positions and lengths? If the listener shows a warning dialog whenever the text is empty, what problem arises?
+6. **Document:** When `setText("Lee")` is called on a text field containing Kim, which document-listener methods are called, with what positions and lengths? If the listener shows a warning dialog whenever the text is empty, what problem arises?
 
    <details>
    <summary>Answer</summary>
@@ -1872,7 +1863,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-8. **Coordinate transforms:** After `g2.translate(50, 0); g2.scale(2, 2);`, `g2.fillRect(10, 10, 20, 20)` is called. What are the top-left corner and size of the rectangle on the screen? What happens if the two transform calls are reversed?
+7. **Coordinate transforms:** After `g2.translate(50, 0); g2.scale(2, 2);`, `g2.fillRect(10, 10, 20, 20)` is called. What are the top-left corner and size of the rectangle on the screen? What happens if the two transform calls are reversed?
 
    <details>
    <summary>Answer</summary>
@@ -1881,7 +1872,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-9. **Centering text:** A string is to be drawn at the exact center of an area 200 wide and 60 high. If in that font the string's `stringWidth` is 120, the ascent 20, and the descent 5, what x and y are passed to `drawString()`?
+8. **Centering text:** A string is to be drawn at the exact center of an area 200 wide and 60 high. If in that font the string's `stringWidth` is 120, the ascent 20, and the descent 5, what x and y are passed to `drawString()`?
 
    <details>
    <summary>Answer</summary>
@@ -1890,7 +1881,7 @@ To stop the work, call `cancel(true)`. With the argument `true` it sends the wor
 
    </details>
 
-10. **Table sorting:** In the table of Section 3.5, with the descending score sort and the filter for scores above 59 applied, the user selects the second row. What are the values of `table.getSelectedRow()` and `convertRowIndexToModel()`, and what is the student's name? What name does `model.getValueAt(table.getSelectedRow(), 0)` give?
+9. **Table sorting:** In the table of Section 3.5, with the descending score sort and the filter for scores above 59 applied, the user selects the second row. What are the values of `table.getSelectedRow()` and `convertRowIndexToModel()`, and what is the student's name? What name does `model.getValueAt(table.getSelectedRow(), 0)` give?
 
     <details>
     <summary>Answer</summary>

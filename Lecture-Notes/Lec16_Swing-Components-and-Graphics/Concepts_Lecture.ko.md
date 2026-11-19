@@ -1809,16 +1809,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
 ## 점검 문제
 
-1. **아이템 이벤트:** 1.3절의 콤보 박스에서 선택이 kiwi일 때 `setSelectedIndex(2)`를 다시 호출하면 이벤트가 발생하는가? 선택을 kiwi에서 banana로 바꾸면 어떤 이벤트가 어떤 순서로 발생하는가?
-
-   <details>
-   <summary>정답</summary>
-
-   같은 항목을 다시 선택하면 선택 상태가 바뀌지 않으므로 아이템 이벤트는 발생하지 않고, 액션 이벤트만 한 번 발생한다. 실제로 실행하면 액션 리스너만 한 번 호출된다. kiwi에서 banana로 바꾸면 이전 항목 kiwi의 `DESELECTED`, 새 항목 banana의 `SELECTED`라는 두 `ItemEvent`가 이 순서로 발생하고, 이어서 `ActionEvent`가 발생한다. 1.3절의 출력에서 apple에서 kiwi로 바꿀 때와 같은 순서이다.
-
-   </details>
-
-2. **ButtonGroup:** 라디오 버튼 셋을 `ButtonGroup`에 넣지 않고 화면에만 붙였다. Small을 누른 뒤 Large를 누르면 두 버튼의 상태는 어떻게 되는가?
+1. **ButtonGroup:** 라디오 버튼 셋을 `ButtonGroup`에 넣지 않고 화면에만 붙였다. Small을 누른 뒤 Large를 누르면 두 버튼의 상태는 어떻게 되는가?
 
    <details>
    <summary>정답</summary>
@@ -1827,7 +1818,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-3. **TableModel:** 3.2절의 `ScoreModel`에서 `setValueAt()`의 `fireTableRowsUpdated(r, r)`을 지우면, 프로그램의 출력과 화면은 각각 어떻게 달라지는가?
+2. **TableModel:** 3.2절의 `ScoreModel`에서 `setValueAt()`의 `fireTableRowsUpdated(r, r)`을 지우면, 프로그램의 출력과 화면은 각각 어떻게 달라지는가?
 
    <details>
    <summary>정답</summary>
@@ -1836,7 +1827,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-4. **좌표:** 폭 200, 높이 100인 패널의 한가운데에 지름 40인 원을 채워 그리려면 `fillOval`에 어떤 인자를 넘겨야 하는가?
+3. **좌표:** 폭 200, 높이 100인 패널의 한가운데에 지름 40인 원을 채워 그리려면 `fillOval`에 어떤 인자를 넘겨야 하는가?
 
    <details>
    <summary>정답</summary>
@@ -1845,7 +1836,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-5. **다시 그리기:** 마우스를 클릭할 때마다 클릭한 자리에 점을 찍는 프로그램을 만들면서, 리스너 안에서 `getGraphics().fillOval(...)`로 바로 그렸다. 처음에는 점이 보이지만 창을 최소화했다가 되돌리면 점이 모두 사라진다. 이유와 고치는 방법을 쓰라.
+4. **다시 그리기:** 마우스를 클릭할 때마다 클릭한 자리에 점을 찍는 프로그램을 만들면서, 리스너 안에서 `getGraphics().fillOval(...)`로 바로 그렸다. 처음에는 점이 보이지만 창을 최소화했다가 되돌리면 점이 모두 사라진다. 이유와 고치는 방법을 쓰라.
 
    <details>
    <summary>정답</summary>
@@ -1854,7 +1845,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-6. **Swing 타이머:** 0.05초마다 공을 오른쪽으로 5픽셀씩 옮기는 애니메이션을 만들려고 한다. `Thread`와 `sleep(50)`으로 만드는 방법과 `javax.swing.Timer`로 만드는 방법의 차이를 공의 위치를 바꾸는 코드가 실행되는 스레드의 관점에서 설명하라.
+5. **Swing 타이머:** 0.05초마다 공을 오른쪽으로 5픽셀씩 옮기는 애니메이션을 만들려고 한다. `Thread`와 `sleep(50)`으로 만드는 방법과 `javax.swing.Timer`로 만드는 방법의 차이를 공의 위치를 바꾸는 코드가 실행되는 스레드의 관점에서 설명하라.
 
    <details>
    <summary>정답</summary>
@@ -1863,7 +1854,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-7. **Document:** 텍스트 필드에 Kim이 들어 있을 때 `setText("Lee")`를 호출하면 문서 리스너의 어느 메서드가 어떤 위치와 길이로 호출되는가? 리스너가 텍스트가 비어 있으면 경고 대화 상자를 띄우도록 만들었다면 어떤 문제가 생기는가?
+6. **Document:** 텍스트 필드에 Kim이 들어 있을 때 `setText("Lee")`를 호출하면 문서 리스너의 어느 메서드가 어떤 위치와 길이로 호출되는가? 리스너가 텍스트가 비어 있으면 경고 대화 상자를 띄우도록 만들었다면 어떤 문제가 생기는가?
 
    <details>
    <summary>정답</summary>
@@ -1872,7 +1863,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-8. **좌표 변환:** `g2.translate(50, 0); g2.scale(2, 2);` 다음에 `g2.fillRect(10, 10, 20, 20)`을 호출했다. 화면에서 사각형의 왼쪽 위 꼭짓점과 크기는 얼마인가? 두 변환의 호출 순서를 바꾸면 어떻게 되는가?
+7. **좌표 변환:** `g2.translate(50, 0); g2.scale(2, 2);` 다음에 `g2.fillRect(10, 10, 20, 20)`을 호출했다. 화면에서 사각형의 왼쪽 위 꼭짓점과 크기는 얼마인가? 두 변환의 호출 순서를 바꾸면 어떻게 되는가?
 
    <details>
    <summary>정답</summary>
@@ -1881,7 +1872,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-9. **글자 가운데 놓기:** 폭 200, 높이 60인 영역의 한가운데에 문자열을 그리려 한다. 그 글꼴에서 문자열의 `stringWidth`가 120, 어센트가 20, 디센트가 5이면 `drawString()`에 넘길 x와 y는 얼마인가?
+8. **글자 가운데 놓기:** 폭 200, 높이 60인 영역의 한가운데에 문자열을 그리려 한다. 그 글꼴에서 문자열의 `stringWidth`가 120, 어센트가 20, 디센트가 5이면 `drawString()`에 넘길 x와 y는 얼마인가?
 
    <details>
    <summary>정답</summary>
@@ -1890,7 +1881,7 @@ ExecutionException caused by java.lang.NumberFormatException: For input string: 
 
    </details>
 
-10. **표의 정렬:** 3.5절의 표에서 점수의 내림차순 정렬과 59점 초과 필터를 건 상태로 사용자가 둘째 행을 선택했다. `table.getSelectedRow()`와 `convertRowIndexToModel()`의 값, 그리고 그 학생의 이름은 무엇인가? `model.getValueAt(table.getSelectedRow(), 0)`을 쓰면 어떤 이름이 나오는가?
+9. **표의 정렬:** 3.5절의 표에서 점수의 내림차순 정렬과 59점 초과 필터를 건 상태로 사용자가 둘째 행을 선택했다. `table.getSelectedRow()`와 `convertRowIndexToModel()`의 값, 그리고 그 학생의 이름은 무엇인가? `model.getValueAt(table.getSelectedRow(), 0)`을 쓰면 어떤 이름이 나오는가?
 
     <details>
     <summary>정답</summary>

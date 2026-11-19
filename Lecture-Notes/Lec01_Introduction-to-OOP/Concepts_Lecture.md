@@ -479,17 +479,7 @@ The class has `public Add();` even though the source declares no constructor, be
 
 ### 3.7 Class File Format and Version
 
-A class file follows the format defined by the JVM specification. Its first four bytes are the **magic number** `0xCAFEBABE`, which identifies a class file, followed by a two-byte minor version and a two-byte major version [1]. The first eight bytes of `Add.class` above, in hexadecimal, are as follows.
-
-```text
-$ xxd -l 8 Add.class
-00000000: cafe babe 0000 0041                      .......A
-$ javap -v Add.class | grep -E 'major|minor'
-  minor version: 0
-  major version: 65
-```
-
-The major version `0x0041` is 65 in decimal, the class file version that the table in the JVM specification assigns to Java SE 21 [1]. The specification requires a JVM conforming to Java SE N to support exactly the range of major versions defined for Java SE N, so running a class file compiled for a newer version on an older JVM is rejected with an `UnsupportedClassVersionError`. Conversely, class files of older versions run on a newer JVM. Compiling with `--release 21` produces class files that run on a Java 21 or later JVM even when the compiler of JDK 24 is used.
+A class file follows the format defined by the JVM specification. It begins with the four-byte **magic number** `0xCAFEBABE`, which identifies a class file, followed by a minor version and a major version that give the version of the format [1]. The specification requires a JVM conforming to Java SE N to support exactly the range of major versions defined for Java SE N, so running a class file compiled for a newer version on an older JVM is rejected with an `UnsupportedClassVersionError`. Conversely, class files of older versions run on a newer JVM. Compiling with `--release 21` produces class files that run on a Java 21 or later JVM even when the compiler of JDK 24 is used.
 
 ### 3.8 Loading, Linking, and Initializing a Class
 
@@ -620,7 +610,7 @@ Because of these differences, some errors common in C and C++ either never arise
 A typical setup for Java development is as follows.
 
 1. **Install JDK:** Download from Oracle or use OpenJDK. The installer can proceed with default settings; note the installation folder (e.g., `C:\Program Files\Java\jdk-17.0.2`).
-2. **Set environment variables:** Set `JAVA_HOME` and add the `bin` directory (e.g., `C:\Program Files\Java\jdk-17.0.2\bin`) to `PATH`. On Windows 10, search for "environment" in the Control Panel to open the system environment variables dialog, edit the `Path` system variable, and add the path of the `bin` folder. In most cases the installer handles this step automatically.
+2. **Set environment variables:** Set `JAVA_HOME` and add the `bin` directory (e.g., `C:\Program Files\Java\jdk-17.0.2\bin`) to `PATH`. In most cases the installer handles this step automatically.
 3. **Choose an IDE:** IntelliJ IDEA, Eclipse, VS Code, or even a simple text editor.
 4. **Verify installation:** In a command prompt, check that the following commands print a version.
    ```bash
@@ -630,22 +620,13 @@ A typical setup for Java development is as follows.
 
 ### 4.2 Installing and Configuring the Eclipse IDE
 
-1. Download the installer from the Eclipse download page. In Korea, choosing a nearby mirror server (e.g., the Kakao mirror) speeds up the download.
+1. Download the installer from the Eclipse download page.
 2. After installation, set the workspace text file encoding to UTF-8 in **Window > Preferences**. This keeps Korean comments and strings from being garbled.
-3. Create a new Java project, enter `HelloWorld` as the new class name, select the option to generate `public static void main(String[] args)`, and click Finish to create the class. Write the code and run it to check the output.
+3. Create a `HelloWorld` class with a `main` method in a new Java project, write the code, run it, and check the output.
 
 ### 4.3 Frequently Used Shortcuts
 
-| Shortcut | Function |
-|:---------|:---------|
-| Ctrl + F11 | Compile and run |
-| Ctrl + / | Toggle single-line comment |
-| Ctrl + Shift + / | Add a multi-line block comment |
-| Ctrl + Shift + \\ | Remove a block comment |
-| Ctrl + I | Correct code indentation |
-| Type `sysout`, then Ctrl + Space | Autocomplete `System.out.println();` |
-
-*Table 8. Frequently used shortcuts in Eclipse*
+Frequently used shortcuts in Eclipse are compile and run (Ctrl + F11), toggling a single-line comment (Ctrl + /), adding a block comment (Ctrl + Shift + /) and removing it (Ctrl + Shift + \\), and correcting indentation (Ctrl + I). Typing `sysout` and pressing Ctrl + Space autocompletes `System.out.println();`.
 
 ---
 
@@ -686,7 +667,7 @@ The role of each element of this program is as follows.
 | `.println(...)` | Sends the `out` object a message to print the argument and end the line |
 | `;` | Marks the end of a statement |
 
-*Table 9. Meaning of each element of the HelloWorld program*
+*Table 8. Meaning of each element of the HelloWorld program*
 
 ### 5.2 Compiling and Running from the Command Line
 
@@ -797,7 +778,7 @@ Even after the run there is no `Greeting.class` in the directory, because the re
 | Thinking of bytecode as the machine code of a particular CPU | Cannot explain why Java is platform independent | Bytecode is the instruction set of the JVM, and the JVM of each platform translates it into machine code |
 | Running a class compiled by a new JDK on an old JVM | `UnsupportedClassVersionError` | Compile with the `--release` option that matches the JVM that will run it |
 
-*Table 10. Common mistakes when building and running Java programs*
+*Table 9. Common mistakes when building and running Java programs*
 
 ---
 
@@ -811,7 +792,6 @@ Even after the run there is no `Greeting.class` in the directory, because the re
 |:-----|:-----|
 | `javac` translates source code into the machine code that the CPU of the computer executes. | **F.** `javac` produces bytecode that the JVM executes. Translation into machine code is done during execution by the JIT compiler of the JVM. |
 | When a program starts, the JVM loads every class the program uses at once. | **F.** A class is initialized when it is first actually used, and the HotSpot JVM also loads it only when it is first needed. `Helper` of Section 3.8 was not loaded when it was not used. |
-| A class file with major version 65 has the class file format of Java SE 21. | **T.** In the class file version table of the JVM specification, Java SE 21 has major version 65. |
 | The local variables of a method and the objects created with `new` are in the same memory area. | **F.** Local variables are in a frame on the JVM stack of the thread running the method, and objects are on the heap shared by all threads. |
 | Bytecode verification is one stage of linking a class. | **T.** Linking consists of verification, preparation, and resolution, and a failed verification throws a `VerifyError`. |
 | Running `java Greeting.java` creates `Greeting.class` in the current directory. | **F.** Source-file mode compiles in memory, so it leaves no class file. |
@@ -837,7 +817,7 @@ Even after the run there is no `Greeting.class` in the directory, because the re
 | Language layers | Binary code, machine code, assembly, high-level languages, and scripting languages become easier for people to read in that order, and translation from an upper to a lower layer is compilation. |
 | Procedural versus object-oriented design | Procedural design separates data and functions, whereas object-oriented design bundles them into a class and restricts changes to the data to its methods. |
 | Bytecode | Bytecode is the instruction set of the JVM, which uses an operand stack, and can be disassembled and viewed with `javap -c`. |
-| Class file format | A class file begins with the magic number `0xCAFEBABE`, and the major version of Java 21 is 65. |
+| Class file format | A class file begins with a magic number and version numbers, and a class file compiled for a newer version is rejected by an older JVM with an `UnsupportedClassVersionError`. |
 | Life of a class | A class is loaded when first needed, linked through verification, preparation, and resolution, and then initialized. |
 | Run-time data areas | The method area and the heap are shared by all threads, the JVM stack and the pc register exist per thread, and a frame is created for each method call. |
 | JIT compilation | JIT compilation compiles frequently executed bytecode into machine code during execution to speed up later executions. |

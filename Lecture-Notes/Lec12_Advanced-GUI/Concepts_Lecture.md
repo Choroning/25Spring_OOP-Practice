@@ -1157,15 +1157,6 @@ Knowing this rule, one can tell at once which events even an unfamiliar componen
 
    </details>
 
-8. **GridLayout computation:** A panel of size 300 × 200 uses `new GridLayout(3, 4, 10, 10)` and 12 buttons are added. Find the cell width and height and the position of the 7th button.
-
-   <details>
-   <summary>Answer</summary>
-
-   The cell width is 67, from (300 - 3 × 10) / 4 = 67.5 with the fraction dropped, and the height is (200 - 2 × 10) / 3 = 60. The 7th button is in the third cell of the second row. Half of the 2 spare horizontal pixels (300 - 4 × 67 - 3 × 10 = 2), that is 1, becomes the left margin, so x = 1 + 2 × (67 + 10) = 155 and y = 1 × (60 + 10) = 70. Computing it actually gives `[x=155,y=70,width=67,height=60]`.
-
-   </details>
-
 ---
 
 <br>
