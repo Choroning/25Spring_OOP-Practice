@@ -23,6 +23,7 @@
 ## 📝 레포지토리 소개
 
 - `Lecture-Notes/`에는 슬라이드 번호(`Lec01`\~`Lec15`)를 따른 강의 노트가 있습니다.
+- `Lec16`과 `Lec17`은 강의계획서에 계획된 Swing 컴포넌트와 그래픽, JDBC 프로그래밍의 주제이지만 수업에서 진행하지 않아 보충한 단원입니다.
 - `Coursework/`에는 단원별 Java 실습 코드(`Lab##`), 과제 안내문과 풀이, 해설(`HW01`\~`HW03`), 텀 프로젝트가 있습니다.
 - 모든 강의 노트와 과제 문서는 영어(`.md`)와 한국어(`.ko.md`) 파일이 짝을 이룹니다.
 
@@ -62,8 +63,9 @@ Java로 객체 지향 프로그래밍의 핵심 개념과 기초를 배우는 �
 
 ```plaintext
 25Spring_OOP-Practice
-├── Lecture-Notes               강의별 강의 노트
+├── Lecture-Notes               강의별 강의 노트와 보충 단원
 ├── Coursework                  강의별 Java 실습 코드, 과제 안내문과 풀이, 텀 프로젝트
+├── images                      모든 문서의 그림
 ├── Course-Information.ko.md    수업 운영 정보
 ├── Course-Information.md
 ├── LICENSE                     문서 라이선스 (CC BY-NC-SA 4.0)

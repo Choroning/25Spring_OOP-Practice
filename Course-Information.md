@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-19
 
 ## Table of Contents
 
@@ -153,8 +153,10 @@
 - The planned topics follow the weekly schedule of the syllabus. The syllabus planned Problem Solving as the core competency and PPT slides as the material for every week except the exam weeks, and states that the plan for the second half of the semester could be modified depending on the students' learning achievement.
 - Chap6.2DArray_CustomFunction_ExceptionHandling was covered over weeks 5 and 6, and Chap7.Advanced_Class over weeks 6 and 7.
 - The midterm exam was held in week 8, and the final exam was held in week 15, when the term ended.
-- The actual progress differs from the order of the deck numbers. Chap10 was covered first, together with Chap8, in week 7, and Chap9 and Chap11 were covered in week 9. No lecture deck covers JDBC programming, which the syllabus planned.
+- The actual progress differs from the order of the deck numbers. Chap10 was covered first, together with Chap8, in week 7, and Chap9 and Chap11 were covered in week 9.
 - The deck numbers Chap1-Chap15 correspond to `Lec01`-`Lec15` in this repository. The unit numbers follow the deck numbers rather than the order of coverage, and the lab code numbers in `Coursework` (`Lab02`-`Lab15`) follow the same numbers. The units are listed in the [`Lecture-Notes` index](Lecture-Notes/README.md).
+- Java packages, the planned topic of week 6, were introduced on one page of Chap8.Advanced_Class_Vol2, and package declarations, `import`, and the class path are covered together in Section 6 of `Lec08`.
+- [`Lec16`](Lecture-Notes/Lec16_Swing-Components-and-Graphics/) and [`Lec17`](Lecture-Notes/Lec17_JDBC-Database-Programming/) are supplementary units on the topics of weeks 12-13 (Swing components and graphics) and week 15 (JDBC programming) of the syllabus, which were not taught in class. No lecture deck covers JDBC programming.
 
 ---
 
@@ -165,6 +167,7 @@
 | Type | Contents |
 |:-----|:-----|
 | Lecture Slides | PPT slides (Chap1-Chap15) and lecture demonstration code (Chap2-Chap15) provided by the instructor |
+| Supplementary-Unit Reference | [Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/) of The Java Tutorials and the [`java.sql` package](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html) of the Java SE 21 API documentation |
 | Online | [MIT OpenCourseWare 6.092: Introduction to Programming in Java](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-092-introduction-to-programming-in-java-january-iap-2010/lecture-notes/) |
 | Online | [MOOC.fi: Programming Part 1](https://moocfi.github.io/courses/2013/programming-part-1/) |
 | Online | [Chortle: Introduction to Computer Science using Java](https://chortle.ccsu.edu/CS151/cs151java.html) |

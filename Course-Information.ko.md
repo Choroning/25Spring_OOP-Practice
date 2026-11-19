@@ -2,7 +2,7 @@
 
 [레포지토리 안내](README.ko.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **최종 수정일:** 2026-11-18
+> **최종 수정일:** 2026-11-19
 
 ## 목차
 
@@ -153,8 +153,10 @@
 - 계획된 주제는 강의계획서의 주별 일정을 따릅니다. 강의계획서는 시험 주차를 뺀 모든 주차의 핵심역량을 Problem Solving으로, 자료를 PPT로 계획했으며, 학기 후반부의 계획은 학생의 학습 성취도에 따라 바뀔 수 있다고 밝혔습니다.
 - Chap6.2DArray_CustomFunction_ExceptionHandling은 5주차와 6주차에, Chap7.Advanced_Class는 6주차와 7주차에 걸쳐 다뤘습니다.
 - 8주차에 중간고사를 치렀고, 15주차에 기말고사를 치르고 종강했습니다.
-- 실제 진도는 강의자료 번호의 순서와 다릅니다. 7주차에 Chap8과 함께 Chap10을 먼저 다뤘고, 9주차에 Chap9와 Chap11을 다뤘습니다. 강의계획서에 계획된 JDBC 프로그래밍을 다룬 강의자료는 없습니다.
+- 실제 진도는 강의자료 번호의 순서와 다릅니다. 7주차에 Chap8과 함께 Chap10을 먼저 다뤘고, 9주차에 Chap9와 Chap11을 다뤘습니다.
 - 강의자료의 번호 Chap1\~Chap15는 이 레포지토리의 `Lec01`\~`Lec15`에 대응합니다. 단원 번호는 다룬 순서가 아니라 강의자료 번호를 따르며, `Coursework`의 실습 코드 번호(`Lab02`\~`Lab15`)도 같은 번호를 따릅니다. 단원 목록은 [`Lecture-Notes` 색인](Lecture-Notes/README.ko.md)에 있습니다.
+- 6주차의 계획된 주제인 Java package는 Chap8.Advanced_Class_Vol2가 한 쪽으로 소개했으며, 패키지의 선언, `import`, 클래스 경로는 `Lec08`의 6절에서 함께 다룹니다.
+- [`Lec16`](Lecture-Notes/Lec16_Swing-Components-and-Graphics/)과 [`Lec17`](Lecture-Notes/Lec17_JDBC-Database-Programming/)은 강의계획서의 12\~13주차(Swing 컴포넌트와 그래픽)와 15주차(JDBC 프로그래밍) 주제이지만 수업에서 진행하지 않아 보충한 단원입니다. JDBC 프로그래밍을 다룬 강의자료는 없습니다.
 
 ---
 
@@ -165,6 +167,7 @@
 | 유형 | 내용 |
 |:-----|:-----|
 | 강의자료 | 교수자가 제공한 PPT 슬라이드(Chap1\~Chap15)와 강의 시연 코드(Chap2\~Chap15) |
+| 보충 단원 참고 자료 | The Java Tutorials의 [Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/)과 Java SE 21 API 문서의 [`java.sql` 패키지](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html) |
 | 온라인 | [MIT OpenCourseWare 6.092: Introduction to Programming in Java](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-092-introduction-to-programming-in-java-january-iap-2010/lecture-notes/) |
 | 온라인 | [MOOC.fi: Programming Part 1](https://moocfi.github.io/courses/2013/programming-part-1/) |
 | 온라인 | [Chortle: Introduction to Computer Science using Java](https://chortle.ccsu.edu/CS151/cs151java.html) |

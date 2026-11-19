@@ -23,6 +23,7 @@ This repository archives lecture notes and coursework for the Object-Oriented Pr
 ## 📝 About This Repository
 
 - `Lecture-Notes/` holds lecture notes that follow the slide numbers (`Lec01`-`Lec15`).
+- `Lec16` and `Lec17` are supplementary units on Swing components and graphics and on JDBC programming, which were planned in the syllabus but were not taught in class.
 - `Coursework/` holds the Java lab code for each unit (`Lab##`), the assignment handouts, solutions, and explanations (`HW01`-`HW03`), and the term project.
 - Every lecture note and assignment document comes as an English (`.md`) and Korean (`.ko.md`) pair.
 
@@ -62,8 +63,9 @@ A major elective course on the core concepts of object-oriented programming and 
 
 ```plaintext
 25Spring_OOP-Practice
-├── Lecture-Notes               Lecture notes by lecture
+├── Lecture-Notes               Lecture notes by lecture and supplementary units
 ├── Coursework                  Java lab code by lecture, homework handouts and solutions, and term project
+├── images                      Figures for all documents
 ├── Course-Information.ko.md    Course operations
 ├── Course-Information.md
 ├── LICENSE                     Documentation license (CC BY-NC-SA 4.0)
