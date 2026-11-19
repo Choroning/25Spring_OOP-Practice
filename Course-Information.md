@@ -167,7 +167,7 @@
 | Type | Contents |
 |:-----|:-----|
 | Lecture Slides | PPT slides (Chap1-Chap15) and lecture demonstration code (Chap2-Chap15) provided by the instructor |
-| Supplementary-Unit Reference | [Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/) of The Java Tutorials and the [`java.sql` package](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html) of the Java SE 21 API documentation |
+| Supplementary-Unit Reference | [Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/) and [JDBC Database Access](https://docs.oracle.com/javase/tutorial/jdbc/) of The Java Tutorials and the [`java.sql` package](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html) of the Java SE 21 API documentation |
 | Online | [MIT OpenCourseWare 6.092: Introduction to Programming in Java](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-092-introduction-to-programming-in-java-january-iap-2010/lecture-notes/) |
 | Online | [MOOC.fi: Programming Part 1](https://moocfi.github.io/courses/2013/programming-part-1/) |
 | Online | [Chortle: Introduction to Computer Science using Java](https://chortle.ccsu.edu/CS151/cs151java.html) |

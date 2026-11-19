@@ -167,7 +167,7 @@
 | 유형 | 내용 |
 |:-----|:-----|
 | 강의자료 | 교수자가 제공한 PPT 슬라이드(Chap1\~Chap15)와 강의 시연 코드(Chap2\~Chap15) |
-| 보충 단원 참고 자료 | The Java Tutorials의 [Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/)과 Java SE 21 API 문서의 [`java.sql` 패키지](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html) |
+| 보충 단원 참고 자료 | The Java Tutorials의 [Creating a GUI With Swing](https://docs.oracle.com/javase/tutorial/uiswing/)과 [JDBC Database Access](https://docs.oracle.com/javase/tutorial/jdbc/), Java SE 21 API 문서의 [`java.sql` 패키지](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html) |
 | 온라인 | [MIT OpenCourseWare 6.092: Introduction to Programming in Java](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-092-introduction-to-programming-in-java-january-iap-2010/lecture-notes/) |
 | 온라인 | [MOOC.fi: Programming Part 1](https://moocfi.github.io/courses/2013/programming-part-1/) |
 | 온라인 | [Chortle: Introduction to Computer Science using Java](https://chortle.ccsu.edu/CS151/cs151java.html) |
