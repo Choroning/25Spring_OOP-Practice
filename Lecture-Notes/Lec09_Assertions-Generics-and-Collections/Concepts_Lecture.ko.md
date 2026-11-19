@@ -657,7 +657,7 @@ ErasureError.java:6: error: generic array creation
 
 기본형을 타입 인자로 쓸 수 없는 것(2.1절의 `Vector<int>`)도, 소거 뒤의 `Object` 자리에 기본형 값을 둘 수 없기 때문이다.
 
-> **참고:** **소거가 같은 메서드의 오버로딩.** `void print(List<String> a)`와 `void print(List<Integer> a)`를 한 클래스에 함께 선언하면, 두 메서드가 소거 뒤 모두 `print(List)`가 되어 "name clash: print(List<Integer>) and print(List<String>) have the same erasure" 컴파일 오류가 난다. 매개변수의 타입 인자만 다른 메서드는 오버로딩할 수 없다.
+> **참고:** **소거가 같은 메서드의 오버로딩.** `void print(List<String> a)`와 `void print(List<Integer> a)`를 한 클래스에 함께 선언하면, 두 메서드가 소거 뒤 모두 `print(List)`가 되어 `name clash: print(List<Integer>) and print(List<String>) have the same erasure` 컴파일 오류가 난다. 매개변수의 타입 인자만 다른 메서드는 오버로딩할 수 없다.
 
 ---
 

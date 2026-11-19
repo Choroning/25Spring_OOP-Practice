@@ -657,7 +657,7 @@ ErasureError.java:6: error: generic array creation
 
 Primitive types cannot be type arguments (the `Vector<int>` of Section 2.1) because a primitive value cannot sit in the place of the `Object` left by erasure.
 
-> **Note:** **Overloading with the same erasure.** Declaring both `void print(List<String> a)` and `void print(List<Integer> a)` in one class makes both methods become `print(List)` after erasure, giving the compile error "name clash: print(List<Integer>) and print(List<String>) have the same erasure". Methods whose parameters differ only in type arguments cannot be overloaded.
+> **Note:** **Overloading with the same erasure.** Declaring both `void print(List<String> a)` and `void print(List<Integer> a)` in one class makes both methods become `print(List)` after erasure, giving the compile error `name clash: print(List<Integer>) and print(List<String>) have the same erasure`. Methods whose parameters differ only in type arguments cannot be overloaded.
 
 ---
 
