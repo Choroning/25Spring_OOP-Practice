@@ -1,4 +1,4 @@
-# [2025학년도 봄학기] 객체지향프로그래밍 연습
+# [2025학년도 봄학기] 객체지향프로그래밍
 
 ![Last Commit](https://img.shields.io/github/last-commit/Choroning/25Spring_OOP-Practice)
 ![Languages](https://img.shields.io/github/languages/top/Choroning/25Spring_OOP-Practice)
