@@ -2,7 +2,7 @@
 
 [Repository Guide](README.md) | [English](Course-Information.md) | [한국어](Course-Information.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-24
 
 ## Table of Contents
 
@@ -75,7 +75,7 @@
 - **Common Homework Rules:** The rules stated in the instructions of each homework are as follows.
   - Every program must have a header comment (Homework 1) or Javadoc comments (Homeworks 2 and 3) and follow the standard naming rule, and each failure costs 1 point.
   - In Homeworks 2 and 3, the program must never crash on incorrect user input, and a failure costs 1 point. Homework 3 requires, in principle, one class per Java file, and writing unnecessary nested classes also costs 1 point.
-  - The report (.docx) filled with answers and result screenshots and all the Java code (.java) written are compressed into a .zip file and submitted to Blackboard by the deadline. The compressed file is named with the homework number, student ID, and name, as in `HW1_YourID_Yourname.zip`.
+  - The deliverables are the report (.docx) filled with answers and result screenshots and all the Java code (.java) written.
   - The Java code must run cleanly when the teaching assistant runs it.
   - Homeworks 2 and 3 give partial scores, so students are encouraged to try as far as they can even if they cannot solve a problem completely.
   - To prevent abuse of ChatGPT, the pattern recognition for the issues is left to the developer in most problems. The instructor states the wish that students feel directly in what areas developers can have an edge in the AI era, such as raising issues, recognizing patterns, and segmenting requirements, where ChatGPT still cannot beat a human developer. Homework 1 tells students to use ChatGPT actively.
@@ -114,7 +114,7 @@
 
 ## 4. Course Policies
 
-- Lectures are based on the slides uploaded to Blackboard, and homework is submitted to Blackboard.
+- Lectures are based on the slides uploaded to Blackboard.
 - The instructions of Homework 1 state that a student caught copying another student's code receives an F grade.
 - **Support for Students with Disabilities:** Students with any questions about the support services for students with disabilities may contact Prof. Minseok Seo, and they will find together the best way to take this course depending on the type of disability.
 - **Learning Ethics:** Students have the following general obligations in all processes of completing the curriculum, including attending lectures, preparing and submitting assignments, and taking exams.

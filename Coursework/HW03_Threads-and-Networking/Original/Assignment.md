@@ -2,11 +2,11 @@
 
 [Repository Guide](../../../README.md) | [English](Assignment.md) | [한국어](Assignment.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-24
 
 This is the third assignment (HW#3) of Object-Oriented Programming and Practice, given in Week 14. It has five questions, Q1-Q5, worth 20 points for Q1, 30 for Q2, 30 for Q3, 10 for Q4, and 10 for Q5. This repository contains solutions to Q1 and Q3.
 
-- **Submission:** Compress the report (.docx) filled in with the questions and result screenshots and all the Java code (.java) you wrote into `HW3_YourID_Yourname.zip`, and submit it to Blackboard by the set time. The Java code must run cleanly when the TA runs it.
+- **Deliverables:** The report (.docx) filled in with the questions and result screenshots, and all the Java code (.java) you wrote. The Java code must run cleanly when the TA runs it.
 - **Common rules:** Every program must have Javadoc comments and follow the standard naming rules. In addition, the program must never crash because of incorrect user input. Each failure costs 1 point. In principle, one Java file (.java) contains one class, and writing unnecessary nested classes also costs 1 point.
 - **Partial credit:** There is partial credit, so try as far as you can even if you cannot solve a question completely.
 - **ChatGPT:** To prevent abuse of ChatGPT, pattern recognition for the issues is left to the developer in most questions. Raising an issue, recognizing patterns, and segmenting requirements are where ChatGPT still cannot beat a human developer.

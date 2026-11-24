@@ -2,11 +2,11 @@
 
 [Repository Guide](../../../README.md) | [English](Assignment.md) | [한국어](Assignment.ko.md)
 
-> **Last Updated:** 2026-11-16
+> **Last Updated:** 2026-11-24
 
 This is the first assignment (HW#1) of Object-Oriented Programming and Practice, given in Week 4. It has ten questions, Q1-Q10: read each question, write the program, and paste the result screens into the report. This repository contains solutions to Q1-Q9.
 
-- **Submission:** Compress the report (.docx) filled in with the questions and result screenshots and all the Java code (.java) you wrote into `HW1_YourID_Yourname.zip`, and submit it to Blackboard by the set time. The Java code must run cleanly when the TA runs it.
+- **Deliverables:** The report (.docx) filled in with the questions and result screenshots, and all the Java code (.java) you wrote. The Java code must run cleanly when the TA runs it.
 - **Common rules:** Every program must have a header comment and follow the standard naming rules; each failure costs 1 point.
 - **ChatGPT:** To prevent abuse of ChatGPT, pattern recognition for the issues is left to the developer in most questions. Raising an issue, recognizing patterns, and segmenting requirements are where ChatGPT still cannot beat a human developer, and now that everyone can use ChatGPT, who can divide a problem efficiently and ask first also matters. For this assignment, use ChatGPT actively.
 - **Plagiarism:** Copying another student's code results in an F grade.

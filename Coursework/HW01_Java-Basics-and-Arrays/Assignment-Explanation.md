@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **Last Updated:** 2026-11-17
+> **Last Updated:** 2026-11-24
 
 > **Learning Objectives:**
 > 1. Validate input received through dialogs and `Scanner` and split it into the needed values
@@ -37,7 +37,7 @@
 
 > **Try It First:** This document contains the answers and solutions. Solve the problems in the [assignment handout](Original/Assignment.md) yourself before reading on.
 
-The assignment asks for ten short programs that use Java's basic grammar, strings, conditionals and loops, arrays, `JOptionPane` dialogs, and date classes. The original questions and example input and output are in the [assignment handout](Original/Assignment.md). This document covers Q1-Q9, which have solutions; this repository has no solution to Q10 (a Notepad built with ChatGPT). The solution files use names starting with `Assignment1_` instead of the submitted names `Q1.java`-`Q9.java`.
+The assignment asks for ten short programs that use Java's basic grammar, strings, conditionals and loops, arrays, `JOptionPane` dialogs, and date classes. The original questions and example input and output are in the [assignment handout](Original/Assignment.md). This document covers Q1-Q9, which have solutions; this repository has no solution to Q10 (a Notepad built with ChatGPT). The solution files use names starting with `Assignment1_` instead of the names `Q1.java`-`Q9.java` given in the handout.
 
 ```text
 Coursework/HW01_Java-Basics-and-Arrays/

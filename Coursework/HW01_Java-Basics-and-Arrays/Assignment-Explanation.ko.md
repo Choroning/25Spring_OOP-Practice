@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-17
+> **최종 수정일:** 2026-11-24
 
 > **학습 목표:**
 > 1. 대화 상자와 `Scanner`로 받은 입력을 검증하고 필요한 값으로 나눌 수 있다
@@ -37,7 +37,7 @@
 
 > **풀어 보기:** 이 문서는 정답과 풀이를 담고 있다. 먼저 [과제 안내문](Original/Assignment.ko.md)의 문제를 직접 풀어 본 뒤 읽는다.
 
-Java의 기본 문법, 문자열, 조건문과 반복문, 배열, `JOptionPane` 대화 상자, 날짜 클래스를 쓰는 짧은 프로그램 열 개를 작성하는 과제이다. 문제의 원문과 예시 입출력은 [과제 안내문](Original/Assignment.ko.md)에 있다. 이 문서는 풀이가 있는 Q1\~Q9를 다루며, Q10(ChatGPT로 만드는 메모장)의 풀이는 이 레포지토리에 없다. 풀이 파일은 제출할 때의 `Q1.java`\~`Q9.java` 대신 `Assignment1_`로 시작하는 이름을 쓴다.
+Java의 기본 문법, 문자열, 조건문과 반복문, 배열, `JOptionPane` 대화 상자, 날짜 클래스를 쓰는 짧은 프로그램 열 개를 작성하는 과제이다. 문제의 원문과 예시 입출력은 [과제 안내문](Original/Assignment.ko.md)에 있다. 이 문서는 풀이가 있는 Q1\~Q9를 다루며, Q10(ChatGPT로 만드는 메모장)의 풀이는 이 레포지토리에 없다. 풀이 파일은 안내문이 정한 `Q1.java`\~`Q9.java` 대신 `Assignment1_`로 시작하는 이름을 쓴다.
 
 ```text
 Coursework/HW01_Java-Basics-and-Arrays/
