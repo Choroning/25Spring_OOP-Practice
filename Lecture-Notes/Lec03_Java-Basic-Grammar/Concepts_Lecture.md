@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-27
 
 > **Learning Objectives:**
 > 1. Name variables, constants, and classes according to the identifier rules and naming conventions
@@ -72,7 +72,7 @@ An **identifier** is a name given to distinguish variables, constants, methods, 
 - Identifiers are case-sensitive: `barChart` and `barchart` are different identifiers.
 - Unicode letters are allowed, so a Korean identifier (`가격`) is possible. There is no length limit.
 
-```java
+```java wide-ok
 // Valid identifiers
 int name;
 char student_ID;

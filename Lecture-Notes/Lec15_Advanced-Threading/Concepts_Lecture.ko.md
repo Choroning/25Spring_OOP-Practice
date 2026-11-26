@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 스레드의 정보와 상태를 조회하고 우선순위를 설정할 수 있다
@@ -106,7 +106,7 @@ public class Chap15Program1 {
 ```java
 thread.setPriority(Thread.MAX_PRIORITY);  // 10
 thread.setPriority(Thread.MIN_PRIORITY);  // 1
-thread.setPriority(Thread.NORM_PRIORITY); // 5 (기본값)
+thread.setPriority(Thread.NORM_PRIORITY); // 5 (default)
 ```
 
 - 스레드 우선순위는 JVM과 운영체제 스케줄러에 대한 힌트이다. 우선순위 동작은 플랫폼에 따라 다르며, 높은 우선순위의 스레드가 일반적으로 선호되지만 엄격한 선점이 보장되지는 않는다.
@@ -133,7 +133,7 @@ public void run() {
     for (int i = 0; i < 100; i++) {
         System.out.println(i);
     }
-    // 스레드가 여기서 종료됨
+    // thread terminates here
 }
 ```
 
@@ -143,7 +143,7 @@ public void run() {
 TimerThread th = new TimerThread();
 th.start();
 // ...
-th.interrupt(); // 슬립 중인 스레드에서 InterruptedException 발생
+th.interrupt(); // causes InterruptedException in sleeping thread
 ```
 
 `interrupt()`는 대상 스레드의 인터럽트 상태를 설정한다. 대상 스레드가 `sleep()`, `wait()`, `join()`으로 기다리는 중이면 그 메서드가 `InterruptedException`을 던지고, 13강 2.1절의 `TimerThread`처럼 `catch` 블록에서 `return`하면 스레드가 종료된다. Swing 프로그램이라면 "kill Timer" 버튼의 액션 리스너에서 `th.interrupt()`를 호출하고 버튼을 비활성화하여 타이머 스레드를 끝낼 수 있다.
@@ -163,7 +163,7 @@ class WorkerThread extends Thread {
     @Override
     public void run() {
         while (!finished) {
-            // 작업 수행
+            // do work
             try { Thread.sleep(100); }
             catch (InterruptedException e) { return; }
         }
@@ -187,7 +187,7 @@ public class InterruptStatus {
                 Thread.sleep(10_000);
             } catch (InterruptedException e) {
                 System.out.println("sleeper: InterruptedException, flag now "
-                        + Thread.currentThread().isInterrupted());     // 예외가 나면 상태가 지워진다
+                        + Thread.currentThread().isInterrupted());     // cleared when thrown
             }
         });
         sleeper.start();
@@ -197,7 +197,7 @@ public class InterruptStatus {
 
         Thread busy = new Thread(() -> {
             long n = 0;
-            while (!Thread.currentThread().isInterrupted()) n++;      // 상태를 직접 검사한다
+            while (!Thread.currentThread().isInterrupted()) n++;      // check the status itself
             System.out.println("busy: saw the flag after " + (n > 0 ? "many" : "no") + " iterations, flag "
                     + Thread.currentThread().isInterrupted());
             System.out.println("busy: Thread.interrupted() = " + Thread.interrupted()
@@ -243,9 +243,9 @@ JButton btn = new JButton("kill Timer");
 btn.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-        th.interrupt();                      // 타이머 스레드에 종료를 요청한다
+        th.interrupt();                      // ask the timer thread to end
         JButton btn = (JButton) e.getSource();
-        btn.setEnabled(false);               // 버튼을 다시 누를 수 없게 한다
+        btn.setEnabled(false);               // keep the button from being pressed again
     }
 });
 c.add(btn);
@@ -285,16 +285,16 @@ synchronized void add() {
 ### 4.2 동기화 블록 vs. 동기화 메서드
 
 ```java
-// 동기화 메서드 -- 메서드 전체를 잠금
+// Synchronized method -- locks the entire method
 synchronized void method() { /* ... */ }
 
-// 동기화 블록 -- 임계 영역만 잠금
+// Synchronized block -- locks only the critical section
 void method() {
-    // 비임계 코드
+    // non-critical code
     synchronized (this) {
-        // 임계 영역
+        // critical section
     }
-    // 비임계 코드
+    // non-critical code
 }
 ```
 
@@ -310,7 +310,7 @@ class SharedBoard {
 
     public void add() {
         int n = sum;
-        Thread.yield();   // 다른 스레드에 실행을 양보하여 끼어들 기회를 준다
+        Thread.yield();   // yield to another thread, giving it a chance to cut in
         n += 10;
         sum = n;
         System.out.println(Thread.currentThread().getName() + " : " + sum);
@@ -374,12 +374,12 @@ class SharedData {
     synchronized void put(int value) {
         data = value;
         ready = true;
-        notify();                // 기다리는 스레드 하나를 깨운다
+        notify();                // wake one waiting thread
     }
 
     synchronized int take() throws InterruptedException {
-        while (!ready)           // 조건이 만족될 때까지
-            wait();              // 락을 놓고 기다린다
+        while (!ready)           // until the condition holds
+            wait();              // release the lock and wait
         ready = false;
         return data;
     }
@@ -444,7 +444,7 @@ public class LockChoice {
     static class Counter {
         private int value = 0;
         synchronized void inc() { value++; }
-        synchronized void incTwice() { inc(); inc(); }                    // 같은 락을 다시 얻는다
+        synchronized void incTwice() { inc(); inc(); }                    // reacquires the same lock
         int get() { return value; }
     }
 
@@ -456,7 +456,7 @@ public class LockChoice {
         System.out.println("reentrant call finished, value " + c.get());
 
         Runnable wrongLock = () -> {
-            Object myLock = new Object();                                  // 스레드마다 다른 락
+            Object myLock = new Object();                                  // a different lock per thread
             for (int i = 0; i < 1_000_000; i++) synchronized (myLock) { shared++; }
         };
         Thread t1 = new Thread(wrongLock), t2 = new Thread(wrongLock);
@@ -490,17 +490,17 @@ public class BoundedBuffer {
     BoundedBuffer(int capacity) { this.capacity = capacity; }
 
     synchronized void put(int x) throws InterruptedException {
-        while (items.size() == capacity) {                                 // 가득 차면 기다린다
+        while (items.size() == capacity) {                                 // wait while full
             System.out.println("  producer waits (full " + items + ")");
             wait();
         }
         items.addLast(x);
         System.out.println("put " + x + " -> " + items);
-        notifyAll();                                                       // 기다리는 소비자를 깨운다
+        notifyAll();                                                       // wake waiting consumers
     }
 
     synchronized int take() throws InterruptedException {
-        while (items.isEmpty()) {                                          // 비어 있으면 기다린다
+        while (items.isEmpty()) {                                          // wait while empty
             System.out.println("  consumer waits (empty)");
             wait();
         }
@@ -557,18 +557,18 @@ consumer sum 15
 synchronized public void fill() {
     if (barSize == maxBarSize) {
         try {
-            wait();              // 막대가 가득 차면 기다린다
+            wait();              // wait when the bar is full
         } catch (InterruptedException e) { return; }
     }
     barSize++;
-    repaint();                   // 막대를 다시 그린다
+    repaint();                   // repaint the bar
     notify();
 }
 
 synchronized public void consume() {
     if (barSize == 0) {
         try {
-            wait();              // 막대가 비면 기다린다
+            wait();              // wait when the bar is empty
         } catch (InterruptedException e) { return; }
     }
     barSize--;
@@ -649,7 +649,7 @@ public class Deadlock {
         Thread.sleep(500);
 
         ThreadMXBean mx = ManagementFactory.getThreadMXBean();
-        long[] ids = mx.findDeadlockedThreads();                           // 교착 상태의 스레드를 찾는다
+        long[] ids = mx.findDeadlockedThreads();                           // find deadlocked threads
         System.out.println("deadlocked threads: " + (ids == null ? 0 : ids.length));
         for (ThreadInfo info : mx.getThreadInfo(ids))
             System.out.println(info.getThreadName() + " is " + info.getThreadState()

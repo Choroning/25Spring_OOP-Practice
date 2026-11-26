@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 소켓을 사용하여 클라이언트-서버 통신을 구현할 수 있다
@@ -154,7 +154,7 @@ TCP 소켓 클래스는 `java.net` 패키지에 있다.
 ```java
 ServerSocket serverSocket = new ServerSocket(9999);
 System.out.println("Waiting for connection...");
-Socket clientSocket = serverSocket.accept(); // 클라이언트가 연결될 때까지 블로킹
+Socket clientSocket = serverSocket.accept(); // blocks until client connects
 System.out.println("Client connected!");
 ```
 
@@ -164,7 +164,7 @@ System.out.println("Client connected!");
 
 ```java
 Socket socket = new Socket("localhost", 9999);
-// 연결 수립 완료
+// connection established
 ```
 
 `localhost`는 자기 컴퓨터를 가리키는 호스트 이름이므로, 같은 컴퓨터에서 서버와 클라이언트를 함께 실행해 시험할 수 있다. 서버가 그 포트에서 기다리고 있지 않으면 생성자가 `ConnectException`(`IOException`의 하위 클래스)을 던진다.
@@ -205,7 +205,7 @@ public class EchoServer {
         int port = 5051;
         try (ServerSocket listener = new ServerSocket(port)) {             // socket, bind, listen
             System.out.println("[server] listening on port " + listener.getLocalPort());
-            try (Socket s = listener.accept();                              // 연결이 올 때까지 막힌다
+            try (Socket s = listener.accept();                              // blocks until a connection arrives
                  BufferedReader in = new BufferedReader(
                          new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8));
                  PrintWriter out = new PrintWriter(
@@ -213,9 +213,9 @@ public class EchoServer {
                 System.out.println("[server] accepted " + s.getInetAddress().getHostAddress()
                         + ":" + s.getPort() + " on local port " + s.getLocalPort());
                 String line;
-                while ((line = in.readLine()) != null) {                    // null이면 상대가 닫았다
+                while ((line = in.readLine()) != null) {                    // null means the peer closed
                     System.out.println("[server] received \"" + line + "\"");
-                    out.println("echo: " + line);                           // autoflush가 켜져 있다
+                    out.println("echo: " + line);                           // autoflush is on
                     if (line.equals("bye")) break;
                 }
                 System.out.println("[server] closing connection");
@@ -227,14 +227,14 @@ public class EchoServer {
 
 클라이언트는 같은 컴퓨터의 5051번 포트에 연결하여 세 줄을 차례로 보내고, 줄마다 서버의 답을 읽는다.
 
-```java
+```java wide-ok
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class EchoClient {
     public static void main(String[] args) throws IOException {
-        try (Socket s = new Socket("localhost", 5051);                     // socket과 connect
+        try (Socket s = new Socket("localhost", 5051);                     // socket and connect
              BufferedReader in = new BufferedReader(
                      new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8));
              PrintWriter out = new PrintWriter(
@@ -253,7 +253,7 @@ public class EchoClient {
 
 서버를 먼저 실행하고(`java EchoServer`), 다른 터미널에서 클라이언트를 실행한(`java EchoClient`) 결과는 다음과 같다. 위가 서버, 아래가 클라이언트의 출력이다.
 
-```text
+```text wide-ok
 [server] listening on port 5051
 [server] accepted 127.0.0.1:62936 on local port 5051
 [server] received "hello"
@@ -262,7 +262,7 @@ public class EchoClient {
 [server] closing connection
 ```
 
-```text
+```text wide-ok
 [client] connected from local port 62936 to 127.0.0.1:5051
 [client] sent "hello", got "echo: hello"
 [client] sent "안녕", got "echo: 안녕"
@@ -308,7 +308,7 @@ public class HalfClose {
                      PrintWriter out = new PrintWriter(s.getOutputStream(), true)) {
                     int sum = 0, count = 0;
                     String line;
-                    while ((line = in.readLine()) != null) {               // 클라이언트가 출력을 닫으면 null
+                    while ((line = in.readLine()) != null) {               // null after the client shuts output
                         sum += Integer.parseInt(line);
                         count++;
                     }
@@ -321,7 +321,7 @@ public class HalfClose {
                  PrintWriter out = new PrintWriter(s.getOutputStream(), true);
                  BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()))) {
                 for (int v : new int[] {10, 20, 30, 40}) out.println(v);
-                s.shutdownOutput();                                         // 보내기만 닫는다
+                s.shutdownOutput();                                         // close only the sending side
                 System.out.println("[client] output shut down: " + s.isOutputShutdown()
                         + ", input still open: " + !s.isInputShutdown());
                 System.out.println("[client] reply: " + in.readLine());
@@ -350,7 +350,7 @@ public class HalfClose {
 ### 3.1 문자 스트림과 flush()
 
 ```java
-// 서버 측
+// Server side
 BufferedReader in = new BufferedReader(
     new InputStreamReader(socket.getInputStream()));
 BufferedWriter out = new BufferedWriter(
@@ -373,14 +373,14 @@ out.flush();
 
 ```java
 while (true) {
-    String inputMessage = in.readLine();         // 클라이언트의 한 줄을 받는다
-    if (inputMessage.equalsIgnoreCase("bye")) {  // bye를 받으면 끝낸다
+    String inputMessage = in.readLine();         // receive one line from the client
+    if (inputMessage.equalsIgnoreCase("bye")) {  // end on bye
         System.out.println("Connection terminated!");
         break;
     }
     System.out.println("Client: " + inputMessage);
     System.out.print("Server>>");
-    String outputMessage = scanner.nextLine();   // 서버 사용자가 입력한 답장
+    String outputMessage = scanner.nextLine();   // reply typed by the server user
     out.write(outputMessage + "\n");
     out.flush();
 }
@@ -395,7 +395,7 @@ while (true) {
 ```java
 public static String calc(String exp) {
     StringTokenizer st = new StringTokenizer(exp, " ");
-    if (st.countTokens() != 3) return "error";   // 토큰이 세 개가 아니면 오류
+    if (st.countTokens() != 3) return "error";   // error unless there are three tokens
     String res = "";
     int op1 = Integer.parseInt(st.nextToken());
     String opcode = st.nextToken();
@@ -404,7 +404,7 @@ public static String calc(String exp) {
         case "+": res = Integer.toString(op1 + op2); break;
         case "-": res = Integer.toString(op1 - op2); break;
         case "*": res = Integer.toString(op1 * op2); break;
-        default : res = "error";                 // 지원하지 않는 연산자
+        default : res = "error";                 // unsupported operator
     }
     return res;
 }
@@ -426,12 +426,12 @@ public class Boundaries {
             Thread client = new Thread(() -> {
                 try (Socket s = new Socket("localhost", 5052)) {
                     OutputStream raw = s.getOutputStream();
-                    raw.write("Hello".getBytes());                          // write 두 번
+                    raw.write("Hello".getBytes());                          // two writes
                     raw.write("World".getBytes());
                     raw.flush();
                     Thread.sleep(200);
                     DataOutputStream data = new DataOutputStream(raw);
-                    data.writeUTF("first message");                         // 길이를 앞에 붙인다
+                    data.writeUTF("first message");                         // length-prefixed
                     data.writeUTF("second message");
                     data.flush();
                 } catch (Exception e) { e.printStackTrace(); }
@@ -439,7 +439,7 @@ public class Boundaries {
             client.start();
             try (Socket s = listener.accept()) {
                 InputStream in = s.getInputStream();
-                Thread.sleep(100);                                          // 두 write가 모두 도착하게 둔다
+                Thread.sleep(100);                                          // let both writes arrive
                 byte[] buf = new byte[100];
                 int n = in.read(buf);
                 System.out.println("one read() returned " + n + " bytes: " + new String(buf, 0, n));
@@ -509,7 +509,7 @@ public class MultiEcho {
              PrintWriter out = new PrintWriter(s.getOutputStream(), true)) {
             String line;
             while ((line = in.readLine()) != null) {
-                Thread.sleep(100);                                         // 처리에 시간이 걸린다고 가정
+                Thread.sleep(100);                                         // pretend the work takes time
                 out.println(line.toUpperCase());
             }
             System.out.println("[" + who + "] client port " + s.getPort() + " done");
@@ -533,7 +533,7 @@ public class MultiEcho {
             try {
                 while (true) {
                     Socket s = listener.accept();
-                    new Thread(() -> serve(s), "service-" + id++).start();  // 연결마다 서비스 스레드
+                    new Thread(() -> serve(s), "service-" + id++).start();  // a service thread per connection
                 }
             } catch (IOException e) { }
         }, "acceptor");
@@ -576,7 +576,7 @@ void join(PrintWriter out) {
 }
 
 void broadcast(String msg) {
-    synchronized (clients) {                 // 순회하는 동안 목록이 바뀌지 않게 한다
+    synchronized (clients) {                 // keep the list unchanged while iterating
         for (PrintWriter out : clients) out.println(msg);
     }
 }
@@ -609,19 +609,19 @@ GUI 계산기의 서버 창은 `JScrollPane`에 넣은 `JTextArea`에 접속과 
 
 TCP의 스트림 소켓과 달리 UDP의 **데이터그램 소켓(datagram socket)** 은 연결을 맺지 않고, 독립된 메시지 하나인 데이터그램을 주고받는다. 데이터그램은 그 자체로 완결된 메시지이며, 도착 여부, 도착 시각, 내용이 보장되지 않는다 [2]. 대신 연결 설정과 확인 응답이 없어 지연이 짧고, 데이터그램 하나가 메시지 하나이므로 3.4절의 메시지 경계 문제가 없다. Java에서는 `java.net.DatagramSocket`으로 소켓을 만들고, 보내거나 받을 데이터와 상대의 주소를 `DatagramPacket`에 담는다.
 
-```java
+```java wide-ok
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class UdpEcho {
     public static void main(String[] args) throws Exception {
         try (DatagramSocket server = new DatagramSocket(5055);
-             DatagramSocket client = new DatagramSocket()) {               // 포트는 운영체제가 고른다
+             DatagramSocket client = new DatagramSocket()) {               // the OS picks the port
             Thread t = new Thread(() -> {
                 try {
                     byte[] buf = new byte[512];
                     DatagramPacket p = new DatagramPacket(buf, buf.length);
-                    server.receive(p);                                      // 데이터그램 하나를 받는다
+                    server.receive(p);                                      // receive one datagram
                     String msg = new String(p.getData(), 0, p.getLength(), StandardCharsets.UTF_8);
                     System.out.println("[server] " + p.getLength() + " bytes from port " + p.getPort() + ": " + msg);
                     byte[] reply = ("echo: " + msg).getBytes(StandardCharsets.UTF_8);
@@ -644,7 +644,7 @@ public class UdpEcho {
 }
 ```
 
-```text
+```text wide-ok
 [server] 11 bytes from port 59507: ping 자바
 [client] local port 59507, reply: echo: ping 자바
 ```
@@ -679,7 +679,7 @@ import java.net.*;
 public class NetErrors {
     public static void main(String[] args) throws Exception {
         try {
-            new Socket("localhost", 5999).close();                          // 아무도 기다리지 않는 포트
+            new Socket("localhost", 5999).close();                          // a port nobody listens on
         } catch (ConnectException e) {
             System.out.println("ConnectException: " + e.getMessage());
         }
@@ -692,7 +692,7 @@ public class NetErrors {
             }
 
             try (Socket c = new Socket("localhost", 5054); Socket s = first.accept()) {
-                c.setSoTimeout(500);                                        // 읽기 시간 제한 0.5초
+                c.setSoTimeout(500);                                        // read timeout 0.5 s
                 long t0 = System.nanoTime();
                 try {
                     c.getInputStream().read();

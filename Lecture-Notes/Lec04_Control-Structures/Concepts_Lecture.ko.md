@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 조건문(if/else, switch)을 적용할 수 있다
@@ -60,7 +60,7 @@
 삼항 연산자 `? :`는 단순한 조건 논리를 하나의 표현식으로 간결하게 표현하는 방법을 제공한다.
 
 ```java
-// 구문: condition ? valueIfTrue : valueIfFalse
+// Syntax: condition ? valueIfTrue : valueIfFalse
 int diff = (a > b) ? (a - b) : (b - a);
 ```
 
@@ -75,7 +75,7 @@ if (x > y)
 else
     s = -1;
 
-s = (x > y) ? 1 : -1;       // 위의 if-else와 같다
+s = (x > y) ? 1 : -1;       // same as the if-else above
 ```
 
 > **핵심:** 삼항 연산자는 단순한 조건에만 사용해야 한다. 복잡한 논리는 가독성을 위해 `if-else`로 표현하는 것이 좋다.
@@ -266,26 +266,26 @@ switch (ranking) {
 ```java
 int b;
 switch (b % 2) {
-    case 1: ...; break;          // 정수 리터럴
+    case 1: ...; break;          // integer literal
     case 2: ...; break;
 }
 
 char c;
 switch (c) {
-    case '+': ...; break;        // 문자 리터럴
+    case '+': ...; break;        // character literal
     case '-': ...; break;
 }
 
 String s = "yes";
 switch (s) {
-    case "yes": ...; break;      // 문자열 리터럴
+    case "yes": ...; break;      // string literal
     case "No": ...; break;
 }
 
 switch (a) {
-    case a:       // 오류: a는 변수이다
-    case a > 3:   // 오류: 조건식은 쓸 수 없다
-    case a == 1:  // 오류
+    case a:       // Error! 'a' is a variable
+    case a > 3:   // Error! a condition is not allowed
+    case a == 1:  // Error!
 }
 ```
 
@@ -389,14 +389,14 @@ flowchart TD
 위 루프는 number가 100 이하인 동안 반복하여 1부터 100까지의 합 5050을 구한다. 다음도 `while` 문의 예이다.
 
 ```java
-// 1, 2, 3, ...을 차례로 더하다가 합이 1,000,000을 넘으면 멈춘다
+// Keeps adding 1, 2, 3, ... until the sum becomes larger than 1,000,000
 int sum = 0, number = 1;
 while (sum <= 1000000) {
     sum = sum + number;
     number = number + 1;
 }
 
-// 처음 20개 홀수의 곱을 구한다
+// Computes the product of the first 20 odd integers
 int product = 1, number = 1,
     count = 20, lastNumber;
 lastNumber = 2 * count - 1;
@@ -414,7 +414,7 @@ while (number <= lastNumber) {
 
 ```java
 while (age < 0 || age > 130) {
-    // 유효한 입력 요청
+    // prompt for valid input
     age = Integer.parseInt(inputStr);
 }
 ```
@@ -450,12 +450,12 @@ while (age < 0 || age > 130) {
 ```java
 int product = 0;
 while (product < 500000) {
-    product = product * 5;     // 0에 5를 곱해도 계속 0이다
+    product = product * 5;     // 0 times 5 is still 0
 }
 
 int count = 1;
 while (count != 10) {
-    count = count + 2;         // count는 홀수만 거치므로 10이 되지 않는다
+    count = count + 2;         // count takes only odd values, so it never becomes 10
 }
 ```
 
@@ -464,25 +464,25 @@ while (count != 10) {
 **off-by-one 오류:** 루프 본문을 10번 실행하는 것이 목표일 때, 다음 네 루프 중 1과 3은 off-by-one 오류가 있다.
 
 ```java
-count = 1;                     // 1: 9번 실행
+count = 1;                     // 1: runs 9 times
 while (count < 10) {
     . . .
     count++;
 }
 
-count = 1;                     // 2: 10번 실행
+count = 1;                     // 2: runs 10 times
 while (count <= 10) {
     . . .
     count++;
 }
 
-count = 0;                     // 3: 11번 실행
+count = 0;                     // 3: runs 11 times
 while (count <= 10) {
     . . .
     count++;
 }
 
-count = 0;                     // 4: 10번 실행
+count = 0;                     // 4: runs 10 times
 while (count < 10) {
     . . .
     count++;
@@ -665,10 +665,10 @@ number=6 sum=15
 세 반복문은 서로 바꾸어 쓸 수 있다. `for (초기화; 조건; 갱신) 본문`은 다음 `while` 문과 같다. 다만 `for`의 초기화에서 선언한 변수는 루프 안에서만 쓸 수 있고, 본문의 `continue`가 `for`에서는 갱신으로 넘어가지만 아래 `while`에서는 갱신까지 건너뛴다는 차이가 있다.
 
 ```text
-초기화;
-while (조건) {
-    본문
-    갱신;
+initialization;
+while (condition) {
+    body
+    update;
 }
 ```
 
@@ -806,9 +806,9 @@ gcd = 21
 
 ```java
 for (int i = 0; i < 10; i++) {
-    if (i == 5) break;      // i == 5일 때 루프 종료
-    if (i % 2 == 0) continue; // 짝수를 건너뜀
-    System.out.println(i);   // 1, 3 출력
+    if (i == 5) break;      // exits the loop when i == 5
+    if (i % 2 == 0) continue; // skips even numbers
+    System.out.println(i);   // prints 1, 3
 }
 ```
 
@@ -875,7 +875,7 @@ Java 5.0부터는 `java.util.Formatter` 클래스로 출력 서식을 지정할 
 ```java
 Formatter formatter = new Formatter(System.out);
 int num = 467;
-formatter.format("%6d", num);   // "   467": 필드 폭 6
+formatter.format("%6d", num);   // "   467": field width 6
 ```
 
 `format` 메서드의 일반 형식은 `format(<control string>, <expr1>, <expr2>, . . . )`이다. 제어 문자열 안의 서식 지정자가 뒤의 식들과 차례로 짝을 이룬다.
@@ -951,21 +951,21 @@ public class FormatFlags {
 두 큰 수의 최대공약수를 구하는 루프나 1부터 1억 사이의 모든 소수를 출력하는 루프처럼, 코드 조각을 실행하는 데 걸린 시간을 알고 싶을 때가 많다. Java는 경과 시간을 측정하는 여러 방법을 제공한다.
 
 ```java
-// Date 클래스 사용
+// Using Date class
 Date startTime = new Date();
-// ... 측정할 코드 ...
+// ... code to measure ...
 Date endTime = new Date();
 long elapsedMs = endTime.getTime() - startTime.getTime();
 
-// System.currentTimeMillis() 사용 (권장)
+// Using System.currentTimeMillis() (preferred)
 long start = System.currentTimeMillis();
-// ... 측정할 코드 ...
+// ... code to measure ...
 long end = System.currentTimeMillis();
 System.out.println("Elapsed: " + (end - start) + " ms");
 
-// System.nanoTime() 사용 (최고 정밀도)
+// Using System.nanoTime() (highest precision)
 long startNano = System.nanoTime();
-// ... 측정할 코드 ...
+// ... code to measure ...
 long endNano = System.nanoTime();
 double seconds = (endNano - startNano) / 1_000_000_000.0;
 ```
@@ -1025,13 +1025,13 @@ public class Chap4Program4 {
 `javax.swing.JOptionPane` 클래스는 사용자 상호작용을 위한 간단한 대화 상자를 제공한다.
 
 ```java
-// 입력 대화 상자
+// Input dialog
 String input = JOptionPane.showInputDialog(null, "Enter your age:");
 
-// 메시지 대화 상자
+// Message dialog
 JOptionPane.showMessageDialog(null, "Hello, World!");
 
-// 확인 대화 상자
+// Confirm dialog
 int choice = JOptionPane.showConfirmDialog(null, "Continue?");
 ```
 

@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-27
 
 > **Learning Objectives:**
 > 1. Implement client-server communication using sockets
@@ -227,7 +227,7 @@ public class EchoServer {
 
 The client connects to port 5051 on the same computer, sends three lines in turn, and reads the server's reply to each.
 
-```java
+```java wide-ok
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -253,7 +253,7 @@ public class EchoClient {
 
 The results of running the server first (`java EchoServer`) and the client in another terminal (`java EchoClient`) are as follows. The upper output is the server's and the lower is the client's.
 
-```text
+```text wide-ok
 [server] listening on port 5051
 [server] accepted 127.0.0.1:62936 on local port 5051
 [server] received "hello"
@@ -262,7 +262,7 @@ The results of running the server first (`java EchoServer`) and the client in an
 [server] closing connection
 ```
 
-```text
+```text wide-ok
 [client] connected from local port 62936 to 127.0.0.1:5051
 [client] sent "hello", got "echo: hello"
 [client] sent "안녕", got "echo: 안녕"
@@ -609,7 +609,7 @@ The server window of the GUI calculator records connections and calculations wit
 
 Unlike the stream sockets of TCP, the **datagram sockets** of UDP make no connection and exchange datagrams, each an independent message. A datagram is a self-contained message whose arrival, arrival time, and content are not guaranteed [2]. In exchange, there is no connection setup or acknowledgment, so latency is short, and since one datagram is one message, the message-boundary problem of Section 3.4 does not arise. In Java, a socket is created with `java.net.DatagramSocket`, and the data to send or receive and the address of the peer are put in a `DatagramPacket`.
 
-```java
+```java wide-ok
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
@@ -644,7 +644,7 @@ public class UdpEcho {
 }
 ```
 
-```text
+```text wide-ok
 [server] 11 bytes from port 59507: ping 자바
 [client] local port 59507, reply: echo: ping 자바
 ```

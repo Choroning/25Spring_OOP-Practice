@@ -2,7 +2,7 @@
 
 [Repository Guide](../../README.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **Last Updated:** 2026-11-19
+> **Last Updated:** 2026-11-27
 
 > **Learning Objectives:**
 > 1. Specify files and obtain information about them with the File class and JFileChooser
@@ -191,7 +191,7 @@ When closing wrapped streams, closing only the outermost stream is enough. The o
 
 Java's `char` and `String` represent characters in Unicode, but what a file stores is bytes. The rule that turns characters into a byte sequence is called a **character encoding**, or charset, and the same string becomes a different byte sequence under a different encoding. Character streams decode bytes into characters when reading and encode characters into bytes when writing, so the original string is restored only when the same encoding is used for writing and reading.
 
-```java
+```java wide-ok
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -229,7 +229,7 @@ public class Encoding {
 }
 ```
 
-```text
+```text wide-ok
 default charset: UTF-8
 chars: 6
 UTF-8    10 bytes: 4A 61 76 61 EC 9E 90 EB B0 94
@@ -756,7 +756,7 @@ try (ObjectOutputStream outObjectStream =
 
 Looking at the bytes actually stored in `example2.data` of Section 3.2 makes clear what it means that a binary format carries no type information. The following program creates the same file and prints its contents in hexadecimal.
 
-```java
+```java wide-ok
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;

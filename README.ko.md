@@ -63,13 +63,13 @@ Java로 객체 지향 프로그래밍의 핵심 개념과 기초를 배우는 �
 
 ```plaintext
 25Spring_OOP-Practice
-├── Lecture-Notes               강의별 강의 노트와 보충 단원
-├── Coursework                  강의별 Java 실습 코드, 과제 안내문과 풀이, 텀 프로젝트
-├── images                      모든 문서의 그림
-├── Course-Information.ko.md    수업 운영 정보
+├── Lecture-Notes               Lecture notes by lecture and supplementary units
+├── Coursework                  Java lab code by lecture, homework handouts and solutions, and term project
+├── images                      Figures for all documents
+├── Course-Information.ko.md    Course operations
 ├── Course-Information.md
-├── LICENSE                     문서 라이선스 (CC BY-NC-SA 4.0)
-├── LICENSE-CODE                코드 라이선스 (PolyForm Noncommercial 1.0.0)
+├── LICENSE                     Documentation license (CC BY-NC-SA 4.0)
+├── LICENSE-CODE                Code license (PolyForm Noncommercial 1.0.0)
 ├── README.ko.md
 └── README.md
 ```

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. Swing 컴포넌트를 사용하여 GUI 애플리케이션을 구축할 수 있다
@@ -213,7 +213,7 @@ container.add(new JButton("Center"), BorderLayout.CENTER);
 컴포넌트를 행과 열의 격자 형태로 배치한다:
 
 ```java
-container.setLayout(new GridLayout(3, 2)); // 3행, 2열
+container.setLayout(new GridLayout(3, 2)); // 3 rows, 2 columns
 ```
 
 GridLayout은 컨테이너를 크기가 같은 직사각형 칸으로 나누고 한 칸에 컴포넌트 하나씩을 놓는다. 컴포넌트는 `add()`한 순서대로 첫 행의 왼쪽부터 오른쪽으로 채우고, 행이 차면 다음 행으로 넘어간다. 생성자 `GridLayout(int rows, int cols, int hGap, int vGap)`은 칸 사이의 간격도 정한다. 다음 코드는 이름, 학번, 학과, 학년을 입력받는 양식을 4행 2열의 격자로 만들고 행 사이에 5픽셀 간격을 둔다.
@@ -255,8 +255,8 @@ Swing의 최상위 창(`JFrame`, `JDialog`, `JApplet` 등)에서 기본 배치 �
 ```java
 c.setLayout(null);
 JLabel simpleLabel = new JLabel("Hello");
-simpleLabel.setSize(50, 20);     // 폭 50, 높이 20픽셀
-simpleLabel.setLocation(30, 30); // 컨텐트팬의 (30, 30)에 놓는다
+simpleLabel.setSize(50, 20);     // width 50, height 20 pixels
+simpleLabel.setLocation(30, 30); // place at (30, 30) of the content pane
 c.add(simpleLabel);
 ```
 
@@ -279,7 +279,7 @@ public class Layouts {
     }
 
     static void show(String title, JPanel p) {
-        p.doLayout();                                  // 배치 관리자에게 배치를 시킨다
+        p.doLayout();                                  // ask the layout manager to lay out
         System.out.println(title + " (panel " + p.getWidth() + "x" + p.getHeight() + ")");
         for (Component c : p.getComponents()) {
             Rectangle r = c.getBounds();
@@ -377,18 +377,18 @@ import javax.imageio.ImageIO;
 
 public class NestedLayout {
     static JPanel build() {
-        JPanel root = new JPanel(new BorderLayout(0, 6));       // 바깥: BorderLayout
+        JPanel root = new JPanel(new BorderLayout(0, 6));       // outer: BorderLayout
         root.setBorder(BorderFactory.createEmptyBorder(6, 6, 6, 6));
 
         JTextField display = new JTextField("0");
         display.setHorizontalAlignment(JTextField.RIGHT);
         root.add(display, BorderLayout.NORTH);
 
-        JPanel keys = new JPanel(new GridLayout(4, 4, 4, 4));   // 가운데: GridLayout
+        JPanel keys = new JPanel(new GridLayout(4, 4, 4, 4));   // center: GridLayout
         for (String k : "7 8 9 / 4 5 6 * 1 2 3 - 0 . = +".split(" ")) keys.add(new JButton(k));
         root.add(keys, BorderLayout.CENTER);
 
-        JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT, 4, 0)); // 아래: FlowLayout
+        JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT, 4, 0)); // bottom: FlowLayout
         bottom.add(new JButton("Clear"));
         bottom.add(new JButton("Exit"));
         root.add(bottom, BorderLayout.SOUTH);
@@ -402,7 +402,7 @@ public class NestedLayout {
 
     public static void main(String[] args) throws Exception {
         JPanel root = build();
-        Dimension pref = root.getPreferredSize();              // pack()이 쓰는 크기
+        Dimension pref = root.getPreferredSize();              // the size pack() uses
         System.out.println("preferred size " + pref.width + "x" + pref.height);
         root.setSize(260, 240);
         layoutAll(root);
@@ -449,11 +449,11 @@ import java.awt.*;
 public class MoreLayouts {
     public static void main(String[] args) {
         JPanel box = new JPanel();
-        box.setLayout(new BoxLayout(box, BoxLayout.Y_AXIS));   // 위에서 아래로 쌓는다
+        box.setLayout(new BoxLayout(box, BoxLayout.Y_AXIS));   // stack from top to bottom
         box.add(new JButton("Short"));
-        box.add(Box.createVerticalStrut(10));                   // 고정 간격 10
+        box.add(Box.createVerticalStrut(10));                   // fixed gap of 10
         box.add(new JButton("A longer button"));
-        box.add(Box.createVerticalGlue());                      // 남는 공간을 흡수한다
+        box.add(Box.createVerticalGlue());                      // absorbs spare space
         box.add(new JButton("Bottom"));
         box.setSize(200, 160);
         box.doLayout();
@@ -545,8 +545,8 @@ CardLayout은 `add(컴포넌트, 이름)`으로 카드를 이름과 함께 넣�
 
 ```java
 JTextArea log = new JTextArea();
-log.setText("Server started\n");   // 내용을 바꾼다
-log.append("Client connected\n");  // 내용 뒤에 덧붙인다
+log.setText("Server started\n");   // replaces the content
+log.append("Client connected\n");  // appends to the content
 c.add(new JScrollPane(log), BorderLayout.CENTER);
 JLabel imageLabel = new JLabel(new ImageIcon("images/logo.png"));
 ```
@@ -563,7 +563,7 @@ public class TextDemo {
         JTextField name = new JTextField(10);
         name.addActionListener(e -> System.out.println("Enter pressed, text = " + name.getText()));
         name.setText("Kim");
-        name.postActionEvent();                         // Enter 키를 누른 것과 같은 이벤트
+        name.postActionEvent();                         // same event as pressing Enter
 
         JPasswordField pw = new JPasswordField();
         pw.setText("s3cret");
@@ -699,7 +699,7 @@ class MyActionListener implements ActionListener {
 5.3절의 첫 예제처럼 `new ActionListener() { ... }`로 이름 없는 클래스를 정의하면서 바로 객체를 만드는 것을 **익명 클래스(anonymous class)** 라 한다. 추상 메서드가 하나뿐인 인터페이스(함수형 인터페이스)는 람다식으로 더 짧게 구현할 수 있다.
 
 ```java
-// 람다 (Java 8+) -- 단일 메서드 인터페이스에 대한 간결한 문법
+// Lambda (Java 8+) -- shorter syntax for single-method interfaces
 button.addActionListener(e -> System.out.println("Clicked!"));
 ```
 
@@ -746,9 +746,9 @@ public class Chap12Program5 extends JFrame {
 
     class MyMouseAdapter extends MouseAdapter {
         public void mousePressed(MouseEvent e) {
-            int x = e.getX();               // 눌린 위치의 x 좌표
-            int y = e.getY();               // 눌린 위치의 y 좌표
-            simpleLabel.setLocation(x, y);  // 레이블을 그 위치로 옮긴다
+            int x = e.getX();               // x coordinate of the press
+            int y = e.getY();               // y coordinate of the press
+            simpleLabel.setLocation(x, y);  // move the label there
         }
     }
 }
@@ -771,8 +771,8 @@ public class Chap12Program5 extends JFrame {
 ```java
 c.setLayout(null);
 c.addKeyListener(new MyKeyListener());
-c.setFocusable(true);   // 컨텐트팬이 키 입력을 받을 수 있게 한다
-c.requestFocus();       // 키 입력 포커스를 컨텐트팬에 둔다
+c.setFocusable(true);   // let the content pane receive key input
+c.requestFocus();       // give the keyboard focus to the content pane
 
 class MyKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
@@ -833,12 +833,12 @@ public class EdtDemo {
             JButton b = new JButton("OK");
             b.addActionListener(e -> log("listener A: " + e.getActionCommand()));
             b.addActionListener(e -> log("listener B"));
-            b.doClick();                                  // 클릭을 흉내 낸다
+            b.doClick();                                  // simulate a click
         });
 
         long t0 = System.nanoTime();
         SwingUtilities.invokeLater(() -> {
-            try { Thread.sleep(500); } catch (InterruptedException e) { }   // EDT를 0.5초 막는다
+            try { Thread.sleep(500); } catch (InterruptedException e) { }   // block the EDT for 0.5 s
         });
         SwingUtilities.invokeAndWait(() ->
             log("next event waited " + Math.round((System.nanoTime() - t0) / 1e6 / 100) * 100 + " ms"));
@@ -912,15 +912,15 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class ListenerStyles {
-    static class NamedListener implements ActionListener {            // (1) 별도의 클래스
+    static class NamedListener implements ActionListener {            // (1) a separate class
         public void actionPerformed(ActionEvent e) { System.out.println("named class: " + e.getActionCommand()); }
     }
 
-    static class Form implements ActionListener {                     // (5) 컨테이너 자신이 리스너
+    static class Form implements ActionListener {                     // (5) the container itself
         JButton save = new JButton("Save"), load = new JButton("Load");
         private int clicks = 0;
 
-        class InnerListener implements ActionListener {               // (2) 내부 클래스
+        class InnerListener implements ActionListener {               // (2) an inner class
             public void actionPerformed(ActionEvent e) { clicks++; System.out.println("inner class, clicks = " + clicks); }
         }
 
@@ -939,10 +939,10 @@ public class ListenerStyles {
     public static void main(String[] args) {
         JButton b = new JButton("Go");
         b.addActionListener(new NamedListener());
-        b.addActionListener(new ActionListener() {                    // (3) 익명 클래스
+        b.addActionListener(new ActionListener() {                    // (3) an anonymous class
             public void actionPerformed(ActionEvent e) { System.out.println("anonymous class"); }
         });
-        b.addActionListener(e -> System.out.println("lambda"));       // (4) 람다
+        b.addActionListener(e -> System.out.println("lambda"));       // (4) a lambda
         b.doClick();
 
         Form f = new Form();
@@ -988,7 +988,7 @@ import java.awt.event.*;
 
 public class MouseDispatch {
     public static void main(String[] args) {
-        JPanel c = new JPanel(null);                    // 컨텐트팬 역할
+        JPanel c = new JPanel(null);                    // plays the content pane
         c.setSize(250, 250);
         JLabel hello = new JLabel("Hello");
         hello.setBounds(30, 30, 50, 20);
@@ -1007,7 +1007,7 @@ public class MouseDispatch {
         for (int[] p : points) {
             MouseEvent e = new MouseEvent(c, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(),
                     0, p[0], p[1], 1, false, MouseEvent.BUTTON1);
-            c.dispatchEvent(e);                         // 운영체제가 보낸 것처럼 전달한다
+            c.dispatchEvent(e);                         // deliver as if from the OS
             System.out.println("label now at " + hello.getX() + ", " + hello.getY());
         }
         System.out.println("mouse listeners: " + c.getMouseListeners().length);

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 메서드에서 객체를 반환하는 과정과 예약어 this의 쓰임을 설명할 수 있다
@@ -60,7 +60,7 @@
 메서드는 기본형 값을 반환하듯 객체도 반환할 수 있다. 객체를 반환하면 실제로는 객체의 참조(주소)를 반환하므로, 객체의 복사본이 아니라 그 객체를 가리키는 참조만 호출자에게 전달된다. 다음 `simplify`는 분수를 기약분수로 만든 새 `Fraction` 객체를 반환한다.
 
 ```java
-public Fraction simplify() {      // 반환 타입: 반환할 객체의 클래스
+public Fraction simplify() {      // return type: the class of the returned object
 
     Fraction simp;
 
@@ -70,21 +70,21 @@ public Fraction simplify() {      // 반환 타입: 반환할 객체의 클래�
 
     simp = new Fraction(num/gcd, denom/gcd);
 
-    return simp;                  // Fraction 클래스의 인스턴스를 반환
+    return simp;                  // return an instance of the Fraction class
 }
 ```
 
 `f1`이 24/36일 때 `f2 = f1.simplify();`를 실행하면 메서드 안에서 2/3을 나타내는 새 `Fraction` 객체가 만들어지고 지역 변수 `simp`가 그 객체를 가리킨다. 메서드가 끝나면 `simp`의 값, 즉 참조가 호출자에게 반환되어 `f2`에 대입되고, `simp`가 차지하던 메모리는 해제된다.
 
 ```text
-(1) return 직전
+(1) just before return
 f1 ──▶ ┌───────────────┐      simp ──▶ ┌───────────────┐
        │ :Fraction     │               │ :Fraction     │
        │ numerator   24│               │ numerator   2 │
        │ denominator 36│               │ denominator 3 │
        └───────────────┘               └───────────────┘
 
-(2) simplify 종료 후
+(2) after simplify ends
 f1 ──▶ ┌───────────────┐        f2 ──▶ ┌───────────────┐
        │ :Fraction     │               │ :Fraction     │
        │ numerator   24│               │ numerator   2 │
@@ -248,7 +248,7 @@ public class Bicycle {
     protected String ownerName;
 
     public Bicycle() {
-        this("Unknown");            // Bicycle(String) 호출
+        this("Unknown");            // calls Bicycle(String)
     }
 
     public Bicycle(String ownerName) {
@@ -442,14 +442,14 @@ public class GarbageEx {
 ```
 
 ```text
-(1) 대입문 실행 전
+(1) before the assignments
 a ──▶ "Good"
 b ──▶ "Bad"
 c ──▶ "Normal"
 d
 e
 
-(2) a = null; d = c; c = null; 실행 후
+(2) after a = null; d = c; c = null;
 a     null       "Good"
 b ──▶ "Bad"
 c     null   ┌─▶ "Normal"
@@ -878,7 +878,7 @@ public class ElectricBicycle extends Bicycle {
     private int batteryLevel;
 
     public ElectricBicycle(String ownerName, int battery) {
-        super(ownerName);         // Bicycle의 생성자 호출
+        super(ownerName);         // call Bicycle's constructor
         this.batteryLevel = battery;
     }
 }

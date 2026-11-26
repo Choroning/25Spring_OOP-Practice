@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 식별자 규칙과 이름 짓기 관례에 맞게 변수, 상수, 클래스의 이름을 지을 수 있다
@@ -72,22 +72,22 @@
 - 대소문자를 구별한다. `barChart`와 `barchart`는 서로 다른 식별자이다.
 - 유니코드 문자를 쓸 수 있으므로 한글 식별자(`가격`)도 가능하다. 길이 제한은 없다.
 
-```java
-// 가능한 식별자
+```java wide-ok
+// Valid identifiers
 int name;
 char student_ID;
 void $func() { }
 class Monster3 { }
 int whatsyournamemynameiskitae;
-int barChart; int barchart;   // 대소문자가 다르므로 서로 다른 변수
+int barChart; int barchart;   // different variables because the case differs
 int 가격;
 
-// 불가능한 식별자
-int 3Chapter;        // 숫자로 시작
-class if { }         // 키워드
-char false;          // 리터럴
-void null() { }      // 리터럴
-class %calc { }      // 특수 문자 %
+// Invalid identifiers
+int 3Chapter;        // starts with a digit
+class if { }         // keyword
+char false;          // literal
+void null() { }      // literal
+class %calc { }      // special character %
 ```
 
 ### 1.2 Java 키워드
@@ -164,19 +164,19 @@ Uninit.java:4: error: variable local might not have been initialized
 ```java
 int number;
 number = 237;
-number = 35;                 // 237을 덮어쓴다
+number = 35;                 // overwrites 237
 
 Customer clemens, twain;
 clemens = new Customer();
-twain = clemens;             // 같은 객체를 가리키는 참조가 둘이 된다
+twain = clemens;             // now two references point to the same object
 ```
 
 ```text
-기본형 변수                     참조형 변수
+Primitive variable              Reference variables
 
 number                         clemens
 ┌──────┐                       ┌───────┐
-│  35  │  (237을 덮어씀)       │   ●───┼──┐
+│  35  │  (overwrote 237)      │   ●───┼──┐
 └──────┘                       └───────┘  │    ┌──────────┐
                                           ├──> │ Customer │
                                twain      │    └──────────┘
@@ -200,9 +200,9 @@ number                         clemens
 
 ```java
 int n = 15;
-int m = 015;      // 8진수, 13
-int k = 0x15;     // 16진수, 21
-int b = 0b0101;   // 2진수, 5
+int m = 015;      // octal, 13
+int k = 0x15;     // hexadecimal, 21
+int b = 0b0101;   // binary, 5
 long g = 24L;
 
 double d = 0.1234;
@@ -393,12 +393,12 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "java.l
 - 그 위치를 가리키는 이름
 
 ```java
-// 변수 선언과 초기화
+// Variable declaration and initialization
 int age = 25;
 double gpa = 3.95;
 String name = "Park";
 
-// 상수는 'final' 키워드를 사용
+// Constants use the 'final' keyword
 static final double PI = 3.141592;
 static final int UNIT_CHANGER = 60;
 ```
@@ -456,15 +456,15 @@ c %= 2;   // c = c % 2
 
 ```java
 int d = 3;
-int a = d++;  // a = 3, d = 4 (후위 증가: 사용 후 증가)
-a = ++d;      // d = 5, a = 5 (전위 증가: 증가 후 사용)
+int a = d++;  // a = 3, d = 4 (post-increment: use then increment)
+a = ++d;      // d = 5, a = 5 (pre-increment: increment then use)
 ```
 
 감소 연산자 `--`도 같은 방식으로 동작한다. 위 코드에 이어 다음을 실행하면 각 줄의 결과는 주석과 같다(실습 코드: [OperatorDemo.java](../../Coursework/Lab03_Java-Basic-Grammar/OperatorDemo.java)).
 
 ```java
-a = d--;      // a = 5, d = 4 (후위 감소: 사용 후 감소)
-a = --d;      // d = 3, a = 3 (전위 감소: 감소 후 사용)
+a = d--;      // a = 5, d = 4 (post-decrement: use then decrement)
+a = --d;      // d = 3, a = 3 (pre-decrement: decrement then use)
 ```
 
 ### 4.5 관계 및 논리 연산자
@@ -634,11 +634,11 @@ true
 ## 5. 형변환
 
 ```java
-// 묵시적(확대) 형변환: 작은 타입 -> 큰 타입 (자동)
+// Implicit (widening): smaller -> larger (automatic)
 int i = 10;
 double d = i;  // 10.0
 
-// 명시적(축소) 형변환: 큰 타입 -> 작은 타입 (캐스트 필요)
+// Explicit (narrowing): larger -> smaller (requires cast)
 double pi = 3.14;
 int truncated = (int) pi;  // 3
 ```
@@ -781,7 +781,7 @@ Hello, Dr. Caffeine.
 
 ```java
 double num = 123.45789345;
-DecimalFormat df = new DecimalFormat("0.000"); // 소수점 아래 세 자리
+DecimalFormat df = new DecimalFormat("0.000"); // three decimal places
 System.out.print(num);             // 123.45789345
 System.out.print(df.format(num));  // 123.458
 ```
@@ -827,7 +827,7 @@ double radius = Double.parseDouble(input);
 
 ```java
 int age;
-age = JOptionPane.showInputDialog(null, "Enter your age");   // 오류: String을 int에 대입할 수 없다
+age = JOptionPane.showInputDialog(null, "Enter your age");   // error: a String cannot be assigned to an int
 ```
 
 `String`을 수치로 바꾸는 데에는 래퍼 클래스(wrapper class)의 변환 메서드를 쓴다.

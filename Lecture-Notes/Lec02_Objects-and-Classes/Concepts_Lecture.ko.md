@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 클래스와 객체, 메시지와 메서드, 클래스 데이터 값과 인스턴스 데이터 값을 구별하여 설명할 수 있다
@@ -126,7 +126,7 @@ classDiagram
 - **클래스를 밝힌 객체:** `<객체 이름> : <클래스 이름>`을 밑줄 쳐서 쓰며, 그 객체가 어느 클래스의 인스턴스인지 나타낸다(예: `SV198 : BankAccount`).
 
 ```text
-   클래스           객체           클래스를 밝힌 객체
+   Class            Object          Object with its class
 ┌───────────┐   ┌───────────┐   ┌─────────────────────┐
 │  Account  │   │   SV198   │   │ SV198 : BankAccount │
 │           │   │   ‾‾‾‾‾   │   │ ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ │
@@ -298,13 +298,13 @@ false
 Java에서 객체 생성은 두 단계로 이루어진다.
 
 ```java
-// Step 1: 참조 변수 선언
+// Step 1: Declare a reference variable
 JFrame myWindow;
 
-// Step 2: 객체 인스턴스화(생성)
+// Step 2: Instantiate (create) the object
 myWindow = new JFrame();
 
-// 한 줄로 결합:
+// Combined in one line:
 JFrame myWindow = new JFrame();
 ```
 
@@ -327,15 +327,15 @@ car1 = new Vehicle();
 ### 2.2 선언과 생성의 메모리 상태
 
 ```java
-Customer customer;           // 1. 선언
-customer = new Customer();   // 2. 생성
+Customer customer;           // 1. declaration
+customer = new Customer();   // 2. creation
 ```
 
 1. 식별자 `customer`가 선언되고 메모리에 그 공간이 할당된다. 아직 가리키는 객체는 없다.
 2. `Customer` 객체가 생성되고, 식별자 `customer`가 그 객체를 가리키게 된다.
 
 ```text
-1. 선언 직후               2. 생성 후
+1. After declaration       2. After creation
 
 customer                  customer
 ┌───────┐                 ┌───────┐
@@ -357,7 +357,7 @@ customer                  customer
 
 ```java
 JFrame window1 = new JFrame();
-JFrame window2 = window1;  // 두 변수가 동일한 객체를 가리킴
+JFrame window2 = window1;  // Both point to the same object
 ```
 
 > **핵심:** 하나의 참조를 다른 참조에 대입하면 객체가 복사되는 것이 아니라, 두 변수가 메모리상의 동일한 인스턴스를 참조하게 된다.
@@ -378,8 +378,8 @@ customer
 ┌────────────┐         ┌────────────┐
 │ : Customer │         │ : Customer │
 └────────────┘         └────────────┘
- 첫 번째 new로 생성      두 번째 new로 생성
- (참조를 잃음)
+ created by first new   created by second new
+ (reference lost)
 ```
 
 *그림 8. 두 번째 new 이후 첫 번째 객체의 참조를 잃은 상태*
@@ -564,11 +564,11 @@ public class Chap2Program1 {
 
     public static void main(String[] args) {
 
-        JFrame myWindow;                         // 객체 선언
+        JFrame myWindow;                         // declare an object
 
-        myWindow = new JFrame();                 // 객체 생성
+        myWindow = new JFrame();                 // create the object
 
-        myWindow.setSize(300, 200);              // 객체 사용
+        myWindow.setSize(300, 200);              // use the object
         myWindow.setTitle("My First Java Program");
         myWindow.setVisible(true);
     }
@@ -578,16 +578,16 @@ public class Chap2Program1 {
 Java 프로그램은 (1) 주석, (2) import 문, (3) 클래스 선언으로 이루어진다. 모든 Java 소스 파일은 다음과 같은 구조를 따른다.
 
 ```java
-// 1. 패키지 선언 (선택 사항)
-// 2. import 문
+// 1. Package declaration (optional)
+// 2. Import statements
 import javax.swing.*;
 
-// 3. 클래스 정의
+// 3. Class definition
 public class MyProgram {
 
-    // 4. main 메서드 (진입점)
+    // 4. main method (entry point)
     public static void main(String[] args) {
-        // 프로그램 로직
+        // Program logic here
     }
 }
 ```
@@ -681,10 +681,10 @@ myWindow.setVisible(true);
 `javax.swing.JOptionPane`은 입력과 출력을 위한 간단한 대화 상자를 제공한다.
 
 ```java
-// 입력 대화 상자
+// Input dialog
 String name = JOptionPane.showInputDialog(null, "Enter your name:");
 
-// 메시지 대화 상자
+// Message dialog
 JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
 ```
 
@@ -697,8 +697,8 @@ JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
 `showMessageDialog`에 넘긴 문자열 값은 모두 `String` 클래스의 인스턴스이다. 큰따옴표로 둘러싼 문자의 나열은 `String` 상수이다. `String`도 객체이므로 다른 객체처럼 선언하고 생성할 수 있다.
 
 ```java
-String name;                   // 1. 식별자 name을 선언하고 공간을 할당한다
-name = new String("Jon Java"); // 2. String 객체를 생성하고 name이 가리키게 한다
+String name;                   // 1. declare the identifier name and allocate space
+name = new String("Jon Java"); // 2. create a String object and make name refer to it
 ```
 
 Java의 `String`은 불변(immutable)이다. 아래 메서드는 모두 원래 문자열을 바꾸지 않고 결과를 새로 만들어 반환한다. 주요 연산은 다음과 같다.
@@ -735,14 +735,14 @@ String text = "Espresso";
 text.substring(6, 8);   // "so"
 text.substring(0, 8);   // "Espresso"
 text.substring(1, 5);   // "spre"
-text.substring(3, 3);   // "" (빈 문자열)
-text.substring(4, 2);   // 오류: StringIndexOutOfBoundsException
+text.substring(3, 3);   // "" (empty string)
+text.substring(4, 2);   // error: StringIndexOutOfBoundsException
 
 String str1 = "Hello", str2 = "Java", str3 = "", str4 = " ";
 str1.length();          // 5
 str2.length();          // 4
-str3.length();          // 0 (빈 문자열)
-str4.length();          // 1 (공백 한 칸)
+str3.length();          // 0 (empty string)
+str4.length();          // 1 (one space)
 
 String str = "I Love Java and Java loves me.";
 str.indexOf("J");       // 7
@@ -818,7 +818,7 @@ Hello
 첫 번째 `s.toUpperCase();`는 `"JAVA"`라는 새 객체를 만들지만 그 참조를 어디에도 저장하지 않으므로 `s`는 여전히 `"java"`를 가리킨다. 결과를 쓰려면 `s = s.toUpperCase();`처럼 반환값을 변수에 대입해야 한다. 이때 바뀌는 것은 `s`가 가리키는 객체이지 원래의 `"java"` 객체가 아니다. 마찬가지로 `t = t + " World";`는 새 객체 `"Hello World"`를 만들어 `t`에 대입할 뿐이므로, 이전 객체를 가리키는 `u`는 `"Hello"` 그대로이다.
 
 ```text
- t = t + " World"; 실행 전          실행 후
+ before t = t + " World";           after
 
  t ●──┐                             t ●──────▶ "Hello World"
       ├──▶ "Hello"

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 2차원 배열을 생성하고 처리할 수 있다
@@ -63,13 +63,13 @@
 선언은 두 가지 형식으로 쓸 수 있고, 생성할 때는 행 수와 열 수를 차례로 지정한다.
 
 ```text
-<자료형>[][] <변수>;                       // 형식 1
-<자료형> <변수>[][];                       // 형식 2
-<변수> = new <자료형>[<행 수>][<열 수>];   // 생성
+<data type>[][] <variable>;                       // form 1
+<data type> <variable>[][];                       // form 2
+<variable> = new <data type>[<rows>][<columns>];  // creation
 ```
 
 ```java
-// 정적 초기화
+// Static initialization
 double[][] scores = {
     {3.3, 3.4},
     {3.5, 3.6},
@@ -77,8 +77,8 @@ double[][] scores = {
     {4.1, 4.2}
 };
 
-// 동적 할당
-int[][] matrix = new int[3][4]; // 3행, 4열
+// Dynamic allocation
+int[][] matrix = new int[3][4]; // 3 rows, 4 columns
 ```
 
 정적 초기화에서는 바깥 중괄호 안에 행마다 중괄호를 하나씩 쓰며, 행 수와 열 수가 초기값의 개수로 정해진다. 위의 `scores`는 4년 동안의 학기별 학점을 담은 4행 2열 배열이다. `new`로 동적 할당한 배열의 원소는 자료형의 기본값(`int`는 0, `double`은 0.0)으로 초기화된다.
@@ -88,9 +88,9 @@ int[][] matrix = new int[3][4]; // 3행, 4열
 2차원 배열의 원소는 행 인덱스와 열 인덱스로 접근한다. 두 인덱스 모두 0부터 시작하므로 `payScaleTable[2][1]`은 세 번째 행, 두 번째 열의 원소이다.
 
 ```java
-double[][] payScaleTable = new double[4][5]; // 4행, 5열
-payScaleTable[2][1] = 36.50;                 // 2행 1열에 저장
-double pay = payScaleTable[2][1];            // 2행 1열에서 읽기
+double[][] payScaleTable = new double[4][5]; // 4 rows, 5 columns
+payScaleTable[2][1] = 36.50;                 // store into row 2, column 1
+double pay = payScaleTable[2][1];            // read from row 2, column 1
 ```
 
 Java의 2차원 배열은 행 배열에 대한 참조를 원소로 갖는 1차원 배열이다. 그래서 `length` 필드가 두 단계로 존재한다.
@@ -114,14 +114,14 @@ int[][] i = new int[2][5];
 ### 1.3 2차원 배열의 순회
 
 ```java
-// 행 우선 순회
+// Row-major traversal
 for (int row = 0; row < scores.length; row++) {
     for (int col = 0; col < scores[row].length; col++) {
         sum += scores[row][col];
     }
 }
 
-// 향상된 for 루프
+// Enhanced for loop
 for (double[] row : scores) {
     for (double value : row) {
         sum += value;
@@ -282,7 +282,7 @@ public class Matrix {
 
 ```java
 public static returnType methodName(parameterList) {
-    // 메서드 본문
+    // method body
     return value;
 }
 ```
@@ -325,11 +325,11 @@ public static double max(double a, double b) { return a > b ? a : b; }
 메서드는 배열을 반환할 수 있다. 반환 타입에 배열 타입(`int[]`)을 쓰고, `return` 문에서 배열의 참조를 돌려준다.
 
 ```java
-public static int[] makeArray() {         // 반환 타입 int[]
+public static int[] makeArray() {         // return type int[]
     int temp[] = new int[4];
     for (int i = 0; i < temp.length; i++)
         temp[i] = i;
-    return temp;                           // 배열 객체의 참조를 반환
+    return temp;                           // return the reference to the array object
 }
 
 public static void main(String[] args) {
@@ -343,11 +343,11 @@ public static void main(String[] args) {
 `makeArray`가 끝나면 지역 변수 `temp`는 사라지지만, `new`로 만든 배열은 힙에 남아 있다. 반환된 참조가 `intArray`에 저장되므로 호출자는 메서드 안에서 만든 배열을 그대로 사용한다. 이때 배열 자체는 복사되지 않는다.
 
 ```text
-makeArray() 실행 중:    temp ─────┐
-                                  ▼
-                   new int[4]   [ 0 | 1 | 2 | 3 ]
-                                  ▲
-반환 후:            intArray ─────┘   (temp는 사라짐)
+while makeArray() runs:  temp ─────┐
+                                   ▼
+                   new int[4]    [ 0 | 1 | 2 | 3 ]
+                                   ▲
+after return:        intArray ─────┘   (temp is gone)
 ```
 
 *그림 3. makeArray가 반환한 배열 참조를 intArray가 받는 과정*
@@ -360,8 +360,8 @@ makeArray() 실행 중:    temp ─────┐
 Java는 항상 값에 의한 전달(pass-by-value)만 한다. 객체와 배열의 경우에는 복사되는 값이 참조이다.
 
 ```java
-static void modify(int[] arr)   { arr[0] = 99; }             // 호출자의 배열 내용이 바뀐다
-static void reassign(int[] arr) { arr = new int[]{7, 7, 7}; } // 매개변수만 새 배열을 가리킨다
+static void modify(int[] arr)   { arr[0] = 99; }             // the caller's array contents change
+static void reassign(int[] arr) { arr = new int[]{7, 7, 7}; } // only the parameter points to a new array
 ```
 
 `modify(data)`를 호출하면 `arr`와 `data`가 같은 배열을 가리키므로 `data[0]`이 99가 된다. `reassign(data)`는 매개변수 `arr`에 새 배열을 대입할 뿐이므로 호출자의 `data`는 원래 배열을 계속 가리킨다.
@@ -652,7 +652,7 @@ try {
 } catch (ArithmeticException e) {
     System.out.println("Cannot divide by zero: " + e.getMessage());
 } finally {
-    // 예외 발생 여부와 관계없이 항상 실행됨
+    // Always executed, even if an exception occurs
     System.out.println("Cleanup complete.");
 }
 ```
@@ -789,8 +789,8 @@ for (int i = 0; i < 3; i++) {
         sum += scanner.nextInt();
     } catch (InputMismatchException e) {
         System.out.println("Not an integer. Try again.");
-        scanner.next(); // 잘못된 토큰 소비
-        i--;            // 같은 반복을 재시도
+        scanner.next(); // consume invalid token
+        i--;            // retry the same iteration
     }
 }
 ```

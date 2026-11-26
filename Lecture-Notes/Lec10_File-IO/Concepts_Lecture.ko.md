@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. File 클래스와 JFileChooser로 파일을 지정하고 정보를 얻을 수 있다
@@ -91,16 +91,16 @@ System.out.println("Path:   " + file.getAbsolutePath());
 파일을 다루려면 먼저 `java.io`의 `File` 객체를 만든다. `new File("sample.dat")`는 현재 디렉터리의 `sample.dat`를 가리키고, `new File("C:/SamplePrograms/test.dat")`는 전체 경로로 `C:\SamplePrograms` 디렉터리의 `test.dat`를 가리킨다. Java는 Windows에서도 일반적인 경로 구분자 `/`를 받아들인다. 역슬래시를 쓰려면 문자열 안에서 `"C:\\SamplePrograms\\test.dat"`처럼 두 번 써야 한다.
 
 ```java
-if (inFile.exists()) {      // inFile이 실제 파일이나 디렉터리와 연결되어 있는지 확인
+if (inFile.exists()) {      // check whether inFile is associated with a real file or directory
     ...
 }
 
-if (inFile.isFile()) {      // inFile이 파일인지 확인 (false이면 디렉터리이거나 존재하지 않음)
+if (inFile.isFile()) {      // check whether inFile is a file (false: a directory or nonexistent)
     ...
 }
 
 File directory = new File("C:/JavaPrograms/Ch12");
-String filename[] = directory.list();     // 디렉터리 안의 모든 파일 이름
+String filename[] = directory.list();     // names of all files in the directory
 
 for (int i = 0; i < filename.length; i++) {
     System.out.println(filename[i]);
@@ -117,7 +117,7 @@ for (int i = 0; i < filename.length; i++) {
 JFileChooser chooser = new JFileChooser();
 chooser.showOpenDialog(null);
 
-// 특정 디렉터리에서 목록을 시작하려면
+// To start the listing from a specific directory
 JFileChooser chooser = new JFileChooser("D:/JavaPrograms/Ch12");
 chooser.showOpenDialog(null);
 ```
@@ -191,7 +191,7 @@ flowchart LR
 
 Java의 `char`와 `String`은 문자를 유니코드로 나타내지만, 파일에 저장되는 것은 바이트이다. 문자를 바이트열로 바꾸는 규칙을 **문자 인코딩(character encoding)** 또는 문자 집합(charset)이라고 하며, 같은 문자열도 인코딩에 따라 바이트열이 달라진다. 문자 스트림은 읽을 때 바이트를 문자로 디코딩하고 쓸 때 문자를 바이트로 인코딩하므로, 쓸 때와 읽을 때 같은 인코딩을 써야 원래 문자열이 복원된다.
 
-```java
+```java wide-ok
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -229,7 +229,7 @@ public class Encoding {
 }
 ```
 
-```text
+```text wide-ok
 default charset: UTF-8
 chars: 6
 UTF-8    10 bytes: 4A 61 76 61 EC 9E 90 EB B0 94
@@ -386,7 +386,7 @@ outStream.close();
 Scanner scanner = new Scanner(new File("example3.data"));
 
 int n = scanner.nextInt();          // 10
-scanner.nextLine();                 // 첫 줄의 나머지(줄바꿈) 소비
+scanner.nextLine();                 // consume the rest of the first line (the newline)
 String text = scanner.nextLine();   // "Hello, world."
 boolean b = scanner.nextBoolean();  // true
 
@@ -436,7 +436,7 @@ public class Buffering {
     static long write(OutputStream out) throws IOException {
         long t0 = System.nanoTime();
         try (out) {
-            for (int i = 0; i < N; i++) out.write(i & 0xFF);   // 한 바이트씩 쓴다
+            for (int i = 0; i < N; i++) out.write(i & 0xFF);   // one byte at a time
         }
         return (System.nanoTime() - t0) / 1_000_000;
     }
@@ -481,7 +481,7 @@ public class CsvParse {
 
         int total = 0, count = 0;
         try (Scanner sc = new Scanner(new File("scores.csv"))) {
-            sc.nextLine();                                  // 머리글 줄을 건너뛴다
+            sc.nextLine();                                  // skip the header line
             int lineNo = 1;
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
@@ -612,7 +612,7 @@ inStream.close();
 `DataOutputStream`과 `DataInputStream`은 `int`, `double`, `boolean` 같은 기본형 값을 바이너리 형식으로 쓰고 읽는 스트림이다. 다음 코드는 네 종류의 값을 쓰고 같은 순서로 다시 읽는다.
 
 ```java
-// 쓰기
+// Writing
 try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("data.bin"))) {
     dos.writeInt(42);
     dos.writeDouble(3.14);
@@ -620,7 +620,7 @@ try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("data.bin"
     dos.writeUTF("Hello");
 }
 
-// 읽기 (쓰기 순서와 타입이 일치해야 함)
+// Reading (must match the write order and types)
 try (DataInputStream dis = new DataInputStream(new FileInputStream("data.bin"))) {
     int i = dis.readInt();
     double d = dis.readDouble();
@@ -684,12 +684,12 @@ System.out.println("d = " + d);
 `ObjectOutputStream`과 `ObjectInputStream`은 객체 전체를 바이트열로 바꾸어 저장하고(직렬화) 다시 객체로 복원하는(역직렬화) 스트림이다.
 
 ```java
-// 객체 쓰기
+// Writing an object
 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("obj.bin"))) {
     oos.writeObject(myAccount);
 }
 
-// 객체 읽기
+// Reading an object
 try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("obj.bin"))) {
     Account account = (Account) ois.readObject();
 }
@@ -707,7 +707,7 @@ outObjectStream.writeObject(person);
 
 account1 = new Account();
 bank1    = new Bank();
-outObjectStream.writeObject(account1);   // 다른 클래스의 객체도 저장 가능
+outObjectStream.writeObject(account1);   // objects of different classes can be saved
 outObjectStream.writeObject(bank1);
 ```
 
@@ -756,7 +756,7 @@ try (ObjectOutputStream outObjectStream =
 
 3.2절의 `example2.data`에 실제로 어떤 바이트가 저장되는지 확인하면, 바이너리 형식에 타입 정보가 없다는 말의 뜻이 분명해진다. 다음 프로그램은 같은 파일을 만든 뒤 내용을 16진수로 출력한다.
 
-```java
+```java wide-ok
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -832,7 +832,7 @@ public class EofDemo {
         }
         try (FileInputStream in = new FileInputStream("example1.data")) {
             int b, count = 0, sum = 0;
-            while ((b = in.read()) != -1) {     // -1이면 파일 끝
+            while ((b = in.read()) != -1) {     // -1 means end of file
                 count++;
                 sum += b;
             }
@@ -877,7 +877,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class Records {
-    static final int RECORD = 12;                         // int 학번 4바이트 + double 점수 8바이트
+    static final int RECORD = 12;                         // int id 4 bytes + double score 8 bytes
 
     public static void main(String[] args) throws IOException {
         try (RandomAccessFile f = new RandomAccessFile("records.data", "rw")) {
@@ -890,10 +890,10 @@ public class Records {
             }
             System.out.println("length " + f.length());
 
-            f.seek(2 * RECORD);                           // 세 번째 레코드로 이동
+            f.seek(2 * RECORD);                           // move to the third record
             System.out.println("record 2: " + f.readInt() + " " + f.readDouble());
 
-            f.seek(1 * RECORD + 4);                       // 두 번째 레코드의 점수 위치
+            f.seek(1 * RECORD + 4);                       // score of the second record
             f.writeDouble(100.0);
             f.seek(RECORD);
             System.out.println("record 1: " + f.readInt() + " " + f.readDouble()
@@ -963,8 +963,8 @@ Java 7 이상에서는 자동 자원 관리를 지원한다. `try` 다음의 괄
 ```java
 try (FileReader fr = new FileReader("file.txt");
      BufferedReader br = new BufferedReader(fr)) {
-    // br 사용
-} // br과 fr이 자동으로 닫힘
+    // use br
+} // br and fr are automatically closed here
 ```
 
 자원은 선언의 역순으로 닫히므로 `br`이 먼저, `fr`이 나중에 닫힌다. 블록 안에서 예외가 발생해도 자원은 닫힌다.
@@ -1120,7 +1120,7 @@ import java.io.*;
 public class SaveGraph {
     public static void main(String[] args) throws IOException {
         Account shared = new Account("Kim");
-        Account[] pair = { shared, shared };            // 같은 객체를 두 번 참조한다
+        Account[] pair = { shared, shared };            // two references to one object
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("graph.data"))) {
             out.writeObject(pair);
         }
@@ -1180,7 +1180,7 @@ Exception in thread "main" java.io.InvalidClassException: Account; local class i
 import java.io.*;
 
 public class SerialInherit {
-    static class Person {                                 // Serializable이 아니다
+    static class Person {                                 // not Serializable
         String name = "unknown";
         Person() { System.out.println("Person() called"); }
     }

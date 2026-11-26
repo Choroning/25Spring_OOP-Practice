@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 1차원 배열을 선언하고 조작할 수 있다
@@ -65,7 +65,7 @@
 
 ```java
 int i[] = new int[10];
-// ... i[0]부터 i[9]까지 값을 저장한다 ...
+// ... store values in i[0] through i[9] ...
 for (sum = 0, n = 0; n < 10; n++)
     sum += i[n];
 ```
@@ -108,13 +108,13 @@ rainfall2 = new double[12];
 선언은 2강 2.1절의 객체 선언처럼 참조를 담을 변수만 만들고, `new double[12]`가 실제 배열을 만든다는 점에서 배열은 객체와 같은 방식으로 다룬다. Java에서는 자료형이 한눈에 보이는 첫 번째 형식(`double[] rainfall`)을 주로 쓴다.
 
 ```java
-// 선언과 할당
+// Declaration and allocation
 int[] scores = new int[5];
 
-// 선언과 동시에 초기화
+// Declaration with initialization
 int[] values = {10, 20, 30, 40, 50};
 
-// 대안 구문 (C 스타일, Java에서는 잘 사용하지 않음)
+// Alternative syntax (C-style, less common in Java)
 int numbers[] = new int[3];
 ```
 
@@ -216,7 +216,7 @@ myArray[1] = 6;
 ```
 
 ```text
-intArray[1] = 2; 실행 후                    myArray[1] = 6; 실행 후
+After intArray[1] = 2;                      After myArray[1] = 6;
 
 intArray ●──┐                               intArray ●──┐
             ├──> [ 0 | 2 | 0 | 0 | 0 ]                  ├──> [ 0 | 6 | 0 | 0 | 0 ]
@@ -361,7 +361,7 @@ String[] monthName = new String[12];
 
 monthName[0] = "January";
 monthName[1] = "February";
-// ... 나머지 10개월도 같은 방식으로 ...
+// ... the same pattern for the remaining ten months ...
 
 double annualAverage, sum = 0.0;
 
@@ -468,12 +468,12 @@ public static double computeMean(int[] array) {
 ### 2.4 배열 순회 패턴
 
 ```java
-// 인덱스 기반 for 루프
+// Index-based for loop
 for (int i = 0; i < array.length; i++) {
     System.out.println(array[i]);
 }
 
-// 향상된 for 루프 (읽기 전용 순회)
+// Enhanced for loop (read-only traversal)
 for (int value : array) {
     System.out.println(value);
 }
@@ -825,7 +825,7 @@ Java는 인자를 항상 값으로 전달한다. 배열 변수의 값은 배열 
 ```java
 public static void doubleValues(int[] array) {
     for (int i = 0; i < array.length; i++) {
-        array[i] *= 2;  // 원본 배열을 수정함
+        array[i] *= 2;  // modifies the original array
     }
 }
 ```
@@ -879,7 +879,7 @@ public class SwapDemo {
 ```
 
 ```text
- swap(p, q) 실행 중                       swap(arr, 0, 1) 실행 중
+ during swap(p, q)                        during swap(arr, 0, 1)
 
  main:  p 1   q 2                         main:  arr ●──┐
  swap:  x 2   y 1   (copies swapped)                    ├──▶ [ 2 | 1 ]
@@ -906,16 +906,16 @@ public class SwapDemo {
 import java.util.Arrays;
 
 int[] data = {5, 3, 9, 1, 7};
-int[] copy = Arrays.copyOf(data, data.length);   // 독립된 복사본
-Arrays.sort(copy);                               // 오름차순 정렬
+int[] copy = Arrays.copyOf(data, data.length);   // independent copy
+Arrays.sort(copy);                               // ascending sort
 
 System.out.println(Arrays.toString(data));       // [5, 3, 9, 1, 7]
 System.out.println(Arrays.toString(copy));       // [1, 3, 5, 7, 9]
 System.out.println(Arrays.equals(data, copy));   // false
 
 int[] same = {5, 3, 9, 1, 7};
-System.out.println(data == same);                // false (서로 다른 배열 객체)
-System.out.println(Arrays.equals(data, same));   // true (원소가 모두 같음)
+System.out.println(data == same);                // false (different array objects)
+System.out.println(Arrays.equals(data, same));   // true (all elements equal)
 ```
 
 | 메서드 | 설명 |

@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. Thread 클래스와 Runnable 인터페이스로 스레드를 생성하고 관리할 수 있다
@@ -159,14 +159,14 @@ public class States {
         System.out.println("while sleeping:  " + sleeper.getState());
 
         Thread waiter = new Thread(() -> {
-            try { sleeper.join(); } catch (InterruptedException e) { }   // sleeper가 끝나기를 기다린다
+            try { sleeper.join(); } catch (InterruptedException e) { }   // wait for sleeper to end
         }, "waiter");
         waiter.start();
         Thread.sleep(50);
         System.out.println("waiter joining:  " + waiter.getState());
 
         Thread blocked;
-        synchronized (lock) {                                             // main이 락을 쥔다
+        synchronized (lock) {                                             // main holds the lock
             blocked = new Thread(() -> { synchronized (lock) { } }, "blocked");
             blocked.start();
             Thread.sleep(50);
@@ -202,12 +202,12 @@ after join:      TERMINATED TERMINATED TERMINATED
 여러 작업을 동시에 처리한다는 말에는 두 가지 뜻이 있다. **동시성(concurrency)** 은 여러 작업이 시작되어 끝나기 전까지의 기간이 서로 겹치는 성질이다. 코어가 하나뿐이어도 운영체제가 짧은 시간 단위(타임 슬라이스)로 스레드를 번갈아 실행하면 사용자에게는 작업들이 동시에 진행되는 것처럼 보인다. **병렬성(parallelism)** 은 여러 작업이 같은 순간에 서로 다른 코어에서 실제로 함께 실행되는 성질이다.
 
 ```text
-코어 1개에서의 동시성 (번갈아 실행)
-코어 1: [A][B][A][B][A][B][A][B]   → 시간
+Concurrency on 1 core (taking turns)
+Core 1: [A][B][A][B][A][B][A][B]   → time
 
-코어 2개에서의 병렬성 (함께 실행)
-코어 1: [A][A][A][A]               → 시간
-코어 2: [B][B][B][B]
+Parallelism on 2 cores (running together)
+Core 1: [A][A][A][A]               → time
+Core 2: [B][B][B][B]
 ```
 
 *그림 4. 코어 하나에서 번갈아 실행하는 동시성과 코어 두 개에서 함께 실행하는 병렬성*
@@ -227,12 +227,12 @@ public class ThreadCost {
         Runnable tiny = () -> { sink += 1; };
 
         long t0 = System.nanoTime();
-        for (int i = 0; i < N; i++) tiny.run();               // 같은 스레드에서 호출
+        for (int i = 0; i < N; i++) tiny.run();               // call on the same thread
         long direct = System.nanoTime() - t0;
 
         t0 = System.nanoTime();
         for (int i = 0; i < N; i++) {
-            Thread t = new Thread(tiny);                       // 작업마다 스레드를 만든다
+            Thread t = new Thread(tiny);                       // one thread per task
             t.start();
             t.join();
         }
@@ -279,7 +279,7 @@ class TimerThread extends Thread {
     }
 }
 
-// 사용법
+// Usage
 TimerThread timer = new TimerThread();
 timer.start();
 ```
@@ -308,7 +308,7 @@ class TimerRunnable implements Runnable {
     }
 }
 
-// 사용법
+// Usage
 Thread thread = new Thread(new TimerRunnable());
 thread.start();
 ```
@@ -337,8 +337,8 @@ public class FlickeringLabel extends JLabel implements Runnable {
     public FlickeringLabel(String text, long delay) {
         super(text);
         this.delay = delay;
-        setOpaque(true);              // 배경색이 보이게 한다
-        Thread th = new Thread(this); // 자기 자신을 Runnable로 넘긴다
+        setOpaque(true);              // make the background color visible
+        Thread th = new Thread(this); // pass itself as the Runnable
         th.start();
     }
 
@@ -348,7 +348,7 @@ public class FlickeringLabel extends JLabel implements Runnable {
         while (true) {
             if (n == 0) setBackground(Color.YELLOW);
             else        setBackground(Color.GREEN);
-            n = (n == 0) ? 1 : 0;     // 노란색과 초록색을 번갈아 쓴다
+            n = (n == 0) ? 1 : 0;     // alternate between yellow and green
             try {
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
@@ -385,8 +385,8 @@ public class StartVsRun {
         Runnable task = () -> System.out.println("task runs on " + Thread.currentThread().getName());
         Thread t = new Thread(task, "worker-1");
 
-        t.run();                         // 일반 메서드 호출
-        t.start();                       // 새 스레드에서 실행
+        t.run();                         // an ordinary method call
+        t.start();                       // runs on a new thread
         t.join();
         try {
             t.start();
@@ -411,7 +411,7 @@ second start(): IllegalThreadStateException
 
 ```java
 public class Interleave {
-    static final StringBuffer trace = new StringBuffer();   // 스레드 안전한 문자열 버퍼
+    static final StringBuffer trace = new StringBuffer();   // thread-safe string buffer
 
     public static void main(String[] args) throws InterruptedException {
         Runnable a = () -> { for (int i = 0; i < 12; i++) { trace.append('A'); spin(); } };
@@ -424,7 +424,7 @@ public class Interleave {
         System.out.println(trace);
     }
 
-    static void spin() {                                     // 잠깐 계산하며 시간을 보낸다
+    static void spin() {                                     // burn a little time
         long x = 0;
         for (int i = 0; i < 200_000; i++) x += i;
         if (x == 42) System.out.println();
@@ -492,8 +492,8 @@ static 메서드는 어떤 `Thread` 객체로 호출하든 이 문장을 실행�
 ```java
 public class PassData {
     static class WordCounter extends Thread {
-        private final String text;                             // 생성자로 받은 입력
-        private int count;                                     // 결과를 담는 필드
+        private final String text;                             // input received through the constructor
+        private int count;                                     // field that holds the result
 
         WordCounter(String name, String text) {
             super(name);
@@ -555,7 +555,7 @@ total: 18
 
 ```java
 try {
-    Thread.sleep(1000); // 1초간 일시 정지
+    Thread.sleep(1000); // sleep for 1 second
 } catch (InterruptedException e) {
     Thread.currentThread().interrupt();
 }
@@ -570,7 +570,7 @@ try {
 ```java
 Thread worker = new Thread(task);
 worker.start();
-worker.join(); // 메인 스레드가 worker 완료를 기다림
+worker.join(); // main thread waits for worker to finish
 System.out.println("Worker finished.");
 ```
 
@@ -582,7 +582,7 @@ System.out.println("Worker finished.");
 
 ```java
 public class JoinDemo {
-    static long result;                                      // 작업자가 쓰는 결과
+    static long result;                                      // written by the worker
 
     public static void main(String[] args) throws InterruptedException {
         Thread worker = new Thread(() -> {
@@ -593,9 +593,9 @@ public class JoinDemo {
         });
         worker.start();
 
-        worker.join(100);                                    // 최대 100ms만 기다린다
+        worker.join(100);                                    // wait at most 100 ms
         System.out.println("after join(100): alive=" + worker.isAlive() + ", result=" + result);
-        worker.join();                                       // 끝날 때까지 기다린다
+        worker.join();                                       // wait until it ends
         System.out.println("after join():    alive=" + worker.isAlive() + ", result=" + result);
     }
 }
@@ -624,7 +624,7 @@ public class Daemon {
                 try { Thread.sleep(100); } catch (InterruptedException e) { return; }
             }
         });
-        ticker.setDaemon(args.length == 0);                  // 인자가 없으면 데몬
+        ticker.setDaemon(args.length == 0);                  // daemon unless an argument is given
         System.out.println("daemon? " + ticker.isDaemon());
         ticker.start();
         Thread.sleep(250);
@@ -704,8 +704,8 @@ sleep(100): min 100.247 ms, avg 108.080 ms, max 110.099 ms
 대규모 연산을 여러 스레드로 분할하면 멀티코어 시스템에서 실행 시간을 크게 줄일 수 있다:
 
 ```java
-// 싱글 스레드: 0부터 20억까지 합산
-// 멀티 스레드: 범위를 N개의 하위 범위로 나누어 스레드당 하나씩 할당
+// Single-threaded: sum 0 to 2 billion
+// Multi-threaded: split the range into N sub-ranges, one per thread
 SumThread[] threads = new SumThread[NUM_THREAD];
 for (int i = 0; i < NUM_THREAD; i++) {
     threads[i] = new SumThread(start, end);
@@ -720,7 +720,7 @@ for (SumThread t : threads) {
 
 ```java
 public class SumThread extends Thread {
-    public static long sum;   // 모든 스레드가 공유하는 합
+    public static long sum;   // sum shared by all threads
     private int start;
     private int end;
 
@@ -733,8 +733,8 @@ public class SumThread extends Thread {
     public void run() {
         long temp = 0;
         for (int i = start; i <= end; i++)
-            temp += i;        // 부분합은 지역 변수에 구한다
-        sum += temp;          // 공유 변수에 더한다
+            temp += i;        // compute the partial sum in a local variable
+        sum += temp;          // add it to the shared variable
     }
 }
 ```
@@ -754,7 +754,7 @@ public class SumCompare {
     static final int REP = 2_000_000_000;
 
     static long parallelSum(int nThreads) throws InterruptedException {
-        long[] partial = new long[nThreads];                  // 스레드마다 자기 칸에만 쓴다
+        long[] partial = new long[nThreads];                  // each thread writes only its own slot
         Thread[] ts = new Thread[nThreads];
         int chunk = REP / nThreads;
         for (int k = 0; k < nThreads; k++) {
@@ -770,7 +770,7 @@ public class SumCompare {
         }
         long total = 0;
         for (int k = 0; k < nThreads; k++) {
-            ts[k].join();                                     // join 뒤에 결과를 읽는다
+            ts[k].join();                                     // read the result after join
             total += partial[k];
         }
         return total;
@@ -778,7 +778,7 @@ public class SumCompare {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("available processors: " + Runtime.getRuntime().availableProcessors());
-        parallelSum(4);                                       // 준비 운동
+        parallelSum(4);                                       // warm-up run
         long base = 0;
         for (int n : new int[] {1, 2, 4, 8, 12, 16, 32}) {
             long t0 = System.nanoTime();
@@ -829,7 +829,7 @@ public class RaceCounter {
     public static void main(String[] args) throws InterruptedException {
         for (int trial = 1; trial <= 3; trial++) {
             plain = 0;
-            runTwice(() -> { for (int i = 0; i < N; i++) plain++; });          // 보호하지 않은 증가
+            runTwice(() -> { for (int i = 0; i < N; i++) plain++; });          // unprotected increment
             System.out.printf("trial %d  plain:        %,d (lost %,d)%n", trial, plain, 2 * N - plain);
         }
         runTwice(() -> { for (int i = 0; i < N; i++) synchronized (lock) { locked++; } });
@@ -886,7 +886,7 @@ public class Uncaught {
     public static void main(String[] args) throws InterruptedException {
         Thread bad = new Thread(() -> {
             int[] a = new int[2];
-            a[5] = 1;                                          // 범위 밖 접근
+            a[5] = 1;                                          // out-of-range access
         }, "bad-worker");
         bad.start();
         bad.join();

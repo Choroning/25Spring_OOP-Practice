@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 디버깅과 계약에 의한 설계를 위해 단언문을 사용할 수 있다
@@ -71,8 +71,8 @@ assert balance > oldBalance :
 단언문은 두 가지 형식으로 쓴다.
 
 ```text
-assert <boolean 식>;
-assert <boolean 식> : <식>;
+assert <boolean expression>;
+assert <boolean expression> : <expression>;
 ```
 
 `<boolean 식>`은 코드가 올바르게 동작한다면 참이어야 하는 조건이다. 이 식이 `false`가 되면 `AssertionError`가 던져진다. `AssertionError`는 `Exception`이 아니라 `Error`의 하위 클래스이다(6강 3.5절). 두 번째 형식의 `<식>`은 `AssertionError` 생성자에 인자로 전달되어, 던져진 예외의 상세 메시지가 된다.
@@ -150,13 +150,13 @@ public class AssertModes {
     static int checks = 0;
 
     static boolean countCheck() {
-        checks++;                       // 부수 효과: 호출 횟수를 센다
+        checks++;                       // side effect: count the calls
         return true;
     }
 
     public static void main(String[] args) {
         boolean enabled = false;
-        assert enabled = true;          // -ea일 때만 대입이 실행된다
+        assert enabled = true;          // runs only under -ea
         System.out.println("assertions enabled: " + enabled);
 
         assert countCheck();
@@ -304,10 +304,10 @@ public class Box<T> {
     public T get() { return item; }
 }
 
-// 사용 예
+// Usage
 Box<String> stringBox = new Box<>();
 stringBox.set("Hello");
-String value = stringBox.get(); // 캐스팅 불필요
+String value = stringBox.get(); // no cast needed
 ```
 
 `new Box<>()`의 빈 꺾쇠(다이아몬드 연산자, Java 7부터)는 타입 인자를 변수 선언에서 추론하게 한다. 같은 방식의 `Locker<T>` 클래스는 선언, 생성, 사용 단계에서 각각 타입 인자를 지정한다.
@@ -360,7 +360,7 @@ public static <T> void printArray(T[] array) {
 ### 2.4 한정적 타입 매개변수
 
 ```java
-// T는 Comparable의 하위 타입이어야 함
+// T must be a subtype of Comparable
 public static <T extends Comparable<T>> T findMax(T[] array) {
     T max = array[0];
     for (int i = 1; i < array.length; i++) {
@@ -437,9 +437,9 @@ Exception in thread "main" java.lang.ClassCastException: class java.lang.Integer
 
 ```java
 List<Integer> ints = new ArrayList<>();
-List<Number> nums = ints;        // 허용된다고 가정한다
-nums.add(3.14);                  // Double은 Number이므로 nums에 넣을 수 있다
-Integer first = ints.get(0);     // 같은 리스트에서 Double이 나온다
+List<Number> nums = ints;        // suppose this were allowed
+nums.add(3.14);                  // a Double is a Number, so it fits in nums
+Integer first = ints.get(0);     // a Double comes out of the same list
 ```
 
 `nums`와 `ints`는 같은 리스트 객체를 가리키므로, `nums`로 넣은 `Double`을 `ints`로 꺼내면 `Integer`가 있어야 할 자리에서 `Double`이 나온다. 컴파일러는 이런 상황을 막기 위해 둘째 줄을 거부한다. 같은 제네릭 클래스에서 타입 인자만 다른 두 타입 사이에는 상속 관계가 없으며, 이 성질을 **무공변(invariant)** 이라고 한다.
@@ -452,7 +452,7 @@ import java.util.List;
 
 public class Variance {
     public static void main(String[] args) {
-        Object[] objects = new String[2];  // 배열은 공변이므로 허용된다
+        Object[] objects = new String[2];  // arrays are covariant
         objects[0] = "ok";
         try {
             objects[1] = Integer.valueOf(7);
@@ -524,17 +524,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Wildcards {
-    static double sum(List<? extends Number> src) {      // 읽기 전용 생산자
+    static double sum(List<? extends Number> src) {      // producer: read only
         double total = 0;
         for (Number n : src) total += n.doubleValue();
         return total;
     }
 
-    static void fillOneToThree(List<? super Integer> dst) { // 쓰기 전용 소비자
+    static void fillOneToThree(List<? super Integer> dst) { // consumer: write only
         for (int i = 1; i <= 3; i++) dst.add(i);
     }
 
-    static int countAll(List<?> any) {                   // 원소 타입을 쓰지 않는다
+    static int countAll(List<?> any) {                   // element type unused
         return any.size();
     }
 
@@ -751,7 +751,7 @@ names.add("Alice");
 names.add("Bob");
 names.get(0);       // "Alice"
 names.size();       // 2
-names.remove(0);    // "Alice" 제거
+names.remove(0);    // removes "Alice"
 ```
 
 내부 배열이 가득 차면 더 큰 배열을 만들어 원소를 옮기므로 크기를 미리 정하지 않아도 된다. 인덱스로 원소에 접근하는 데는 O(1) 시간이 걸린다. 중간에 원소를 넣거나 빼면 뒤의 원소를 한 칸씩 옮겨야 하므로 O(n) 시간이 걸린다.
@@ -855,7 +855,7 @@ int aliceScore = scores.get("Alice"); // 95
 ### 3.7 컬렉션 순회
 
 ```java
-// 향상된 for 루프
+// For-each loop
 for (String name : names) {
     System.out.println(name);
 }
@@ -866,7 +866,7 @@ while (it.hasNext()) {
     System.out.println(it.next());
 }
 
-// forEach와 람다 (Java 8+)
+// forEach with lambda (Java 8+)
 names.forEach(name -> System.out.println(name));
 ```
 
@@ -905,7 +905,7 @@ public class Capacity {
                 System.out.println("size " + v.size() + ", capacity " + last);
             }
         }
-        Vector<Integer> w = new Vector<>(4, 3);   // 초기 용량 4, 증가량 3
+        Vector<Integer> w = new Vector<>(4, 3);   // initial capacity 4, increment 3
         for (int i = 0; i < 8; i++) w.add(i);
         System.out.println("w: size " + w.size() + ", capacity " + w.capacity());
     }
@@ -994,7 +994,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class HashContract {
-    static class PointA {                  // equals만 재정의
+    static class PointA {                  // overrides equals only
         final int x, y;
         PointA(int x, int y) { this.x = x; this.y = y; }
         @Override public boolean equals(Object o) {
@@ -1004,7 +1004,7 @@ public class HashContract {
         }
     }
 
-    static class PointB {                  // equals와 hashCode를 함께 재정의
+    static class PointB {                  // overrides both
         final int x, y;
         PointB(int x, int y) { this.x = x; this.y = y; }
         @Override public boolean equals(Object o) {
@@ -1061,7 +1061,7 @@ import java.util.*;
 public class Sorting {
     record Student(int id, String name, double gpa) implements Comparable<Student> {
         @Override
-        public int compareTo(Student other) {        // 자연 순서: 학번 오름차순
+        public int compareTo(Student other) {        // natural order: by id
             return Integer.compare(id, other.id);
         }
     }
@@ -1226,12 +1226,12 @@ public class ListTiming {
         for (List<Integer> list : List.<List<Integer>>of(new ArrayList<>(), new LinkedList<>())) {
             String name = list.getClass().getSimpleName();
             long t0 = System.nanoTime();
-            for (int i = 0; i < N; i++) list.add(0, i);      // 맨 앞에 삽입
+            for (int i = 0; i < N; i++) list.add(0, i);      // insert at the front
             long front = ms(t0);
 
             t0 = System.nanoTime();
             long sum = 0;
-            for (int i = 0; i < N; i++) sum += list.get(i);  // 인덱스로 접근
+            for (int i = 0; i < N; i++) sum += list.get(i);  // access by index
             long get = ms(t0);
             System.out.printf("%-10s add(0,x): %5d ms   get(i): %5d ms   sum=%d%n", name, front, get, sum);
         }

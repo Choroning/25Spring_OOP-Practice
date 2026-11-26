@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-17
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 바이너리 파일의 구조를 코드북으로 해석하고 복원 결과를 검증할 수 있다
@@ -40,17 +40,17 @@
 ```text
 Coursework/HW02_Collections-and-File-IO/
 ├── Original/
-│   ├── Assignment.ko.md                     # 과제 안내문 (한국어)
-│   ├── Assignment.md                        # 과제 안내문 (영어)
-│   ├── Q1.data                              # Q1의 바이너리 파일 (배포 원본)
-│   ├── Q1_CodeBook.data                     # Q1의 코드북 (배포 원본)
-│   └── Q9.Data                              # Q9의 중고차 데이터 (배포 원본)
+│   ├── Assignment.ko.md                     # assignment handout (Korean)
+│   ├── Assignment.md                        # assignment handout (English)
+│   ├── Q1.data                              # binary file for Q1 (distributed original)
+│   ├── Q1_CodeBook.data                     # codebook for Q1 (distributed original)
+│   └── Q9.Data                              # used car data for Q9 (distributed original)
 ├── Solution/
 │   ├── Assignment2_BinaryFileDecryptor.java # Q1
 │   ├── Assignment2_GreetingDialog.java      # Q4
 │   └── Assignment2_SortingComparison.java   # Q7
-├── Assignment-Explanation.ko.md             # 과제 해설 (한국어)
-└── Assignment-Explanation.md                # 과제 해설 (영어)
+├── Assignment-Explanation.ko.md             # assignment explanation (Korean)
+└── Assignment-Explanation.md                # assignment explanation (English)
 ```
 
 *그림 1. HW2 과제의 디렉토리 구성*
@@ -243,9 +243,9 @@ System.out.println("Goodbye " + name + " from the OOP World!");
 `String.matches`는 문자열 **전체**가 정규 표현식에 맞는지 검사한다. `[A-Za-z]+`는 영문자 하나 이상이고, `^`와 `$`는 처음과 끝을 뜻한다(`matches`는 원래 전체를 비교하므로 없어도 결과가 같다). 그래서 빈 문자열, 숫자, 공백이 들어간 이름은 오류 대화 상자를 띄운 뒤 `continue`로 다시 묻는다. 취소를 누르면 `null`이 돌아오므로 안내를 출력하고 정상적으로 끝낸다.
 
 ```text
-[입력] Min seok
-[오류 대화 상자] Invalid name. Please enter letters only.
-[입력] Minseok
+[input] Min seok
+[error dialog] Invalid name. Please enter letters only.
+[input] Minseok
 Goodbye Minseok from the OOP World!
 ```
 

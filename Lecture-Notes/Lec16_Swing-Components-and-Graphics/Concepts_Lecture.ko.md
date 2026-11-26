@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 버튼, 체크 박스, 라디오 버튼, 콤보 박스, 리스트, 슬라이더, 스피너, 텍스트 컴포넌트로 입력을 받고 각각의 모델과 이벤트를 처리할 수 있다
@@ -77,12 +77,12 @@ public class Selection {
         JCheckBox bold = new JCheckBox("Bold");
         bold.addItemListener(e -> System.out.println("check box: "
                 + (e.getStateChange() == ItemEvent.SELECTED ? "SELECTED" : "DESELECTED")));
-        bold.doClick();                                         // 선택
-        bold.doClick();                                         // 해제
+        bold.doClick();                                         // select
+        bold.doClick();                                         // deselect
 
         JRadioButton small = new JRadioButton("Small"), medium = new JRadioButton("Medium", true),
                      large = new JRadioButton("Large");
-        ButtonGroup sizes = new ButtonGroup();                  // 하나만 선택되게 묶는다
+        ButtonGroup sizes = new ButtonGroup();                  // group so only one is selected
         sizes.add(small); sizes.add(medium); sizes.add(large);
         large.doClick();
         System.out.println("radio: small=" + small.isSelected() + " medium=" + medium.isSelected()
@@ -97,7 +97,7 @@ public class Selection {
 
         JList<String> list = new JList<>(new String[] {"Java", "C", "Python", "Kotlin"});
         list.addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting())                        // 선택이 끝났을 때만
+            if (!e.getValueIsAdjusting())                        // only when the selection settles
                 System.out.println("list selection " + list.getSelectedValuesList());
         });
         list.setSelectedIndices(new int[] {0, 2});
@@ -105,7 +105,7 @@ public class Selection {
         JSlider volume = new JSlider(0, 100, 50);
         volume.addChangeListener(e -> System.out.println("slider value " + volume.getValue()));
         volume.setValue(75);
-        volume.setValue(150);                                    // 최댓값을 넘는 값
+        volume.setValue(150);                                    // beyond the maximum
 
         JProgressBar progress = new JProgressBar(0, 10);
         progress.setValue(7);
@@ -197,14 +197,14 @@ import java.awt.event.ItemEvent;
 public class ButtonModelDemo {
     public static void main(String[] args) {
         JButton save = new JButton("Save");
-        save.setActionCommand("save-file");                          // 버튼의 글자와 다른 명령 문자열
+        save.setActionCommand("save-file");                          // a command string other than the label
         save.addActionListener(e -> System.out.println("action: " + e.getActionCommand()));
         ButtonModel m = save.getModel();
         m.addChangeListener(e -> System.out.println("  model: armed=" + m.isArmed() + " pressed=" + m.isPressed()));
-        save.doClick();                                              // 누르고 놓는 과정을 흉내 낸다
+        save.doClick();                                              // imitates a press and release
 
         save.setEnabled(false);
-        save.doClick();                                              // 비활성 버튼
+        save.doClick();                                              // a disabled button
         System.out.println("disabled: enabled=" + m.isEnabled() + ", no action event");
 
         JToggleButton bold = new JToggleButton("B");
@@ -243,11 +243,11 @@ import javax.swing.*;
 
 public class SpinnerDemo {
     public static void main(String[] args) {
-        SpinnerNumberModel model = new SpinnerNumberModel(5, 0, 10, 2);   // 값 5, 최솟값 0, 최댓값 10, 간격 2
+        SpinnerNumberModel model = new SpinnerNumberModel(5, 0, 10, 2);   // value 5, min 0, max 10, step 2
         JSpinner age = new JSpinner(model);
         age.addChangeListener(e -> System.out.println("changed to " + age.getValue()));
         for (int i = 0; i < 3; i++) {
-            Object next = model.getNextValue();                            // 다음 값, 범위를 벗어나면 null
+            Object next = model.getNextValue();                            // next value, null if out of range
             System.out.println("next = " + next);
             if (next != null) age.setValue(next);
         }
@@ -257,7 +257,7 @@ public class SpinnerDemo {
         day.setValue("Wed");
         System.out.println("list next after Wed = " + day.getNextValue());
         try {
-            day.setValue("Sun");                                           // 목록에 없는 값
+            day.setValue("Sun");                                           // a value not in the list
         } catch (IllegalArgumentException e) {
             System.out.println("IllegalArgumentException: " + e.getMessage());
         }
@@ -290,7 +290,7 @@ import javax.swing.text.*;
 public class DocumentDemo {
     public static void main(String[] args) throws BadLocationException {
         JTextField name = new JTextField(10);
-        Document doc = name.getDocument();                                  // 텍스트의 모델
+        Document doc = name.getDocument();                                  // the model of the text
         doc.addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e)  { report("insert", e); }
             public void removeUpdate(DocumentEvent e)  { report("remove", e); }
@@ -303,10 +303,10 @@ public class DocumentDemo {
             }
         });
         name.setText("Kim");
-        name.setText("Park");                                               // 지우고 넣는다
+        name.setText("Park");                                               // removes, then inserts
         doc.insertString(4, " Jiho", null);
 
-        JTextField copy = new JTextField(doc, null, 10);                    // 같은 모델을 보여 주는 둘째 뷰
+        JTextField copy = new JTextField(doc, null, 10);                    // a second view of the same model
         System.out.println("copy shows \"" + copy.getText() + "\", class " + doc.getClass().getSimpleName());
 
         JTextField code = new JTextField(6);
@@ -315,8 +315,8 @@ public class DocumentDemo {
                     throws BadLocationException { replace(fb, off, 0, s, a); }
             @Override public void replace(FilterBypass fb, int off, int len, String s, AttributeSet a)
                     throws BadLocationException {
-                String digits = s == null ? "" : s.replaceAll("[^0-9]", "");   // 숫자만 남긴다
-                int room = 4 - (fb.getDocument().getLength() - len);            // 최대 4자리
+                String digits = s == null ? "" : s.replaceAll("[^0-9]", "");   // keep digits only
+                int room = 4 - (fb.getDocument().getLength() - len);            // at most 4 digits
                 if (digits.length() > room) digits = digits.substring(0, Math.max(room, 0));
                 fb.replace(off, len, digits, a);
             }
@@ -356,17 +356,17 @@ code field "1234"
 ```java
 JMenuBar bar = new JMenuBar();
 JMenu file = new JMenu("File");
-file.setMnemonic(KeyEvent.VK_F);                    // Alt+F로 메뉴를 연다
+file.setMnemonic(KeyEvent.VK_F);                    // Alt+F opens the menu
 
 JMenuItem open = new JMenuItem("Open...");
 open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));
-open.addActionListener(e -> openFile());            // 메뉴 항목도 액션 이벤트를 낸다
+open.addActionListener(e -> openFile());            // menu items also raise action events
 
 file.add(open);
-file.addSeparator();                                // 구분선
+file.addSeparator();                                // a separator line
 file.add(new JMenuItem("Exit"));
 bar.add(file);
-frame.setJMenuBar(bar);                             // 컨텐트팬이 아니라 프레임에 붙인다
+frame.setJMenuBar(bar);                             // attached to the frame, not the content pane
 ```
 
 메뉴 항목을 선택하면 버튼처럼 `ActionEvent`가 발생하므로 같은 방법으로 `ActionListener`를 등록한다. **니모닉(mnemonic)** 은 Alt와 함께 눌러 메뉴를 여는 문자이고, **액셀러레이터(accelerator)** 는 메뉴를 열지 않고 항목을 바로 실행하는 단축키(위에서는 Ctrl+O)이다. 메뉴 막대는 `setJMenuBar()`로 프레임에 직접 붙이며, 컨텐트팬의 배치와 관계없이 제목 표시줄 바로 아래에 놓인다. 메뉴 안에는 `JCheckBoxMenuItem`, `JRadioButtonMenuItem`처럼 선택 상태를 가진 항목과, 또 다른 `JMenu`(하위 메뉴)를 넣을 수 있다. 12강 1.2절의 계층에서 `JMenu`가 `JMenuItem`의 하위 클래스인 이유가 여기에 있다.
@@ -438,7 +438,7 @@ import java.awt.event.*;
 
 public class ActionDemo {
     public static void main(String[] args) {
-        Action save = new AbstractAction("Save") {                              // 명령 하나
+        Action save = new AbstractAction("Save") {                              // one command
             @Override public void actionPerformed(ActionEvent e) {
                 System.out.println("saving (source " + e.getSource().getClass().getSimpleName() + ")");
             }
@@ -447,34 +447,34 @@ public class ActionDemo {
         save.putValue(Action.MNEMONIC_KEY, KeyEvent.VK_S);
         save.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
 
-        JMenuItem item = new JMenuItem(save);                                    // 같은 Action으로 만든 두 컴포넌트
+        JMenuItem item = new JMenuItem(save);                                    // two components made from the same Action
         JButton button = new JButton(save);
         System.out.println("menu item: text=" + item.getText() + ", accelerator=" + item.getAccelerator());
         System.out.println("button: text=" + button.getText() + ", tooltip=" + button.getToolTipText()
                 + ", mnemonic=" + KeyEvent.getKeyText(button.getMnemonic()));
         button.doClick();
 
-        save.setEnabled(false);                                                  // 한 번 끄면
+        save.setEnabled(false);                                                  // disabling it once
         System.out.println("after disable: item " + item.isEnabled() + ", button " + button.isEnabled());
         save.setEnabled(true);
         save.putValue(Action.NAME, "Save All");
         System.out.println("after rename: item " + item.getText() + ", button " + button.getText());
 
         Canvas canvas = new Canvas();
-        InputMap im = canvas.getInputMap(JComponent.WHEN_FOCUSED);              // 키 입력 -> 이름
-        ActionMap am = canvas.getActionMap();                                    // 이름 -> Action
+        InputMap im = canvas.getInputMap(JComponent.WHEN_FOCUSED);              // keystroke -> name
+        ActionMap am = canvas.getActionMap();                                    // name -> Action
         KeyStroke ctrlS = KeyStroke.getKeyStroke("ctrl S");
         im.put(ctrlS, "save");
         am.put("save", save);
         System.out.println("lookup: " + ctrlS + " -> " + im.get(ctrlS) + " -> " + am.get("save").getValue(Action.NAME));
         KeyEvent e = new KeyEvent(canvas, KeyEvent.KEY_PRESSED, System.currentTimeMillis(),
-                InputEvent.CTRL_DOWN_MASK, KeyEvent.VK_S, KeyEvent.CHAR_UNDEFINED);  // Ctrl+S를 누른 이벤트
+                InputEvent.CTRL_DOWN_MASK, KeyEvent.VK_S, KeyEvent.CHAR_UNDEFINED);  // the event of pressing Ctrl+S
         System.out.println("handled: " + canvas.press(ctrlS, e));
         save.setEnabled(false);
         System.out.println("handled while disabled: " + canvas.press(ctrlS, e));
     }
 
-    static class Canvas extends JPanel {                                         // 포커스가 있을 때 Swing이 하는 일을 직접 호출
+    static class Canvas extends JPanel {                                         // calls what Swing does when the panel has focus
         boolean press(KeyStroke ks, KeyEvent e) { return processKeyBinding(ks, e, WHEN_FOCUSED, true); }
     }
 }
@@ -520,10 +520,10 @@ import java.io.File;
 
 public class ChooserDemo {
     static File askSaveFile(Component parent, JFileChooser chooser) {
-        if (chooser.showSaveDialog(parent) != JFileChooser.APPROVE_OPTION) return null;   // 취소, 닫기, 오류
+        if (chooser.showSaveDialog(parent) != JFileChooser.APPROVE_OPTION) return null;   // cancelled, closed, or an error
         File f = chooser.getSelectedFile();
         if (f.exists() && JOptionPane.showConfirmDialog(parent, f.getName() + " exists. Overwrite?")
-                != JOptionPane.YES_OPTION) return null;                          // 덮어쓰기 확인은 프로그램의 일
+                != JOptionPane.YES_OPTION) return null;                          // checking for overwrite is the program's job
         return f;
     }
 
@@ -542,7 +542,7 @@ public class ChooserDemo {
         System.out.println("filter " + chooser.getFileFilter().getDescription() + ", mode " + chooser.getFileSelectionMode());
         try {
             System.out.println("chosen " + askSaveFile(null, chooser));
-            Color c = JColorChooser.showDialog(null, "Pick a color", Color.WHITE);   // 취소하면 null
+            Color c = JColorChooser.showDialog(null, "Pick a color", Color.WHITE);   // null if cancelled
             System.out.println("color " + c);
         } catch (HeadlessException e) {
             System.out.println("no screen: HeadlessException");
@@ -606,13 +606,13 @@ import javax.imageio.ImageIO;
 public class ScoreTable {
     record Row(String name, int score) { }
 
-    static class ScoreModel extends AbstractTableModel {              // 모델: 데이터와 그 규칙
+    static class ScoreModel extends AbstractTableModel {              // model: data and its rules
         private final String[] columns = {"Name", "Score", "Pass"};
         private final List<Row> rows = new ArrayList<>();
 
         void add(String name, int score) {
             rows.add(new Row(name, score));
-            fireTableRowsInserted(rows.size() - 1, rows.size() - 1);   // 뷰에 알린다
+            fireTableRowsInserted(rows.size() - 1, rows.size() - 1);   // notify the views
         }
 
         @Override public int getRowCount() { return rows.size(); }
@@ -635,7 +635,7 @@ public class ScoreTable {
 
     public static void main(String[] args) throws Exception {
         ScoreModel model = new ScoreModel();
-        JTable table = new JTable(model);                               // 뷰: 모델을 보여 준다
+        JTable table = new JTable(model);                               // view: shows the model
         model.addTableModelListener(e -> System.out.println("model changed: rows "
                 + e.getFirstRow() + "-" + e.getLastRow() + ", type " + e.getType()));
         model.add("Kim", 90);
@@ -645,7 +645,7 @@ public class ScoreTable {
                 + ", header " + table.getColumnName(0) + "/" + table.getColumnName(1) + "/" + table.getColumnName(2));
         System.out.println("Lee: " + table.getValueAt(1, 1) + " pass=" + table.getValueAt(1, 2)
                 + ", editable name? " + table.isCellEditable(1, 0) + ", score? " + table.isCellEditable(1, 1));
-        table.setValueAt("65", 1, 1);                                   // 편집한 값이 모델로 간다
+        table.setValueAt("65", 1, 1);                                   // the edit goes to the model
         System.out.println("Lee after edit: " + model.getValueAt(1, 1) + " pass=" + model.getValueAt(1, 2));
 
         if (args.length > 0) {
@@ -717,7 +717,7 @@ import java.awt.Component;
 public class SharedModel {
     public static void main(String[] args) {
         JSlider slider = new JSlider(0, 200, 0);
-        JProgressBar bar = new JProgressBar(slider.getModel());                 // 슬라이더의 모델을 함께 쓴다
+        JProgressBar bar = new JProgressBar(slider.getModel());                 // shares the slider's model
         slider.setValue(50);
         System.out.println("slider " + slider.getValue() + ", bar " + bar.getValue()
                 + " (" + Math.round(bar.getPercentComplete() * 100) + "%), same model " + (slider.getModel() == bar.getModel()));
@@ -728,15 +728,15 @@ public class SharedModel {
             public void intervalRemoved(ListDataEvent e) { System.out.println("removed " + e.getIndex0() + "-" + e.getIndex1()); }
             public void contentsChanged(ListDataEvent e) { System.out.println("changed " + e.getIndex0() + "-" + e.getIndex1()); }
         });
-        JList<String> left = new JList<>(names), right = new JList<>(names);     // 두 뷰, 모델 하나
+        JList<String> left = new JList<>(names), right = new JList<>(names);     // two views, one model
         names.addElement("Kim");
         names.addElement("Park");
-        names.add(1, "Lee");                                                     // 위치 1에 끼운다
+        names.add(1, "Lee");                                                     // inserted at position 1
         names.set(2, "Choi");
         names.remove(0);
         System.out.println("left " + left.getModel().getSize() + " rows, right first = " + right.getModel().getElementAt(0));
 
-        right.setCellRenderer(new DefaultListCellRenderer() {                    // 그리는 방법만 바꾼다
+        right.setCellRenderer(new DefaultListCellRenderer() {                    // changes only how items are drawn
             @Override public Component getListCellRendererComponent(JList<?> list, Object value,
                     int index, boolean selected, boolean focus) {
                 JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, selected, focus);
@@ -791,10 +791,10 @@ public class TableSort {
         JTable table = new JTable(model);
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(model);
         table.setRowSorter(sorter);
-        sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.DESCENDING)));   // 점수의 내림차순
+        sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.DESCENDING)));   // scores, descending
         print(table, "sorted by score");
 
-        sorter.setRowFilter(RowFilter.numberFilter(RowFilter.ComparisonType.AFTER, 59, 1));   // 59보다 큰 점수만
+        sorter.setRowFilter(RowFilter.numberFilter(RowFilter.ComparisonType.AFTER, 59, 1));   // only scores above 59
         print(table, "filtered score > 59");
         System.out.println("model rows " + model.getRowCount() + ", view rows " + table.getRowCount());
 
@@ -863,7 +863,7 @@ public class TreeDemo {
         DefaultTreeModel model = new DefaultTreeModel(root);
         JTree tree = new JTree(model);
         System.out.println("visible rows " + tree.getRowCount() + ", root children " + model.getChildCount(root));
-        tree.expandRow(1);                                                       // Lecture-Notes를 펼친다
+        tree.expandRow(1);                                                       // expand Lecture-Notes
         System.out.println("after expanding row 1: rows " + tree.getRowCount());
         for (int r = 0; r < tree.getRowCount(); r++)
             System.out.println("  row " + r + " " + tree.getPathForRow(r));
@@ -871,7 +871,7 @@ public class TreeDemo {
         tree.addTreeSelectionListener(e -> System.out.println("selected " + e.getPath().getLastPathComponent()));
         tree.setSelectionRow(3);
         model.addTreeModelListener(new TreeModelAdapter());
-        model.insertNodeInto(new DefaultMutableTreeNode("Lec17"), notes, notes.getChildCount());   // 모델에 노드를 더한다
+        model.insertNodeInto(new DefaultMutableTreeNode("Lec17"), notes, notes.getChildCount());   // add a node to the model
 
         StringBuilder sb = new StringBuilder("preorder:");
         for (Enumeration<TreeNode> en = root.preorderEnumeration(); en.hasMoreElements(); )
@@ -939,8 +939,8 @@ import javax.imageio.ImageIO;
 public class BorderLaf {
     public static void main(String[] args) throws Exception {
         Border line = BorderFactory.createLineBorder(Color.BLUE, 2);
-        Border empty = BorderFactory.createEmptyBorder(5, 10, 5, 10);           // 위, 왼쪽, 아래, 오른쪽
-        Border both = BorderFactory.createCompoundBorder(line, empty);           // 바깥 테두리, 안쪽 테두리
+        Border empty = BorderFactory.createEmptyBorder(5, 10, 5, 10);           // top, left, bottom, right
+        Border both = BorderFactory.createCompoundBorder(line, empty);           // outer border, inner border
         JPanel p = new JPanel(new BorderLayout());
         for (Border b : new Border[] {line, empty, both}) {
             p.setBorder(b);
@@ -957,7 +957,7 @@ public class BorderLaf {
             System.out.println("  installed: " + info.getName());
 
         BufferedImage metal = sample("Metal");
-        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");   // 컴포넌트를 만들기 전에 바꾼다
+        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");   // switch before creating components
         BufferedImage nimbus = sample("Nimbus");
         System.out.println("current L&F: " + UIManager.getLookAndFeel().getName());
 
@@ -1050,9 +1050,9 @@ Swing 컴포넌트의 겉모양은 UI 위임 객체가 그리며(3.1절), 어떤
 (0,0) ──────────────► x
   │
   │      (130,10) ┌──────────┐
-  │               │          │ 높이 50
+  │               │          │ height 50
   │               └──────────┘
-  │                  폭 80
+  │                  width 80
   ▼
   y
 ```
@@ -1075,20 +1075,20 @@ import javax.imageio.ImageIO;
 public class Drawing extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);                                       // 배경을 먼저 지운다
+        super.paintComponent(g);                                       // clear the background first
         g.setColor(Color.BLUE);
-        g.drawLine(10, 10, 110, 60);                                   // 선
-        g.drawRect(130, 10, 80, 50);                                   // 사각형의 윤곽
+        g.drawLine(10, 10, 110, 60);                                   // line
+        g.drawRect(130, 10, 80, 50);                                   // outline of a rectangle
         g.setColor(Color.ORANGE);
-        g.fillOval(230, 10, 80, 50);                                   // 채운 타원
+        g.fillOval(230, 10, 80, 50);                                   // filled oval
         g.setColor(Color.MAGENTA);
-        g.fillArc(330, 10, 60, 60, 0, 270);                            // 0도에서 270도까지의 부채꼴
+        g.fillArc(330, 10, 60, 60, 0, 270);                            // sector from 0 to 270 degrees
         g.setColor(Color.DARK_GRAY);
         g.drawPolygon(new int[] {20, 70, 120}, new int[] {150, 90, 150}, 3);
         g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-        g.drawString("Hello Graphics", 140, 125);                      // 기준선의 왼쪽 끝이 (140, 125)
+        g.drawString("Hello Graphics", 140, 125);                      // baseline starts at (140, 125)
 
-        Graphics2D g2 = (Graphics2D) g;                                // 더 많은 기능
+        Graphics2D g2 = (Graphics2D) g;                                // more features
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setStroke(new BasicStroke(4));
         g2.setColor(new Color(0, 128, 0));
@@ -1101,7 +1101,7 @@ public class Drawing extends JPanel {
         d.setSize(400, 160);
         BufferedImage img = new BufferedImage(400, 160, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = img.createGraphics();
-        d.paint(g);                                                    // 화면 대신 이미지에 그린다
+        d.paint(g);                                                    // paint into an image instead of the screen
         g.dispose();
         ImageIO.write(img, "png", new File(args[0]));
         System.out.println("pixel at (270, 35): " + Integer.toHexString(img.getRGB(270, 35) & 0xFFFFFF));
@@ -1167,9 +1167,9 @@ public class TimerAnim {
 
     public static void main(String[] args) throws Exception {
         long t0 = System.nanoTime();
-        Timer timer = new Timer(100, null);                            // 0.1초마다
+        Timer timer = new Timer(100, null);                            // every 0.1 s
         timer.addActionListener(e -> {
-            x += 10;                                                   // 위치를 옮기고 repaint()를 부르는 자리
+            x += 10;                                                   // where the position moves and repaint() is called
             ticks++;
             System.out.printf("tick %d at ~%d ms on %s, x = %d%n", ticks,
                     Math.round((System.nanoTime() - t0) / 1e6 / 100) * 100,
@@ -1208,7 +1208,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MouseDraw extends JPanel {
-    private final List<Point> points = new ArrayList<>();             // 그림의 상태를 기억한다
+    private final List<Point> points = new ArrayList<>();             // remember the state of the drawing
     int repaints = 0;
 
     MouseDraw() {
@@ -1217,7 +1217,7 @@ public class MouseDraw extends JPanel {
             @Override public void mouseDragged(MouseEvent e) { points.add(e.getPoint()); requestRepaint(); }
         };
         addMouseListener(handler);
-        addMouseMotionListener(handler);                               // 드래그는 모션 리스너
+        addMouseMotionListener(handler);                               // drags go to the motion listener
     }
 
     void requestRepaint() { repaints++; repaint(); }
@@ -1269,36 +1269,36 @@ public class Shapes2D extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g.create();                                 // 복사본에서 작업한다
+        Graphics2D g2 = (Graphics2D) g.create();                                 // work on a copy
         try {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             int[] caps = {BasicStroke.CAP_BUTT, BasicStroke.CAP_ROUND, BasicStroke.CAP_SQUARE};
-            for (int i = 0; i < 3; i++) {                                        // 선 끝 모양 셋
+            for (int i = 0; i < 3; i++) {                                        // three line caps
                 g2.setStroke(new BasicStroke(12, caps[i], BasicStroke.JOIN_MITER));
                 g2.setColor(Color.GRAY);
                 g2.draw(new Line2D.Double(30, 25 + 30 * i, 130, 25 + 30 * i));
                 g2.setStroke(new BasicStroke(1));
-                g2.setColor(Color.RED);                                          // 원래 끝점
+                g2.setColor(Color.RED);                                          // the original end points
                 g2.draw(new Line2D.Double(30, 15 + 30 * i, 30, 35 + 30 * i));
                 g2.draw(new Line2D.Double(130, 15 + 30 * i, 130, 35 + 30 * i));
             }
-            float[] dash = {10f, 5f};                                            // 10픽셀 그리고 5픽셀 쉰다
+            float[] dash = {10f, 5f};                                            // draw 10 pixels, skip 5
             g2.setStroke(new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 10f, dash, 0f));
             g2.setColor(new Color(0, 90, 160));
             g2.draw(new RoundRectangle2D.Double(20, 105, 120, 45, 20, 20));
 
-            Path2D star = new Path2D.Double();                                   // 꼭짓점 다섯 개의 별
+            Path2D star = new Path2D.Double();                                   // a five-pointed star
             for (int k = 0; k < 5; k++) {
                 double a = Math.toRadians(-90 + k * 144);
                 double x = 40 * Math.cos(a), y = 40 * Math.sin(a);
                 if (k == 0) star.moveTo(x, y); else star.lineTo(x, y);
             }
             star.closePath();
-            g2.translate(230, 85);                                               // 원점을 별의 중심으로 옮긴다
+            g2.translate(230, 85);                                               // move the origin to the star's center
             for (int k = 0; k < 6; k++) {
-                g2.setColor(new Color(255, 140, 0, 60));                         // 반투명한 주황
+                g2.setColor(new Color(255, 140, 0, 60));                         // translucent orange
                 g2.fill(new Rectangle2D.Double(0, -6, 60, 12));
-                g2.rotate(Math.toRadians(60));                                   // 60도씩 돌린다
+                g2.rotate(Math.toRadians(60));                                   // rotate by 60 degrees
             }
             g2.setStroke(new BasicStroke(2));
             g2.setColor(new Color(120, 0, 160));
@@ -1311,10 +1311,10 @@ public class Shapes2D extends JPanel {
     public static void main(String[] args) throws Exception {
         AffineTransform t1 = new AffineTransform();
         t1.translate(100, 100);
-        t1.rotate(Math.toRadians(90));                                           // translate 다음 rotate
+        t1.rotate(Math.toRadians(90));                                           // translate, then rotate
         AffineTransform t2 = new AffineTransform();
         t2.rotate(Math.toRadians(90));
-        t2.translate(100, 100);                                                  // 순서를 바꾼다
+        t2.translate(100, 100);                                                  // reversed order
         Point2D p = new Point2D.Double(50, 0);
         System.out.println("translate then rotate: " + round(t1.transform(p, null)));
         System.out.println("rotate then translate: " + round(t2.transform(p, null)));
@@ -1394,14 +1394,14 @@ public class TextMetrics extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
-        FontMetrics fm = g2.getFontMetrics();                                    // 지금 글꼴의 치수
-        int w = getWidth(), h = 90;                                              // 위쪽 90픽셀 띠의 가운데에 쓴다
+        FontMetrics fm = g2.getFontMetrics();                                    // metrics of the current font
+        int w = getWidth(), h = 90;                                              // center in the top 90-pixel band
         int x = (w - fm.stringWidth(TEXT)) / 2;
         int baseline = (h - (fm.getAscent() + fm.getDescent())) / 2 + fm.getAscent();
         g2.setColor(new Color(200, 200, 255));
         g2.fillRect(x, baseline - fm.getAscent(), fm.stringWidth(TEXT), fm.getAscent() + fm.getDescent());
         g2.setColor(Color.RED);
-        g2.drawLine(0, baseline, w, baseline);                                   // 기준선
+        g2.drawLine(0, baseline, w, baseline);                                   // the baseline
         g2.setColor(Color.BLACK);
         g2.drawString(TEXT, x, baseline);
         if (getClientProperty("print") != null)
@@ -1410,9 +1410,9 @@ public class TextMetrics extends JPanel {
 
         g2.setColor(Color.BLUE);
         g2.fillRect(20, 100, 120, 40);
-        g2.setColor(new Color(255, 0, 0, 128));                                  // 알파 128인 빨강
+        g2.setColor(new Color(255, 0, 0, 128));                                  // red with alpha 128
         g2.fillRect(80, 110, 120, 40);
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.25f));   // 이후 그리는 모든 것의 불투명도 25%
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.25f));   // 25% opacity for everything drawn next
         g2.setColor(Color.GREEN.darker());
         g2.fillRect(160, 100, 100, 40);
     }
@@ -1474,30 +1474,30 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 public class ImageCanvas extends JPanel {
-    private final BufferedImage layer = new BufferedImage(200, 100, BufferedImage.TYPE_INT_ARGB);   // 그림을 쌓아 두는 이미지
+    private final BufferedImage layer = new BufferedImage(200, 100, BufferedImage.TYPE_INT_ARGB);   // an image that accumulates the drawing
     int cellsDrawn;
 
-    void stamp(int x, int y) {                                                   // 이미지에 그리고 화면은 다시 그리게 한다
+    void stamp(int x, int y) {                                                   // draw into the image, then request a repaint
         Graphics2D g = layer.createGraphics();
         g.setColor(Color.RED);
         g.fillOval(x - 5, y - 5, 10, 10);
         g.dispose();
-        repaint(x - 5, y - 5, 10, 10);                                           // 바뀐 영역만
+        repaint(x - 5, y - 5, 10, 10);                                           // only the changed area
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Rectangle clip = g.getClipBounds();                                      // 다시 그려야 하는 영역
+        Rectangle clip = g.getClipBounds();                                      // the area that must be repainted
         cellsDrawn = 0;
         g.setColor(new Color(230, 230, 230));
         for (int y = 0; y < 100; y += 10)
             for (int x = 0; x < 200; x += 10)
-                if (clip == null || clip.intersects(x, y, 10, 10)) {             // 보이지 않을 칸은 건너뛴다
+                if (clip == null || clip.intersects(x, y, 10, 10)) {             // skip cells outside the clip
                     g.drawRect(x, y, 10, 10);
                     cellsDrawn++;
                 }
-        g.drawImage(layer, 0, 0, null);                                          // 쌓인 그림 전체를 한 번에
+        g.drawImage(layer, 0, 0, null);                                          // the whole accumulated drawing at once
     }
 
     public static void main(String[] args) throws Exception {
@@ -1512,17 +1512,17 @@ public class ImageCanvas extends JPanel {
         c.paint(g);
         System.out.println("full paint: cells " + c.cellsDrawn + ", pixel (100,50) = "
                 + Integer.toHexString(screen.getRGB(100, 50) & 0xFFFFFF));
-        g.setClip(95, 45, 10, 10);                                               // repaint(95, 45, 10, 10)이 만드는 것과 같은 클립
+        g.setClip(95, 45, 10, 10);                                               // the clip that repaint(95, 45, 10, 10) produces
         c.paint(g);
         System.out.println("clipped paint: cells " + c.cellsDrawn);
         g.dispose();
 
         File f = new File("canvas.png");
         ImageIO.write(screen, "png", f);
-        BufferedImage back = ImageIO.read(f);                                    // 파일에서 다시 읽는다
+        BufferedImage back = ImageIO.read(f);                                    // read it back from the file
         BufferedImage big = new BufferedImage(400, 200, BufferedImage.TYPE_INT_RGB);
         Graphics2D bg = big.createGraphics();
-        bg.drawImage(back, 0, 0, 400, 200, null);                                // 두 배로 늘려 그린다
+        bg.drawImage(back, 0, 0, 400, 200, null);                                // draw it stretched to twice the size
         bg.dispose();
         System.out.println("read " + back.getWidth() + "x" + back.getHeight() + ", scaled pixel (200,100) = "
                 + Integer.toHexString(big.getRGB(200, 100) & 0xFFFFFF));
@@ -1555,27 +1555,27 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class BallGame extends JPanel {
-    static class Ball {                                                          // 모델: 위치와 속도, 규칙
-        double x = 0, vx = 300;                                                  // 픽셀, 초당 픽셀
+    static class Ball {                                                          // model: position, velocity, rules
+        double x = 0, vx = 300;                                                  // pixels, pixels per second
         final int size = 20;
         void step(double dt, int width) {
             x += vx * dt;
-            if (x < 0) { x = -x; vx = -vx; }                                     // 왼쪽 벽에서 반사
-            else if (x + size > width) { x = 2 * (width - size) - x; vx = -vx; } // 오른쪽 벽에서 반사
+            if (x < 0) { x = -x; vx = -vx; }                                     // reflect at the left wall
+            else if (x + size > width) { x = 2 * (width - size) - x; vx = -vx; } // reflect at the right wall
         }
     }
 
     final Ball ball = new Ball();
     private long last, startedAt;
-    final Timer timer = new Timer(16, e -> {                                     // 약 60분의 1초마다 EDT에서
+    final Timer timer = new Timer(16, e -> {                                     // about every 1/60 s, on the EDT
         long now = System.nanoTime();
-        ball.step((now - last) / 1e9, getWidth());                               // 실제로 흐른 시간만큼 움직인다
+        ball.step((now - last) / 1e9, getWidth());                               // move by the time actually elapsed
         last = now;
         repaint();
     });
 
     BallGame() {
-        bind("pressed RIGHT", "right", () -> ball.vx = Math.abs(ball.vx));     // 컨트롤러: 키를 모델의 변경으로
+        bind("pressed RIGHT", "right", () -> ball.vx = Math.abs(ball.vx));     // controller: keys become model changes
         bind("pressed LEFT", "left", () -> ball.vx = -Math.abs(ball.vx));
         bind("pressed SPACE", "pause", () -> { if (timer.isRunning()) timer.stop(); else start(); });
     }
@@ -1590,13 +1590,13 @@ public class BallGame extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {                                  // 뷰: 모델을 그리기만 한다
+    protected void paintComponent(Graphics g) {                                  // view: only draws the model
         super.paintComponent(g);
         g.setColor(Color.ORANGE);
         g.fillOval((int) Math.round(ball.x), getHeight() / 2 - ball.size / 2, ball.size, ball.size);
     }
 
-    boolean key(String stroke) {                                                 // 창에 포커스가 있을 때 Swing이 하는 일
+    boolean key(String stroke) {                                                 // what Swing does when the window has focus
         KeyStroke ks = KeyStroke.getKeyStroke(stroke);
         KeyEvent e = new KeyEvent(this, KeyEvent.KEY_PRESSED, 0, 0, ks.getKeyCode(), KeyEvent.CHAR_UNDEFINED);
         return processKeyBinding(ks, e, WHEN_IN_FOCUSED_WINDOW, true);
@@ -1605,7 +1605,7 @@ public class BallGame extends JPanel {
     public static void main(String[] args) throws Exception {
         BallGame game = new BallGame();
         game.setSize(200, 60);
-        for (int i = 1; i <= 8; i++) {                                           // 0.1초씩 직접 진행시킨다
+        for (int i = 1; i <= 8; i++) {                                           // advance by 0.1 s manually
             game.ball.step(0.1, game.getWidth());
             System.out.printf("t=%.1f x=%.0f vx=%.0f%n", i / 10.0, game.ball.x, game.ball.vx);
         }
@@ -1613,9 +1613,9 @@ public class BallGame extends JPanel {
         System.out.println("after RIGHT: vx=" + (int) game.ball.vx);
 
         game.ball.x = 0;
-        SwingUtilities.invokeAndWait(() -> game.key("SPACE"));                   // 타이머를 켠다
+        SwingUtilities.invokeAndWait(() -> game.key("SPACE"));                   // start the timer
         Thread.sleep(300);
-        SwingUtilities.invokeAndWait(() -> game.key("SPACE"));                   // 타이머를 끈다
+        SwingUtilities.invokeAndWait(() -> game.key("SPACE"));                   // stop the timer
         double sec = (game.last - game.startedAt) / 1e9;
         System.out.printf("timer: moved %.0f px in %.2f s, speed %.0f px/s%n", game.ball.x, sec, game.ball.x / sec);
     }
@@ -1655,12 +1655,12 @@ public class WorkerProgress {
         private final int n;
         PrimeCounter(int n) { this.n = n; }
 
-        @Override protected Integer doInBackground() {                          // 작업자 스레드
+        @Override protected Integer doInBackground() {                          // the worker thread
             int count = 0;
             for (int i = 2; i <= n; i++) {
-                if (isCancelled()) return null;                                  // 취소되었으면 멈춘다
+                if (isCancelled()) return null;                                  // stop if cancelled
                 if (isPrime(i)) count++;
-                if (i % (n / 10) == 0) setProgress((int) (100L * i / n));        // 10%마다
+                if (i % (n / 10) == 0) setProgress((int) (100L * i / n));        // every 10%
             }
             return count;
         }
@@ -1677,7 +1677,7 @@ public class WorkerProgress {
         List<String> states = Collections.synchronizedList(new ArrayList<>());
         boolean[] allOnEdt = {true};
         CountDownLatch finished = new CountDownLatch(1);
-        w.addPropertyChangeListener(e -> {                                       // EDT에서 호출된다
+        w.addPropertyChangeListener(e -> {                                       // called on the EDT
             allOnEdt[0] &= SwingUtilities.isEventDispatchThread();
             if ("progress".equals(e.getPropertyName())) progress.add((Integer) e.getNewValue());
             else if ("state".equals(e.getPropertyName())) {
@@ -1712,7 +1712,7 @@ public class WorkerProgress {
         bad.execute();
         try {
             bad.get();
-        } catch (ExecutionException e) {                                         // doInBackground의 예외를 감싼다
+        } catch (ExecutionException e) {                                         // wraps the exception from doInBackground
             System.out.println("ExecutionException caused by " + e.getCause());
         }
     }

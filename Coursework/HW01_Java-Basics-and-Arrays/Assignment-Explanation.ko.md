@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-24
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 대화 상자와 `Scanner`로 받은 입력을 검증하고 필요한 값으로 나눌 수 있다
@@ -42,8 +42,8 @@ Java의 기본 문법, 문자열, 조건문과 반복문, 배열, `JOptionPane` 
 ```text
 Coursework/HW01_Java-Basics-and-Arrays/
 ├── Original/
-│   ├── Assignment.ko.md                        # 과제 안내문 (한국어)
-│   └── Assignment.md                           # 과제 안내문 (영어)
+│   ├── Assignment.ko.md                        # assignment handout (Korean)
+│   └── Assignment.md                           # assignment handout (English)
 ├── Solution/
 │   ├── Assignment1_SentenceReverser.java       # Q1
 │   ├── Assignment1_NameGreeter.java            # Q2
@@ -54,8 +54,8 @@ Coursework/HW01_Java-Basics-and-Arrays/
 │   ├── Assignment1_OptimalBillCounter.java     # Q7
 │   ├── Assignment1_NumberExtractorSum.java     # Q8
 │   └── Assignment1_SeasonIdentifier.java       # Q9
-├── Assignment-Explanation.ko.md                # 과제 해설 (한국어)
-└── Assignment-Explanation.md                   # 과제 해설 (영어)
+├── Assignment-Explanation.ko.md                # assignment explanation (Korean)
+└── Assignment-Explanation.md                   # assignment explanation (English)
 ```
 
 *그림 1. HW1 과제의 디렉토리 구성*
@@ -181,7 +181,7 @@ for (int i = 0; i < studentId.length(); i++) {
 `ch - '0'`은 문자 코드의 차이로 숫자 문자를 그 값으로 바꾼다. 문자 `'0'`\~`'9'`의 코드가 연속이므로 `'7' - '0'`은 7이다. 예시의 학번 12345678은 1 + 2 + ... + 8 = 36이다.
 
 ```text
-[입력] Minseok Seo / 12345678
+[input] Minseok Seo / 12345678
 Hello OOP World! Minseok Seo
 The sum of each number of your student number entered is 36
 ```
@@ -274,7 +274,7 @@ if (months < 0) { months += 12; years--; }
 `Calendar.MONTH`는 0부터 세므로 4월은 3, 12월은 11이고 차는 -8이다. 월만 음수이므로 12를 더하고 년에서 1을 빼면 35년 4개월 12일 14시간 5분 15초가 된다. 풀이의 출력은 다음과 같다.
 
 ```text
-[입력] Minseok Seo / 1987-12-11
+[input] Minseok Seo / 1987-12-11
 Current time:       2023-04-23 14:05:15
 Date of birth:      1987-12-11 00:00:00
 ============================================
@@ -425,7 +425,7 @@ while (matcher.find()) {
 Java 문자열 안에서는 역슬래시를 `\\`로 써야 하므로 코드에서는 `"\\d+(?:\\.\\d+)?"`가 된다. `find()`는 앞에서부터 패턴에 맞는 다음 부분을 찾아 `true`를 돌려주고, `group()`은 찾은 부분의 문자열이다. 찾을 때마다 값을 더하고 `12 + 321 + ...` 형태의 식을 만든다.
 
 ```text
-[입력] ABCD12fealsk^%$$%^321ls!nfls10.3flw#nf0.2flaks
+[input] ABCD12fealsk^%$$%^321ls!nfls10.3flw#nf0.2flaks
 Sum of all numbers: 12 + 321 + 10.3 + 0.2 = 343.5
 ```
 

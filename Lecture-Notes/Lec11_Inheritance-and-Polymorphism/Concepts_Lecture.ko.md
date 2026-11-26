@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 상속을 사용하여 클래스 계층을 구현할 수 있다
@@ -122,7 +122,7 @@ public class Student extends Person {
         age = 39;
         name = "PSY";
         height = 182;
-        setWeight(99); // weight는 private이므로 직접 접근 불가
+        setWeight(99); // cannot access weight directly (private)
     }
 
     public void display() {
@@ -181,7 +181,7 @@ public class ColorPoint extends Point {
     private String color;
 
     public ColorPoint(int x, int y, String color) {
-        super(x, y);          // 반드시 첫 번째 문장이어야 함
+        super(x, y);          // must be the first statement
         this.color = color;
     }
 }
@@ -266,7 +266,7 @@ public class SuperCall {
         private double rate = 0.05;
         @Override
         String describe() {
-            return super.describe() + ", rate " + rate;   // 상위 클래스의 구현을 다시 쓴다
+            return super.describe() + ", rate " + rate;   // reuse the superclass version
         }
     }
 
@@ -314,7 +314,7 @@ roster[3] = new GraduateStudent();
 int numberOfStudents = 4;
 
 for (int i = 0; i < numberOfStudents; i++) {
-    roster[i].computeCourseGrade(); // 적절한 하위 클래스 메서드가 호출됨
+    roster[i].computeCourseGrade(); // calls the appropriate subclass method
 }
 ```
 
@@ -373,11 +373,11 @@ public class Casting {
     static class Cat extends Pet { @Override String name() { return "cat"; } }
 
     public static void main(String[] args) {
-        Pet p = new Dog();                 // 업캐스팅: 자동으로 일어난다
+        Pet p = new Dog();                 // upcast: implicit
         System.out.println(p.name());
         // p.fetch();                      // compile error: Pet has no fetch()
 
-        Dog d = (Dog) p;                   // 다운캐스팅: 명시해야 한다
+        Dog d = (Dog) p;                   // downcast: explicit
         d.fetch();
 
         Pet q = new Cat();
@@ -388,7 +388,7 @@ public class Casting {
         }
 
         for (Pet x : new Pet[] { new Dog(), new Cat() }) {
-            if (x instanceof Dog dog) {    // 검사와 캐스트를 한 번에
+            if (x instanceof Dog dog) {    // test and cast at once
                 dog.fetch();
             } else {
                 System.out.println(x.name() + " cannot fetch");
@@ -491,7 +491,7 @@ abstract class Student {
         return total / (double) NUM_OF_TESTS;
     }
 
-    abstract void computeCourseGrade();                // 학생 종류마다 다르다
+    abstract void computeCourseGrade();                // differs by kind of student
 
     String getCourseGrade() { return courseGrade; }
 }
@@ -600,7 +600,7 @@ public class Chap11Program3 {
     }
 
     static void paint(Shape p) {
-        p.draw(); // p가 실제로 가리키는 객체의 draw()가 호출됨
+        p.draw(); // calls draw() of the object p actually refers to
     }
 }
 ```
@@ -638,7 +638,7 @@ public class DoomfistWeapon extends Weapon {
 *표 3. 오버라이딩과 오버로딩의 비교*
 
 ```java
-// 오버라이딩: Hound의 bark()가 Dog의 bark()를 다시 정의한다
+// Overriding: bark() of Hound redefines bark() of Dog
 class Dog {
     public void bark() { System.out.println("woof "); }
 }
@@ -647,7 +647,7 @@ class Hound extends Dog {
     public void bark() { System.out.println("bowl"); }
 }
 
-// 오버로딩: 이름이 같고 매개변수가 다른 bark()를 하나 더 정의한다
+// Overloading: defines another bark() with the same name and different parameters
 class Dog {
     public void bark() { System.out.println("woof "); }
     public void bark(int num) {
@@ -718,8 +718,8 @@ public class Hiding {
     }
 
     static class Child extends Parent {
-        String name = "child field";                  // 필드 숨김
-        static String kind() { return "Child.kind()"; } // static 메서드 숨김
+        String name = "child field";                  // hides the field
+        static String kind() { return "Child.kind()"; } // hides the static method
         @Override String who() { return "Child.who()"; }
         String both() { return name + " / " + super.name; }
     }
@@ -809,8 +809,8 @@ abstract class Shape {
 
 ```java
 Shape shape;
-shape = new Shape();  // 컴파일 오류: Shape는 추상 클래스이다
-shape = new Circle(); // 가능: 추상 클래스 타입의 변수는 하위 클래스 객체를 가리킬 수 있다
+shape = new Shape();  // compile error: Shape is abstract
+shape = new Circle(); // allowed: a variable of an abstract type can refer to a subclass object
 ```
 
 추상 클래스를 상속하는 클래스가 인스턴스를 만들 수 있으려면 모든 추상 메서드를 구현해야 한다. 팀장이 다음 추상 클래스 `Calculator`를 설계했다면, 이를 상속하는 클래스는 세 메서드를 모두 오버라이딩해야 한다.
@@ -934,7 +934,7 @@ classDiagram
 
 ```java
 abstract class Shape {
-    public void paint() { draw(); }            // 골격은 상위 클래스가 정한다
+    public void paint() { draw(); }            // the superclass fixes the skeleton
     public abstract void draw();
 }
 
@@ -1000,8 +1000,8 @@ AbstractError.java:9: error: Shape is abstract; cannot be instantiated
 public class Defaults {
     interface Greeter {
         String name();
-        default String greet() { return "Hello, " + name(); }      // 구현이 있는 메서드
-        static Greeter of(String n) { return () -> n; }             // 인터페이스의 static 메서드
+        default String greet() { return "Hello, " + name(); }      // a method with a body
+        static Greeter of(String n) { return () -> n; }             // static interface method
     }
 
     interface Polite {
@@ -1011,7 +1011,7 @@ public class Defaults {
     static class Robot implements Greeter, Polite {
         public String name() { return "R2"; }
         @Override
-        public String greet() {                                      // 충돌을 직접 해결한다
+        public String greet() {                                      // resolve the conflict
             return Greeter.super.greet() + " / " + Polite.super.greet();
         }
     }
@@ -1092,7 +1092,7 @@ public class ObjectMethods {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;                       // 같은 객체
+            if (this == o) return true;                       // same object
             if (o == null || getClass() != o.getClass()) return false;
             Point p = (Point) o;
             return x == p.x && y == p.y;
@@ -1193,7 +1193,7 @@ class Coin extends Money { }
 import java.util.ArrayList;
 
 public class Stack2<E> {
-    private final ArrayList<E> items = new ArrayList<>();   // has-a: 리스트를 가진다
+    private final ArrayList<E> items = new ArrayList<>();   // has-a: holds a list
 
     public void push(E e) { items.add(e); }
     public E pop()        { return items.remove(items.size() - 1); }

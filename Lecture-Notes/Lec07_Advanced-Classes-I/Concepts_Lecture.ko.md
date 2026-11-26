@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-19
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 데이터 멤버, 메서드, 생성자를 가진 클래스를 정의하고 여러 클래스로 프로그램을 구성할 수 있다
@@ -70,10 +70,10 @@
 
 ```java
 public class Bicycle {
-    // 필드 (인스턴스 변수)
+    // Fields (instance variables)
     private String ownerName;
 
-    // 메서드
+    // Methods
     public String getOwnerName() {
         return ownerName;
     }
@@ -87,11 +87,11 @@ public class Bicycle {
 클래스 정의는 다음 순서로 구성된다.
 
 ```text
-import 문
-클래스 주석
-class 클래스이름 {
-    데이터 멤버
-    메서드 (생성자 포함)
+import statements
+class comment
+class ClassName {
+    data members
+    methods (including constructors)
 }
 ```
 
@@ -100,8 +100,8 @@ class 클래스이름 {
 **메서드**는 다음 형식으로 선언한다.
 
 ```text
-<제어자> <반환 타입> <메서드 이름> ( <매개변수> ) {
-    <문장>
+<modifier> <return type> <method name> ( <parameters> ) {
+    <statements>
 }
 ```
 
@@ -110,9 +110,9 @@ class 클래스이름 {
 ### 1.2 객체 생성
 
 ```java
-Bicycle bike = new Bicycle();       // 인스턴스 생성
-bike.setOwnerName("Alice");          // 메서드를 사용하여 상태 변경
-System.out.println(bike.getOwnerName()); // 상태 조회
+Bicycle bike = new Bicycle();       // create an instance
+bike.setOwnerName("Alice");          // use methods to modify state
+System.out.println(bike.getOwnerName()); // retrieve state
 ```
 
 클래스를 한 번 정의하면 인스턴스를 여러 개 만들 수 있다. 각 인스턴스는 자기만의 `ownerName`을 갖는다.
@@ -132,9 +132,9 @@ bike2.setOwnerName("Ben Jones");
 `Bicycle`을 사용하는 프로그램은 `main` 메서드를 가진 클래스(예: `Chap7Program1`)와 `Bicycle` 클래스로 이루어진다. 클래스 정의는 각각 별도의 파일(`Chap7Program1.java`, `Bicycle.java`)에 저장하며, 다음 순서로 컴파일하고 실행한다.
 
 ```text
-javac Bicycle.java          (컴파일)
-javac Chap7Program1.java    (컴파일)
-java Chap7Program1          (실행)
+javac Bicycle.java          (compile)
+javac Chap7Program1.java    (compile)
+java Chap7Program1          (run)
 ```
 
 클래스가 셋 이상이어도 같다. 예를 들어 `Chap7Program2`가 `Bicycle`과 `Account`를 사용하면 `Bicycle.java`, `Account.java`, `Chap7Program2.java`를 컴파일한 뒤 `java Chap7Program2`로 실행한다. 클래스는 한 번만 컴파일하면 되고, 코드를 바꾸었을 때만 다시 컴파일한다.
@@ -163,8 +163,8 @@ classDiagram
 **생성자**(constructor)는 클래스의 새 인스턴스가 생성될 때 실행되는 특별한 메서드이다. 이름은 클래스 이름과 같고 반환 타입을 쓰지 않는다.
 
 ```text
-public <클래스 이름> ( <매개변수> ) {
-    <문장>
+public <class name> ( <parameters> ) {
+    <statements>
 }
 ```
 
@@ -333,14 +333,14 @@ class Sample {
     public static void main(String[] arg) {
         Account acct = new Account();
         . . .
-        acct.add(400);              // 400이 인자
+        acct.add(400);              // 400 is the argument
         . . .
     }
 }
 
 class Account {
     . . .
-    public void add(double amt) {   // amt가 매개변수
+    public void add(double amt) {   // amt is the parameter
         balance = balance + amt;
     }
     . . .
@@ -472,7 +472,7 @@ public class Scores {
 
 ```java
 public double convert(int num) {
-    double result;                  // 지역 변수
+    double result;                  // local variable
     result = Math.sqrt(num * num);
     return result;
 }
@@ -519,7 +519,7 @@ class MusicCD {
 class AClass {
     public void myMethod() {
         BClass obj = new BClass();
-        obj.doWork();       // 다른 객체의 메서드: 점 표기법 필요
+        obj.doWork();       // method of another object: dot notation required
     }
 }
 
@@ -529,7 +529,7 @@ class BClass {
     }
 
     public void myMethod() {
-        doWork();           // 같은 객체의 메서드: 점 표기법 생략 가능
+        doWork();           // method of the same object: dot notation optional
     }
 }
 ```
@@ -746,15 +746,15 @@ invalid time: 24:0:0
 
 ```java
 public class Account {
-    private static int count = 0;   // 클래스 변수: 모든 Account 객체가 공유
-    private String ownerName;       // 인스턴스 변수: 객체마다 따로 존재
+    private static int count = 0;   // class variable: shared by all Account objects
+    private String ownerName;       // instance variable: one per object
 
     public Account(String name) {
         ownerName = name;
         count++;
     }
 
-    public static int getCount() {  // 클래스 메서드
+    public static int getCount() {  // class method
         return count;
     }
 }
@@ -923,7 +923,7 @@ public class FinalDemo {
 객체 지향 설계에서는 여러 클래스가 서로 협력한다.
 
 ```java
-// 메인 프로그램에서 Account 객체를 생성하고 사용
+// Main program creates and uses Account objects
 Account savings = new Account("Alice", 1000.0);
 savings.deposit(500.0);
 System.out.println("Balance: " + savings.getBalance());

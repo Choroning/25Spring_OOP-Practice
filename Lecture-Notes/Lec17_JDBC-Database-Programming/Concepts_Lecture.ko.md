@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Concepts_Lecture.md) | [한국어](Concepts_Lecture.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 테이블, 행, 열, 기본 키, 외래 키의 개념을 설명하고 CRUD, JOIN, GROUP BY를 쓰는 SQL 문을 작성할 수 있다
@@ -78,22 +78,22 @@ student 테이블에서는 학번 `id`가 기본 키이다. 이름은 같은 학
 **SQL(Structured Query Language)** 은 관계형 데이터베이스에 테이블을 만들고, 데이터를 넣고, 찾고, 고치고, 지우는 명령을 쓰는 언어이다. 데이터를 다루는 네 가지 기본 연산인 생성(Create), 조회(Read), 수정(Update), 삭제(Delete)를 머리글자로 **CRUD**라 부르며, SQL에서는 각각 `INSERT`, `SELECT`, `UPDATE`, `DELETE`에 해당한다.
 
 ```sql
-CREATE TABLE student (                      -- 테이블을 만든다
+CREATE TABLE student (                      -- create a table
     id    INTEGER PRIMARY KEY,
-    name  TEXT NOT NULL,                    -- 비워 둘 수 없다
-    score INTEGER                           -- NULL이 될 수 있다
+    name  TEXT NOT NULL,                    -- cannot be left empty
+    score INTEGER                           -- may be NULL
 );
 
 INSERT INTO student (id, name, score) VALUES (1, 'Kim', 90);   -- Create
 
 SELECT id, name, score FROM student         -- Read
-WHERE score >= 60                           -- 조건에 맞는 행만
-ORDER BY id;                                -- id의 오름차순으로
+WHERE score >= 60                           -- only rows that match
+ORDER BY id;                                -- in ascending order of id
 
 UPDATE student SET score = score + 10 WHERE score < 60;        -- Update
 DELETE FROM student WHERE id = 3;                              -- Delete
 
-SELECT COUNT(*), AVG(score) FROM student;   -- 행의 수와 평균
+SELECT COUNT(*), AVG(score) FROM student;   -- number of rows and the average
 ```
 
 SQL의 키워드는 대소문자를 가리지 않지만, 읽기 쉽도록 키워드를 대문자로 쓰는 것이 관례이다. 문자열 값은 작은따옴표로 감싸고, `--` 뒤는 주석이다. `WHERE`가 없는 `UPDATE`와 `DELETE`는 테이블의 모든 행에 적용되므로 특히 주의해야 한다.
@@ -107,7 +107,7 @@ SQL의 키워드는 대소문자를 가리지 않지만, 읽기 쉽도록 키워
 > **용어 정의:** **외래 키(foreign key)** 는 한 테이블의 열(또는 열의 묶음)로서, 그 값이 참조하는 테이블(같은 테이블일 수도 있다)의 기본 키 값 가운데 하나이거나 `NULL`이어야 하는 열이다. DBMS는 가리킬 행이 없는 값을 넣는 변경과, 기본 설정에서는 다른 행이 가리키고 있는 행을 지우는 변경을 거부하여 테이블 사이의 참조가 끊어지지 않게 한다.
 
 ```sql
-PRAGMA foreign_keys = ON;                   -- SQLite는 연결마다 켠다
+PRAGMA foreign_keys = ON;                   -- SQLite needs this on each connection
 
 CREATE TABLE student (
     id   INTEGER PRIMARY KEY,
@@ -118,10 +118,10 @@ CREATE TABLE course (
     title TEXT NOT NULL
 );
 CREATE TABLE enrollment (
-    student_id  INTEGER NOT NULL REFERENCES student(id),    -- 외래 키
-    course_code TEXT    NOT NULL REFERENCES course(code),   -- 외래 키
+    student_id  INTEGER NOT NULL REFERENCES student(id),    -- foreign key
+    course_code TEXT    NOT NULL REFERENCES course(code),   -- foreign key
     grade       INTEGER,
-    PRIMARY KEY (student_id, course_code)                   -- 두 열을 묶은 기본 키
+    PRIMARY KEY (student_id, course_code)                   -- a two-column primary key
 );
 
 INSERT INTO student VALUES (1, 'Kim'), (2, 'Lee'), (3, 'Park'), (4, 'Choi');
@@ -129,8 +129,8 @@ INSERT INTO course VALUES ('OOP', 'Object-Oriented Programming'), ('DB', 'Databa
 INSERT INTO enrollment VALUES (1, 'OOP', 90), (1, 'DB', 85), (2, 'OOP', 55),
                               (3, 'OOP', 72), (3, 'DB', NULL);
 
-INSERT INTO enrollment VALUES (9, 'OOP', 70);  -- 없는 학생 9
-DELETE FROM student WHERE id = 1;              -- 수강 행이 가리키는 학생
+INSERT INTO enrollment VALUES (9, 'OOP', 70);  -- student 9 does not exist
+DELETE FROM student WHERE id = 1;              -- a student referenced by enrollments
 ```
 
 ```text
@@ -178,24 +178,24 @@ SQLite는 하위 호환을 위해 외래 키 검사가 기본으로 꺼져 있�
 여러 테이블에 나누어 저장한 데이터는 질의할 때 다시 잇는다. `JOIN`은 두 테이블의 행 가운데 `ON` 조건이 참인 쌍마다 두 행을 이어 붙인 행을 만든다. 집계 함수에 `GROUP BY`를 붙이면 테이블 전체가 아니라 같은 값을 가진 행의 묶음마다 집계한다. SQLite의 명령행 도구 `sqlite3`에서 `.headers on`, `.mode table`, `.nullvalue NULL`로 출력 형식을 정하고 1.3절의 테이블에 다음 SQL을 실행하면, 결과는 그 아래와 같다.
 
 ```sql
-SELECT s.name, c.title, e.grade                 -- 세 테이블을 잇는다
+SELECT s.name, c.title, e.grade                 -- join three tables
 FROM enrollment e
 JOIN student s ON e.student_id = s.id
 JOIN course  c ON e.course_code = c.code
 ORDER BY s.id, c.code;
 
-SELECT s.name, e.course_code                     -- 수강하지 않은 학생도
+SELECT s.name, e.course_code                     -- students without enrollments too
 FROM student s
 LEFT JOIN enrollment e ON e.student_id = s.id
 ORDER BY s.id, e.course_code;
 
-SELECT course_code, COUNT(*), COUNT(grade),      -- 과목마다 한 행
+SELECT course_code, COUNT(*), COUNT(grade),      -- one row per course
        AVG(grade), MAX(grade)
 FROM enrollment
 GROUP BY course_code
 ORDER BY course_code;
 
-SELECT s.name, COUNT(*) AS n                     -- 묶은 뒤의 조건
+SELECT s.name, COUNT(*) AS n                     -- a condition after grouping
 FROM enrollment e JOIN student s ON e.student_id = s.id
 GROUP BY s.id
 HAVING COUNT(*) >= 2;
@@ -357,9 +357,9 @@ flowchart LR
 
 ```java
 try (ResultSet rs = st.executeQuery("SELECT id, name, score FROM student ORDER BY id")) {
-    while (rs.next()) {                      // 처음 호출에서 첫 행으로 간다
-        int id = rs.getInt("id");            // 열 이름으로 읽는다
-        String name = rs.getString(2);       // 열 번호로 읽는다 (1부터)
+    while (rs.next()) {                      // the first call moves to the first row
+        int id = rs.getInt("id");            // read by column name
+        String name = rs.getString(2);       // read by column number (from 1)
         System.out.println(id + " " + name);
     }
 }
@@ -392,7 +392,7 @@ String sql = "INSERT INTO student (id, name, score) VALUES (?, ?, ?)";
 try (PreparedStatement ps = conn.prepareStatement(sql)) {
     ps.setInt(1, 5);
     ps.setString(2, "Jung");
-    ps.setNull(3, Types.INTEGER);            // 세 번째 자리에 NULL
+    ps.setNull(3, Types.INTEGER);            // NULL in the third placeholder
     ps.executeUpdate();
 }
 ```
@@ -409,7 +409,7 @@ import java.sql.*;
 public class Injection {
     public static void main(String[] args) throws SQLException {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:school.db")) {
-            String input = "nobody' OR '1'='1";                                 // 공격자가 입력한 이름
+            String input = "nobody' OR '1'='1";                                 // a name typed by an attacker
 
             String sql = "SELECT name FROM student WHERE name = '" + input + "'";
             System.out.println("built SQL: " + sql);
@@ -420,7 +420,7 @@ public class Injection {
             }
 
             try (PreparedStatement ps = conn.prepareStatement("SELECT name FROM student WHERE name = ?")) {
-                ps.setString(1, input);                                          // 값으로만 쓰인다
+                ps.setString(1, input);                                          // used only as a value
                 try (ResultSet rs = ps.executeQuery()) {
                     int n = 0;
                     while (rs.next()) n++;
@@ -464,9 +464,9 @@ public class TypesDemo {
             try (PreparedStatement ps = conn.prepareStatement("INSERT INTO item VALUES (?, ?, ?, ?, ?, ?)")) {
                 ps.setInt(1, 1);
                 ps.setString(2, "pen");
-                ps.setBigDecimal(3, new BigDecimal("0.10"));                     // 정확한 십진수
-                ps.setObject(4, "123");                                          // 문자열을 정수 열에
-                ps.setString(5, LocalDate.of(2025, 6, 9).toString());           // ISO 형식 문자열로 저장
+                ps.setBigDecimal(3, new BigDecimal("0.10"));                     // an exact decimal
+                ps.setObject(4, "123");                                          // a string into an integer column
+                ps.setString(5, LocalDate.of(2025, 6, 9).toString());           // stored as an ISO string
                 ps.setBoolean(6, true);
                 ps.executeUpdate();
             }
@@ -540,7 +540,7 @@ public class KeysAndMeta {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:club.db")) {
             try (Statement st = conn.createStatement()) {
                 st.executeUpdate("DROP TABLE IF EXISTS member");
-                st.executeUpdate("CREATE TABLE member (id INTEGER PRIMARY KEY AUTOINCREMENT, "   // 키를 DBMS가 정한다
+                st.executeUpdate("CREATE TABLE member (id INTEGER PRIMARY KEY AUTOINCREMENT, "   // the DBMS chooses the key
                         + "name TEXT NOT NULL, joined TEXT DEFAULT CURRENT_DATE)");
             }
             String sql = "INSERT INTO member (name) VALUES (?)";
@@ -548,7 +548,7 @@ public class KeysAndMeta {
                 for (String name : new String[] {"Kim", "Lee"}) {
                     ps.setString(1, name);
                     ps.executeUpdate();
-                    try (ResultSet keys = ps.getGeneratedKeys()) {               // 방금 만들어진 키
+                    try (ResultSet keys = ps.getGeneratedKeys()) {               // the key just generated
                         keys.next();
                         System.out.println(name + " got id " + keys.getLong(1));
                     }
@@ -557,7 +557,7 @@ public class KeysAndMeta {
 
             try (Statement st = conn.createStatement();
                  ResultSet rs = st.executeQuery("SELECT id, name, length(name) AS len FROM member")) {
-                ResultSetMetaData md = rs.getMetaData();                         // 결과의 열 정보
+                ResultSetMetaData md = rs.getMetaData();                         // information about the result's columns
                 int n = md.getColumnCount();
                 for (int c = 1; c <= n; c++)
                     System.out.println("column " + c + ": label=" + md.getColumnLabel(c) + ", type=" + md.getColumnTypeName(c)
@@ -620,7 +620,7 @@ Kim과 Lee는 DBMS가 정한 키 1과 2를 받았다. 키를 돌려받지 않고
 import java.sql.*;
 
 public class StudentCrud {
-    static final String URL = "jdbc:sqlite:school.db";             // 파일 school.db에 연결
+    static final String URL = "jdbc:sqlite:school.db";             // connect to the file school.db
 
     public static void main(String[] args) throws SQLException {
         try (Connection conn = DriverManager.getConnection(URL)) {
@@ -642,7 +642,7 @@ public class StudentCrud {
                     ps.setString(2, (String) r[1]);
                     if (r[2] == null) ps.setNull(3, Types.INTEGER);
                     else ps.setInt(3, (Integer) r[2]);
-                    ps.addBatch();                                                // 묶어서 보낸다
+                    ps.addBatch();                                                // send together
                 }
                 int[] counts = ps.executeBatch();
                 System.out.println("inserted rows: " + counts.length);
@@ -676,11 +676,11 @@ public class StudentCrud {
         String sql = "SELECT id, name, score FROM student ORDER BY id";
         try (Statement st = conn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
-            while (rs.next()) {                                                   // 다음 행으로 커서를 옮긴다
+            while (rs.next()) {                                                   // move the cursor to the next row
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int score = rs.getInt("score");
-                String shown = rs.wasNull() ? "NULL" : String.valueOf(score);     // 방금 읽은 값이 NULL이었나
+                String shown = rs.wasNull() ? "NULL" : String.valueOf(score);     // was the value just read NULL
                 System.out.println(id + " " + name + " " + shown);
             }
         }
@@ -738,9 +738,9 @@ import java.sql.*;
 import java.util.*;
 
 public class DaoDemo {
-    record Student(int id, String name, Integer score) { }                       // 도메인 객체, 점수는 없을 수 있다
+    record Student(int id, String name, Integer score) { }                       // domain object; the score may be absent
 
-    interface StudentDao {                                                       // 데이터 접근의 계약
+    interface StudentDao {                                                       // the contract of data access
         void create(Student s) throws SQLException;
         Optional<Student> findById(int id) throws SQLException;
         List<Student> findAll() throws SQLException;
@@ -748,15 +748,15 @@ public class DaoDemo {
         boolean delete(int id) throws SQLException;
     }
 
-    static class JdbcStudentDao implements StudentDao {                          // SQL은 이 클래스에만 있다
+    static class JdbcStudentDao implements StudentDao {                          // SQL lives only in this class
         private final Connection conn;
-        JdbcStudentDao(Connection conn) { this.conn = conn; }                    // 연결은 바깥에서 받는다
+        JdbcStudentDao(Connection conn) { this.conn = conn; }                    // the connection comes from outside
 
         public void create(Student s) throws SQLException {
             try (PreparedStatement ps = conn.prepareStatement("INSERT INTO student (id, name, score) VALUES (?, ?, ?)")) {
                 ps.setInt(1, s.id());
                 ps.setString(2, s.name());
-                ps.setObject(3, s.score(), Types.INTEGER);                       // null이면 SQL NULL
+                ps.setObject(3, s.score(), Types.INTEGER);                       // SQL NULL when null
                 ps.executeUpdate();
             }
         }
@@ -783,7 +783,7 @@ public class DaoDemo {
             try (PreparedStatement ps = conn.prepareStatement("UPDATE student SET score = ? WHERE id = ?")) {
                 ps.setObject(1, score, Types.INTEGER);
                 ps.setInt(2, id);
-                return ps.executeUpdate() == 1;                                  // 바뀐 행이 하나였는가
+                return ps.executeUpdate() == 1;                                  // whether exactly one row changed
             }
         }
 
@@ -794,14 +794,14 @@ public class DaoDemo {
             }
         }
 
-        private static Student map(ResultSet rs) throws SQLException {           // 한 행을 객체 하나로
+        private static Student map(ResultSet rs) throws SQLException {           // one row to one object
             Integer score = rs.getInt("score");
-            if (rs.wasNull()) score = null;                                      // score를 읽은 바로 뒤에 확인한다
+            if (rs.wasNull()) score = null;                                      // checked right after reading score
             return new Student(rs.getInt("id"), rs.getString("name"), score);
         }
     }
 
-    static class GradeService {                                                  // 업무 규칙, SQL을 모른다
+    static class GradeService {                                                  // business rules, unaware of SQL
         private final StudentDao dao;
         GradeService(StudentDao dao) { this.dao = dao; }
 
@@ -877,7 +877,7 @@ import java.sql.*;
 
 public class Transfer {
     static void transfer(Connection conn, String from, String to, int amount) throws SQLException {
-        conn.setAutoCommit(false);                                               // 트랜잭션 시작
+        conn.setAutoCommit(false);                                               // begin a transaction
         try (PreparedStatement withdraw = conn.prepareStatement(
                      "UPDATE account SET balance = balance - ? WHERE owner = ?");
              PreparedStatement deposit = conn.prepareStatement(
@@ -892,10 +892,10 @@ public class Transfer {
                 rs.next();
                 if (rs.getInt(1) < 0) throw new SQLException("insufficient funds in " + from);
             }
-            conn.commit();                                                       // 둘 다 반영
+            conn.commit();                                                       // make both permanent
             System.out.println("committed: " + from + " -> " + to + " " + amount);
         } catch (SQLException e) {
-            conn.rollback();                                                     // 둘 다 취소
+            conn.rollback();                                                     // undo both
             System.out.println("rolled back: " + e.getMessage());
         } finally {
             conn.setAutoCommit(true);
@@ -974,7 +974,7 @@ import java.sql.*;
 public class Isolation {
     public static void main(String[] args) throws SQLException {
         try (Connection a = DriverManager.getConnection("jdbc:sqlite:bank.db");
-             Connection b = DriverManager.getConnection("jdbc:sqlite:bank.db")) {     // 같은 데이터베이스에 연결 두 개
+             Connection b = DriverManager.getConnection("jdbc:sqlite:bank.db")) {     // two connections to the same database
             try (Statement st = a.createStatement()) {
                 st.executeUpdate("DROP TABLE IF EXISTS account");
                 st.executeUpdate("CREATE TABLE account (owner TEXT PRIMARY KEY, balance INTEGER NOT NULL)");
@@ -987,10 +987,10 @@ public class Isolation {
             for (int lv : levels) sb.append(' ').append(lv).append('=').append(md.supportsTransactionIsolationLevel(lv));
             System.out.println(sb + ", current " + a.getTransactionIsolation());
 
-            try (Statement st = b.createStatement()) { st.execute("PRAGMA busy_timeout = 200"); }   // 잠금을 0.2초만 기다린다
+            try (Statement st = b.createStatement()) { st.execute("PRAGMA busy_timeout = 200"); }   // wait only 0.2 s for a lock
             a.setAutoCommit(false);
             try (Statement st = a.createStatement()) {
-                st.executeUpdate("UPDATE account SET balance = 70 WHERE owner = 'Alice'");   // 아직 확정하지 않았다
+                st.executeUpdate("UPDATE account SET balance = 70 WHERE owner = 'Alice'");   // not yet committed
                 System.out.println("A sees " + balance(a) + " inside its transaction");
             }
             System.out.println("B sees " + balance(b) + " before A commits");
@@ -1041,14 +1041,14 @@ public class BatchDemo {
             reset(conn);
             long t0 = System.nanoTime();
             try (PreparedStatement ps = conn.prepareStatement("INSERT INTO log (id, msg) VALUES (?, ?)")) {
-                for (int i = 1; i <= N; i++) {                                   // 문장마다 자동 커밋
+                for (int i = 1; i <= N; i++) {                                   // auto-commit after every statement
                     ps.setInt(1, i); ps.setString(2, "event " + i);
                     ps.executeUpdate();
                 }
             }
             long t1 = System.nanoTime();
             reset(conn);
-            conn.setAutoCommit(false);                                           // 트랜잭션 하나에 묶는다
+            conn.setAutoCommit(false);                                           // group into one transaction
             try (PreparedStatement ps = conn.prepareStatement("INSERT INTO log (id, msg) VALUES (?, ?)")) {
                 for (int i = 1; i <= N; i++) {
                     ps.setInt(1, i); ps.setString(2, "event " + i);
@@ -1064,27 +1064,27 @@ public class BatchDemo {
             Savepoint sp = null;
             try (Statement st = conn.createStatement()) {
                 st.executeUpdate("DELETE FROM log WHERE id <= 1000");
-                sp = conn.setSavepoint();                                        // 여기까지는 지키고 싶다
+                sp = conn.setSavepoint();                                        // keep the work up to here
                 st.executeUpdate("DELETE FROM log");
                 System.out.println("after deleting all: " + count(conn));
-                conn.rollback(sp);                                               // 저장점 뒤의 변경만 취소
+                conn.rollback(sp);                                               // undo only the changes after the savepoint
                 System.out.println("after rollback to savepoint: " + count(conn));
                 conn.commit();
             }
 
             try (PreparedStatement ps = conn.prepareStatement("INSERT INTO log (id, msg) VALUES (?, ?)")) {
-                for (int id : new int[] {5001, 5002, 1500, 5003}) {             // 1500은 이미 있는 키
+                for (int id : new int[] {5001, 5002, 1500, 5003}) {             // 1500 is an existing key
                     ps.setInt(1, id); ps.setString(2, "late " + id);
                     ps.addBatch();
                 }
                 ps.executeBatch();
                 conn.commit();
             } catch (SQLException e) {
-                if (e instanceof BatchUpdateException b)                         // 명세가 정한 일괄 처리 예외
+                if (e instanceof BatchUpdateException b)                         // the batch exception the specification defines
                     System.out.println("update counts " + Arrays.toString(b.getUpdateCounts()));
                 else
                     System.out.println(e.getClass().getSimpleName() + ": " + e.getMessage());
-                conn.rollback();                                                 // 일괄 처리 전체를 취소
+                conn.rollback();                                                 // undo the whole batch
                 System.out.println("rolled back, rows " + count(conn));
             }
             conn.setAutoCommit(true);
@@ -1167,7 +1167,7 @@ import java.sql.*;
 public class Errors {
     public static void main(String[] args) throws SQLException {
         try {
-            DriverManager.getConnection("jdbc:nosuch:test.db");                  // 이런 드라이버는 없다
+            DriverManager.getConnection("jdbc:nosuch:test.db");                  // no such driver
         } catch (SQLException e) { report("no driver", e); }
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:errors.db");
@@ -1179,9 +1179,9 @@ public class Errors {
             try { st.executeUpdate("INSERT INTO t VALUES (1)"); } catch (SQLException e) { report("duplicate", e); }
         }
 
-        SQLException first = new SQLException("first problem", "23000", 19);    // 드라이버가 만드는 연쇄를 흉내 낸다
+        SQLException first = new SQLException("first problem", "23000", 19);    // imitates a chain a driver builds
         first.setNextException(new SQLException("second problem", "42000", 1));
-        for (Throwable t : first)                                                // 연쇄를 따라 차례로
+        for (Throwable t : first)                                                // walks the chain in order
             if (t instanceof SQLException s)
                 System.out.println("chain: " + s.getMessage() + " state " + s.getSQLState() + " -> " + kind(s));
     }
@@ -1191,7 +1191,7 @@ public class Errors {
                 + ", code " + e.getErrorCode() + ", kind " + kind(e));
     }
 
-    static String kind(SQLException e) {                                         // SQLState의 앞 두 글자(클래스)로 나눈다
+    static String kind(SQLException e) {                                         // classify by the first two characters (the class)
         String s = e.getSQLState();
         if (s == null || s.length() < 2) return "unknown (vendor code " + e.getErrorCode() + ")";
         return switch (s.substring(0, 2)) {
@@ -1234,16 +1234,16 @@ public class Closing {
             st.executeUpdate("CREATE TABLE t (id INTEGER)");
             st.executeUpdate("INSERT INTO t VALUES (1), (2)");
             ResultSet rs = st.executeQuery("SELECT id FROM t");
-            st.close();                                                          // 문장만 닫았다
+            st.close();                                                          // closed only the statement
             System.out.println("statement closed " + st.isClosed() + ", its result set closed " + rs.isClosed());
         }
 
         Connection c = DriverManager.getConnection(url);
         c.setAutoCommit(false);
         try (Statement st = c.createStatement()) {
-            st.executeUpdate("INSERT INTO t VALUES (3)");                        // 확정하지 않은 변경
+            st.executeUpdate("INSERT INTO t VALUES (3)");                        // an uncommitted change
         }
-        c.close();                                                               // commit도 rollback도 하지 않고 닫는다
+        c.close();                                                               // close without commit or rollback
         try (Connection again = DriverManager.getConnection(url);
              Statement st = again.createStatement();
              ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM t")) {

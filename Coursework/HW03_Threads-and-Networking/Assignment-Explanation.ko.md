@@ -2,7 +2,7 @@
 
 [레포지토리 안내](../../README.ko.md) | [English](Assignment-Explanation.md) | [한국어](Assignment-Explanation.ko.md)
 
-> **최종 수정일:** 2026-11-26
+> **최종 수정일:** 2026-11-27
 
 > **학습 목표:**
 > 1. 큰 텍스트 파일을 한 번 읽으면서 고정 길이 부분 문자열의 빈도를 효율적으로 셀 수 있다
@@ -42,15 +42,15 @@
 ```text
 Coursework/HW03_Threads-and-Networking/
 ├── Original/
-│   ├── Assignment.ko.md                     # 과제 안내문 (한국어)
-│   ├── Assignment.md                        # 과제 안내문 (영어)
-│   └── Q1_Sample.txt                        # Q1.txt의 앞부분 300줄
+│   ├── Assignment.ko.md                     # assignment handout (Korean)
+│   ├── Assignment.md                        # assignment handout (English)
+│   └── Q1_Sample.txt                        # first 300 lines of Q1.txt
 ├── Solution/
 │   ├── Assignment3_DnaFiveMerCounter.java   # Q1
-│   ├── Assignment3_CalculatorServer.java    # Q3 서버
-│   └── Assignment3_CalculatorClient.java    # Q3 클라이언트
-├── Assignment-Explanation.ko.md             # 과제 해설 (한국어)
-└── Assignment-Explanation.md                # 과제 해설 (영어)
+│   ├── Assignment3_CalculatorServer.java    # Q3 server
+│   └── Assignment3_CalculatorClient.java    # Q3 client
+├── Assignment-Explanation.ko.md             # assignment explanation (Korean)
+└── Assignment-Explanation.md                # assignment explanation (English)
 ```
 
 *그림 1. HW3 과제의 디렉토리 구성*
@@ -78,8 +78,8 @@ Q3는 서버를 먼저 실행한 뒤, 터미널을 여러 개 열어 각각 클�
 
 ```bash
 javac -d run Solution/Assignment3_CalculatorServer.java Solution/Assignment3_CalculatorClient.java
-java -cp run Assignment3_CalculatorServer      # 터미널 1
-java -cp run Assignment3_CalculatorClient      # 터미널 2, 3, ...
+java -cp run Assignment3_CalculatorServer      # terminal 1
+java -cp run Assignment3_CalculatorClient      # terminals 2, 3, ...
 ```
 
 ---
